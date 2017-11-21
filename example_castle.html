@@ -1,0 +1,211 @@
+<html>
+	<head>
+		<title>atomicGL2 SCENE test </title>
+		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+		<script type="text/javascript" src="utils/glMatrix-0.js"></script>
+		<script type="text/javascript" src="utils/webgl-utils.js"></script>
+
+		<!-- ATOMICGL ENGINE -->
+		<!-- load 3D OBJETCS modules -->
+		<script type="text/javascript" src="example_castle_objs/palais_v01_bois_parquet.js"></script>
+		<script type="text/javascript" src="example_castle_objs/palais_v01_bois_poutre.js"></script>
+		<script type="text/javascript" src="example_castle_objs/palais_v01_decors.js"></script>
+		<script type="text/javascript" src="example_castle_objs/palais_v01_mur.js"></script>
+		<script type="text/javascript" src="example_castle_objs/palais_v01_terrase.js"></script>
+		<script type="text/javascript" src="example_castle_objs/palais_v01_toiture.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/donjonBase.js"></script>
+		<script type="text/javascript" src="example_castle_objs/donjonBois.js"></script>
+		<script type="text/javascript" src="example_castle_objs/donjonFenetre.js"></script>
+		<script type="text/javascript" src="example_castle_objs/donjonMur.js"></script>
+		<script type="text/javascript" src="example_castle_objs/donjonSol.js"></script>
+		<script type="text/javascript" src="example_castle_objs/donjonToiture.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/maison1mur.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison1sol.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison1stone.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison1stone2.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison1toit.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison1wood2.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/maison3.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison3roof.js"></script>
+		<script type="text/javascript" src="example_castle_objs/maison3wood.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/sol_herbe.js"></script>
+		<script type="text/javascript" src="example_castle_objs/sol_route.js"></script>
+		<script type="text/javascript" src="example_castle_objs/sol_muret.js"></script>
+		<script type="text/javascript" src="example_castle_objs/sol_sable.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/pont_dessus.js"></script>
+		<script type="text/javascript" src="example_castle_objs/pont_pierre.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/tour1base.js"></script>
+		<script type="text/javascript" src="example_castle_objs/tour1mur.js"></script>
+		<script type="text/javascript" src="example_castle_objs/tour1parape.js"></script>
+		<script type="text/javascript" src="example_castle_objs/tour1sol.js"></script>
+		<script type="text/javascript" src="example_castle_objs/tour1toit.js"></script>
+
+		<script type="text/javascript" src="example_castle_objs/mur2base.js"></script>
+		<script type="text/javascript" src="example_castle_objs/mur2pierre.js"></script>
+		<script type="text/javascript" src="example_castle_objs/mur2bois.js"></script>
+		<script type="text/javascript" src="example_castle_objs/mur2toit.js"></script>
+
+		<!-- load "modules" -->
+		<script type="text/javascript" src="atomicGL2Context.js"></script>
+		<script type="text/javascript" src="atomicGL2MatrixStack.js"></script>
+		<script type="text/javascript" src="atomicGL2SceneGraph.2.js"></script>
+		<script type="text/javascript" src="atomicGL2Texture.js"></script>
+		<script type="text/javascript" src="atomicGL2Clock.js"></script>
+		<script type="text/javascript" src="atomicGLWalkCamera.js"></script>
+		<script type="text/javascript" src="atomicGL2Shader.2.js"></script>
+		<script type="text/javascript" src="atomicGL2Object3d.js"></script>
+		<script type="text/javascript" src="atomicGL2xml.2.js"></script>
+
+		<!-- ATOMICGL ENGINE -->
+		<!-- create objects -->
+		<!-- wegGLStart function (required) -->
+		<script type="text/javascript">
+		//------------------------------------------------------------------------------
+		// ....
+		//------------------------------------------------------------------------------
+
+		//------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------
+
+		// for mouse
+		var windowHalfX = window.innerWidth / 2;
+		var windowHalfY = window.innerHeight / 2;
+		var mouseX = 0.0;
+		var mouseY = 0.0;
+		document.onmousemove = onDocumentMouseMove;
+
+		var currentlyPressedKeys = {};
+		//	keyboard callbacks
+		document.onkeydown = handleKeyDown;
+		document.onkeyup = handleKeyUp;
+
+		// atomicGL
+		// -------------------------------------------------
+		// GL context
+		var agl = new atomicGL2Context();
+		// matrix stack
+		var ams =new atomicGL2MatrixStack();
+		// clock
+		var sceneClock =new atomicGL2Clock() ;
+		// -------------------------------------------------
+		//webGLStart
+		function webGLStart() {
+		// init
+		// -----------------------------
+			// recover OpenGL canvas
+			var canvas = document.getElementById("oglcanvas");
+
+			// init OpenGL context
+			// canvas, background color
+			agl.initGL(canvas,[0.15,0.1,0.5]);
+
+			// scenegraph creation from xml file
+			var sgxml = new atomicGL2xml(agl,'example_castle_scene.xml');
+
+			// light
+			agl.pushLight([+1000.0, 500.0, +500.0],[1.0,0.8,0.8]); // position, color
+			agl.ambientLightColor = [0.1,0.05,0.0];	// color
+
+			// init Matrix Stack
+			ams.initMatrix(agl,45); // fov = 45 degrees
+
+			// start the animation
+			nextFrame();
+		}
+
+		// draw
+		// -----------------------------
+		function sceneDraw(){
+			agl.initDraw();
+			agl.scenegraph.draw(agl,ams);
+		}
+
+		// nextFrame
+		// -----------------------------
+		function nextFrame() {
+			handleKeys();
+			requestAnimFrame(nextFrame);
+			sceneDraw();
+			animate();
+		}
+
+		// animate
+		// ------------------------------
+		function animate(){
+			// increase time
+			sceneClock.tick() ;
+		}
+
+		// keyboard
+		// --------------------------------
+		function handleKeyDown(event) 	{ currentlyPressedKeys[event.keyCode] = true;}
+		function handleKeyUp(event) 	{currentlyPressedKeys[event.keyCode] = false;}
+
+		function handleKeys() {
+			if (Math.abs(mouseX)>0.1){
+				agl.scenegraph.camera.turnright(1.0*(mouseX*mouseX*mouseX));
+			}
+			agl.scenegraph.camera.turnup(45*mouseY);
+			if (currentlyPressedKeys[67]) // (C) debug
+			{
+				// debug
+				console.log('atomicGL - R�mi COZOT - 2015');
+			}
+			if (currentlyPressedKeys[68]) // (D) Right
+			{
+				// debug
+				agl.scenegraph.camera.right();		}
+			if (currentlyPressedKeys[81]) // (Q) Left
+			{
+				// debug
+				agl.scenegraph.camera.left();			//
+			}
+			if (currentlyPressedKeys[90]) // (Z) Up
+			{
+				// debug
+				agl.scenegraph.camera.up();			//
+			}
+			if (currentlyPressedKeys[83]) // (S) Down
+			{
+				// debug
+				agl.scenegraph.camera.down();			//
+			}
+			if (currentlyPressedKeys[32]) // (space)
+			{
+				// debug
+				agl.scenegraph.camera.space();			//
+			}
+			if (currentlyPressedKeys[17]) // (space)
+			{
+				// debug
+				agl.scenegraph.camera.ctrl();			//
+			}
+		}
+
+		// mouse
+		// ------------------------------
+		function onDocumentMouseMove( event ) {
+			omouseX = mouseX ;
+			mouseX = ( event.clientX - windowHalfX ) / windowHalfX;
+			mouseY = ( event.clientY - windowHalfY ) / windowHalfY;
+		}
+
+	</script>
+	</head>
+
+	<body onload="webGLStart();">
+		<br>
+		<canvas id="oglcanvas" style="border: none;" width="1600" height="900"></canvas>
+		<br>
+	</body>
+</html>

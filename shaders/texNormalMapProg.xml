@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHADER name="texDiffProg">
+	<VERTEX>
+		// vertex shader
+	// ------------------------------------------------------
+	// texture shader per fragment 
+	// ------------------------------------------------------
+	// lights nb: 1
+	// ------------------------------------------------------
+	
+	// attributes inputs  (vertex arrays)
+		attribute vec3 aVertexPosition;
+		attribute vec2 aVertexTexCoord;
+		attribute vec3 aVertexNormal;
+
+	// uniform matrices
+		uniform mat4 uMVMatrix;
+		uniform mat4 uPMatrix;
+		uniform mat3 uNMatrix;
+
+	// output
+    	varying vec2 vTextureCoord;
+		varying vec4 vPosition;
+		varying vec3 vNormal;
+
+    void main(void) {
+		// vPosition
+		vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
+		
+    	// vNormal
+		vNormal = uNMatrix * aVertexNormal;	
+    
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+		
+		// vTextureCoord
+        vTextureCoord = aVertexTexCoord;
+
+    }
+	</VERTEX>
+	<FRAGMENT>
+		#ifdef GL_ES
+		precision highp float;
+	#endif
+	// fragment shader
+	// ------------------------------------------------------
+	// texture shader per fragment 
+	// ------------------------------------------------------
+	// lights nb: 1
+	// ------------------------------------------------------
+	
+	// local constant
+		// Kd: diffuse coeff
+		float Kd = 1.0 ;	
+		
+	// inputs
+    	varying vec2 vTextureCoord;
+		varying vec4 vPosition;
+		varying vec3 vNormal;
+    	
+    // Uniform
+    	uniform sampler2D uSampler0;
+    	uniform sampler2D uSampler1;
+    	
+		// lights
+		// ambient
+		uniform vec3 uAmbientColor;
+
+		//point light ie omni dir:  location, color
+		uniform vec3 uPointLightPosition0;
+		uniform vec3 uPointLightColor0;
+
+
+    void main(void) {
+    	// light direction
+		vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
+		// eye direction
+		vec3 eyeDirection = normalize(-vPosition.xyz);
+
+		// normalize normal
+		vec3 oldNormal = normalize(vNormal);
+		// new normal in tangent space
+		vec3 newNormalTS = normalize(2.0*texture2D(uSampler1, vTextureCoord).xyz -1.0) ;
+		//newNormalTS.z = newNormalTS.z*1000.0;
+		// newNormalTS = normalize(newNormalTS);
+		// TS to View
+		vec3 biTangent = cross(oldNormal,vec3(0.0,0.0,1.0));
+		// test tangent
+		if (dot(biTangent,biTangent) == 0.0){biTangent = cross(oldNormal,vec3(0.0,1.0,0.0));}
+		vec3 tangent =  cross(biTangent,oldNormal);
+		// no transpose
+		vec3 u1 = tangent ;
+		vec3 u2 = biTangent;
+		vec3 u3 = oldNormal;		
+		// TS to view matrix
+		mat3 TBN = mat3(u1,u2,u3);
+		// transform normal
+		vec3 normal = TBN*newNormalTS ;
+		//  diffuse term
+		float diffuseLightWeight = max(dot(normal, lightDirection), 0.0);
+		
+		// texture color
+		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
+			
+		// light color
+		vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ;
+
+
+
+        gl_FragColor = vec4(lightColor,1.0);
+    }
+	</FRAGMENT>
+</SHADER>
