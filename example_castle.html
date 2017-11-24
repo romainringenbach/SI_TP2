@@ -83,6 +83,7 @@
 		var mouseX = 0.0;
 		var mouseY = 0.0;
 		document.onmousemove = onDocumentMouseMove;
+		var objectList;
 
 		var currentlyPressedKeys = {};
 		//	keyboard callbacks
@@ -111,6 +112,7 @@
 
 			// scenegraph creation from xml file
 			var sgxml = new atomicGL2xml(agl,'example_castle_scene.xml');
+			this.objectList = sgxml.objectList;
 
 			// light
 			agl.pushLight([+1000.0, 500.0, +500.0],[1.0,0.8,0.8]); // position, color
@@ -152,10 +154,12 @@
 		function handleKeyUp(event) 	{currentlyPressedKeys[event.keyCode] = false;}
 
 		function handleKeys() {
-			if (Math.abs(mouseX)>0.1){
+			if (Math.abs(mouseX)>0.1) {
 				agl.scenegraph.camera.turnright(1.0*(mouseX*mouseX*mouseX));
 			}
+		
 			agl.scenegraph.camera.turnup(45*mouseY);
+
 			if (currentlyPressedKeys[67]) // (C) debug
 			{
 				// debug
@@ -164,7 +168,8 @@
 			if (currentlyPressedKeys[68]) // (D) Right
 			{
 				// debug
-				agl.scenegraph.camera.right();		}
+				agl.scenegraph.camera.right();
+			}
 			if (currentlyPressedKeys[81]) // (Q) Left
 			{
 				// debug
@@ -183,12 +188,18 @@
 			if (currentlyPressedKeys[32]) // (space)
 			{
 				// debug
-				agl.scenegraph.camera.space();			//
+				agl.scenegraph.camera.flyUp();			//
 			}
-			if (currentlyPressedKeys[17]) // (space)
+			if (currentlyPressedKeys[17]) // (ctrl)
 			{
 				// debug
-				agl.scenegraph.camera.ctrl();			//
+				agl.scenegraph.camera.flyDown();			//
+			}
+			if(currentlyPressedKeys[80])	// (P)
+			{
+				objectList.forEach(function(objet) {
+					objet.setShader(agl.indexOfShader("texPhongProg"));
+				});
 			}
 		}
 

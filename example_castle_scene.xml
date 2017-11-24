@@ -5,6 +5,7 @@
 		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">textProg</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
 		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
+		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
 	</SHADERS>
 	<TEXTURES>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>

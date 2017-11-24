@@ -12,19 +12,22 @@
 
 class atomicGL2xml {
 
+	
 	// constructor
 	//------------------------
  	constructor(agl,name){
 		// attributes
 		// -------------------------------------------------
 		this.dom  = null ;
-		
+		this.objectList = [];
+
 		// build
 		// ----------------------
 		// init
 		this.build(agl,name);
 	}
 	
+
 	// methods
 	// --------------------------------------------------
 
@@ -229,6 +232,7 @@ class atomicGL2xml {
 				// JS6
 				node = new atomicGL2SGobject3d('object3D',id);
 				node.setObject3D(agl.shapes[agl.indexOfShape(shapeId)],agl.indexOfShader(shaderId));
+				this.objectList.push(node);
 				s.addChild(node);				
 				// debug
 				//console.log("atomicGL2xml::traverse -> add OBJECT3D");

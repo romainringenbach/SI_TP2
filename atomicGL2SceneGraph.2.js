@@ -210,7 +210,13 @@ class atomicGL2SGobject3d extends atomicGL2SceneGraph {
 		this.object3D = o;
 		this.shaderId = sid ;
 	}
-	
+
+	// set a shader for this object
+	//			sid - shader id
+	setShader (sid) {
+		 this.shaderId = sid;
+	 }
+
 	// draw
 	// -------------------------
 	// inputs: 	agl - atomicGLContext
