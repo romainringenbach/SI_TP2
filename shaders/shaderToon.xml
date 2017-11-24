@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<SHADER name="shaderBase">
+<SHADER name="shaderToon">
 	<VERTEX>
 		// vertex shader
 		// ------------------------------------------------------
