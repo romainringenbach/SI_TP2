@@ -1,6 +1,6 @@
 // atomicGL
 //----------------------------------------------------------------------------------------
-// author: RC				
+// author: RC
 // contact: cozot@irisa.fr
 // version: 2.1
 // current version date: 2016/01/26
@@ -12,7 +12,7 @@
 
 class atomicGL2xml {
 
-	
+
 	// constructor
 	//------------------------
  	constructor(agl,name){
@@ -21,12 +21,14 @@ class atomicGL2xml {
 		this.dom  = null ;
 		this.objectList = [];
 
+		this.shadersBis = [];
+
 		// build
 		// ----------------------
 		// init
 		this.build(agl,name);
 	}
-	
+
 
 	// methods
 	// --------------------------------------------------
@@ -38,8 +40,18 @@ class atomicGL2xml {
 		xmlhttp.send();
 		var xmlDoc=xmlhttp.responseXML;
 		return xmlDoc;
-	} 
-	
+	}
+	/*
+	activeShader(index,agl){
+		console.log(this.shadersBis[index])
+		var shader_name = this.shadersBis[index].name;
+		var file = this.shadersBis[index].file;
+		var nbtex = this.shadersBis[index].nbtex;
+		var nblight = this.shadersBis[index].nblight;
+		agl.pushProgram(new atomicGL2MatShader(shader_name, agl,new atomicGL2ShaderLoaderScriptXML(file),nbtex,nblight));
+		this.shadersBis[index].active = true;
+	}*/
+
 	// shaders
 	shaders(agl){
 		// examples
@@ -55,8 +67,15 @@ class atomicGL2xml {
 			var nblight = parseFloat(SHAD.getAttribute("nblight"));
 			// create shader and add it to context
 			agl.pushProgram(new atomicGL2MatShader(shader_name, agl,new atomicGL2ShaderLoaderScriptXML(file),nbtex,nblight));
+			this.shadersBis.push({
+				name:shader_name,
+				file:file,
+				nbtex:nbtex,
+				nblight:nblight,
+				active:false
+			});
 			// debug
-			console.log("atomicGLxml::shaders >> find shader("+i+"): "+shader_name+"-file: "+file);	
+			console.log("atomicGLxml::shaders >> find shader("+i+"): "+shader_name+"-file: "+file);
 		}
 		var listIMSHAD = this.dom.getElementsByTagName("IMATSHADER");
 		for (var i=0; i<listIMSHAD.length;i++){
@@ -70,10 +89,10 @@ class atomicGL2xml {
 			// create shader and add it to context
 			agl.pushProgram(new atomicGL2MatShader(shader_name, agl,new atomicGL2ShaderLoaderScriptInLine(vertex,fragment),nbtex,nblight));
 			// debug
-			console.log("atomicGLxml::shaders >> find shader("+i+"): "+shader_name+"-vertex: "+vertex+"-fragment: "+fragment);	
+			console.log("atomicGLxml::shaders >> find shader("+i+"): "+shader_name+"-vertex: "+vertex+"-fragment: "+fragment);
 		}
 	}
-	
+
 	// textures
 	textures(agl){
 	// <TEXTURE id="test" type="color"> texture/test.png </TEXTURE>
@@ -91,7 +110,7 @@ class atomicGL2xml {
 			//console.log("atomicGLxml::textures >> find texture("+i+"): "+listTEX[i].childNodes[0].data+"-id: "+id+" -type: "+type);
 		}
 	}
-	
+
 	// shapes
 	shapes(agl){
 	// <SHAPE id="shape0" type="obj">
@@ -101,7 +120,7 @@ class atomicGL2xml {
 	// </SHAPE>
 		var listSHAPE = this.dom.getElementsByTagName("SHAPE");
 		for (var i=0; i < listSHAPE.length ; i++){
-			// 
+			//
 			var SHAPE 	= listSHAPE[i];
 			var SHAPEId = SHAPE.getAttribute("id");
 			var SHAPEType = SHAPE.getAttribute("type");
@@ -112,12 +131,12 @@ class atomicGL2xml {
 			var GEOuv = GEOMETRY.getAttribute("uv");
 			var u = parseFloat(GEOuv.split(",")[0]);
 			var v = parseFloat(GEOuv.split(",")[1]);
-	
-			// create shape 
+
+			// create shape
 			// switch nodeName
 			var ss ;
 			switch (SHAPEType){
-			case "obj": 
+			case "obj":
 				ss = new atomicGL2ObjMesh(SHAPEId, eval("new "+GEOmesh), u,v) ;
 				break ;
 			case "sphere" :
@@ -129,11 +148,11 @@ class atomicGL2xml {
 					u,v);
 				ss.build();
 				break;
-			}	
-			
+			}
+
 			// debug
 			//console.log("atomicGLxml::shapes >> find shape("+i+"): "+SHAPEId+"-GEOMETRY:" + GEOId+ "-mesh:"+GEOmesh+"-uv:"+u+","+v);
-			
+
 			// textures
 			var textures = SHAPE.getElementsByTagName("TEXTID");
 			for (var j=0; j < textures.length ; j++){
@@ -149,35 +168,35 @@ class atomicGL2xml {
 				// debug
 				//console.log("-- texture used ("+j+"):"+tid + "- index:" + agltid);
 			}
-			
+
 			// init shape buffer and add it to context
 			ss.initGLBuffers(agl);
 			agl.shapes.push(ss);
 		}
 	}
-	
+
 	// traverse
 	// ---------------------------
 	// input
 	// ---------------------------
 	// e: DOM elements
-	// s: parent node 
+	// s: parent node
 	// ---------------------------
 	traverse(agl,e,s){
 		// current node
 		var nodeName = e.nodeName ;
 		var node = null;
-		
+
 		// console.log(s+nodeName);
 		// switch nodeName
 		switch (nodeName){
-			case "ROOT": 
+			case "ROOT":
 				// skybox
 				var skyTexId = e.getAttribute("skybox");
 				var skyBox = null ;
 				if ((skyTexId!="")||(skyTexId!="no")){
 					skyBox = new atomicGL2SkyBox('skybox',parseFloat(e.getAttribute("skysize")));
-					skyBox.pushTexture(agl.textures[agl.indexOfTexture(skyTexId)]);		
+					skyBox.pushTexture(agl.textures[agl.indexOfTexture(skyTexId)]);
 					skyBox.initGLBuffers(agl);
 				}
 				// camera
@@ -193,7 +212,7 @@ class atomicGL2xml {
 				//  debug
 				// console.log(s+e.getAttribute("id"));
 			break;
-			case "TRANSFORM": 
+			case "TRANSFORM":
 				// transform
 				// console.log(s+e.getAttribute("id"));
 				// id
@@ -210,16 +229,16 @@ class atomicGL2xml {
 				var az = parseFloat(rotAxisS[2]);
 				// angle
 				var theta = parseFloat(e.getAttribute("angle"));
-				
+
 				// node
 				// JS6
 				node = new atomicGL2SGtransform("transform",id);
-				node.setTransform([tx,ty,tz],[ax,ay,az],theta);	
+				node.setTransform([tx,ty,tz],[ax,ay,az],theta);
 				s.addChild(node);
 				// debug
 				//node.toDEBUG();
 			break;
-			case "OBJECT3D": 
+			case "OBJECT3D":
 				// object3D
 				// id
 				var id = e.getAttribute("id") ;
@@ -227,13 +246,21 @@ class atomicGL2xml {
 				var shaderId = e.getAttribute("shader");
 				// shape
 				var shapeId = e.childNodes[0].data ;
-				
+
 				// node
 				// JS6
 				node = new atomicGL2SGobject3d('object3D',id);
+
+				/*for (var i = 0; i < this.shadersBis.length; i++) {
+					if (this.shadersBis[i].name == shaderId && !this.shadersBis[i].active ) {
+						this.activeShader(i,agl);
+					}
+				}*/
+
 				node.setObject3D(agl.shapes[agl.indexOfShape(shapeId)],agl.indexOfShader(shaderId));
+
+				s.addChild(node);
 				this.objectList.push(node);
-				s.addChild(node);				
 				// debug
 				//console.log("atomicGL2xml::traverse -> add OBJECT3D");
 			break;
@@ -250,19 +277,19 @@ class atomicGL2xml {
 		var root = this.dom.getElementsByTagName("ROOT")[0];
 		this.traverse(agl,root,agl.scenegraph);
 	}
-	
+
 	// build
 	build(agl, name){
 	// --------------------------------------------------
-	// load XML file
-	this.dom = this.loadXML(agl,name)  ;
-	// find shaders
-	this.shaders(agl);
-	// find textures
-	this.textures(agl);
-	// find shapes
-	this.shapes(agl);
-	// scenegraph
-	this.scenegraph(agl);
+		// load XML file
+		this.dom = this.loadXML(agl,name)  ;
+		// find shaders
+		this.shaders(agl);
+		// find textures
+		this.textures(agl);
+		// find shapes
+		this.shapes(agl);
+		// scenegraph
+		this.scenegraph(agl);
 	}
 }

@@ -1,6 +1,6 @@
 // atomicGL
 //----------------------------------------------------------------------------------------
-// author: RC				
+// author: RC
 // contact: cozot@irisa.fr
 // version: 2.1
 // current version date: 2016/01/29
@@ -15,26 +15,26 @@ class atomicGLObject3d{
 	constructor(nname){
 		// name
 		this.name = nname ;
-		
+
 		// textures
 		this.scaleUV = [] ;
 		this.textures = [] ;
-	
+
 		// vertices array
 		this.verticesArray 	= [] ;
-	
+
 		// normals array
 		this.normalsArray  = [] ;
-	
+
 		// color array
     	this.colorsArray = [];
-    	
+
 		// texture coordinates array
     	this.textureCoordsArray = [] ;
-	
+
 		// indexes
-    	this.vertexIndices = [] ;	
-    
+    	this.vertexIndices = [] ;
+
     	// OGL buffers
  		// buffers
 		this.vertexPositionBuffer	;
@@ -42,19 +42,19 @@ class atomicGLObject3d{
     	this.vertexColorBuffer		;
     	this.vertexTexCoordBuffer 	;
     	this.vertexIndexBuffer 		;
-	
+
 		this.vertexPositionBufferItemSize	;
     	this.vertexNormalBufferItemSize		;
     	this.vertexColorBufferItemSize		;
     	this.vertexTexCoordBufferItemSize 	;
     	this.vertexIndexBufferItemSize 		;
-	
+
 		this.vertexPositionBufferNumItems	;
     	this.vertexNormalBufferNumItems		;
     	this.vertexColorBufferNumItems		;
     	this.vertexTexCoordBufferNumItems 	;
     	this.vertexIndexBufferNumItems 		;
-       		
+
 	}
 
 	// methods
@@ -63,9 +63,9 @@ class atomicGLObject3d{
 	// pushTexture
 	// --------------------------
 	// inputs:	 atomicTex: texture - atomicGL2Texture
-	pushTexture(atomicTex){this.textures.push(atomicTex);}	
-	
-		
+	pushTexture(atomicTex){this.textures.push(atomicTex);}
+
+
 	// initGLBuffers
 	//---------------------------
 	// inputs:	agl: openGL context
@@ -80,37 +80,37 @@ class atomicGLObject3d{
         this.vertexPositionBufferItemSize = 3;
         this.vertexPositionBufferNumItems = this.verticesArray.length/3;
 
-		// vertexNormalBuffer		
+		// vertexNormalBuffer
 		this.vertexNormalBuffer		= gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexNormalBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.normalsArray), gl.STATIC_DRAW);
         this.vertexNormalBufferItemSize = 3;
         this.vertexNormalBufferNumItems = this.normalsArray.length/3;
 
-		// vertexColorBuffer		
+		// vertexColorBuffer
 		this.vertexColorBuffer		= gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexColorBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.colorsArray), gl.STATIC_DRAW);
         this.vertexColorBufferItemSize = 3;
         this.vertexColorBufferNumItems = this.normalsArray.length/3;
 
-		
-		// vertexTexCoordBuffer		
+
+		// vertexTexCoordBuffer
 		this.vertexTexCoordBuffer 	= gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexTexCoordBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.textureCoordsArray), gl.STATIC_DRAW);
         this.vertexTexCoordBufferItemSize = 2;
         this.vertexTexCoordBufferNumItems = this.textureCoordsArray.length/2;
-		
-		// vertexIndexBuffer	
-		this.vertexIndexBuffer 		= gl.createBuffer();	
+
+		// vertexIndexBuffer
+		this.vertexIndexBuffer 		= gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.vertexIndexBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.vertexIndices), gl.STATIC_DRAW);
         this.vertexIndexBufferItemSize = 1;
         this.vertexIndexBufferNumItems = this.vertexIndices.length ;
 	}
-	
-	
+
+
 	// draw(aGL,aMS,idProg)
 	//---------------------------
 	// inputs: 	aGL: GL context 		- atomicGLContext
@@ -124,15 +124,16 @@ class atomicGLObject3d{
 		aGL.gl.useProgram(aGL.shaderPrograms[idProg].program);
 		// setUniforms: matrices and lights
 		aGL.shaderPrograms[idProg].setUniforms(aGL,aMS);
-		
+
 		// link buffer to attributes
 		//positions
-		aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexPositionBuffer);
+				aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexPositionBuffer);
         aGL.gl.vertexAttribPointer(aGL.shaderPrograms[idProg].vertexPositionAttribute, this.vertexPositionBufferItemSize, aGL.gl.FLOAT, false, 0, 0);
 		//normals
         aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexNormalBuffer);
         aGL.gl.vertexAttribPointer(aGL.shaderPrograms[idProg].vertexNormalAttribute, this.vertexNormalBufferItemSize, aGL.gl.FLOAT, false, 0, 0);
 		// colors
+
         aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexColorBuffer);
         aGL.gl.vertexAttribPointer(aGL.shaderPrograms[idProg].vertexColorAttribute, this.vertexColorBufferItemSize, aGL.gl.FLOAT, false, 0, 0);
 		// textures
@@ -140,7 +141,7 @@ class atomicGLObject3d{
 			// debug
 			// console.log("atomicGLObject3d("+this.name+")::vertexAttribPointer: "+aGL.shaderPrograms[idProg].texCoordAttribute);
 			aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexTexCoordBuffer);
-			aGL.gl.vertexAttribPointer(aGL.shaderPrograms[idProg].texCoordAttribute, this.vertexTexCoordBufferItemSize, aGL.gl.FLOAT, false, 0, 0);		
+			aGL.gl.vertexAttribPointer(aGL.shaderPrograms[idProg].texCoordAttribute, this.vertexTexCoordBufferItemSize, aGL.gl.FLOAT, false, 0, 0);
 		}
 		for (var i=0; i<this.textures.length; i++ ){
 			// activate texture
@@ -151,18 +152,18 @@ class atomicGLObject3d{
 			// console.log("atomicGLObject3d("+this.name+")::bindTexture: "+this.textures[i].texture);
 			agl.gl.bindTexture(aGL.gl.TEXTURE_2D, this.textures[i].texture);
 			// debug
-			// console.log("atomicGLObject3d("+this.name+")::uniform: "+aGL.shaderPrograms[idProg].samplerUniform[i]+"->"+i);			
+			// console.log("atomicGLObject3d("+this.name+")::uniform: "+aGL.shaderPrograms[idProg].samplerUniform[i]+"->"+i);
 			agl.gl.uniform1i(aGL.shaderPrograms[idProg].samplerUniform[i], i);
 
 		}
 		// indexes
         aGL.gl.bindBuffer(aGL.gl.ELEMENT_ARRAY_BUFFER, this.vertexIndexBuffer);
-		
+
 		// draw Object3D
         aGL.gl.drawElements(aGL.gl.TRIANGLES, this.vertexIndexBufferNumItems, aGL.gl.UNSIGNED_SHORT, 0);
 
 	}
-	
+
 }
 
 //----------------------------------------------------------------------------------------
@@ -180,7 +181,7 @@ class atomicGL2ObjMesh extends atomicGLObject3d {
 		// textures
 		this.scaleUV = [uu,vv] ;
 		this.textures = [] ;
-	
+
 		// vertices array
 		this.verticesArray 	= obj.vertices;
 		// normals array
@@ -196,7 +197,7 @@ class atomicGL2ObjMesh extends atomicGLObject3d {
 			this.textureCoordsArray[2*i+1] 	= vv*this.textureCoordsArray[2*i+1];
 		}
 		// indexes
-    	this.vertexIndices = obj.index;	
+    	this.vertexIndices = obj.index;
     }
 }
 
@@ -223,11 +224,11 @@ class atomicGL2Cube extends atomicGLObject3d {
 		this.height	= hheight ;
 		this.width 	= wwidth ;
 		this.depth 	= ddepth ;
-	
+
 		// textures
 		this.scaleUV = [uu,vv] ;
 
-	
+
 		// vertices array
 		this.verticesArray 	= [
         	// Front face
@@ -282,12 +283,12 @@ class atomicGL2Cube extends atomicGLObject3d {
 		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0,
 			// Back face
 		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0,
-			// Top face 
+			// Top face
 		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0,
 			// Bottom face : floor
 		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0,
 			// Left face
-		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0,		
+		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0,
 			// Right face
 		 	uu*0.0, vv*0.0,		uu*1.0, vv*0.0,		uu*1.0, vv*1.0,		uu*0.0, vv*1.0
 		];
@@ -297,7 +298,7 @@ class atomicGL2Cube extends atomicGLObject3d {
 		 	0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
 			// Back face
 		 	0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
-			// Top face 
+			// Top face
 		  	0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
 			// Bottom face : floor
 		  	0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
@@ -314,13 +315,13 @@ class atomicGL2Cube extends atomicGLObject3d {
 			12, 13, 14,   12, 14, 15, // Bottom face
 			16, 17, 18,   16, 18, 19, // Right face
 			20, 21, 22,   20, 22, 23  // Left face
-		];		
+		];
 
-	}	
+	}
 	// methods
 	// --------------------------------------------------
 
-	
+
 	// setFaceColor(face, RGB)
 	//---------------------------
 	setFaceColor( face, RGB) {
@@ -331,119 +332,119 @@ class atomicGL2Cube extends atomicGLObject3d {
 		var r = RGB[0];
 		var g = RGB[1];
 		var b = RGB[2];
-		
+
 		// switch face
 		switch(face){
 			case "Front":
 				this.colorsArray[0] =r;
 				this.colorsArray[1] =g;
 				this.colorsArray[2] =b;
-			
+
 				this.colorsArray[3] =r;
 				this.colorsArray[4] =g;
 				this.colorsArray[5] =b;
-			
+
 				this.colorsArray[6] =r;
 				this.colorsArray[7] =g;
 				this.colorsArray[8] =b;
-			
+
 				this.colorsArray[9]  =r;
 				this.colorsArray[10] =g;
-				this.colorsArray[11] =b;			
+				this.colorsArray[11] =b;
 			break;
 
 			case "Back":
 				this.colorsArray[12+0] =r;
 				this.colorsArray[12+1] =g;
 				this.colorsArray[12+2] =b;
-			
+
 				this.colorsArray[12+3] =r;
 				this.colorsArray[12+4] =g;
 				this.colorsArray[12+5] =b;
-			
+
 				this.colorsArray[12+6] =r;
 				this.colorsArray[12+7] =g;
 				this.colorsArray[12+8] =b;
-			
+
 				this.colorsArray[12+9]  =r;
 				this.colorsArray[12+10] =g;
 				this.colorsArray[12+11] =b;
-			break;			
+			break;
 			case "Top":
 				this.colorsArray[24+0] =r;
 				this.colorsArray[24+1] =g;
 				this.colorsArray[24+2] =b;
-			
+
 				this.colorsArray[24+3] =r;
 				this.colorsArray[24+4] =g;
 				this.colorsArray[24+5] =b;
-			
+
 				this.colorsArray[24+6] =r;
 				this.colorsArray[24+7] =g;
 				this.colorsArray[24+8] =b;
-			
+
 				this.colorsArray[24+9]  =r;
 				this.colorsArray[24+10] =g;
 				this.colorsArray[24+11] =b;
-			break;			
+			break;
 			case "Bottom":
 				this.colorsArray[36+0] =r;
 				this.colorsArray[36+1] =g;
 				this.colorsArray[36+2] =b;
-			
+
 				this.colorsArray[36+3] =r;
 				this.colorsArray[36+4] =g;
 				this.colorsArray[36+5] =b;
-			
+
 				this.colorsArray[36+6] =r;
 				this.colorsArray[36+7] =g;
 				this.colorsArray[36+8] =b;
-			
+
 				this.colorsArray[36+9]  =r;
 				this.colorsArray[36+10] =g;
 				this.colorsArray[36+11] =b;
-			break;			
+			break;
 			case "Left":
 				this.colorsArray[48+0] =r;
 				this.colorsArray[48+1] =g;
 				this.colorsArray[48+2] =b;
-			
+
 				this.colorsArray[48+3] =r;
 				this.colorsArray[48+4] =g;
 				this.colorsArray[48+5] =b;
-			
+
 				this.colorsArray[48+6] =r;
 				this.colorsArray[48+7] =g;
 				this.colorsArray[48+8] =b;
-			
+
 				this.colorsArray[48+9]  =r;
 				this.colorsArray[48+10] =g;
 				this.colorsArray[48+11] =b;
-			break;				
+			break;
 			case "Right":
 				this.colorsArray[60+0] =r;
 				this.colorsArray[60+1] =g;
 				this.colorsArray[60+2] =b;
-			
+
 				this.colorsArray[60+3] =r;
 				this.colorsArray[60+4] =g;
 				this.colorsArray[60+5] =b;
-			
+
 				this.colorsArray[60+6] =r;
 				this.colorsArray[60+7] =g;
 				this.colorsArray[60+8] =b;
-			
+
 				this.colorsArray[60+9]  =r;
 				this.colorsArray[60+10] =g;
 				this.colorsArray[60+11] =b;
-			break;	
+			break;
 			case "All":
 				this.colorsArray = [
 					// Front face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
 					// Back face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
-					// Top face 
+					// Top face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
 					// Bottom face : floor
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
@@ -451,11 +452,11 @@ class atomicGL2Cube extends atomicGLObject3d {
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
 					// Right face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
-				];	
-			break;		
+				];
+			break;
 		}
 	}
-		
+
 }
 
 //----------------------------------------------------------------------------------------
@@ -464,13 +465,13 @@ class atomicGL2Cube extends atomicGLObject3d {
 class atomicGL2SkyBox  extends atomicGLObject3d {
 	constructor(nname,ssize){
 		super(nname);
-		
+
 		// size
 		this.size = ssize ;
-		
+
 		// textures
 		this.textures = [] ;
-		
+
 		// vertices array
 		this.verticesArray 	= [
 			// Front face
@@ -524,12 +525,12 @@ class atomicGL2SkyBox  extends atomicGLObject3d {
 			0.75, 0.333,		1.0, 0.333,			1.0, 0.666,			0.75, 0.666,
 			// Back face
 			 0.25, 0.333,		0.50, 0.333,		0.50, 0.666,		0.25, 0.666,
-			// Top face 
+			// Top face
 			 0.25, 0.666,		0.50, 0.666,		0.50, 1.0,			0.25, 1.0,
 			// Bottom face : floor
 			 0.25, 0.0,			0.50, 0.0,			0.50, 0.333,		0.25, 0.333,
 			// Left face
-			 0.0, 0.333,		0.25, 0.333,		0.25, 0.666,		0.0, 0.666,		
+			 0.0, 0.333,		0.25, 0.333,		0.25, 0.666,		0.0, 0.666,
 			// Right face
 			 0.50, 0.333,		0.75, 0.333,		0.75, 0.666,		0.50, 0.666
 		];
@@ -539,7 +540,7 @@ class atomicGL2SkyBox  extends atomicGLObject3d {
 			 0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
 			// Back face
 			 0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
-			// Top face 
+			// Top face
 			  0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
 			// Bottom face : floor
 			  0.8,0.8, 0.8,		0.8,0.8, 0.8,		0.8,0.8,0.8,		0.8,0.8, 0.8,
@@ -556,9 +557,9 @@ class atomicGL2SkyBox  extends atomicGLObject3d {
 			12, 13, 14,   12, 14, 15, // Bottom face
 			16, 17, 18,   16, 18, 19, // Right face
 			20, 21, 22,   20, 22, 23  // Left face
-		];	
-	}	
-	
+		];
+	}
+
 	// setFaceColor(face, RGB)
 	setFaceColor( face, RGB) {
 		// face: 	"Front" | "Back" | "Top" | "Bottom" |"Left"| "Right"| "All" (String)
@@ -569,119 +570,119 @@ class atomicGL2SkyBox  extends atomicGLObject3d {
 		var r = RGB[0];
 		var g = RGB[1];
 		var b = RGB[2];
-		
+
 		// switch face
 		switch(face){
 			case "Front":
 				this.colorsArray[0] =r;
 				this.colorsArray[1] =g;
 				this.colorsArray[2] =b;
-			
+
 				this.colorsArray[3] =r;
 				this.colorsArray[4] =g;
 				this.colorsArray[5] =b;
-			
+
 				this.colorsArray[6] =r;
 				this.colorsArray[7] =g;
 				this.colorsArray[8] =b;
-			
+
 				this.colorsArray[9]  =r;
 				this.colorsArray[10] =g;
-				this.colorsArray[11] =b;			
+				this.colorsArray[11] =b;
 			break;
 
 			case "Back":
 				this.colorsArray[12+0] =r;
 				this.colorsArray[12+1] =g;
 				this.colorsArray[12+2] =b;
-			
+
 				this.colorsArray[12+3] =r;
 				this.colorsArray[12+4] =g;
 				this.colorsArray[12+5] =b;
-			
+
 				this.colorsArray[12+6] =r;
 				this.colorsArray[12+7] =g;
 				this.colorsArray[12+8] =b;
-			
+
 				this.colorsArray[12+9]  =r;
 				this.colorsArray[12+10] =g;
 				this.colorsArray[12+11] =b;
-			break;			
+			break;
 			case "Top":
 				this.colorsArray[24+0] =r;
 				this.colorsArray[24+1] =g;
 				this.colorsArray[24+2] =b;
-			
+
 				this.colorsArray[24+3] =r;
 				this.colorsArray[24+4] =g;
 				this.colorsArray[24+5] =b;
-			
+
 				this.colorsArray[24+6] =r;
 				this.colorsArray[24+7] =g;
 				this.colorsArray[24+8] =b;
-			
+
 				this.colorsArray[24+9]  =r;
 				this.colorsArray[24+10] =g;
 				this.colorsArray[24+11] =b;
-			break;			
+			break;
 			case "Bottom":
 				this.colorsArray[36+0] =r;
 				this.colorsArray[36+1] =g;
 				this.colorsArray[36+2] =b;
-			
+
 				this.colorsArray[36+3] =r;
 				this.colorsArray[36+4] =g;
 				this.colorsArray[36+5] =b;
-			
+
 				this.colorsArray[36+6] =r;
 				this.colorsArray[36+7] =g;
 				this.colorsArray[36+8] =b;
-			
+
 				this.colorsArray[36+9]  =r;
 				this.colorsArray[36+10] =g;
 				this.colorsArray[36+11] =b;
-			break;			
+			break;
 			case "Left":
 				this.colorsArray[48+0] =r;
 				this.colorsArray[48+1] =g;
 				this.colorsArray[48+2] =b;
-			
+
 				this.colorsArray[48+3] =r;
 				this.colorsArray[48+4] =g;
 				this.colorsArray[48+5] =b;
-			
+
 				this.colorsArray[48+6] =r;
 				this.colorsArray[48+7] =g;
 				this.colorsArray[48+8] =b;
-			
+
 				this.colorsArray[48+9]  =r;
 				this.colorsArray[48+10] =g;
 				this.colorsArray[48+11] =b;
-			break;				
+			break;
 			case "Right":
 				this.colorsArray[60+0] =r;
 				this.colorsArray[60+1] =g;
 				this.colorsArray[60+2] =b;
-			
+
 				this.colorsArray[60+3] =r;
 				this.colorsArray[60+4] =g;
 				this.colorsArray[60+5] =b;
-			
+
 				this.colorsArray[60+6] =r;
 				this.colorsArray[60+7] =g;
 				this.colorsArray[60+8] =b;
-			
+
 				this.colorsArray[60+9]  =r;
 				this.colorsArray[60+10] =g;
 				this.colorsArray[60+11] =b;
-			break;	
+			break;
 			case "All":
 				this.colorsArray = [
 					// Front face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
 					// Back face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
-					// Top face 
+					// Top face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
 					// Bottom face : floor
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
@@ -689,8 +690,8 @@ class atomicGL2SkyBox  extends atomicGLObject3d {
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
 					// Right face
 					r, g, b,		r, g, b,		r, g, b,		r, g, b,
-				];	
-			break;		
+				];
+			break;
 		}
 	};
 }
@@ -714,11 +715,11 @@ class atomicGL2Sphere extends atomicGLObject3d{
 		// debug
 		// console.log("atomicGL2Sphere extends atomicGLObject3d::constructor ->"+name );
 		super(nname)
-		
+
 		// size
 		this.radius	= rradius ;
 		this.latitudeBands 	= llatitudeBands ;
-		this.longitudeBands	= llongitudeBands ;	
+		this.longitudeBands	= llongitudeBands ;
 
 		// textures
 		this.scaleUV = [uu,vv] ;
@@ -726,7 +727,7 @@ class atomicGL2Sphere extends atomicGLObject3d{
 	    // build the vertices
 	    this.build();
 	}
-	
+
 	// methods
 	// --------------------------------------------------
 
@@ -743,7 +744,7 @@ class atomicGL2Sphere extends atomicGLObject3d{
 		var r = RGB[0];
 		var g = RGB[1];
 		var b = RGB[2];
-		
+
 		// switch face
 		switch(face){
 			case "All":
@@ -753,15 +754,15 @@ class atomicGL2Sphere extends atomicGLObject3d{
                 		// color
                 		this.colorsArray.push(r);
                 		this.colorsArray.push(g);
-                		this.colorsArray.push(b);            
+                		this.colorsArray.push(b);
             		}
         		}
-			break;		
+			break;
 		}
 	}
 
 	// build
-	//-----------------------------	
+	//-----------------------------
 	build(){
 
 		// vertices, normals, colors, texCoord
@@ -792,11 +793,11 @@ class atomicGL2Sphere extends atomicGLObject3d{
 					this.colorsArray.push(0.8);
 					// uv
 					this.textureCoordsArray.push(this.scaleUV[0]*longNumber/this.longitudeBands);
-					this.textureCoordsArray.push(this.scaleUV[1]*latNumber/this.latitudeBands);              
+					this.textureCoordsArray.push(this.scaleUV[1]*latNumber/this.latitudeBands);
 				}
 			}
 
-		// index 
+		// index
 		for (var latNumber = 0; latNumber < this.latitudeBands; latNumber++) {
 				for (var longNumber = 0; longNumber < this.longitudeBands; longNumber++) {
 					var first = (latNumber * (this.longitudeBands + 1)) + longNumber;
@@ -810,13 +811,13 @@ class atomicGL2Sphere extends atomicGLObject3d{
 					this.vertexIndices.push(first + 1);
 				}
 			}
-	
+
 //		this.vertexPositionBufferItemSize 	= 3	;
 //		this.vertexNormalBufferItemSize		= 3	;
 //		this.vertexTexCoordBufferItemSize	= 2 ;
 //		this.vertexColorBufferItemSize		= 3 ;
 //		this.vertexIndexBufferItemSize 		= 1 ;
-	
+
 //		this.vertexPositionBufferNumItems	= this.verticesArray.length / 3 ;
 //	   	this.vertexNormalBufferNumItems		= this.normalsArray.length / 3 ;
 //		this.vertexTexCoordBufferNumItems 	= this.textureCoordsArray.length/2 ;
@@ -839,23 +840,23 @@ class atomicGL2Cylinder extends atomicGLObject3d {
 		// 			height:			float
 		// 			lthis.heightBands: init
 		// 			this.longitudeBands: int		super(nname);
-	
+
 		// size
 		this.radius	= rradius ;
 		this.height = hheight ;
 		this.heightBands 	= hheightBands ;
 		this.longitudeBands	= llongitudeBands ;
-	
+
 		// textures
 		this.scaleUV = [uu,vv] ;
-	
+
 		// build
 		this.build();
 	}
 
 	// methods
 	// --------------------------------------------------
-	
+
 	// setFaceColor(face, RGB)
 	//---------------------------
 	// inputs:  face: 	"All" (String)
@@ -866,7 +867,7 @@ class atomicGL2Cylinder extends atomicGLObject3d {
 		var r = RGB[0];
 		var g = RGB[1];
 		var b = RGB[2];
-		
+
 		// switch face
 		switch(face){
 			case "All":
@@ -875,26 +876,26 @@ class atomicGL2Cylinder extends atomicGLObject3d {
 				for (var i=0; i <nbc; i++) {
                 	this.colorsArray.push(r);
                 	this.colorsArray.push(g);
-                	this.colorsArray.push(b);            
+                	this.colorsArray.push(b);
             	}
-			break;		
+			break;
 		}
 	}
-	
+
 	// build
 	//-----------------------------------------------------
 	build(){
 		// vertices, normals, colors, texCoord
 		for (var i=0; i <= this.heightBands; i++) {
 			var y = i*this.height/this.heightBands ;
-	
+
         	for (var j = 0; j <= this.longitudeBands; j++) {
-            
+
             	var theta = j * 2.0* Math.PI / this.longitudeBands;
             	var x = Math.cos(theta);
             	var y = i*this.height/this.heightBands;
 				var z = Math.sin(theta);
-            
+
 				// normals
             	this.normalsArray.push(x);
             	this.normalsArray.push(0.0);
@@ -908,11 +909,11 @@ class atomicGL2Cylinder extends atomicGLObject3d {
             	this.colorsArray.push(0.8);
             	this.colorsArray.push(0.8);
             	// uv
-            	this.textureCoordsArray.push(this.scaleUV[1]*i/this.heightBands);              
+            	this.textureCoordsArray.push(this.scaleUV[1]*i/this.heightBands);
             	this.textureCoordsArray.push(this.scaleUV[0]*j/this.longitudeBands);
     		}
     	}
-    
+
     	// cylinder cap
     	// ------------
 	    // bottom
@@ -929,12 +930,12 @@ class atomicGL2Cylinder extends atomicGLObject3d {
 		var bottomcenterIndex = this.verticesArray.length/3 ;
 
     	// cap edge
-    	for (var j = 0; j <= this.longitudeBands; j++) { 
+    	for (var j = 0; j <= this.longitudeBands; j++) {
             var theta = j * 2.0* Math.PI / this.longitudeBands;
             var x = Math.cos(theta);
             var y = 0.0
 			var z = Math.sin(theta);
-            
+
 			// normals
             this.normalsArray.push(0.0); this.normalsArray.push(-1.0); this.normalsArray.push(0.0);
 			// position
@@ -944,9 +945,9 @@ class atomicGL2Cylinder extends atomicGLObject3d {
             // color
             this.colorsArray.push(0.8); this.colorsArray.push(0.8); this.colorsArray.push(0.8);
             // uv
-            this.textureCoordsArray.push(0.5+x*.5);              
-            this.textureCoordsArray.push(0.5+z*0.5);    
-    	}   
+            this.textureCoordsArray.push(0.5+x*.5);
+            this.textureCoordsArray.push(0.5+z*0.5);
+    	}
     	// top cap
     	// -------
     	// center
@@ -962,12 +963,12 @@ class atomicGL2Cylinder extends atomicGLObject3d {
     	this.colorsArray.push(0.8);
     	this.colorsArray.push(0.8);
     	// cap edge
-    	for (var j = 0; j <= this.longitudeBands; j++) { 
+    	for (var j = 0; j <= this.longitudeBands; j++) {
             var theta = j * 2.0* Math.PI / this.longitudeBands;
             var x = Math.cos(theta);
             var y = this.height ;
 			var z = Math.sin(theta);
-            
+
 			// normals
             this.normalsArray.push(0.0); this.normalsArray.push(1.0); this.normalsArray.push(0.0);
 			// position
@@ -977,13 +978,13 @@ class atomicGL2Cylinder extends atomicGLObject3d {
             // color
             this.colorsArray.push(0.8); this.colorsArray.push(0.8); this.colorsArray.push(0.8);
             // uv
-            this.textureCoordsArray.push(0.5+x*0.5);              
-            this.textureCoordsArray.push(0.5+z*0.5);  
-    	}   
+            this.textureCoordsArray.push(0.5+x*0.5);
+            this.textureCoordsArray.push(0.5+z*0.5);
+    	}
 
 		// indexes
 		// --------
-		// body index 
+		// body index
 		for (var i=0; i < this.heightBands; i++) {
         	for (var j = 0; j < this.longitudeBands; j++) {
                 	var t0 = i*(this.longitudeBands+1) 	+ j ;
@@ -993,34 +994,34 @@ class atomicGL2Cylinder extends atomicGLObject3d {
                 	// first triangle
                 	this.vertexIndices.push(t0);
                 	this.vertexIndices.push(t1);
-                	this.vertexIndices.push(t2);                
-                
+                	this.vertexIndices.push(t2);
+
        	         	// second triangle
         	        this.vertexIndices.push(t2);
            	    	this.vertexIndices.push(t1);
-            	    this.vertexIndices.push(t3);  
+            	    this.vertexIndices.push(t3);
         	}
     	}
 		// bottom cap index
 		for (var j = 0; j < this.longitudeBands; j++) {
         	this.vertexIndices.push(bottomcenterIndex);
         	this.vertexIndices.push(bottomcenterIndex +j);
-        	this.vertexIndices.push(bottomcenterIndex +j +1);  
+        	this.vertexIndices.push(bottomcenterIndex +j +1);
     	}
 		// top cap index
 		for (var j = 0; j < this.longitudeBands; j++) {
         	this.vertexIndices.push(topcenterIndex);
         	this.vertexIndices.push(topcenterIndex +j);
-        	this.vertexIndices.push(topcenterIndex +j +1);  
-    	}	
-	
+        	this.vertexIndices.push(topcenterIndex +j +1);
+    	}
+
 		// buffer item size and num items
 		this.vertexPositionBufferItemSize 	= 3	;
   		this.vertexNormalBufferItemSize		= 3	;
    		this.vertexTexCoordBufferItemSize	= 2 ;
    		this.vertexColorBufferItemSize		= 3 ;
    		this.vertexIndexBufferItemSize 		= 1 ;
-	
+
 		this.vertexPositionBufferNumItems	= this.verticesArray.length / 3 ;
     	this.vertexNormalBufferNumItems		= this.normalsArray.length / 3 ;
 		this.vertexTexCoordBufferNumItems 	= this.textureCoordsArray.length/2 ;
@@ -1055,7 +1056,7 @@ class atomicGL2xyPlane extends atomicGLObject3d {
 	// textures
 	this.scaleUV = [uu,vv] ;
 	}
-	
+
 	// methods
 	// --------------------------------------------------
 	// setFaceColor(face, RGB)
@@ -1066,7 +1067,7 @@ class atomicGL2xyPlane extends atomicGLObject3d {
 		var r = RGB[0];
 		var g = RGB[1];
 		var b = RGB[2];
-		
+
 		// switch face
 		switch(face){
 			case "All":
@@ -1078,10 +1079,10 @@ class atomicGL2xyPlane extends atomicGLObject3d {
 						this.colorsArray.push(b);
 					}
 				}
-			break;		
+			break;
 		}
 	}
-	
+
 	// build
 	//-----------------------------------------------------
 	build(){
@@ -1101,7 +1102,7 @@ class atomicGL2xyPlane extends atomicGLObject3d {
 				var g = 0.8 ;
 				var b = 0.8 ;
 				// texture coordinates
-				var tu = this.scaleUV[0]*i/this.xrow ; 
+				var tu = this.scaleUV[0]*i/this.xrow ;
 				var tv = this.scaleUV[1]*j/this.yrow ;
 				// push vertices, normals, colors and textures coordinates
 				this.verticesArray.push(x) ;
@@ -1114,7 +1115,7 @@ class atomicGL2xyPlane extends atomicGLObject3d {
 				this.textureCoordsArray.push(tv);
 				this.colorsArray.push(r);
 				this.colorsArray.push(g);
-				this.colorsArray.push(b);	
+				this.colorsArray.push(b);
 			}
 		}
 		for(var jj=0;jj<this.yrow;jj++){
@@ -1127,17 +1128,17 @@ class atomicGL2xyPlane extends atomicGLObject3d {
 				// second
 				this.vertexIndices.push((jj+1)*(this.xrow+1)+ii);
 				this.vertexIndices.push(jj*(this.xrow+1)+ii+1);
-				this.vertexIndices.push((jj+1)*(this.xrow+1)+ii+1);	
-				// debug 	
+				this.vertexIndices.push((jj+1)*(this.xrow+1)+ii+1);
+				// debug
 			}
 		}
-	
+
 		this.vertexPositionBufferItemSize 	= 3	;
 		this.vertexNormalBufferItemSize		= 3	;
 		this.vertexTexCoordBufferItemSize	= 2 ;
 		this.vertexColorBufferItemSize		= 3 ;
 		this.vertexIndexBufferItemSize 		= 1 ;
-		
+
 		this.vertexPositionBufferNumItems	= (this.xrow+1)*(this.yrow+1) ;
 		this.vertexNormalBufferNumItems		= (this.xrow+1)*(this.yrow+1) ;
 		this.vertexTexCoordBufferNumItems 	= (this.xrow+1)*(this.yrow+1) ;
@@ -1160,11 +1161,11 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 		this.width 	= wwidth ;
 		this.xrow 	= xxrow ;
 		this.zrow	= zzrow ;
-		
+
 		// textures
 		this.scaleUV = [uu,vv] ;
 	}
-	
+
 	// methods
 	// --------------------------------------------------
 	// setFaceColor(face, RGB)
@@ -1175,7 +1176,7 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 		var r = RGB[0];
 		var g = RGB[1];
 		var b = RGB[2];
-		
+
 		// switch face
 		switch(face){
 			case "All":
@@ -1187,10 +1188,10 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 						this.colorsArray.push(b);
 					}
 				}
-			break;		
+			break;
 		}
 	}
-	
+
 	// build
 	//-----------------------------------------------------
 	build(){
@@ -1210,7 +1211,7 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 				var g = 0.8 ;
 				var b = 0.8 ;
 				// texture coordinates
-				var tu = this.scaleUV[0]*i/this.xrow ; 
+				var tu = this.scaleUV[0]*i/this.xrow ;
 				var tv = this.scaleUV[1]*j/this.zrow ;
 				// push vertices, normals, colors and textures coordinates
 				this.verticesArray.push(x) ;
@@ -1223,7 +1224,7 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 				this.textureCoordsArray.push(tv);
 				this.colorsArray.push(r);
 				this.colorsArray.push(g);
-				this.colorsArray.push(b);	
+				this.colorsArray.push(b);
 			}
 		}
 		for(var jj=0;jj<this.zrow;jj++){
@@ -1236,17 +1237,17 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 				// second
 				this.vertexIndices.push((jj+1)*(this.xrow+1)+ii);
 				this.vertexIndices.push(jj*(this.xrow+1)+ii+1);
-				this.vertexIndices.push((jj+1)*(this.xrow+1)+ii+1);		
+				this.vertexIndices.push((jj+1)*(this.xrow+1)+ii+1);
 			}
 		}
 
-		
+
 		this.vertexPositionBufferItemSize 	= 3	;
 		this.vertexNormalBufferItemSize		= 3	;
 		this.vertexTexCoordBufferItemSize	= 2 ;
 		this.vertexColorBufferItemSize		= 3 ;
 		this.vertexIndexBufferItemSize 		= 1 ;
-		
+
 		this.vertexPositionBufferNumItems	= (this.xrow+1)*(this.zrow+1) ;
 		this.vertexNormalBufferNumItems		= (this.xrow+1)*(this.zrow+1) ;
 		this.vertexTexCoordBufferNumItems 	= (this.xrow+1)*(this.zrow+1) ;
@@ -1258,5 +1259,3 @@ class atomicGL2xzPlane extends atomicGLObject3d {
 //----------------------------------------------------------------------------------------
 // atomicGL2xzPlane  extends atomicGLObject3d
 //----------------------------------------------------------------------------------------
-
-

@@ -4,11 +4,11 @@
 	<VERTEX>
 		// vertex shader
 	// ------------------------------------------------------
-	// texture shader per fragment 
+	// texture shader per fragment
 	// ------------------------------------------------------
 	// lights nb: 1
 	// ------------------------------------------------------
-	
+
 	// attributes inputs  (vertex arrays)
 		attribute vec3 aVertexPosition;
 		attribute vec2 aVertexTexCoord;
@@ -27,12 +27,12 @@
     void main(void) {
 		// vPosition
 		vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
-		
+
     	// vNormal
-		vNormal = uNMatrix * aVertexNormal;	
-    
+		vNormal = uNMatrix * aVertexNormal;
+
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-		
+
 		// vTextureCoord
         vTextureCoord = aVertexTexCoord;
 
@@ -44,24 +44,24 @@
 	#endif
 	// fragment shader
 	// ------------------------------------------------------
-	// texture shader per fragment 
+	// texture shader per fragment
 	// ------------------------------------------------------
 	// lights nb: 1
 	// ------------------------------------------------------
-	
+
 	// local constant
 		// Kd: diffuse coeff
-		float Kd = 1.0 ;	
-		
+		float Kd = 1.0 ;
+
 	// inputs
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
-    	
+
     // Uniform
     	uniform sampler2D uSampler0;
     	uniform sampler2D uSampler1;
-    	
+
 		// lights
 		// ambient
 		uniform vec3 uAmbientColor;
@@ -91,17 +91,17 @@
 		// no transpose
 		vec3 u1 = tangent ;
 		vec3 u2 = biTangent;
-		vec3 u3 = oldNormal;		
+		vec3 u3 = oldNormal;
 		// TS to view matrix
 		mat3 TBN = mat3(u1,u2,u3);
 		// transform normal
 		vec3 normal = TBN*newNormalTS ;
 		//  diffuse term
 		float diffuseLightWeight = max(dot(normal, lightDirection), 0.0);
-		
+
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
-			
+
 		// light color
 		vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ;
 

@@ -4,12 +4,12 @@
 	<VERTEX>
 	// vertex shader
 	// ------------------------------------------------------
-	// texture diffuse shader per fragment 
+	// texture diffuse shader per fragment
 	// ------------------------------------------------------
 	// lights nb: 1
 	// textures nb: 1
 	// ------------------------------------------------------
-	
+
 	// attributes inputs  (vertex arrays)
 		attribute vec3 aVertexPosition;
 		attribute vec2 aVertexTexCoord;
@@ -28,12 +28,12 @@
     void main(void) {
 		// vPosition
 		vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
-		
+
     	// vNormal
-		vNormal = uNMatrix * aVertexNormal;	
-    
+		vNormal = uNMatrix * aVertexNormal;
+
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-		
+
 		// vTextureCoord
         vTextureCoord = aVertexTexCoord;
     }
@@ -44,24 +44,24 @@
 	#endif
 	// fragment shader
 	// ------------------------------------------------------
-	// texture diffuse shader per fragment 
+	// texture diffuse shader per fragment
 	// ------------------------------------------------------
 	// lights nb: 1
 	// textures nb: 1
 	// ------------------------------------------------------
-	
+
 	// local constant
 		// Kd: diffuse coeff
-		float Kd = 1.0 ;	
-		
+		float Kd = 1.0 ;
+
 	// inputs
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
-    	
+
     // Uniform
     	uniform sampler2D uSampler0;
-    	
+
 		// lights
 		// ambient
 		uniform vec3 uAmbientColor;
@@ -82,13 +82,13 @@
 
 		//  diffuse term
 		float diffuse = max(dot(normal, lightDirection), 0.0);
-		
+
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
-			
+
 		// light color
-		vec3 lightColor = 
-			Kd*uAmbientColor*texColor.rgb + 
+		vec3 lightColor =
+			Kd*uAmbientColor*texColor.rgb +
 			Kd*diffuse*uPointLightColor0 *texColor.rgb ;
 
 

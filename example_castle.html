@@ -100,6 +100,9 @@
 		var sceneClock =new atomicGL2Clock() ;
 		// -------------------------------------------------
 		//webGLStart
+
+		var sgxml;
+
 		function webGLStart() {
 		// init
 		// -----------------------------
@@ -111,7 +114,7 @@
 			agl.initGL(canvas,[0.15,0.1,0.5]);
 
 			// scenegraph creation from xml file
-			var sgxml = new atomicGL2xml(agl,'example_castle_scene.xml');
+			this.sgxml = new atomicGL2xml(agl,'example_castle_scene.xml');
 			this.objectList = sgxml.objectList;
 
 			// light
@@ -157,7 +160,7 @@
 			if (Math.abs(mouseX)>0.1) {
 				agl.scenegraph.camera.turnright(1.0*(mouseX*mouseX*mouseX));
 			}
-		
+
 			agl.scenegraph.camera.turnup(45*mouseY);
 
 			if (currentlyPressedKeys[67]) // (C) debug
@@ -197,7 +200,13 @@
 			}
 			if(currentlyPressedKeys[80])	// (P)
 			{
+				/*for (var i = 0; i < sgxml.shadersBis.length; i++) {
+					if (sgxml.shadersBis[i].name == "cartoon" && !sgxml.shadersBis[i].active ) {
+						sgxml.activeShader(i,this.agl);
+					}
+				}*/
 				objectList.forEach(function(objet) {
+
 					objet.setShader(agl.indexOfShader("cartoon"));
 				});
 			}
