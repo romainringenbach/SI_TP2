@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHADER name="shaderBase">
+	<VERTEX>
+		// vertex shader
+		// ------------------------------------------------------
+		// toon shader per fragment
+		// ------------------------------------------------------
+		// lights nb: 1
+		// textures nb: 1
+		// ------------------------------------------------------
+
+		// attributes inputs  (vertex arrays)
+			attribute vec3 aVertexPosition;
+			attribute vec3 aVertexColor;
+			attribute vec3 aVertexNormal;
+			attribute vec2 aVertexTexCoord;
+
+		// uniform matrices
+			uniform mat4 uMVMatrix;
+			uniform mat4 uPMatrix;
+			uniform mat3 uNMatrix;
+
+		// output
+	    varying vec3 vColor;
+			varying vec4 vPosition;
+			varying vec3 vNormal;
+			varying vec2 vTextureCoord;
+
+    void main(void) {
+			// vPosition
+			vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
+
+    	// vNormal
+			vNormal = uNMatrix * aVertexNormal;
+
+      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+			// vColor
+      vColor = aVertexColor;
+			// vTextureCoord
+	    vTextureCoord = aVertexTexCoord;
+    }
+
+	</VERTEX>
+	<FRAGMENT>
+		#ifdef GL_ES
+		precision highp float;
+		#endif
+		// fragment shader
+		// ------------------------------------------------------
+		// toon shader per fragment
+		// ------------------------------------------------------
+		// lights nb: 1
+		// textures nb: 1
+		// ------------------------------------------------------
+
+		// varying input (output of the vertex shader)
+		varying vec4 vPosition; varying vec3 vNormal; varying vec3 vColor;varying vec2 vTextureCoord;
+		// lights
+		uniform vec3 uAmbientColor;
+		uniform vec3 uPointLightPosition0; uniform vec3 uPointLightColor0;
+		// local constant - could be uniform
+     	uniform sampler2D uSampler0;
+
+		// edge color
+		vec3 edgeColor = vec3(0.0,0.0,0.0);
+		// shadow color
+		vec3 shadowColor = vec3(0.5,0.5,0.5);
+		// midtoneColor
+		vec3 midtoneColor = vec3(1.0,1.0,1.0);
+		// highlight color
+		vec3 highLightColor = vec3(1.0,1.0, 1.0);
+		// diffuse specular shininess
+		float Kd = 0.5 ;
+		float Ks = 0.5 ;
+		float sh = 8.0 ;
+		// thresholds
+		float shadowMidtone = 0.0;
+		float midToneHighLight = 0.75;
+		float edgeThreshold = 0.95 ;
+
+		// main
+		void main(void) {
+
+			// texture color
+			vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
+
+			// edge color
+			vec3 edgeColor = vec3(0.1*texColor.r,0.1*texColor.g,0.1*texColor.b);
+			// shadow color
+			vec3 shadowColor = vec3(0.3*texColor.r,0.3*texColor.g,0.3*texColor.b);
+			// midtoneColor
+			vec3 midtoneColor = vec3(0.8*texColor.r,0.8*texColor.g,0.8*texColor.b);
+			// highlight color
+			vec3 highLightColor = vec3(1.0*texColor.r,1.0*texColor.g, 1.0*texColor.b);
+
+
+			// light direction
+			vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
+			// eye direction
+			vec3 eyeDirection = normalize(-vPosition.xyz);
+			// normalize normal
+			vec3 normal = normalize(vNormal);
+			// reflection direction
+			vec3 reflectDirection = normalize(reflect(-lightDirection,normal));
+			// diffuse term
+			float diffuse = max(dot(normal, lightDirection), 0.0);
+			// specular term
+			float specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
+			// light
+			float light = Kd*diffuse + Ks*specular;
+			// edge term
+			float edge = sqrt(1.0 - pow(max(dot(normal,eyeDirection),0.0),2.0));
+			// color
+			vec3 final = vec3(1.0,0.0,0.0);
+			if (edge > edgeThreshold) { final = edgeColor;}
+			else if (!(light > shadowMidtone)) { final = shadowColor;}
+			else if (!(light > midToneHighLight)) { final = midtoneColor;}
+			else { final = highLightColor;}
+
+
+			gl_FragColor = vec4(final,1.0);
+		}
+	</FRAGMENT>
+</SHADER>
