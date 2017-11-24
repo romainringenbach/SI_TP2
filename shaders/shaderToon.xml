@@ -12,9 +12,9 @@
 
 		// attributes inputs  (vertex arrays)
 			attribute vec3 aVertexPosition;
-			attribute vec3 aVertexColor;
-			attribute vec3 aVertexNormal;
 			attribute vec2 aVertexTexCoord;
+			attribute vec3 aVertexNormal;
+			attribute vec3 aVertexColor;
 
 		// uniform matrices
 			uniform mat4 uMVMatrix;
