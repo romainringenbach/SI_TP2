@@ -109,6 +109,11 @@
 					document.getElementById("shadName").textContent = "cartoon";
 				});
 			}
+			if (keyName === "KeyC") // (C) debug
+			{
+				// debug
+				console.log('atomicGL - R�mi COZOT - 2015');
+			}
 		}, false);
 
 		// atomicGL
@@ -183,17 +188,14 @@
 		
 		// ONLY FOR CAMERA MOVEMENT
 		function handleKeys() {
+			//Mouse camera movement X
 			if (Math.abs(mouseX) > 0.1) {
 				agl.scenegraph.camera.turnright(1.0 * (mouseX * mouseX * mouseX));
 			}
-
+			//Mouse camera movement Y
 			agl.scenegraph.camera.turnup(45 * mouseY);
-
-			if (currentlyPressedKeys[67]) // (C) debug
-			{
-				// debug
-				console.log('atomicGL - R�mi COZOT - 2015');
-			}
+			
+			// Keyboard camera movement
 			if (currentlyPressedKeys[68]) // (D) Right
 			{
 				// debug
@@ -229,7 +231,7 @@
 		// mouse
 		// ------------------------------
 		function onDocumentMouseMove(event) {
-			omouseX = mouseX;
+			//omouseX = mouseX;
 			//Use client width and height instead of window's
 			windowHalfX = agl.gl.canvas.clientWidth / 2;
 			windowHalfY = agl.gl.canvas.clientHeight / 2;
@@ -244,7 +246,7 @@
 	<div class="container">
 		<canvas id="oglcanvas"></canvas>
 		<div class="hidden" id="overlay">
-			<div>Shader:
+			<div>Shader actif:
 				<span id="shadName"></span>
 			</div>
 		</div>
