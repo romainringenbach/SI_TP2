@@ -7,6 +7,7 @@
 		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
 		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
 		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
 	</SHADERS>
 	<TEXTURES>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>

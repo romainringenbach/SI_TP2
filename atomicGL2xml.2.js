@@ -20,6 +20,7 @@ class atomicGL2xml {
 		// -------------------------------------------------
 		this.dom  = null ;
 		this.objectList = [];
+		this.root = null;
 
 		this.shadersBis = [];
 
@@ -209,6 +210,7 @@ class atomicGL2xml {
 				node = new atomicGL2SGroot("root",e.getAttribute("id"));
 				node.setRootElt(camera,skyBox,agl.indexOfShader(e.getAttribute("skyshader")));
 				agl.scenegraph = node ;
+				this.root = node;
 				//  debug
 				// console.log(s+e.getAttribute("id"));
 			break;
@@ -250,12 +252,6 @@ class atomicGL2xml {
 				// node
 				// JS6
 				node = new atomicGL2SGobject3d('object3D',id);
-
-				/*for (var i = 0; i < this.shadersBis.length; i++) {
-					if (this.shadersBis[i].name == shaderId && !this.shadersBis[i].active ) {
-						this.activeShader(i,agl);
-					}
-				}*/
 
 				node.setObject3D(agl.shapes[agl.indexOfShape(shapeId)],agl.indexOfShader(shaderId));
 

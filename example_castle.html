@@ -200,15 +200,19 @@
 			}
 			if(currentlyPressedKeys[80])	// (P)
 			{
-				/*for (var i = 0; i < sgxml.shadersBis.length; i++) {
-					if (sgxml.shadersBis[i].name == "cartoon" && !sgxml.shadersBis[i].active ) {
-						sgxml.activeShader(i,this.agl);
-					}
-				}*/
 				objectList.forEach(function(objet) {
 
 					objet.setShader(agl.indexOfShader("cartoon"));
 				});
+			}
+			if(currentlyPressedKeys[79])	// (O)
+			{
+				objectList.forEach(function(objet) {
+					objet.setShader(agl.indexOfShader("blackAndWhite"));
+					objet.time = true;
+				});
+				sgxml.root.shaderId = agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
+				sgxml.root.time = true;
 			}
 		}
 
