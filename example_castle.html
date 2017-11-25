@@ -85,8 +85,6 @@
 		//------------------------------------------------------------------------------
 
 		// for mouse
-		var windowHalfX = window.innerWidth / 2;
-		var windowHalfY = window.innerHeight / 2;
 		var mouseX = 0.0;
 		var mouseY = 0.0;
 		document.onmousemove = onDocumentMouseMove;
@@ -138,6 +136,9 @@
 
 			// init Matrix Stack
 			ams.initMatrix(agl, 45); // fov = 45 degrees
+			
+			//Add default text to shader menu
+			document.getElementById("shadName").textContent = "default shaders";
 
 			// start the animation
 			nextFrame();
@@ -148,6 +149,7 @@
 		function sceneDraw() {
 			agl.initDraw();
 			agl.scenegraph.draw(agl, ams);
+
 		}
 
 		// nextFrame
@@ -218,6 +220,7 @@
 				objectList.forEach(function (objet) {
 
 					objet.setShader(agl.indexOfShader("cartoon"));
+					document.getElementById("shadName").textContent = "cartoon";
 				});
 			}
 		}
@@ -226,6 +229,9 @@
 		// ------------------------------
 		function onDocumentMouseMove(event) {
 			omouseX = mouseX;
+			//Use client width and height instead of window's
+			windowHalfX = agl.gl.canvas.clientWidth / 2;
+			windowHalfY = agl.gl.canvas.clientHeight / 2;
 			mouseX = (event.clientX - windowHalfX) / windowHalfX;
 			mouseY = (event.clientY - windowHalfY) / windowHalfY;
 		}
@@ -238,7 +244,7 @@
 		<canvas id="oglcanvas"></canvas>
 		<div class="hidden" id="overlay">
 			<div>Shader:
-				<span id="time"></span>
+				<span id="shadName"></span>
 			</div>
 		</div>
 	</div>
