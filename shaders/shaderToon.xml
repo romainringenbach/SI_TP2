@@ -22,7 +22,7 @@
 			uniform mat3 uNMatrix;
 
 		// output
-	    varying vec3 vColor;
+	    //varying vec3 vColor;
 			varying vec4 vPosition;
 			varying vec3 vNormal;
 			varying vec2 vTextureCoord;
@@ -37,7 +37,7 @@
       gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
 
 			// vColor
-      vColor = aVertexColor;
+      //vColor = aVertexColor;
 			// vTextureCoord
 	    vTextureCoord = aVertexTexCoord;
     }
