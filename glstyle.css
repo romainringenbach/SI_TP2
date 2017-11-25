@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+.container {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+#oglcanvas {
+    width: 70%;
+    height: 70%;
+    display: block;
+    border: none;
+}
+
+#overlay {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-family: monospace;
+    padding: 1em;
+    border-radius: 1em;
+    border: 5px solid #f00;
+    text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white;
+}

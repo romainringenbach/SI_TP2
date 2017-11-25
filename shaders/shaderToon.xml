@@ -55,7 +55,7 @@
 		varying vec4 vPosition;
 		varying vec2 vTextureCoord;
 		varying vec3 vNormal;
-		
+
 		// lights
 		uniform vec3 uAmbientColor;
 		uniform vec3 uPointLightPosition0; uniform vec3 uPointLightColor0;
