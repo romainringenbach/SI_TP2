@@ -98,8 +98,16 @@
 		document.addEventListener('keyup', (event) => {
 			const keyName = event.code;
 			// As the user release the key, the key is no longer active.
-			if (keyName === 'NumpadDecimal') {
+			if (keyName === 'NumpadDecimal') { // Show shaders menu
 				$("#overlay").toggle();
+			}
+			if (keyName === "KeyP")	// Change shaders
+			{
+				objectList.forEach(function (objet) {
+
+					objet.setShader(agl.indexOfShader("cartoon"));
+					document.getElementById("shadName").textContent = "cartoon";
+				});
 			}
 		}, false);
 
@@ -172,7 +180,8 @@
 		// --------------------------------
 		function handleKeyDown(event) { currentlyPressedKeys[event.keyCode] = true; }
 		function handleKeyUp(event) { currentlyPressedKeys[event.keyCode] = false; }
-
+		
+		// ONLY FOR CAMERA MOVEMENT
 		function handleKeys() {
 			if (Math.abs(mouseX) > 0.1) {
 				agl.scenegraph.camera.turnright(1.0 * (mouseX * mouseX * mouseX));
@@ -214,14 +223,6 @@
 			{
 				// debug
 				agl.scenegraph.camera.flyDown();			//
-			}
-			if (currentlyPressedKeys[80])	// (P)
-			{
-				objectList.forEach(function (objet) {
-
-					objet.setShader(agl.indexOfShader("cartoon"));
-					document.getElementById("shadName").textContent = "cartoon";
-				});
 			}
 		}
 
