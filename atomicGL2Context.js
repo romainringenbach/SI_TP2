@@ -28,7 +28,7 @@ class atomicGL2Context {
 		this.omniLightNumber = 0;
 
 		// GLtexture
-		this.GLtexture = [] ;
+		this.GLtexture = [];
 
 		// -------------------------------------------------
 		// scene assets
