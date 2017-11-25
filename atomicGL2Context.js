@@ -1,6 +1,6 @@
 // atomicGL
 //----------------------------------------------------------------------------------------
-// author: RC				
+// author: RC
 // contact: cozot@irisa.fr
 // version: 2.3
 // current version date: 2016/01/26
@@ -26,10 +26,10 @@ class atomicGL2Context {
 		this.omniLightColor = [] ;
 		this.omniLightLocation = [] ;
 		this.omniLightNumber = 0;
-	 
+
 		// GLtexture
 		this.GLtexture = [] ;
-	
+
 		// -------------------------------------------------
 		// scene assets
 		// -------------------------------------------------
@@ -42,7 +42,7 @@ class atomicGL2Context {
 		// scene graph
 		this.scenegraph = null ;
 	}
-	
+
 	// methods
 	// --------------------------------------------------
 	// initGL(canvas)
@@ -53,15 +53,27 @@ class atomicGL2Context {
 		// debug
 		//console.log("atomicGLContext::initGL");
 		// recover canvas openGL
-        try {
-            this.gl = canvas.getContext("webgl");
-            this.viewportWidth = canvas.width;
-            this.viewportHeight = canvas.height;
-        } catch (e) {}
-        if (!this.gl) { // error in the initialisation of GL context
-            alert("atomicGLContext::Could not initialise WebGL");
-        }
+    try {
+        this.gl = canvas.getContext("webgl");
+    } catch (e) {}
+		if (!this.gl) { // error in the initialisation of GL context
+			try {
+				this.gl = canvas.getContext("experimental-webgl");
+			} catch (e) {}
+    }
+		if (!this.gl) { // error in the initialisation of GL context
+			try {
+				this.gl = canvas.getContext("webgl2");
+			} catch (e) {}
+    }
+
+    if (!this.gl) { // error in the initialisation of GL context
+				alert("atomicGLContext::Could not initialise WebGL");
+
+    }
 		else { // GL context initialised -> first init (background color, DEPTH_TEST)
+			this.viewportWidth = canvas.width;
+			this.viewportHeight = canvas.height;
 			this.gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], 1.0);
 			this.gl.enable(this.gl.DEPTH_TEST);
 		}
@@ -84,14 +96,14 @@ class atomicGL2Context {
 		this.gl.viewport(0, 0, this.viewportWidth, this.viewportHeight);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 	}
-	
+
 	// pushLight(lightPos,lightColor)
 	// ---------------------------
 	// inputs: 	lightPos : float3 - light position
 	// 			lightColor: float3 - light color
 	pushLight(lightPos,lightColor){
 		// debug
-		//console.log("atomicGLContext::pushLight");		
+		//console.log("atomicGLContext::pushLight");
 		// increase Light number
 		this.omniLightNumber = this.omniLightNumber + 1;
 		// set data
@@ -102,20 +114,20 @@ class atomicGL2Context {
 		this.omniLightColor.push(lightColor[1]) ;
 		this.omniLightColor.push(lightColor[2]) ;
 		}
-	
+
 	// pushProgram(prog)
 	// ---------------------------
 	// inputs: prog - atomicGLShader
-	pushProgram(prog){ 
+	pushProgram(prog){
 		// debug
 		//console.log("atomicGLContext::pushProgram");
-		this.shaderPrograms.push(prog); 
+		this.shaderPrograms.push(prog);
 		var id =  this.shaderPrograms.length -1
 		// debug
 		//console.log("-- atomicGLContext::pushProgram("+prog.name+")-> index:"+id);
 		return  id ;
 	}
-	
+
 	// indexOfTexture
 	// ---------------------------------------
 	// input: 	id - string: id name of texture
@@ -141,7 +153,7 @@ class atomicGL2Context {
 		}
 		return res;
 	}
-	
+
 	// indexOfShape
 	// ---------------------------------------
 	// input: 	id - string: id name of shape
