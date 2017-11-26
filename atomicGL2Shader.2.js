@@ -134,7 +134,9 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pointLightColorUniform = [];
 		// texture -sampler
 		this.samplerUniform = [];
-
+		// time
+		this.time;
+		
 		this.build(agl, shaderloader);
 	}
 
@@ -239,7 +241,8 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pMatrixUniform = agl.gl.getUniformLocation(program, "uPMatrix");
 		this.mvMatrixUniform = agl.gl.getUniformLocation(program, "uMVMatrix");
 		this.nMatrixUniform = agl.gl.getUniformLocation(program, "uNMatrix");
-
+		this.time = agl.gl.getUniformLocation(program, "uTime");
+		
 		// lights
 		// uAmbientColor
 		// uPointLightingPosition0|1|2 required per light in the shader
@@ -281,6 +284,11 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		aGL.gl.uniformMatrix4fv(this.pMatrixUniform, false, aMS.pMatrix);
 		aGL.gl.uniformMatrix4fv(this.mvMatrixUniform, false, aMS.mvMatrix);
 
+		if(this.time != null) {
+			var d = new Date();
+			aGL.gl.uniform1f(this.time, d.getMilliseconds());
+		}
+		
 		var normalMatrix = mat3.create();
 		mat4.toInverseMat3(aMS.mvMatrix, normalMatrix);
 		mat3.transpose(normalMatrix);
