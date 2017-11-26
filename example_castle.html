@@ -97,11 +97,10 @@
 		// Menu keyboard handling
 		document.addEventListener('keyup', (event) => {
 			const keyName = event.code;
-			// As the user release the key, the key is no longer active.
 			if (keyName === 'NumpadDecimal') { // Show shaders menu
 				$("#overlay").toggle();
 			}
-			if (keyName === "KeyP")	// Change shaders
+			if (keyName === "KeyP")	// Shader Cartoon
 			{
 				objectList.forEach(function(objet) {
 					objet.time = false;
@@ -111,7 +110,7 @@
 				sgxml.root.shaderId = 0;
 				document.getElementById("shadName").textContent = "cartoon";
 			}
-			if (keyName === "KeyO") {
+			if (keyName === "KeyO") { // Shader Old Movie
 				objectList.forEach(function(objet) {
 					objet.setShader(agl.indexOfShader("blackAndWhiteMovie"));
 					objet.time = true;
@@ -122,7 +121,6 @@
 			}
 			if (keyName === "KeyC") // (C) debug
 			{
-				// debug
 				console.log('atomicGL - R�mi COZOT - 2015');
 			}
 		}, false);
@@ -208,53 +206,28 @@
 			
 			// Keyboard camera movement
 			if (currentlyPressedKeys[68]) // (D) Right
-			{
-				// debug
+			{	
 				agl.scenegraph.camera.right();
 			}
 			if (currentlyPressedKeys[81]) // (Q) Left
-			{
-				// debug
+			{	
 				agl.scenegraph.camera.left();			//
 			}
 			if (currentlyPressedKeys[90]) // (Z) Up
-			{
-				// debug
+			{	
 				agl.scenegraph.camera.up();			//
 			}
 			if (currentlyPressedKeys[83]) // (S) Down
-			{
-				// debug
+			{	
 				agl.scenegraph.camera.down();			//
 			}
 			if (currentlyPressedKeys[32]) // (space)
-			{
-				// debug
+			{	
 				agl.scenegraph.camera.flyUp();			//
 			}
 			if (currentlyPressedKeys[17]) // (ctrl)
 			{
-				// debug
 				agl.scenegraph.camera.flyDown();			//
-			}
-			if(currentlyPressedKeys[80])	// (P)
-			{
-				objectList.forEach(function(objet) {
-					objet.time = false;
-					objet.setShader(agl.indexOfShader("cartoon"));
-				});
-				sgxml.root.time = false;
-				sgxml.root.shaderId = 0;
-				
-			}
-			if(currentlyPressedKeys[79])	// (O)
-			{
-				objectList.forEach(function(objet) {
-					objet.setShader(agl.indexOfShader("blackAndWhiteMovie"));
-					objet.time = true;
-				});
-				sgxml.root.shaderId = agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
-				sgxml.root.time = true;
 			}
 		}
 

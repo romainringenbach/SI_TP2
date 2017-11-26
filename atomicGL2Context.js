@@ -53,19 +53,7 @@ class atomicGL2Context {
 		// debug
 		//console.log("atomicGLContext::initGL");
 		// recover canvas openGL
-		// try {
-		// 	this.gl = canvas.getContext("webgl");
-		// } catch (e) { }
-		// if (!this.gl) { // error in the initialisation of GL context
-		// 	try {
-		// 		this.gl = canvas.getContext("experimental-webgl");
-		// 	} catch (e) { }
-		// }
-		// if (!this.gl) { // error in the initialisation of GL context
-		// 	try {
-		// 		this.gl = canvas.getContext("webgl2");
-		// 	} catch (e) { }
-		// }
+		//Simplified way to grab WebGL context (see https://www.khronos.org/webgl/wiki/FAQ)
 		this.gl = WebGLUtils.setupWebGL(canvas);
 
 		if (!this.gl) { // error in the initialisation of GL context
@@ -94,11 +82,9 @@ class atomicGL2Context {
 	// initDraw()
 	//---------------------------
 	initDraw() {
-		// debug
 		//console.log("atomicGLContext::initDraw");
 		resizeCanvasToDisplaySize(this.gl.canvas, window.devicePixelRatio);
 		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
-		//this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
 
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 	}
@@ -108,28 +94,25 @@ class atomicGL2Context {
 	// inputs: 	lightPos : float3 - light position
 	// 			lightColor: float3 - light color
 	pushLight(lightPos, lightColor) {
-		// debug
 		//console.log("atomicGLContext::pushLight");
 		// increase Light number
 		this.omniLightNumber = this.omniLightNumber + 1;
 		// set data
-		this.omniLightLocation.push(lightPos[0]) ;
-		this.omniLightLocation.push(lightPos[1]) ;
-		this.omniLightLocation.push(lightPos[2]) ;
-		this.omniLightColor.push(lightColor[0]) ;
-		this.omniLightColor.push(lightColor[1]) ;
-		this.omniLightColor.push(lightColor[2]) ;
-		}
+		this.omniLightLocation.push(lightPos[0]);
+		this.omniLightLocation.push(lightPos[1]);
+		this.omniLightLocation.push(lightPos[2]);
+		this.omniLightColor.push(lightColor[0]);
+		this.omniLightColor.push(lightColor[1]);
+		this.omniLightColor.push(lightColor[2]);
+	}
 
 	// pushProgram(prog)
 	// ---------------------------
 	// inputs: prog - atomicGLShader
-	pushProgram(prog){
-		// debug
+	pushProgram(prog) {
 		//console.log("atomicGLContext::pushProgram");
 		this.shaderPrograms.push(prog);
-		var id =  this.shaderPrograms.length -1
-		// debug
+		var id = this.shaderPrograms.length - 1;
 		//console.log("-- atomicGLContext::pushProgram("+prog.name+")-> index:"+id);
 		return id;
 	}
