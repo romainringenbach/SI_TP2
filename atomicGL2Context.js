@@ -53,25 +53,28 @@ class atomicGL2Context {
 		// debug
 		//console.log("atomicGLContext::initGL");
 		// recover canvas openGL
-    try {
-        this.gl = canvas.getContext("webgl");
-    } catch (e) {}
-		if (!this.gl) { // error in the initialisation of GL context
-			try {
-				this.gl = canvas.getContext("experimental-webgl");
-			} catch (e) {}
-    }
-		if (!this.gl) { // error in the initialisation of GL context
-			try {
-				this.gl = canvas.getContext("webgl2");
-			} catch (e) {}
-    }
+		// try {
+		// 	this.gl = canvas.getContext("webgl");
+		// } catch (e) { }
+		// if (!this.gl) { // error in the initialisation of GL context
+		// 	try {
+		// 		this.gl = canvas.getContext("experimental-webgl");
+		// 	} catch (e) { }
+		// }
+		// if (!this.gl) { // error in the initialisation of GL context
+		// 	try {
+		// 		this.gl = canvas.getContext("webgl2");
+		// 	} catch (e) { }
+		// }
+		this.gl = WebGLUtils.setupWebGL(canvas);
 
-    if (!this.gl) { // error in the initialisation of GL context
-				alert("atomicGLContext::Could not initialise WebGL");
+		if (!this.gl) { // error in the initialisation of GL context
+			alert("atomicGLContext::Could not initialise WebGL");
 
-    }
+		}
 		else { // GL context initialised -> first init (background color, DEPTH_TEST)
+			//DEBUG
+			console.log(this.gl.getContextAttributes());
 			this.viewportWidth = canvas.width;
 			this.viewportHeight = canvas.height;
 			this.gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], 1.0);

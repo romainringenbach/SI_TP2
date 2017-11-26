@@ -11,10 +11,10 @@ body {
 }
 
 #oglcanvas {
-    width: 70%;
-    height: 70%;
+    width: 80%;
+    height: 80%;
     display: block;
-    border: none;
+    border: 2px;
 }
 
 #overlay {
