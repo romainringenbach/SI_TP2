@@ -15,8 +15,6 @@ class atomicGLObject3d{
 	constructor(nname){
 		// name
 		this.name = nname ;
-
-		this.time = false;
 		
 		// textures
 		this.scaleUV = [] ;
@@ -126,12 +124,6 @@ class atomicGLObject3d{
 		aGL.gl.useProgram(aGL.shaderPrograms[idProg].program);
 		// setUniforms: matrices and lights
 		aGL.shaderPrograms[idProg].setUniforms(aGL,aMS);
-
-		if(this.time == true) {
-			var d = new Date();
-			var time = d.getMilliseconds();
-			aGL.gl.uniform1f(aGL.gl.getUniformLocation(aGL.shaderPrograms[idProg].program, "uTime"), time);
-		}
 		
 		// link buffer to attributes
 		//positions
