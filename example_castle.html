@@ -103,11 +103,22 @@
 			}
 			if (keyName === "KeyP")	// Change shaders
 			{
-				objectList.forEach(function (objet) {
-
+				objectList.forEach(function(objet) {
+					objet.time = false;
 					objet.setShader(agl.indexOfShader("cartoon"));
-					document.getElementById("shadName").textContent = "cartoon";
 				});
+				sgxml.root.time = false;
+				sgxml.root.shaderId = 0;
+				document.getElementById("shadName").textContent = "cartoon";
+			}
+			if (keyName === "KeyO") {
+				objectList.forEach(function(objet) {
+					objet.setShader(agl.indexOfShader("blackAndWhiteMovie"));
+					objet.time = true;
+				});
+				sgxml.root.shaderId = agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
+				sgxml.root.time = true;
+				document.getElementById("shadName").textContent = "old movie";
 			}
 			if (keyName === "KeyC") // (C) debug
 			{
