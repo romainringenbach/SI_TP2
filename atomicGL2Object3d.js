@@ -16,6 +16,8 @@ class atomicGLObject3d{
 		// name
 		this.name = nname ;
 
+		this.time = false;
+		
 		// textures
 		this.scaleUV = [] ;
 		this.textures = [] ;
@@ -125,6 +127,12 @@ class atomicGLObject3d{
 		// setUniforms: matrices and lights
 		aGL.shaderPrograms[idProg].setUniforms(aGL,aMS);
 
+		if(this.time == true) {
+			var d = new Date();
+			var time = d.getMilliseconds();
+			aGL.gl.uniform1f(aGL.gl.getUniformLocation(aGL.shaderPrograms[idProg].program, "uTime"), time);
+		}
+		
 		// link buffer to attributes
 		//positions
 				aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexPositionBuffer);

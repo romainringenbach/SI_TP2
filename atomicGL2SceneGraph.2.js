@@ -19,8 +19,8 @@ class atomicGL2SceneGraph {
 		// -------------------------------------------------
 		// type: string - "root" | "transform" | "object3D"
 		this.type = stype;
-		this.name = nname;
-
+		this.name = nname ;
+		this.time = false;
 		// children
 		this.children = [];
 	}
@@ -125,7 +125,9 @@ class atomicGL2SGroot extends atomicGL2SceneGraph {
 			ams.mvRotate(this.camera.phi, [1, 0, 0]);
 			ams.mvRotate(this.camera.theta, [0, 1, 0]);
 			// draw
-			this.skyBox.draw(agl, ams, this.shaderId);
+			this.skyBox.time = this.time;
+			this.skyBox.draw(agl,ams,this.shaderId); 	
+
 			// pop matrix
 			ams.mvPopMatrix();
 		}
@@ -226,6 +228,7 @@ class atomicGL2SGobject3d extends atomicGL2SceneGraph {
 	draw(agl, ams) {
 		// debug
 		// console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::draw ->"+this.type+" - "+this.name);
-		this.object3D.draw(agl, ams, this.shaderId);
-	}
+		this.object3D.time = this.time;
+		this.object3D.draw(agl,ams,this.shaderId);		
+	}		
 }
