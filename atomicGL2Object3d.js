@@ -16,6 +16,8 @@ class atomicGLObject3d{
 		// name
 		this.name = nname ;
 
+		this.time = false;
+		
 		// textures
 		this.scaleUV = [] ;
 		this.textures = [] ;
@@ -55,7 +57,6 @@ class atomicGLObject3d{
     	this.vertexTexCoordBufferNumItems 	;
     	this.vertexIndexBufferNumItems 		;
 
-		this.time = false;
 	}
 
 	// methods
@@ -126,6 +127,12 @@ class atomicGLObject3d{
 		// setUniforms: matrices and lights
 		aGL.shaderPrograms[idProg].setUniforms(aGL,aMS);
 
+		if(this.time == true) {
+			var d = new Date();
+			var time = d.getMilliseconds();
+			aGL.gl.uniform1f(aGL.gl.getUniformLocation(aGL.shaderPrograms[idProg].program, "uTime"), time);
+		}
+		
 		// link buffer to attributes
 		//positions
 				aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexPositionBuffer);
@@ -160,15 +167,6 @@ class atomicGLObject3d{
 		// indexes
         aGL.gl.bindBuffer(aGL.gl.ELEMENT_ARRAY_BUFFER, this.vertexIndexBuffer);
 
-		if(this.time == true) {
-			var d = new Date();
-			var time = d.getTime();
-			aGL.gl.uniform2f(aGL.gl.getUniformLocation(aGL.shaderPrograms[idProg].program, "uTime"), time, time);	
-			if(aGL.gl.getUniformLocation(aGL.shaderPrograms[idProg].program, "uTime") == null) {
-				console.log(aGL.shaderPrograms[idProg].name);
-			}
-		}
-		
 		// draw Object3D
         aGL.gl.drawElements(aGL.gl.TRIANGLES, this.vertexIndexBufferNumItems, aGL.gl.UNSIGNED_SHORT, 0);
 

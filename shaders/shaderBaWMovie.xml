@@ -25,9 +25,17 @@
 		
 	// output
     	varying vec2 vTextureCoord;
+		varying vec4 vPosition;
+		varying vec3 vNormal;
 		varying float vTime;
     void main(void) {
 	
+		// vPosition
+		vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
+
+    	// vNormal
+		vNormal = uNMatrix * aVertexNormal;
+
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
 
 		// vTextureCoord
@@ -53,9 +61,10 @@
 
 	// inputs
     	varying vec2 vTextureCoord;
-		
+		varying vec4 vPosition;
+		varying vec3 vNormal;
 		varying float vTime;
-		
+		uniform float uTime;
 		
     // Uniform
     	uniform sampler2D uSampler0;
@@ -65,24 +74,41 @@
 		// ambient
 		uniform vec3 uAmbientColor;
 		
+		//point light ie omni dir:  location, color
+		uniform vec3 uPointLightPosition0;
+		uniform vec3 uPointLightColor0;
+
 		// rand function
 		float rand(vec2 co){
 			return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 		}
 
     void main(void) {
+    	// light direction
+		vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
+		// eye direction
+		vec3 eyeDirection = normalize(-vPosition.xyz);
+
+		// normalize normal
+		vec3 normal = normalize(vNormal);
+
+		//  diffuse term
+		float diffuse = max(dot(normal, lightDirection), 0.0);
+
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
 
 		// light color
-		vec3 lightColor = texColor.rgb ;
+		vec3 lightColor =
+			Kd*uAmbientColor*texColor.rgb +
+			Kd*diffuse*uPointLightColor0 *texColor.rgb ;
 
 		lightColor.r = lightColor.r * .21 + lightColor.g * .72 + lightColor.b * .07;
 		lightColor.g = lightColor.r;
 		lightColor.b = lightColor.r;
 		
 		
-		if(rand(vec2(vTime*lightColor.r, vTime*vTextureCoord.s)) > 0.9) {
+		if(rand(vec2(vTime*lightColor.r, vTime*vPosition.y)) > 0.9) {
 			lightColor = vec3(0.0,0.0,0.0);
 		}
 		
