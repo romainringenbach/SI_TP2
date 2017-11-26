@@ -158,8 +158,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		// debug
 		console.log("atomicGLShader2::createProgram -> compile result: " + agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS));
 		// check erreur de compilation sans perte de contexte
-		if (!agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS)
-	&& !agl.gl.isContextLost()) {
+		if (!agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS) && !agl.gl.isContextLost()) {
 			alert("Error compiling shader:\n" + agl.gl.getShaderInfoLog(vertexShader));
 			return null;
 		}
@@ -172,8 +171,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		// debug
 		console.log("atomicGLShader2::createProgram -> compile result: " + agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS));
 		// check erreur de compilation sans perte de contexte
-		if (!agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS)
-		&& !agl.gl.isContextLost()) {
+		if (!agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS) && !agl.gl.isContextLost()) {
 			alert("Error compiling shader:\n" + agl.gl.getShaderInfoLog(fragmentShader));
 			return null;
 		}
@@ -186,8 +184,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 
 		// debug
 		//console.log("atomicGLShader::createProgram-> link result: "+agl.gl.getProgramParameter(program, agl.gl.LINK_STATUS));
-		if (!agl.gl.getProgramParameter(program, agl.gl.LINK_STATUS)
-		&& !agl.gl.isContextLost()) {
+		if (!agl.gl.getProgramParameter(program, agl.gl.LINK_STATUS) && !agl.gl.isContextLost()) {
 			alert("Error linking program:\n" + agl.gl.getProgramInfoLog(program));
 		}
 
