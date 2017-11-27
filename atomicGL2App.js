@@ -45,8 +45,7 @@ function webGLStart(sceneXmlFile) {
     sgxml = new atomicGL2xml(agl, sceneXmlFile); //'example_castle_scene.xml'
     objectList = sgxml.objectList;
 
-    // light
-    //agl.pushLight([+1000.0, 500.0, +500.0], [1.0, 0.8, 0.8]); // position, color
+    // Ambiant light
     agl.ambientLightColor = [0.1, 0.05, 0.0];	// color
 
     // init Matrix Stack
