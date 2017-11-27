@@ -12,8 +12,10 @@ body {
 }
 
 #oglcanvas {
-    width: 80%;
-    height: 80%;
+    /* width: 80%;
+    height: 80%; */
+    width: 100vw;
+    height: 100vh;
     display: block;
     border: none;
 }

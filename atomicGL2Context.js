@@ -83,7 +83,7 @@ class atomicGL2Context {
 	initDraw() {
 		//console.log("atomicGLContext::initDraw");
 		resizeCanvasToDisplaySize(this.gl.canvas, window.devicePixelRatio); //WebGL-utils standard compliant
-		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight); //WebGL Standard co
+		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight); //WebGL Standard compliant
 
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 	}

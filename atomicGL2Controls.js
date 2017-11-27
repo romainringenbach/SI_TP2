@@ -14,6 +14,7 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 var windowHalfX, windowHalfY;
 var currentlyPressedKeys = {};
+var menuOpened = false;
 
 function addControls() {
     // Mouse movements
@@ -68,11 +69,11 @@ function handleKeys() {
 
 // Only for menus and such
 function handleMenuKeyUp(event) {
-    const keyName = event.code;
-    if (keyName === 'NumpadDecimal') { // Show shaders menu
+    const eventKey = event.key;
+    if (eventKey === ".") { // Show shaders menu
         $("#overlay").toggle();
     }
-    if (keyName === "KeyP")	// Shader Cartoon
+    if (eventKey === "p")	// Shader Cartoon
     {
         objectList.forEach(function (objet) {
             objet.setShader(agl.indexOfShader("cartoon"));
@@ -80,16 +81,26 @@ function handleMenuKeyUp(event) {
         sgxml.root.shaderId = 0;
         document.getElementById("shadName").textContent = "cartoon";
     }
-    if (keyName === "KeyO") { // Shader Old Movie
+    if (eventKey === "o") { // Shader Old Movie
         objectList.forEach(function (objet) {
             objet.setShader(agl.indexOfShader("blackAndWhiteMovie"));
         });
         sgxml.root.shaderId = agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
         document.getElementById("shadName").textContent = "old movie";
     }
-    if (keyName === "KeyC") // (C) debug
+    if (eventKey === "c") // (C) debug
     {
         console.log('atomicGL - Remi COZOT - 2015');
+    }
+    if (eventKey === "m") // (M) Side Menu
+    {
+        if (menuOpened) {
+            closeNav();
+            menuOpened = false;
+        } else {
+            openNav();
+            menuOpened = true;
+        }
     }
 }
 

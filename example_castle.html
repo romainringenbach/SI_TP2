@@ -8,6 +8,7 @@
 	
 	<!-- Css style sheets -->
 	<link rel="stylesheet" type="text/css" href="css/glstyle.css">
+	<link rel="stylesheet" type="text/css" href="css/sidenav.css">
 
 	<!-- External Libs -->
 	<script type="text/javascript" src="utils/jquery-3.2.1.min.js"></script>
@@ -64,6 +65,7 @@
 
 	<!-- load "modules" -->	
 	<script type="text/javascript" src="atomicGL2Controls.js"></script>
+	<script type="text/javascript" src="sideMenu.js"></script>
 	<script type="text/javascript" src="atomicGL2Context.js"></script>
 	<script type="text/javascript" src="atomicGL2MatrixStack.js"></script>
 	<script type="text/javascript" src="atomicGL2SceneGraph.2.js"></script>
@@ -77,6 +79,12 @@
 </head>
 
 <body onload="webGLStart('example_castle_scene.xml');">
+	<!-- Toggleable Menu -->
+	<div class="sidenav" id="sideMenu">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="#">About</a>
+	</div>
+	<!-- WebGL Canvas -->
 	<div class="container" id="oglcontainer">
 		<canvas id="oglcanvas"></canvas>
 		<div class="hidden" id="overlay">
