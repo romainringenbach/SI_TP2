@@ -57,6 +57,8 @@
  * visible.
  */
 
+'user strict';
+
 WebGLUtils = function () {
 
   /**

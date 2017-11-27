@@ -33,6 +33,8 @@ class atomicGL2MatrixStack {
 		this.fov = fov;
 		//Reset perspective based on canvas client resize
 		mat4.perspective(fov, aGL.gl.canvas.clientWidth / aGL.gl.canvas.clientHeight, 0.1, 1000.0, this.pMatrix);
+		// DEBUG
+		console.log(aGL.gl.canvas.clientWidth + " / " + aGL.gl.canvas.clientHeight);
 		// model -> view matrix
 		mat4.identity(this.mvMatrix);
 	}
@@ -72,6 +74,7 @@ class atomicGL2MatrixStack {
 	resetPerspective(aGL) {
 		//Reset perspective based on canvas client resize
 		mat4.perspective(this.fov, aGL.gl.canvas.clientWidth / aGL.gl.canvas.clientHeight, 0.1, 1000.0, this.pMatrix);
+		console.log(aGL.gl.canvas.clientWidth + " / " + aGL.gl.canvas.clientHeight);
 	}
 
 }

@@ -2,22 +2,19 @@
 <html lang="en">
 
 <head>
-	<title>atomicGL2 SCENE test </title>
-
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>atomicGL2 SCENE test </title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	
-	<!-- Css style sheet -->
-	<link rel="stylesheet" type="text/css" href="glstyle.css">
-	
-	<!-- <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"> -->
+	<!-- Css style sheets -->
+	<link rel="stylesheet" type="text/css" href="css/glstyle.css">
 
-	<!-- External scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	<!-- External Libs -->
+	<script type="text/javascript" src="utils/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="utils/glMatrix-0.js"></script>
 	<script type="text/javascript" src="utils/webgl-utils.js"></script>
 	<script type="text/javascript" src="utils/webgl-debug.js"></script>
+	<script type="text/javascript" src="utils/stats.min.js"></script>
 
 	<!-- ATOMICGL ENGINE -->
 	<!-- load 3D OBJETCS modules -->
@@ -65,7 +62,8 @@
 	<script type="text/javascript" src="example_castle_objs/mur2bois.js"></script>
 	<script type="text/javascript" src="example_castle_objs/mur2toit.js"></script>
 
-	<!-- load "modules" -->
+	<!-- load "modules" -->	
+	<script type="text/javascript" src="atomicGL2Controls.js"></script>
 	<script type="text/javascript" src="atomicGL2Context.js"></script>
 	<script type="text/javascript" src="atomicGL2MatrixStack.js"></script>
 	<script type="text/javascript" src="atomicGL2SceneGraph.2.js"></script>
@@ -75,190 +73,11 @@
 	<script type="text/javascript" src="atomicGL2Shader.2.js"></script>
 	<script type="text/javascript" src="atomicGL2Object3d.js"></script>
 	<script type="text/javascript" src="atomicGL2xml.2.js"></script>
-
-	<!-- ATOMICGL ENGINE -->
-	<!-- create objects -->
-	<!-- wegGLStart function (required) -->
-	<script type="text/javascript">
-		//------------------------------------------------------------------------------
-		// ....
-		//------------------------------------------------------------------------------
-
-		//------------------------------------------------------------------------------
-		//------------------------------------------------------------------------------
-		//------------------------------------------------------------------------------
-		//------------------------------------------------------------------------------
-		//------------------------------------------------------------------------------
-
-		// for mouse
-		var mouseX = 0.0;
-		var mouseY = 0.0;
-		document.addEventListener('mousemove', onDocumentMouseMove, false);
-		var objectList;
-
-		var currentlyPressedKeys = {};
-		//	Movement keyboard callbacks
-		document.addEventListener('keydown', handleKeyDown, false);
-		document.addEventListener('keyup', handleKeyUp, false);
-		// Menu keyboard handling
-		document.addEventListener('keyup', handleMenuKeyUp, false);
-
-		// atomicGL
-		// -------------------------------------------------
-		// GL context
-		var agl = new atomicGL2Context();
-		// matrix stack
-		var ams = new atomicGL2MatrixStack();
-		// clock
-		var sceneClock = new atomicGL2Clock();
-		//Scene graph xml
-		var sgxml;
-		// -------------------------------------------------
-
-		var requestId;
-		//webGLStart
-		function webGLStart() {
-			// init
-			// -----------------------------
-			// recover OpenGL canvas
-			var canvas = document.getElementById("oglcanvas");
-			// Handle context lost
-			canvas.addEventListener('webglcontextlost', handleContextLost, false);
-			// init OpenGL context
-			// canvas, background color
-			agl.initGL(canvas, [0.15, 0.1, 0.5]);
-
-			// scenegraph creation from xml file
-			this.sgxml = new atomicGL2xml(agl, 'example_castle_scene.xml');
-			this.objectList = sgxml.objectList;
-
-			// light
-			agl.pushLight([+1000.0, 500.0, +500.0], [1.0, 0.8, 0.8]); // position, color
-			agl.ambientLightColor = [0.1, 0.05, 0.0];	// color
-
-			// init Matrix Stack
-			ams.initMatrix(agl, 45); // fov = 45 degrees
-
-			//Add default text to shader menu
-			document.getElementById("shadName").textContent = "default shaders";
-
-			// start the animation
-			nextFrame();
-		}
-
-		// draw
-		// -----------------------------
-		function sceneDraw() {
-			agl.initDraw();
-			agl.scenegraph.draw(agl, ams);
-		}
-
-		// nextFrame
-		// -----------------------------
-		function nextFrame() {
-			handleKeys();
-			requestId = requestAnimFrame(nextFrame); //called every frame
-			sceneDraw();
-			animate();
-		}
-
-		// animate
-		// ------------------------------
-		function animate() {
-			// increase time
-			sceneClock.tick();
-		}
-
-		// keyboard
-		// --------------------------------
-		function handleKeyDown(event) { currentlyPressedKeys[event.keyCode] = true; }
-		function handleKeyUp(event) { currentlyPressedKeys[event.keyCode] = false; }
-
-		// ONLY FOR CAMERA MOVEMENT
-		function handleKeys() {
-			//Mouse camera movement X
-			if (Math.abs(mouseX) > 0.1) {
-				agl.scenegraph.camera.turnright(1.0 * (mouseX * mouseX * mouseX));
-			}
-			//Mouse camera movement Y
-			agl.scenegraph.camera.turnup(45 * mouseY);
-
-			// Keyboard camera movement
-			if (currentlyPressedKeys[68]) // (D) Right
-			{
-				agl.scenegraph.camera.right();
-			}
-			if (currentlyPressedKeys[81]) // (Q) Left
-			{
-				agl.scenegraph.camera.left();			//
-			}
-			if (currentlyPressedKeys[90]) // (Z) Up
-			{
-				agl.scenegraph.camera.up();			//
-			}
-			if (currentlyPressedKeys[83]) // (S) Down
-			{
-				agl.scenegraph.camera.down();			//
-			}
-			if (currentlyPressedKeys[32]) // (space)
-			{
-				agl.scenegraph.camera.flyUp();			//
-			}
-			if (currentlyPressedKeys[17]) // (ctrl)
-			{
-				agl.scenegraph.camera.flyDown();			//
-			}
-		}
-
-		// Only for menus and such
-		function handleMenuKeyUp(event) {
-			const keyName = event.code;
-			if (keyName === 'NumpadDecimal') { // Show shaders menu
-				$("#overlay").toggle();
-			}
-			if (keyName === "KeyP")	// Shader Cartoon
-			{
-				objectList.forEach(function (objet) {
-					objet.setShader(agl.indexOfShader("cartoon"));
-				});
-				sgxml.root.shaderId = 0;
-				document.getElementById("shadName").textContent = "cartoon";
-			}
-			if (keyName === "KeyO") { // Shader Old Movie
-				objectList.forEach(function (objet) {
-					objet.setShader(agl.indexOfShader("blackAndWhiteMovie"));
-				});
-				sgxml.root.shaderId = agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
-				document.getElementById("shadName").textContent = "old movie";
-			}
-			if (keyName === "KeyC") // (C) debug
-			{
-				console.log('atomicGL - Remi COZOT - 2015');
-			}
-		}
-
-		// mouse movements
-		// ------------------------------
-		function onDocumentMouseMove(event) {
-			//omouseX = mouseX;
-			//Use client width and height instead of window's
-			windowHalfX = agl.gl.canvas.clientWidth / 2;
-			windowHalfY = agl.gl.canvas.clientHeight / 2;
-			mouseX = (event.clientX - windowHalfX) / windowHalfX;
-			mouseY = (event.clientY - windowHalfY) / windowHalfY;
-		}
-
-		// If WebGL Context lost
-		function handleContextLost(event) {
-			event.preventDefault();
-			cancelRequestAnimFrame(requestId);
-		}
-
-	</script>
+	<script type="text/javascript" src="atomicApp.js"></script>
 </head>
 
-<body onload="webGLStart();">
-	<div class="container">
+<body onload="webGLStart('example_castle_scene.xml');">
+	<div class="container" id="oglcontainer">
 		<canvas id="oglcanvas"></canvas>
 		<div class="hidden" id="overlay">
 			<div>Shader actif:

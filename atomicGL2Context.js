@@ -58,7 +58,6 @@ class atomicGL2Context {
 
 		if (!this.gl) { // error in the initialisation of GL context
 			alert("atomicGLContext::Could not initialise WebGL");
-
 		}
 		else { // GL context initialised -> first init (background color, DEPTH_TEST)
 			//DEBUG
@@ -83,8 +82,8 @@ class atomicGL2Context {
 	//---------------------------
 	initDraw() {
 		//console.log("atomicGLContext::initDraw");
-		resizeCanvasToDisplaySize(this.gl.canvas, window.devicePixelRatio);
-		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
+		resizeCanvasToDisplaySize(this.gl.canvas, window.devicePixelRatio); //WebGL-utils standard compliant
+		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight); //WebGL Standard co
 
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 	}
