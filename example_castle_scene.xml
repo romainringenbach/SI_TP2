@@ -10,6 +10,9 @@
 		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
 	</SHADERS>
+	<LIGHTS>
+		<LIGHT id="sun" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+	</LIGHTS>
 	<TEXTURES>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>
 		<TEXTURE id="herbe1" type="color">texture/herbe1.png</TEXTURE>

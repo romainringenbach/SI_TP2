@@ -297,6 +297,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		//		Omni
 		for (var i = 0; i < this.nbLight; i++) {
 			// debug
+			// NEIN ! NEIN ! NEIN ! NEVER EVER DECOMMENT THESE 3 HELLISH LINES !
 			//console.log("-- atomicGLShader::setUniforms - Light number ("+i+")");
 			//console.log("-- LightLocation @"+this.pointLightLocationUniform[i]+"::" +aGL.omniLightLocation[i*3+0] +","+ aGL.omniLightLocation[i*3+1]+","+ aGL.omniLightLocation[i*3+2] );
 			//console.log("-- LightColor @"+this.pointLightColorUniform[i]+"::" +aGL.omniLightColor[i*3+0] +","+ aGL.omniLightColor[i*3+1]+","+ aGL.omniLightColor[i*3+2] );
