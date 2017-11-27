@@ -154,6 +154,7 @@ class atomicGL2SGtransform extends atomicGL2SceneGraph {
 		this.translate = [0.0, 0.0, 0.0];
 		this.rotAxis = [0.0, 1.0, 0.0];
 		this.rotation = 0.0;
+		this.scale = [1.0, 1.0, 1.0];
 		// debug
 		//console.log("atomicGL2SGtransform extends atomicGL2SceneGraph::constructor ->"+this.type+" - "+this.name);
 	}
@@ -163,10 +164,11 @@ class atomicGL2SGtransform extends atomicGL2SceneGraph {
 	// inputs: 	tr - vec3: translation vector
 	//			ax - vec3: rotation axis vector
 	//			ro - float: rotationangle
-	setTransform(tr, ax, ro) {
+	setTransform(tr, ax, ro, sc) {
 		this.translate = tr;
 		this.rotAxis = ax;
 		this.rotation = ro;
+		this.scale = sc;
 	}
 
 	// draw
@@ -181,6 +183,8 @@ class atomicGL2SGtransform extends atomicGL2SceneGraph {
 		// position & orientation
 		ams.mvTranslate(this.translate[0], this.translate[1], this.translate[2]);
 		ams.mvRotate(this.rotation, this.rotAxis);
+		// scale
+		ams.mvScale(this.scale[0],this.scale[1],this.scale[2]);
 		// children
 		for (var i = 0; i < this.children.length; i++) { this.children[i].draw(agl, ams); }
 		// matrix pop

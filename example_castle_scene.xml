@@ -211,14 +211,14 @@
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 
-			<TRANSFORM id="transform_ground" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="0.0">
+			<TRANSFORM id="transform_ground" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_ground_road" shader="texDiffNormalMapProg">ground_road</OBJECT3D>
 					<OBJECT3D id="obj_ground_wall" shader="texDiffNormalMapProg">ground_wall</OBJECT3D>
 					<OBJECT3D id="obj_ground_sand" shader="texDiffProg">ground_sand</OBJECT3D>
 					<OBJECT3D id="obj_ground_grass" shader="texDiffProg">ground_grass</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_donjon1" translate="-10.0,0.05,-40.0" rotaxis="0.0,1.0,0.0" angle="90.0">
+			<TRANSFORM id="transform_donjon1" translate="-10.0,0.05,-40.0" rotaxis="0.0,1.0,0.0" angle="90.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_donjon1Base" shader="texDiffNormalMapProg">donjon1Base</OBJECT3D>
 					<OBJECT3D id="donjon1Bois" shader="texDiffNormalMapProg">donjon1Bois</OBJECT3D>
 					<OBJECT3D id="obj_donjon1Fenetre" shader="texDiffProg">donjon1Fenetre</OBJECT3D>
@@ -227,7 +227,7 @@
 					<OBJECT3D id="donjon1Toiture" shader="texDiffNormalMapProg">donjon1Toiture</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_donjon2" translate="10.0,0.05,22.0" rotaxis="0.0,1.0,0.0" angle="-180.0">
+			<TRANSFORM id="transform_donjon2" translate="10.0,0.05,22.0" rotaxis="0.0,1.0,0.0" angle="-180.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_donjon1Base" shader="texDiffNormalMapProg">donjon1Base</OBJECT3D>
 					<OBJECT3D id="donjon1Bois" shader="texDiffNormalMapProg">donjon1Bois</OBJECT3D>
 					<OBJECT3D id="obj_donjon1Fenetre" shader="texDiffProg">donjon1Fenetre</OBJECT3D>
@@ -236,7 +236,7 @@
 					<OBJECT3D id="donjon1Toiture" shader="texDiffNormalMapProg">donjon1Toiture</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_donjon3" translate="45.0,0.05,-112.0" rotaxis="0.0,1.0,0.0" angle="-90.0">
+			<TRANSFORM id="transform_donjon3" translate="45.0,0.05,-112.0" rotaxis="0.0,1.0,0.0" angle="-90.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_donjon1Base" shader="texDiffNormalMapProg">donjon1Base</OBJECT3D>
 					<OBJECT3D id="donjon1Bois" shader="texDiffNormalMapProg">donjon1Bois</OBJECT3D>
 					<OBJECT3D id="obj_donjon1Fenetre" shader="texDiffProg">donjon1Fenetre</OBJECT3D>
@@ -245,7 +245,7 @@
 					<OBJECT3D id="donjon1Toiture" shader="texDiffNormalMapProg">donjon1Toiture</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_palais" translate="-15.0,0.05,-70.0" rotaxis="0.0,1.0,0.0" angle="0.0">
+			<TRANSFORM id="transform_palais" translate="-15.0,0.05,-70.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_palais1" shader="texDiffProg">palais1</OBJECT3D>
 					<OBJECT3D id="obj_palais2" shader="texDiffProg">palais2</OBJECT3D>
 					<OBJECT3D id="obj_palais3" shader="texDiffProg">palais3</OBJECT3D>
@@ -254,7 +254,7 @@
 					<OBJECT3D id="obj_palais6" shader="texDiffNormalMapProg">palais6</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_house1" translate="4.0,0.05,-80.0" rotaxis="0.0,1.0,0.0" angle="0.0">
+			<TRANSFORM id="transform_house1" translate="4.0,0.05,-80.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_house1mur" shader="texDiffNormalMapProg">house1mur</OBJECT3D>
 					<OBJECT3D id="obj_house1sol" shader="texDiffProg">house1sol</OBJECT3D>
 					<OBJECT3D id="obj_house1stone" shader="texDiffNormalMapProg">house1stone</OBJECT3D>
@@ -263,37 +263,37 @@
 					<OBJECT3D id="obj_house1wood" shader="texDiffProg">house1wood</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_house3" translate="15.0,0.05,-75" rotaxis="0.0,1.0,0.0" angle="-90.0">
+			<TRANSFORM id="transform_house3" translate="15.0,0.05,-75" rotaxis="0.0,1.0,0.0" angle="-90.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_house3wall" shader="texDiffNormalMapProg">house3wall</OBJECT3D>
 					<OBJECT3D id="obj_house3roof" shader="texDiffNormalMapProg">house3roof</OBJECT3D>
 					<OBJECT3D id="obj_house3wood" shader="texDiffProg">house3wood</OBJECT3D>
 			</TRANSFORM>
-			<TRANSFORM id="transform_bridge" translate="0.0,0.05,0.0" rotaxis="0.0,1.0,0.0" angle="0.0">
+			<TRANSFORM id="transform_bridge" translate="0.0,0.05,0.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_bridge1stone" shader="texDiffNormalMapProg">bridge1stone</OBJECT3D>
 					<OBJECT3D id="obj_bridge1top" shader="texDiffNormalMapProg">bridge1top</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_tower" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0">
+			<TRANSFORM id="transform_tower" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_tower1base" shader="texDiffNormalMapProg">tower1base</OBJECT3D>
 					<OBJECT3D id="obj_tower1mur" shader="texDiffNormalMapProg">tower1mur</OBJECT3D>
 					<OBJECT3D id="obj_tower1parape" shader="texDiffProg">tower1parape</OBJECT3D>
 					<OBJECT3D id="obj_tower1sol" shader="texDiffProg">tower1sol</OBJECT3D>
 					<OBJECT3D id="obj_tower1toit" shader="texDiffNormalMapProg">tower1toit</OBJECT3D>
 
-					<TRANSFORM id="transform_tower2" translate="15.0,0,0" rotaxis="0.0,1.0,0.0" angle="0.0">
+					<TRANSFORM id="transform_tower2" translate="15.0,0,0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 						<OBJECT3D id="obj_tower1base" shader="texDiffNormalMapProg">tower1base</OBJECT3D>
 						<OBJECT3D id="obj_tower1mur" shader="texDiffNormalMapProg">tower1mur</OBJECT3D>
 						<OBJECT3D id="obj_tower1parape" shader="texDiffProg">tower1parape</OBJECT3D>
 						<OBJECT3D id="obj_tower1sol" shader="texDiffProg">tower1sol</OBJECT3D>
 						<OBJECT3D id="obj_tower1toit" shader="texDiffNormalMapProg">tower1toit</OBJECT3D>
 
-						<TRANSFORM id="trans_wall1" translate="4.4,0.0,-1.0" rotaxis="0.0,1.0,0.0" angle="0.0">
+						<TRANSFORM id="trans_wall1" translate="4.4,0.0,-1.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 							<OBJECT3D id="obj_wall2base" shader="texDiffNormalMapProg">wall2base</OBJECT3D>
 							<OBJECT3D id="obj_wall2stone" shader="texDiffNormalMapProg">wall2stone</OBJECT3D>
 							<OBJECT3D id="obj_wall2wood" shader="texDiffProg">wall2wood</OBJECT3D>
 							<OBJECT3D id="obj_wall2roof" shader="texDiffNormalMapProg">wall2roof</OBJECT3D>
 
-							<TRANSFORM id="trans_wall2" translate="19.5,0,0.0" rotaxis="0.0,1.0,0.0" angle="0.0">
+							<TRANSFORM id="trans_wall2" translate="19.5,0,0.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 								<OBJECT3D id="obj_wall2base" shader="texDiffNormalMapProg">wall2base</OBJECT3D>
 								<OBJECT3D id="obj_wall2stone" shader="texDiffNormalMapProg">wall2stone</OBJECT3D>
 								<OBJECT3D id="obj_wall2wood" shader="texDiffProg">wall2wood</OBJECT3D>

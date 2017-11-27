@@ -41,6 +41,11 @@ class atomicGL2MatrixStack {
 	// ------------------------
 	mvIdentity() { mat4.identity(this.mvMatrix); }
 
+	// mvScale(x,y,z)
+	//---------------------------
+	// inputs: x,y,z: scale - float
+	mvScale(x,y,z) { mat4.scale(this.mvMatrix, [x, y, z]); }
+	
 	// mvTranslate(x,y,z)
 	//---------------------------
 	// inputs: x,y,z: translation - float

@@ -258,11 +258,17 @@ class atomicGL2xml {
 				var az = parseFloat(rotAxisS[2]);
 				// angle
 				var theta = parseFloat(e.getAttribute("angle"));
+				
+				// scale
+				var scaleS = e.getAttribute("scale").split(",");
+				var sx = parseFloat(scaleS[0]);
+				var sy = parseFloat(scaleS[1]);
+				var sz = parseFloat(scaleS[2]);
 
 				// node
 				// JS6
 				node = new atomicGL2SGtransform("transform", id);
-				node.setTransform([tx, ty, tz], [ax, ay, az], theta);
+				node.setTransform([tx, ty, tz], [ax, ay, az], theta, [sx, sy, sz]);
 				s.addChild(node);
 				// debug
 				//node.toDEBUG();
