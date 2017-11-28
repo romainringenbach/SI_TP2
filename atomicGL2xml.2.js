@@ -234,7 +234,7 @@ class atomicGL2xml {
 					case "walk": camera = new atomicGLWalkCamera();
 				}
 				// JS6
-				node = new atomicGL2SGroot("root", e.getAttribute("id"));
+				node = new atomicGL2SGroot(e.getAttribute("id"));
 				node.setRootElt(camera, skyBox, agl.indexOfShader(e.getAttribute("skyshader")));
 				agl.scenegraph = node;
 				this.root = node;
@@ -258,7 +258,7 @@ class atomicGL2xml {
 				var az = parseFloat(rotAxisS[2]);
 				// angle
 				var theta = parseFloat(e.getAttribute("angle"));
-				
+
 				// scale
 				var scaleS = e.getAttribute("scale").split(",");
 				var sx = parseFloat(scaleS[0]);
@@ -267,7 +267,7 @@ class atomicGL2xml {
 
 				// node
 				// JS6
-				node = new atomicGL2SGtransform("transform", id);
+				node = new atomicGL2SGtransform(id);
 				node.setTransform([tx, ty, tz], [ax, ay, az], theta, [sx, sy, sz]);
 				s.addChild(node);
 				// debug
@@ -284,7 +284,7 @@ class atomicGL2xml {
 
 				// node
 				// JS6
-				node = new atomicGL2SGobject3d('object3D', id);
+				node = new atomicGL2SGobject3d(id);
 
 				node.setObject3D(agl.shapes[agl.indexOfShape(shapeId)], agl.indexOfShader(shaderId));
 
