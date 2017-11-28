@@ -28,8 +28,8 @@ function addControls() {
 
 // keyboard
 // --------------------------------
-function handleKeyDown(event) { currentlyPressedKeys[event.keyCode] = true; }
-function handleKeyUp(event) { currentlyPressedKeys[event.keyCode] = false; }
+function handleKeyDown(event) { currentlyPressedKeys[event.key] = true; }
+function handleKeyUp(event) { currentlyPressedKeys[event.key] = false; }
 
 // ONLY FOR CAMERA MOVEMENT
 function handleKeys() {
@@ -41,27 +41,27 @@ function handleKeys() {
     agl.scenegraph.camera.turnup(45 * mouseY);
 
     // Keyboard camera movement
-    if (currentlyPressedKeys[68]) // (D) Right
+    if (currentlyPressedKeys["d"]) // (D) Right
     {
         agl.scenegraph.camera.right();
     }
-    if (currentlyPressedKeys[81]) // (Q) Left
+    if (currentlyPressedKeys["q"]) // (Q) Left
     {
         agl.scenegraph.camera.left();			//
     }
-    if (currentlyPressedKeys[90]) // (Z) Up
+    if (currentlyPressedKeys["z"]) // (Z) Up
     {
         agl.scenegraph.camera.up();			//
     }
-    if (currentlyPressedKeys[83]) // (S) Down
+    if (currentlyPressedKeys["s"]) // (S) Down
     {
         agl.scenegraph.camera.down();			//
     }
-    if (currentlyPressedKeys[32]) // (space)
+    if (currentlyPressedKeys[" "]) // (space)
     {
         agl.scenegraph.camera.flyUp();			//
     }
-    if (currentlyPressedKeys[17]) // (ctrl)
+    if (currentlyPressedKeys["Control"]) // (ctrl)
     {
         agl.scenegraph.camera.flyDown();			//
     }
