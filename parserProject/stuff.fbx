@@ -529,7 +529,7 @@ Objects:  {
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",5.84209575327507,6.28053816077684,0
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",81.9530559213368,0,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-149.972424091387,14.6708958548975,102.818198534739
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",5.6829709375556,5.6829709375556,5.6829709375556
 			P: "currentUVSet", "KString", "", "U", "map1"
 		}

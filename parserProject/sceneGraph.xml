@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCENE>
+	<SHADERS>
+		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">textProg</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
+		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
+		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
+		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
+	</SHADERS>
+	<LIGHTS>
+		<LIGHT id="sun" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+	</LIGHTS>
+	<TEXTURES>
+		<TEXTURE id="sol1" type="color">texture/sol1.png"</TEXTURE>
+		<TEXTURE id="mur_pierre1" type="color">texture/mur_pierre1.png"</TEXTURE>
+		<TEXTURE id="pierre3_normal" type="normal">texture/pierre3_normal.png"</TEXTURE>
+		<TEXTURE id="normal" type="normal">texture/normal.png"</TEXTURE>
+		<TEXTURE id="toit2" type="color">texture/toit2.png"</TEXTURE>
+		<TEXTURE id="bois2" type="color">texture/bois2.png"</TEXTURE>
+		<TEXTURE id="pave2_normal" type="normal">texture/pave2_normal.png"</TEXTURE>
+		<TEXTURE id="pierre2" type="color">texture/pierre2.png"</TEXTURE>
+		<TEXTURE id="bleue" type="color">texture/bleue.png"</TEXTURE>
+		<TEXTURE id="crate1" type="color">texture/crate1.png"</TEXTURE>
+		<TEXTURE id="vert" type="color">texture/vert.png"</TEXTURE>
+		<TEXTURE id="rouge" type="color">texture/rouge.png"</TEXTURE>
+		<TEXTURE id="bois1" type="color">texture/bois1.png"</TEXTURE>
+		<TEXTURE id="bronze" type="color">texture/bronze.png"</TEXTURE>
+		<TEXTURE id="sol4_normal" type="normal">texture/sol4_normal.png"</TEXTURE>
+		<TEXTURE id="mur_pierre1_normal" type="normal">texture/mur_pierre1_normal.png"</TEXTURE>
+		<TEXTURE id="mur2" type="color">texture/mur2.png"</TEXTURE>
+		<TEXTURE id="test" type="color">texture/test.png"</TEXTURE>
+		<TEXTURE id="pierre2_normal" type="normal">texture/pierre2_normal.png"</TEXTURE>
+		<TEXTURE id="toit1_normal" type="normal">texture/toit1_normal.png"</TEXTURE>
+		<TEXTURE id="sol2" type="color">texture/sol2.png"</TEXTURE>
+		<TEXTURE id="crate3" type="color">texture/crate3.png"</TEXTURE>
+		<TEXTURE id="bitume1" type="color">texture/bitume1.png"</TEXTURE>
+		<TEXTURE id="toit1" type="color">texture/toit1.png"</TEXTURE>
+		<TEXTURE id="sol4" type="color">texture/sol4.png"</TEXTURE>
+		<TEXTURE id="mur2_normal" type="normal">texture/mur2_normal.png"</TEXTURE>
+		<TEXTURE id="sable1" type="color">texture/sable1.png"</TEXTURE>
+		<TEXTURE id="pave1" type="color">texture/pave1.png"</TEXTURE>
+		<TEXTURE id="skybox_texture" type="color">texture/skybox_texture.png"</TEXTURE>
+		<TEXTURE id="pierre3" type="color">texture/pierre3.png"</TEXTURE>
+		<TEXTURE id="toit2_normal" type="normal">texture/toit2_normal.png"</TEXTURE>
+		<TEXTURE id="herbe1" type="color">texture/herbe1.png"</TEXTURE>
+		<TEXTURE id="crate2" type="color">texture/crate2.png"</TEXTURE>
+		<TEXTURE id="crate" type="color">texture/crate.png"</TEXTURE>
+		<TEXTURE id="mur3_normal" type="normal">texture/mur3_normal.png"</TEXTURE>
+		<TEXTURE id="herbe2" type="color">texture/herbe2.png"</TEXTURE>
+		<TEXTURE id="eau1" type="color">texture/eau1.png"</TEXTURE>
+		<TEXTURE id="marbre1" type="color">texture/marbre1.png"</TEXTURE>
+		<TEXTURE id="pave2" type="color">texture/pave2.png"</TEXTURE>
+		<TEXTURE id="skybox" type="color">texture/skybox.png"</TEXTURE>
+		<TEXTURE id="mur3" type="color">texture/mur3.png"</TEXTURE>
+		<TEXTURE id="sol3" type="color">texture/sol3.png"</TEXTURE>
+		<TEXTURE id="sol5" type="color">texture/sol5.png"</TEXTURE>
+	</TEXTURES>
+	<SHAPES>
+		<SHAPE id="pSphere1" type="obj">
+			<GEOMETRY id="pSphere1_geo" uv="1.0,1.0">pSphere1()</GEOMETRY>
+			<TEXTID>pSphere1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="pPyramid1" type="obj">
+			<GEOMETRY id="pPyramid1_geo" uv="1.0,1.0">pPyramid1()</GEOMETRY>
+			<TEXTID>pPyramid1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="pCone1" type="obj">
+			<GEOMETRY id="pCone1_geo" uv="1.0,1.0">pCone1()</GEOMETRY>
+			<TEXTID>pCone1_tex</TEXTID>
+		</SHAPE>
+	</SHAPES>
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+
+		<TRANSFORM id="transform_pSphere1" translate="-9.29212575661523,0,0"" rotaxis="1.0,0.0,0.0" angle="0" scale="2.7936173362078,2.7936173362078,2.7936173362078" >
+				<OBJECT3D id="obj_pSphere1" shader="texDiffNormalMapProg">pSphere1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_pPyramid1" translate="5.84209575327507,6.28053816077684,0"" rotaxis="1.0,0.0,0.0" angle="-149.972424091387" scale="5.6829709375556,5.6829709375556,5.6829709375556" >
+			<TRANSFORM id="transform_pPyramid1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="14.6708958548975" scale="0.0,0.0,0.0" >
+				<TRANSFORM id="transform_pPyramid1_rot_x" translate="0.0,0.0,0.0"" rotaxis="0.0,0.0,1.0" angle="102.818198534739" scale="0.0,0.0,0.0" >
+						<OBJECT3D id="obj_pPyramid1" shader="texDiffNormalMapProg">pPyramid1</OBJECT3D>
+				</TRANSFORM>
+			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_pCone1" translate="0,0,0"" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+				<OBJECT3D id="obj_pCone1" shader="texDiffNormalMapProg">pCone1</OBJECT3D>
+		</TRANSFORM>
+
+	</ROOT>
+</SCENE>
