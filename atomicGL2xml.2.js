@@ -179,28 +179,40 @@ class atomicGL2xml {
 	// LIGHTS
 	// <LIGHTS>
 	// 	<LIGHT id="sun" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+	//  <LIGHT id="ambient1" type="ambient" color="1.0,0.8,0.8">ambient1</LIGHT>
 	// </LIGHTS>
 	lights(agl) {
 		var listLIGHT = this.dom.getElementsByTagName("LIGHT");
+		
 		for (var i = 0; i < listLIGHT.length; i++) {
 			var LIGHT = listLIGHT[i];
 			var id = LIGHT.getAttribute("id");
-			// parse position
-			var LIGHTpos = LIGHT.getAttribute("position");
-			var pos = [];
-			pos[0] = parseFloat(LIGHTpos.split(",")[0]);
-			pos[1] = parseFloat(LIGHTpos.split(",")[1]);
-			pos[2] = parseFloat(LIGHTpos.split(",")[2]);
+			var type = LIGHT.getAttribute("type");
+			
 			// parse color
 			var LIGHTcolor = LIGHT.getAttribute("color");
 			var color = [];
 			color[0] = parseFloat(LIGHTcolor.split(",")[0]);
 			color[1] = parseFloat(LIGHTcolor.split(",")[1]);
 			color[2] = parseFloat(LIGHTcolor.split(",")[2]);
-			// create light and add it to context
-			agl.pushLight(pos, color);
-		}
 
+			switch (type) {
+				case "point":
+					// parse position
+					var LIGHTpos = LIGHT.getAttribute("position");
+					var pos = [];
+					pos[0] = parseFloat(LIGHTpos.split(",")[0]);
+					pos[1] = parseFloat(LIGHTpos.split(",")[1]);
+					pos[2] = parseFloat(LIGHTpos.split(",")[2]);
+					// create light and add it to context
+					agl.pushLight(pos, color);
+					break;
+				case "ambient":
+					//add ambient light color
+					agl.ambientLightColor = color;
+					break;
+			}
+		}
 	}
 
 	// traverse

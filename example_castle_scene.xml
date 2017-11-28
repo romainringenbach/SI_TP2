@@ -11,7 +11,8 @@
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
 	</SHADERS>
 	<LIGHTS>
-		<LIGHT id="sun" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+		<LIGHT id="ambient1" type="ambient" color="1.0,0.8,0.8">ambient1</LIGHT>
 	</LIGHTS>
 	<TEXTURES>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>

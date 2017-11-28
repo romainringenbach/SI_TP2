@@ -45,9 +45,6 @@ function webGLStart(sceneXmlFile) {
     sgxml = new atomicGL2xml(agl, sceneXmlFile); //'example_castle_scene.xml'
     objectList = sgxml.objectList;
 
-    // Ambiant light
-    agl.ambientLightColor = [0.1, 0.05, 0.0];	// color
-
     // init Matrix Stack
     ams.initMatrix(agl, 45); // fov = 45 degrees
 
