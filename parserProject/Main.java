@@ -6,11 +6,18 @@ import java.io.*;
 
 public class Main {
 	
+	
 	static String defaultShader = "texDiffNormalMapProg";
 	static String texturesDirectory = "texture";
 	static String outputFile = "result.xml";
 	static String fileName = "input.fbx";
 	
+	/*
+	static String defaultShader = "texDiffNormalMapProg";
+	static String texturesDirectory = "D:\\sauvegarde\\Mes Documents\\Cours\\ESIR\\A2\\SI\\Projet\\SI_TP2\\models\\Western_Saloon";
+	static String outputFile = "D:\\sauvegarde\\Mes Documents\\Cours\\ESIR\\A2\\SI\\Projet\\SI_TP2\\parserProject\\resultsaloon.xml";
+	static String fileName = "D:\\sauvegarde\\Mes Documents\\Cours\\ESIR\\A2\\SI\\Projet\\SI_TP2\\models\\Western_Saloon\\saloon2.fbx";
+	*/
 	public static void main(String args[]) {
 		
         // The name of the file to open.
@@ -60,7 +67,8 @@ public class Main {
 
 	
     	public static void checkText(String line) {
-			Pattern patt = Pattern.compile("Model: [0-9]*, \"Model::\\w*\", \"Mesh\" \\{([^}]*)\\}");
+    		// TODO LIGHTS
+			Pattern patt = Pattern.compile("Model: [0-9]*, \"Model::[^,]*, \"(Mesh)\" \\{([^}]*)\\}");
     		Matcher m = patt.matcher(line);
     		ArrayList<String> res = new ArrayList<String>();
     		while(m.find()) {
@@ -123,7 +131,7 @@ public class Main {
     			if(nameT.contains("normal")) {
     				type = "normal";
     			}
-    			finalS+="\n"+addTab+"<TEXTURE id=\""+idT+"\" type=\""+type+"\">texture/"+nameT+"\"</TEXTURE>";
+    			finalS+="\n"+addTab+"<TEXTURE id=\""+idT+"\" type=\""+type+"\">texture/"+nameT+"</TEXTURE>";
     		}
     		addTab = addTab.substring(0, addTab.length()-1);
     		finalS+="\n"+addTab+"</TEXTURES>";
@@ -131,7 +139,6 @@ public class Main {
     		// SHAPES
     		finalS+="\n"+addTab+"<SHAPES>";
     		addTab+="\t";
-    		
     		Pattern pmodelName = Pattern.compile("Model::([^,\"]*)");
     		for(int i = 0; i < line.size(); i++) {
 	    		Matcher mModel = pmodelName.matcher(line.get(i));
@@ -197,7 +204,7 @@ public class Main {
 	    		}
 	    		String addTabFor = addTab;
 	    		finalS += "\n"+addTabFor+"<TRANSFORM id=\"transform_"+modelName+"\" "+
-	    				"translate=\""+resValuesT[0]+","+resValuesT[1]+","+resValuesT[2]+"\"";
+	    				"translate=\""+resValuesT[0]+","+resValuesT[1]+","+resValuesT[2];//"\"";
 	    		String endTransform = "\n"+addTabFor+"</TRANSFORM>";
 	    		if(!resValuesR[0].equals("0")){
 	    			finalS += "\" rotaxis=\"1.0,0.0,0.0\" angle=\""+resValuesR[0]+"\" ";
