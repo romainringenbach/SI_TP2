@@ -63,7 +63,7 @@ function js = obj2js(OBJ,nn)
                                 id = mapV(vkey);
                                 indexes(end+1) = id ;
                                 % debug ;
-                                disp(strcat(vkey,' - shared vertice:','index:',num2str(id)));
+                                %disp(strcat(vkey,' - shared vertice:','index:',num2str(id)));
                             else
                                 % new vertice
                                 nb_vertices = nb_vertices +1 ;
@@ -81,12 +81,12 @@ function js = obj2js(OBJ,nn)
                                 % add the index
                                 indexes(end+1) = nb_vertices ;
                                 % debug
-                                disp(strcat(vkey,' - new vertice: (', ...
-                                    num2str(v(1)),',', ...
-                                    num2str(v(2)),',', ...
-                                    num2str(v(3)),') -> index:',...
-                                    num2str(nb_vertices) ...
-                                ));
+                               % disp(strcat(vkey,' - new vertice: (', ...
+                               %     num2str(v(1)),',', ...
+                               %     num2str(v(2)),',', ...
+                               %     num2str(v(3)),') -> index:',...
+                               %     num2str(nb_vertices) ...
+                               % ));
                             end % end if
                         end % end for k
                     end % end for j
@@ -94,33 +94,33 @@ function js = obj2js(OBJ,nn)
                     for j=1:size(data.vertices,1)
                         %vertice + texture
                             for k=1:3
-                            disp('vertice + texture');
+                            %disp('vertice + texture');
                             % build key
                                 vkey = strcat(num2str(data.vertices(j,k)),'/',num2str(data.texture(j,k)));
                                 % debug
-                                disp(strcat('vertice description:',vkey));
+                                %disp(strcat('vertice description:',vkey));
                             end                        
                     end
                 elseif(check2)
                     for j=1:size(data.vertices,1)
                         % vertice + normal
                             for k=1:3
-                            disp('vertice + normal');
+                            %disp('vertice + normal');
                             % build key
                                 vkey = strcat(num2str(data.vertices(j,k)),'//',num2str(data.normal(j,k)));
                                 % debug
-                                disp(strcat('vertice description:',vkey));
+                                %disp(strcat('vertice description:',vkey));
                             end  
                     end
                 else
                     for j=1:size(data.vertices,1)
                         % vertice alone
                             for k=1:3
-                            disp('vertice');
+                            %disp('vertice');
                             % build key
                                 vkey = num2str(data.vertices(j,k));
                                 % debug
-                                disp(strcat('vertice description:',vkey));
+                                %disp(strcat('vertice description:',vkey));
                             end                          
                     end
                 end

@@ -58,17 +58,25 @@
 		<TEXTURE id="sol5" type="color">texture/sol5.png</TEXTURE>
 	</TEXTURES>
 	<SHAPES>
-		<SHAPE id="pSphere1" type="obj">
-			<GEOMETRY id="pSphere1_geo" uv="1.0,1.0">pSphere1()</GEOMETRY>
-			<TEXTID>pSphere1_tex</TEXTID>
-		</SHAPE>
-		<SHAPE id="pPyramid1" type="obj">
-			<GEOMETRY id="pPyramid1_geo" uv="1.0,1.0">pPyramid1()</GEOMETRY>
-			<TEXTID>pPyramid1_tex</TEXTID>
-		</SHAPE>
-		<SHAPE id="pCone1" type="obj">
-			<GEOMETRY id="pCone1_geo" uv="1.0,1.0">pCone1()</GEOMETRY>
-			<TEXTID>pCone1_tex</TEXTID>
+		<SHAPE id="saloon" type="obj">
+			<GEOMETRY id="saloon_geo" uv="1.0,1.0">saloon()</GEOMETRY>
+			<TEXTID>5</TEXTID>
+			<TEXTID>BOARD08</TEXTID>
+			<TEXTID>BOARD08B</TEXTID>
+			<TEXTID>metbgr01</TEXTID>
+			<TEXTID>mod-wood</TEXTID>
+			<TEXTID>mod-wood_B</TEXTID>
+			<TEXTID>Saloon_Door</TEXTID>
+			<TEXTID>Saloon_sign</TEXTID>
+			<TEXTID>Sand01B</TEXTID>
+			<TEXTID>SHINGLES</TEXTID>
+			<TEXTID>SHINGLESB</TEXTID>
+			<TEXTID>TEXTURE2</TEXTID>
+			<TEXTID>window_pane_Grey</TEXTID>
+			<TEXTID>WOO006</TEXTID>
+			<TEXTID>WOO006B</TEXTID>
+			<TEXTID>wood1a</TEXTID>
+			<TEXTID>wood1b</TEXTID>
 		</SHAPE>
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
@@ -88,6 +96,5 @@
 		<TRANSFORM id="transform_pCone1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
 				<OBJECT3D id="obj_pCone1" shader="texDiffNormalMapProg">pCone1</OBJECT3D>
 		</TRANSFORM>
-
 	</ROOT>
 </SCENE>

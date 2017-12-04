@@ -21,13 +21,14 @@
 		uniform mat3 uNMatrix;
 		
 	// time for noise animation
-		uniform float uTime;
+		uniform float uRandom;
 		
 	// output
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
-		varying float vTime;
+		varying float vRandom;
+		
     void main(void) {
 	
 		// vPosition
@@ -40,7 +41,7 @@
 
 		// vTextureCoord
         vTextureCoord = aVertexTexCoord;
-		vTime = uTime;
+		vRandom = uRandom;
     }
 	</VERTEX>
 	<FRAGMENT>
@@ -63,8 +64,7 @@
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
-		varying float vTime;
-		uniform float uTime;
+		varying float vRandom;
 		
     // Uniform
     	uniform sampler2D uSampler0;
@@ -108,7 +108,8 @@
 		lightColor.b = lightColor.r;
 		
 		
-		if(rand(vec2(vTime*lightColor.r, vTime*vPosition.y)) > 0.9) {
+		float randfloat = rand(vec2(vRandom*lightColor.r, vRandom*vTextureCoord.s + vRandom*vTextureCoord.t));
+		if( randfloat > 0.9) {
 			lightColor = vec3(0.0,0.0,0.0);
 		}
 		
