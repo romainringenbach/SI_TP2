@@ -42,7 +42,7 @@
 		</SHAPE>
 		<SHAPE id="saloon" type="obj">
 			<GEOMETRY id="saloon_geo" uv="0.2,0.2">saloon()</GEOMETRY>
-			<TEXTID>wood1a</TEXTID>
+			<!--<TEXTID>wood1a</TEXTID>
 			<TEXTID>BOARD08</TEXTID>
 			<TEXTID>BOARD08B</TEXTID>
 			<TEXTID>metbgr01</TEXTID>
@@ -58,7 +58,8 @@
 			<TEXTID>WOO006</TEXTID>
 			<TEXTID>WOO006B</TEXTID>
 			<TEXTID>wood1b</TEXTID>
-			<TEXTID>5</TEXTID>
+			<TEXTID>5</TEXTID>-->
+			<TEXTID>plane</TEXTID>
 		</SHAPE>
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
