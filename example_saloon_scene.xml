@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SCENE>
+	<SHADERS>
+		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">textProg</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
+		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
+		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
+		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
+	</SHADERS>
+	<LIGHTS>
+		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,1.0,1.0">light1</LIGHT>
+		<LIGHT id="ambient1" type="ambient" color="1.0,1.0,1.0">ambient1</LIGHT>
+	</LIGHTS>
+	<TEXTURES>
+		<TEXTURE id="plane" type="color">example_shader_cartoon_objs/plane.png</TEXTURE>
+		<TEXTURE id="skyTex" type="color">texture/skybox_texture.png</TEXTURE>
+				<TEXTURE id="5" type="color">texture/saloon/5.png"</TEXTURE>
+		<TEXTURE id="BOARD08" type="color">texture/saloon/BOARD08.png"</TEXTURE>
+		<TEXTURE id="BOARD08B" type="normal">texture/saloon/BOARD08B.png"</TEXTURE>
+		<TEXTURE id="metbgr01" type="color">texture/saloon/metbgr01.png"</TEXTURE>
+		<TEXTURE id="mod-wood" type="color">texture/saloon/mod-wood.png"</TEXTURE>
+		<TEXTURE id="mod-wood_B" type="normal">texture/saloon/mod-wood_B.png"</TEXTURE>
+		<TEXTURE id="Saloon_Door" type="color">texture/saloon/Saloon_Door.png"</TEXTURE>
+		<TEXTURE id="Saloon_sign" type="color">texture/saloon/Saloon_sign.png"</TEXTURE>
+		<TEXTURE id="Sand01B" type="normal">texture/saloon/Sand01B.png"</TEXTURE>
+		<TEXTURE id="SHINGLES" type="color">texture/saloon/SHINGLES.png"</TEXTURE>
+		<TEXTURE id="SHINGLESB" type="normal">texture/saloon/SHINGLESB.png"</TEXTURE>
+		<TEXTURE id="TEXTURE2" type="color">texture/saloon/TEXTURE2.png"</TEXTURE>
+		<TEXTURE id="window_pane_Grey" type="color">texture/saloon/window_pane_Grey.png"</TEXTURE>
+		<TEXTURE id="WOO006" type="color">texture/saloon/WOO006.png"</TEXTURE>
+		<TEXTURE id="WOO006B" type="normal">texture/saloon/WOO006B.png"</TEXTURE>
+		<TEXTURE id="wood1a" type="color">texture/saloon/wood1a.png"</TEXTURE>
+		<TEXTURE id="wood1b" type="normal">texture/saloon/wood1b.png"</TEXTURE>
+	</TEXTURES>
+	<SHAPES>
+		<SHAPE id="plane" type="obj">
+			<GEOMETRY id="plane" uv="1.0,1.0">Plane()</GEOMETRY>
+			<TEXTID>plane</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon" type="obj">
+			<GEOMETRY id="saloon_geo" uv="0.2,0.2">saloon()</GEOMETRY>
+			<TEXTID>wood1a</TEXTID>
+			<TEXTID>BOARD08</TEXTID>
+			<TEXTID>BOARD08B</TEXTID>
+			<TEXTID>metbgr01</TEXTID>
+			<TEXTID>mod-wood</TEXTID>
+			<TEXTID>mod-wood_B</TEXTID>
+			<TEXTID>Saloon_Door</TEXTID>
+			<TEXTID>Saloon_sign</TEXTID>
+			<TEXTID>Sand01B</TEXTID>
+			<TEXTID>SHINGLES</TEXTID>
+			<TEXTID>SHINGLESB</TEXTID>
+			<TEXTID>TEXTURE2</TEXTID>
+			<TEXTID>window_pane_Grey</TEXTID>
+			<TEXTID>WOO006</TEXTID>
+			<TEXTID>WOO006B</TEXTID>
+			<TEXTID>wood1b</TEXTID>
+			<TEXTID>5</TEXTID>
+		</SHAPE>
+	</SHAPES>
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+			<TRANSFORM id="transform_plane" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
+					<OBJECT3D id="obj_plane" shader="textProg">plane</OBJECT3D>
+			</TRANSFORM>
+			<TRANSFORM id="transform_sal" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0" scale="0.03,0.03,0.03">
+					<OBJECT3D id="saloon" shader="textProg">saloon</OBJECT3D>
+			</TRANSFORM>
+	</ROOT>
+</SCENE>
+
