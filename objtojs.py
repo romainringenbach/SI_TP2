@@ -1,9 +1,21 @@
 # Converti un fihier .obj en .js et place ce dernier au même endroit
 
 # pour charger dans la console python :  exec(open("path/objtojs.py").read())
-# pour convertire un obj : convert("path/name.obj")
+# pour convertire un obj : convertFile("path/name.obj")
+from os import listdir
+from os.path import isfile, join
 
-def convert(path):
+
+
+def convertFiles(path):
+    files = listdir(path)
+    if path[len(path)-1:len(path)] != "/":
+        path = path + '/'
+    for afile in files:
+        if afile[len(afile)-4:len(afile)] == ".obj" :
+            convertFile(path+afile)
+
+def convertFile(path):
 
     obj = open(path,"r")
     fileString = obj.read()
