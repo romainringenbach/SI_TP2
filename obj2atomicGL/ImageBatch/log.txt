@@ -1,0 +1,26 @@
+Operation "Format conversion" started 04.12.17 at 14:18:25
+Input directory is H:\ESIR2\SI\Projet_AtomicGL\SI_TP2\obj2atomicGL\saloon
+Output directory is H:\ESIR2\SI\Projet_AtomicGL\SI_TP2\obj2atomicGL\saloon
+
+Saloon_Door.jpg successfully processed
+Sand01B.jpg successfully processed
+Western_Saloon01.jpg successfully processed
+WOO006B.JPG successfully processed
+WOO006.JPG successfully processed
+wood1b.jpg successfully processed
+TEXTURE2.JPG successfully processed
+BOARD08.JPG successfully processed
+wood1a.jpg successfully processed
+Western_Saloon.jpg successfully processed
+SHINGLES.JPG successfully processed
+SHINGLESB.jpg successfully processed
+BOARD08B.JPG successfully processed
+metbgr01.jpg successfully processed
+Saloon_sign.jpg successfully processed
+mod-wood_B.jpg successfully processed
+5.jpg successfully processed
+mod-wood.bmp successfully processed
+window_pane_Grey.bmp successfully processed
+
+Finished: 19 of 19 processed, 0 skipped.
+
