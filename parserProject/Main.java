@@ -6,7 +6,7 @@ import java.io.*;
 
 /**
  * @author L.Landais && P-A Fons 
- * Parser that recognized FBX ASCII files exported from Maya 2016 or 2015 I don't know
+ * Parser that recognized FBX 2014/2015 ASCII files exported from Maya 2016
  * and transform them into XML scenegraph file for AtomicGL
  *	/!\ Not working with Blender files, not the same structure
  */
