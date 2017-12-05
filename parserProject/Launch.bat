@@ -1,3 +1,3 @@
 java -jar Main.jar
 
-:: java -jar Main.jar stuff.fbx sceneGraph.xml ../texture texDiffNormalMapProg
+:: java -jar Main.jar saloon.fbx sceneGraph.xml ../texture texDiffNormalMapProg

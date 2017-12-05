@@ -59,15 +59,74 @@ public class Main {
 		}
 	}
 
-	public static void checkText(StringBuilder line) {
+	public static void checkText(StringBuilder all) {
 		// TODO LIGHTS
-		Pattern patt = Pattern.compile("Model: [0-9]*, \"Model::[^,]*, \"(Mesh)\" \\{([^}]*)\\}");
-		Matcher m = patt.matcher(line);
+		Pattern pattMesh = Pattern.compile("Model: [0-9]*, \"Model::[^,]*, \"(Mesh)\" \\{([^}]*)\\}");
+		Pattern pattLights = Pattern.compile("Model: [0-9]*, \"Model::[^,]*, \"(Light)\" \\{([^}]*)\\}");
+		Matcher m = pattMesh.matcher(all);
+		Matcher mLight = pattLights.matcher(all);
 		ArrayList<String> res = new ArrayList<String>();
 		while (m.find()) {
 			res.add(m.group(0));
 		}
+		while(mLight.find()) {
+			searchLight(mLight.group(0),all);
+		}
 		fillList(res);
+	}
+	
+	static ArrayList<String> lights = new ArrayList<String>();
+	
+	public static void searchLight(String line, StringBuilder all) {
+		Pattern pLightName = Pattern.compile("Model::([^,\"]*)");
+		Pattern pTrans = Pattern.compile("P: \"Lcl Translation\".*");
+		Matcher mLight = pLightName.matcher(line);
+		String lightName = "";
+		String[] resValuesT = { "0", "0", "0" };
+		String[] color = { "0", "0", "0" };
+		String intensity = "1";
+		while (mLight.find()) {
+			lightName = mLight.group(1);
+			Matcher mTrans = pTrans.matcher(line);
+			while (mTrans.find()) {
+				String[] resS = mTrans.group(0).split(",");
+				resValuesT[0] = resS[resS.length - 3];
+				resValuesT[1] = resS[resS.length - 2];
+				resValuesT[2] = resS[resS.length - 1];
+			}
+		}
+		Pattern pLightNode = Pattern.compile(";NodeAttribute::, Model::"+lightName+"([^;]*)");
+		Matcher mLightNode = pLightNode.matcher(all);
+		while(mLightNode.find()) {
+			String nodeAttributeBlock = mLightNode.group(1);
+			String nodeAttributeId = nodeAttributeBlock.split(",")[1];
+			Pattern pLightAttribute = Pattern.compile("NodeAttribute: "+nodeAttributeId+", \"NodeAttribute::\", \"Light\" \\{([^}]*)\\}");
+			Matcher mLightAttribute = pLightAttribute.matcher(all);
+			while(mLightAttribute.find()) {
+				String lightAttributeGroup = mLightAttribute.group(1);
+				Pattern pColor = Pattern.compile("P: \"Color\".*");
+				Matcher mColor = pColor.matcher(lightAttributeGroup);
+				
+				while(mColor.find()) {
+					String[] resS = mColor.group(0).split(",");
+					color[0] = resS[resS.length - 3];
+					color[1] = resS[resS.length - 2];
+					color[2] = resS[resS.length - 1];
+				}
+				Pattern pIntensity = Pattern.compile("P: \"Intensity\".*");
+				Matcher mIntensity = pIntensity.matcher(lightAttributeGroup);
+				while(mIntensity.find()) {
+					String[] resS = mIntensity.group(0).split(",");
+					intensity = resS[resS.length-1];
+				}
+			}
+		}
+		color[0] = Float.toString(Float.parseFloat(color[0])*Float.parseFloat(intensity));
+		color[1] = Float.toString(Float.parseFloat(color[1])*Float.parseFloat(intensity));
+		color[2] = Float.toString(Float.parseFloat(color[2])*Float.parseFloat(intensity));
+		String res = "<LIGHT id=\""+lightName+"\" position=\""+resValuesT[0]+","+resValuesT[1]+","+resValuesT[2]+
+		"\" color=\""+color[0]+","+color[1]+","+color[2]+"\">"+lightName+"</LIGHT>";
+		lights.add(res);
 	}
 
 	public static ArrayList<String> getTexturesNames() {
@@ -117,8 +176,13 @@ public class Main {
 		// TODO : CHECK FBX TO SEE HOW LIGHTS ARE HANDLED
 		finalS.append("\n").append(addTab).append("<LIGHTS>");
 		addTab.append("\t");
-		finalS.append("\n").append(addTab)
+		for(int i = 0; i < lights.size(); i++) {
+			finalS.append("\n").append(addTab)
+				.append(lights.get(i));
+		/*
 				.append("<LIGHT id=\"sun\" position=\"1000.0,500.0,500.0\" color=\"1.0,0.8,0.8\">light1</LIGHT>");
+				*/
+		}
 		addTab.deleteCharAt(addTab.length() - 1);
 		finalS.append("\n").append(addTab).append("</LIGHTS>");
 
