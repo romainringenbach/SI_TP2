@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SCENE>
 	<SHADERS>
-		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">textProg</XMATSHADER>
+		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texNormalMapProg</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">shaderBaWMovie</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoonPlane.xml" nbtex="1" nblight="1">shaderCartoonPlane</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBase.xml" nbtex="0" nblight="0">shaderBase</XMATSHADER>
+		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">shaderToon</XMATSHADER>
+		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">texProg</XMATSHADER>
+		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="1" nblight="1">texPhongProg</XMATSHADER>
+		<XMATSHADER file="shaders/shaderPhong.xml" nbtex="0" nblight="0">shaderPhong</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
-		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
-		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
-		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
-		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
-		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoonSphere.xml" nbtex="1" nblight="1">shaderCartoonSphere</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">shaderBaW</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoonCylinder.xml" nbtex="1" nblight="1">shaderCartoonCylinder</XMATSHADER>
 	</SHADERS>
 	<LIGHTS>
-		<LIGHT id="pointLight1" position="-7.0681549455329,5.32381934287356,-16.799515584477" color="35.714287,19.880836,3.4285722">pointLight1</LIGHT>
 	</LIGHTS>
 	<TEXTURES>
 		<TEXTURE id="sol1" type="color">texture/sol1.png</TEXTURE>
@@ -58,17 +62,35 @@
 		<TEXTURE id="sol5" type="color">texture/sol5.png</TEXTURE>
 	</TEXTURES>
 	<SHAPES>
-		<SHAPE id="Western_Saloon1:Western_Saloon1:Saloon" type="obj">
-			<GEOMETRY id="Western_Saloon1:Western_Saloon1:Saloon_geo" uv="1.0,1.0">Western_Saloon1:Western_Saloon1:Saloon()</GEOMETRY>
-			<TEXTID>Western_Saloon1:Western_Saloon1:Saloon_tex</TEXTID>
+		<SHAPE id="pSphere1" type="obj">
+			<GEOMETRY id="pSphere1_geo" uv="1.0,1.0">pSphere1()</GEOMETRY>
+			<TEXTID>pSphere1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="pPyramid1" type="obj">
+			<GEOMETRY id="pPyramid1_geo" uv="1.0,1.0">pPyramid1()</GEOMETRY>
+			<TEXTID>pPyramid1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="pCone1" type="obj">
+			<GEOMETRY id="pCone1_geo" uv="1.0,1.0">pCone1()</GEOMETRY>
+			<TEXTID>pCone1_tex</TEXTID>
 		</SHAPE>
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 
-		<TRANSFORM id="transform_Western_Saloon1:Western_Saloon1:Saloon" translate="-0.481953808120052,0,-7.90345498303995" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0173106575459775,0.0173106575459775,0.0173106575459775" >
-			<TRANSFORM id="transform_Western_Saloon1:Western_Saloon1:Saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="88.5934243162186" scale="0.0,0.0,0.0" >
-					<OBJECT3D id="obj_Western_Saloon1:Western_Saloon1:Saloon" shader="texDiffNormalMapProg">Western_Saloon1:Western_Saloon1:Saloon</OBJECT3D>
+		<TRANSFORM id="transform_pSphere1" translate="-9.29212575661523,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="2.7936173362078,2.7936173362078,2.7936173362078" >
+				<OBJECT3D id="obj_pSphere1" shader="texDiffNormalMapProg">pSphere1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_pPyramid1" translate="5.84209575327507,6.28053816077684,0" rotaxis="1.0,0.0,0.0" angle="-149.972424091387" scale="5.6829709375556,5.6829709375556,5.6829709375556" >
+			<TRANSFORM id="transform_pPyramid1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="14.6708958548975" scale="0.0,0.0,0.0" >
+				<TRANSFORM id="transform_pPyramid1_rot_x" translate="0.0,0.0,0.0"" rotaxis="0.0,0.0,1.0" angle="102.818198534739" scale="0.0,0.0,0.0" >
+						<OBJECT3D id="obj_pPyramid1" shader="texDiffNormalMapProg">pPyramid1</OBJECT3D>
+				</TRANSFORM>
 			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_pCone1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+				<OBJECT3D id="obj_pCone1" shader="texDiffNormalMapProg">pCone1</OBJECT3D>
 		</TRANSFORM>
 
 	</ROOT>

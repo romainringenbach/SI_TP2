@@ -8,6 +8,7 @@ public class Main {
 
 	static String defaultShader = "texDiffNormalMapProg";
 	static String texturesDirectory = "texture";
+	static String shadersDirectory = "texture";
 	static String outputFile = "result.xml";
 	static String fileName = "input.fbx";
 
@@ -23,6 +24,7 @@ public class Main {
 		if (args.length == 0) {
 			System.out.println("Using default values for directories and default shader.");
 			System.out.println("Textures directory : " + texturesDirectory);
+			System.out.println("Shaders directory : " + shadersDirectory);
 			System.out.println("Output file : " + outputFile);
 			System.out.println("File name : " + fileName);
 		} else {
@@ -30,10 +32,11 @@ public class Main {
 				fileName = args[0];
 				outputFile = args[1];
 				texturesDirectory = args[2];
-				defaultShader = args[3];
+				shadersDirectory = args[3];
+				defaultShader = args[4];
 			} catch (Exception e) {
 				System.out.println("Not enough arguments.");
-				System.out.println("use : Main <fileName> <output> <texturesDirectory> <defaultShader>");
+				System.out.println("use : Main <fileName> <output> <texturesDirectory> <shadersDirectory> <defaultShader>");
 				return;
 			}
 		}
@@ -60,7 +63,6 @@ public class Main {
 	}
 
 	public static void checkText(StringBuilder all) {
-		// TODO LIGHTS
 		Pattern pattMesh = Pattern.compile("Model: [0-9]*, \"Model::[^,]*, \"(Mesh)\" \\{([^}]*)\\}");
 		Pattern pattLights = Pattern.compile("Model: [0-9]*, \"Model::[^,]*, \"(Light)\" \\{([^}]*)\\}");
 		Matcher m = pattMesh.matcher(all);
@@ -141,6 +143,46 @@ public class Main {
 		}
 		return res;
 	}
+	
+	public static ArrayList<String> getShaders() {
+		ArrayList<String> res = new ArrayList<String>();
+		File folder = new File(shadersDirectory);
+		File[] listOfFiles = folder.listFiles();
+		Pattern pLightsNb = Pattern.compile("// lights nb: ([0-9]*)");
+		Pattern pTexturesNb = Pattern.compile("// textures nb: ([0-9]*)");
+	
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if (listOfFiles[i].isFile()) {
+				// This will reference one line at a time
+				String line = null;
+				try {
+					// FileReader reads text files in the default encoding.
+					FileReader fileReader = new FileReader(listOfFiles[i].getAbsolutePath());
+
+					// Always wrap FileReader in BufferedReader.
+					BufferedReader bufferedReader = new BufferedReader(fileReader);
+					String lightsNb = "0";
+					String texturesNb = "0";
+					while ((line = bufferedReader.readLine()) != null) {
+						Matcher mLightsNb = pLightsNb.matcher(line);
+						while(mLightsNb.find()) {
+							lightsNb = mLightsNb.group(1);
+						}
+						Matcher mTexturesNb = pTexturesNb.matcher(line);
+						while(mTexturesNb.find()) {
+							texturesNb = mTexturesNb.group(1);
+						}
+					}
+					res.add("<XMATSHADER file=\"shaders/"+listOfFiles[i].getName()+"\" nbtex=\""+texturesNb+"\" nblight=\""+lightsNb+"\">"+listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length()-4)+"</XMATSHADER>");
+					// Always close files.
+					bufferedReader.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+		return res;
+	}
 
 	public static void fillList(ArrayList<String> line) {
 		StringBuilder finalS = new StringBuilder();
@@ -155,7 +197,12 @@ public class Main {
 		// SHADERS
 		finalS.append("\n").append(addTab).append("<SHADERS>");
 		addTab.append("\t");
-		finalS.append("\n").append(addTab)
+		ArrayList<String> shaders = getShaders();
+		for(int i = 0; i < shaders.size(); i++) {
+			finalS.append("\n").append(addTab).append(shaders.get(i));	
+		}
+		
+		/*
 				.append("<XMATSHADER file=\"shaders/texProg.xml\" nbtex=\"1\" nblight=\"0\">textProg</XMATSHADER>")
 				.append("\n").append(addTab)
 				.append("<XMATSHADER file=\"shaders/texDiffProg.xml\" nbtex=\"1\" nblight=\"1\">texDiffProg</XMATSHADER>")
@@ -169,11 +216,12 @@ public class Main {
 				.append("<XMATSHADER file=\"shaders/shaderBaWMovie.xml\" nbtex=\"1\" nblight=\"1\">blackAndWhiteMovie</XMATSHADER>")
 				.append("\n").append(addTab)
 				.append("<XMATSHADER file=\"shaders/shaderBaW.xml\" nbtex=\"1\" nblight=\"1\">blackAndWhite</XMATSHADER>");
+				*/
+		
 		addTab.deleteCharAt(addTab.length() - 1);
 		finalS.append("\n").append(addTab).append("</SHADERS>");
 
 		// LIGHTS
-		// TODO : CHECK FBX TO SEE HOW LIGHTS ARE HANDLED
 		finalS.append("\n").append(addTab).append("<LIGHTS>");
 		addTab.append("\t");
 		for(int i = 0; i < lights.size(); i++) {

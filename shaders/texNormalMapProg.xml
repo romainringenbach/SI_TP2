@@ -7,6 +7,7 @@
 	// texture shader per fragment
 	// ------------------------------------------------------
 	// lights nb: 1
+	// textures nb: 2
 	// ------------------------------------------------------
 
 	// attributes inputs  (vertex arrays)
