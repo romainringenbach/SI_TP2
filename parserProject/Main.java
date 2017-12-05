@@ -4,6 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.*;
 
+/**
+ * @author L.Landais && P-A Fons 
+ * Parser that recognized FBX ASCII files exported from Maya 2016 or 2015 I don't know
+ * and transform them into XML scenegraph file for AtomicGL
+ *	/!\ Not working with Blender files, not the same structure
+ */
+
 public class Main {
 
 	static String defaultShader = "texDiffNormalMapProg";
