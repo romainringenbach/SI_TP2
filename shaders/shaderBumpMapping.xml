@@ -120,17 +120,15 @@
       // eye direction
       vec3 eyeDirection = normalize(-vPosition.xyz);
 
-      vec2 uv = computeUV(vTextureCoord,eyeDirection);
+      vec2 newUV = computeUV(vTextureCoord,eyeDirection);
 			//vec2 uv = vTextureCoord;
 
-      vec4 texColor  = texture2D(uSampler0, uv);
+      /*vec4 texColor  = texture2D(uSampler0, uv);
 
       vec3 normal = normalize(texture2D(uSampler1,uv).rgb * 2.0 - 1.0);
 
       //  diffuse term
-      float diffuse = max(dot(lightDirection,normal), 0.0);
-
-      /*
+      float diffuse = max(dot(lightDirection,normal), 0.0);*/
 
       // normalize normal
       vec3 oldNormal = normalize(vNormal);
@@ -152,15 +150,14 @@
       // transform normal
       vec3 normal = TBN*newNormalTS ;
       //  diffuse term
-      float diffuseLightWeight = max(dot(normal, lightDirection), 0.0);
+      float diffuseLightWeight = max(dot(lightDirection,normal), 0.0);
 
       // texture color
-      vec4 texColor  = texture2D(uSampler0, vec2(newUV.s, newUV.t));
+      vec4 texColor  = texture2D(uSampler0, newUV);
 
-      */
 
       // light color
-      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuse*uPointLightColor0 *texColor.rgb ;
+      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ;
 
       //gl_FragColor = vec4(texColor * diffuse * Kd);
 			gl_FragColor = vec4(lightColor,1.0);
