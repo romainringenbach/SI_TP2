@@ -286,8 +286,8 @@ class atomicGL2MatShader extends atomicGL2Shader {
 
 		if(this.time != null) {
 			var d = new Date();
-			//aGL.gl.uniform1f(this.time, d.getMilliseconds());
-			aGL.gl.uniform1f(this.time, d.now()/100000);
+			aGL.gl.uniform1f(this.time, d.getMilliseconds());
+			//aGL.gl.uniform1f(this.time, d.getTime()/1000000);	// potentiel LSD
 		}
 		if(this.random != null) {
 			aGL.gl.uniform1f(this.random,Math.random());
