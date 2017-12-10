@@ -14,6 +14,7 @@
 	</SHADERS>
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+		<LIGHT id="ambient1" type="ambient" color="1.0,1.0,1.0">ambient1</LIGHT>
 	</LIGHTS>
 	<TEXTURES>
 		<TEXTURE id="diffuse" type="color">example_shader_bump_mapping/diffuse.png</TEXTURE>
@@ -32,7 +33,7 @@
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 
-			<TRANSFORM id="transform_plane" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
+			<TRANSFORM id="transform_plane" translate="-10.0,0.0,-10.0" rotaxis="1.0,0.0,0.0" angle="90.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_plane" shader="shaderBumpMapping">plane</OBJECT3D>
 			</TRANSFORM>
 	</ROOT>
