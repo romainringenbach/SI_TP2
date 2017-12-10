@@ -59,7 +59,7 @@
     // local constant
   		// Kd: diffuse coeff
   		float Kd = 1.0 ;
-      const float nbLayers = 32.0;
+      const float nbLayers = 256.0;
 
   	// inputs
   		varying vec4 vPosition;
@@ -85,8 +85,6 @@
 
       // Steep parallax mapping
 
-
-
       vec2 deltaUV = eyeDirection.xy * 0.1 / (eyeDirection.z * nbLayers);
 
       float depth = texture2D(uSampler2,uv).r;
@@ -95,14 +93,12 @@
       float currentLayerDepth = 0.0;
 
       vec2 currentUV = uv;
-      // remplace le signe inférieur, pb de chargement de shader via xml
-      float test2 = depth;
 
       for (float i = 1.0; i != nbLayers;i++){
         currentLayerDepth += layerDepth;
         currentUV -= deltaUV;
-        test2 = max(depth,currentLayerDepth);
-        if (test2 != depth){
+				depth = texture2D(uSampler2,currentUV).r;
+        if (currentLayerDepth >= depth){
           break;
         }
       }
@@ -125,13 +121,14 @@
       vec3 eyeDirection = normalize(-vPosition.xyz);
 
       vec2 uv = computeUV(vTextureCoord,eyeDirection);
+			//vec2 uv = vTextureCoord;
 
       vec4 texColor  = texture2D(uSampler0, uv);
 
       vec3 normal = normalize(texture2D(uSampler1,uv).rgb * 2.0 - 1.0);
 
       //  diffuse term
-      float diffuseLightWeight = max(dot(normal, lightDirection), 0.0);
+      float diffuse = max(dot(lightDirection,normal), 0.0);
 
       /*
 
@@ -163,11 +160,10 @@
       */
 
       // light color
-      //vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ;
-      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ;
+      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuse*uPointLightColor0 *texColor.rgb ;
 
-      gl_FragColor = vec4(lightColor,1.0);
-
+      //gl_FragColor = vec4(texColor * diffuse * Kd);
+			gl_FragColor = vec4(lightColor,1.0);
     }
 
 
