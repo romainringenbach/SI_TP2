@@ -8,109 +8,109 @@
 // atomicGL2Controls
 //----------------------------------------------------------------------------------------
 
-'use strict';
+class atomicGL2Controls {
+    constructor(agl, sgxml) {
+        this.agl = agl;
+        this.sgxml = sgxml;
+        this.mouseX = 0.0;
+        this.mouseY = 0.0;
+        this.windowHalfX = 0;
+        this.windowHalfY = 0;
+        this.currentlyPressedKeys = {};
+        this.menuOpened = false;
 
-var mouseX = 0.0;
-var mouseY = 0.0;
-var windowHalfX, windowHalfY;
-var currentlyPressedKeys = {};
-var menuOpened = false;
+        // Mouse movements
+        document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
+        //	Movement keyboard callbacks
+        document.addEventListener('keydown', this.key.bind(this, true), false);
+        document.addEventListener('keyup', this.key.bind(this, false), false);
+        // Menu keyboard handling
+        document.addEventListener('keyup', this.handleMenuKeyUp.bind(this), false);
+    }
 
-function addControls() {
-    // Mouse movements
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
-    //	Movement keyboard callbacks
-    document.addEventListener('keydown', handleKeyDown, false);
-    document.addEventListener('keyup', handleKeyUp, false);
-    // Menu keyboard handling
-    document.addEventListener('keyup', handleMenuKeyUp, false);
-}
+    // keyboard movements
+    // --------------------------------
+    key(pressed, event) { this.currentlyPressedKeys[event.key] = pressed; }
 
-// keyboard
-// --------------------------------
-function handleKeyDown(event) { currentlyPressedKeys[event.key] = true; }
-function handleKeyUp(event) { currentlyPressedKeys[event.key] = false; }
+    // ONLY FOR CAMERA MOVEMENT
+    // --------------------------------
+    handleKeys() {
+        //Mouse camera movement X
+        if (Math.abs(this.mouseX) > 0.1) {
+            this.agl.scenegraph.camera.turnright(1.0 * (this.mouseX * this.mouseX * this.mouseX));
+        }
+        //Mouse camera movement Y
+        this.agl.scenegraph.camera.turnup(45 * this.mouseY);
 
-// ONLY FOR CAMERA MOVEMENT
-function handleKeys() {
-    //Mouse camera movement X
-    if (Math.abs(mouseX) > 0.1) {
-        agl.scenegraph.camera.turnright(1.0 * (mouseX * mouseX * mouseX));
-    }
-    //Mouse camera movement Y
-    agl.scenegraph.camera.turnup(45 * mouseY);
-
-    // Keyboard camera movement
-    if (currentlyPressedKeys["d"]) // (D) Right
-    {
-        agl.scenegraph.camera.right();
-    }
-    if (currentlyPressedKeys["q"]) // (Q) Left
-    {
-        agl.scenegraph.camera.left();			//
-    }
-    if (currentlyPressedKeys["z"]) // (Z) Up
-    {
-        agl.scenegraph.camera.up();			//
-    }
-    if (currentlyPressedKeys["s"]) // (S) Down
-    {
-        agl.scenegraph.camera.down();			//
-    }
-    if (currentlyPressedKeys[" "]) // (space)
-    {
-        agl.scenegraph.camera.flyUp();			//
-    }
-    if (currentlyPressedKeys["Control"]) // (ctrl)
-    {
-        agl.scenegraph.camera.flyDown();			//
-    }
-}
-
-// Only for menus and such
-function handleMenuKeyUp(event) {
-    const eventKey = event.key;
-    if (eventKey === ".") { // Show shaders menu
-        $("#overlay").toggle();
-    }
-    if (eventKey === "p")	// Shader Cartoon
-    {
-        objectList.forEach(function (objet) {
-            objet.setShader(agl.indexOfShader("cartoon"));
-        });
-        sgxml.root.shaderId = 0;
-        document.getElementById("shadName").textContent = "cartoon";
-    }
-    if (eventKey === "o") { // Shader Old Movie
-        objectList.forEach(function (objet) {
-            objet.setShader(agl.indexOfShader("blackAndWhiteMovie"));
-        });
-        sgxml.root.shaderId = agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
-        document.getElementById("shadName").textContent = "old movie";
-    }
-    if (eventKey === "c") // (C) debug
-    {
-        console.log('atomicGL - Remi COZOT - 2015');
-    }
-    if (eventKey === "m") // (M) Side Menu
-    {
-        if (menuOpened) {
-            closeNav();
-            menuOpened = false;
-        } else {
-            openNav();
-            menuOpened = true;
+        // Keyboard camera movement
+        if (this.currentlyPressedKeys["d"]) // (D) Right
+        {
+            this.agl.scenegraph.camera.right();
+        }
+        if (this.currentlyPressedKeys["q"]) // (Q) Left
+        {
+            this.agl.scenegraph.camera.left();			//
+        }
+        if (this.currentlyPressedKeys["z"]) // (Z) Up
+        {
+            this.agl.scenegraph.camera.up();			//
+        }
+        if (this.currentlyPressedKeys["s"]) // (S) Down
+        {
+            this.agl.scenegraph.camera.down();			//
+        }
+        if (this.currentlyPressedKeys[" "]) // (space)
+        {
+            this.agl.scenegraph.camera.flyUp();			//
+        }
+        if (this.currentlyPressedKeys["Control"]) // (ctrl)
+        {
+            this.agl.scenegraph.camera.flyDown();			//
         }
     }
-}
 
-// mouse movements
-// ------------------------------
-function onDocumentMouseMove(event) {
-    //omouseX = mouseX;
-    //Use client width and height instead of window's
-    windowHalfX = agl.gl.canvas.clientWidth / 2;
-    windowHalfY = agl.gl.canvas.clientHeight / 2;
-    mouseX = (event.clientX - windowHalfX) / windowHalfX;
-    mouseY = (event.clientY - windowHalfY) / windowHalfY;
+    // Only for menus and such
+    // --------------------------------
+    handleMenuKeyUp(event) {
+        const eventKey = event.key;
+        if (eventKey === ".") { // Show shaders menu
+            $("#overlay").toggle();
+        }
+        if (eventKey === "p")	// Shader Cartoon
+        {
+            //Avec la syntaxe => 'this' réfère à l'instance d'atomicGL2Controls
+            this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("cartoon")));
+            this.sgxml.root.shaderId = 0;
+            document.getElementById("shadName").textContent = "cartoon";
+        }
+        if (eventKey === "o") { // Shader Old Movie
+            this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("blackAndWhiteMovie")));
+            this.sgxml.root.shaderId = this.agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
+            document.getElementById("shadName").textContent = "old movie";
+        }
+        if (eventKey === "c") // (C) debug
+        {
+            console.log('atomicGL - Remi COZOT - 2015');
+        }
+        if (eventKey === "m") // (M) Side Menu
+        {
+            if (this.menuOpened) {
+                closeNav();
+                this.menuOpened = false;
+            } else {
+                openNav();
+                this.menuOpened = true;
+            }
+        }
+    }
+
+    // mouse movements
+    // ------------------------------
+    onDocumentMouseMove(event) {
+        //Use client width and height instead of window's
+        this.windowHalfX = this.agl.gl.canvas.clientWidth / 2;
+        this.windowHalfY = this.agl.gl.canvas.clientHeight / 2;
+        this.mouseX = (event.clientX - this.windowHalfX) / this.windowHalfX;
+        this.mouseY = (event.clientY - this.windowHalfY) / this.windowHalfY;
+    }
 }

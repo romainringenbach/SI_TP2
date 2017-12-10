@@ -24,6 +24,8 @@ var objectList;
 var requestId;
 // Performance monitor
 var stats;
+// Controls
+var controls;
 // -------------------------------------------------
 
 function webGLStart(sceneXmlFile) {
@@ -49,7 +51,7 @@ function webGLStart(sceneXmlFile) {
     ams.initMatrix(agl, 45); // fov = 45 degrees
 
     //Init controls
-    addControls();
+    controls = new atomicGL2Controls(agl, sgxml);
 
     //Add default text to shader menu
     document.getElementById("shadName").textContent = "default shaders";
@@ -72,7 +74,7 @@ function sceneDraw() {
 // nextFrame
 // -----------------------------
 function nextFrame() {
-    handleKeys();
+    controls.handleKeys();
     requestId = requestAnimFrame(nextFrame); //called every frame
     sceneDraw();
     animate();
