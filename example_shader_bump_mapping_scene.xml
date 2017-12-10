@@ -14,7 +14,7 @@
 	</SHADERS>
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
-		<LIGHT id="ambient1" type="ambient" color="1.0,1.0,1.0">ambient1</LIGHT>
+		<LIGHT id="ambient1" type="ambient" color="0.3,0.3,0.3">ambient1</LIGHT>
 	</LIGHTS>
 	<TEXTURES>
 		<TEXTURE id="diffuse" type="color">example_shader_bump_mapping/diffuse.png</TEXTURE>
