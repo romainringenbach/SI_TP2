@@ -138,7 +138,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.time;
 		// random
 		this.random;
-		
+
 		this.build(agl, shaderloader);
 	}
 
@@ -163,7 +163,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		console.log("atomicGLShader2::createProgram -> compile result: " + agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS));
 		// check erreur de compilation sans perte de contexte
 		if (!agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS) && !agl.gl.isContextLost()) {
-			alert("Error compiling shader:\n" + agl.gl.getShaderInfoLog(vertexShader));
+			alert("Error compiling vertex shader "+this.name+" :\n" + agl.gl.getShaderInfoLog(vertexShader));
 			return null;
 		}
 		// fragment
@@ -176,7 +176,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		console.log("atomicGLShader2::createProgram -> compile result: " + agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS));
 		// check erreur de compilation sans perte de contexte
 		if (!agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS) && !agl.gl.isContextLost()) {
-			alert("Error compiling shader:\n" + agl.gl.getShaderInfoLog(fragmentShader));
+			alert("Error compiling fragment shader "+this.name+" :\n" + agl.gl.getShaderInfoLog(fragmentShader));
 			return null;
 		}
 
@@ -242,7 +242,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.nMatrixUniform = agl.gl.getUniformLocation(program, "uNMatrix");
 		this.time = agl.gl.getUniformLocation(program, "uTime");
 		this.random = agl.gl.getUniformLocation(program, "uRandom");
-		
+
 		// lights
 		// uAmbientColor
 		// uPointLightingPosition0|1|2 required per light in the shader
@@ -292,7 +292,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		if(this.random != null) {
 			aGL.gl.uniform1f(this.random,Math.random());
 		}
-		
+
 		var normalMatrix = mat3.create();
 		mat4.toInverseMat3(aMS.mvMatrix, normalMatrix);
 		mat3.transpose(normalMatrix);
