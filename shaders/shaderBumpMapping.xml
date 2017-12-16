@@ -59,7 +59,8 @@
     // local constant
   		// Kd: diffuse coeff
   		float Kd = 1.0 ;
-      const float nbLayers = 256.0;
+
+			const float nbLayers = 32.0;
 
   	// inputs
   		varying vec4 vPosition;
@@ -79,38 +80,78 @@
 		uniform vec3 uPointLightPosition0;
 		uniform vec3 uPointLightColor0;
 
+		float pow2 (float x){
+			return x*x;
+		}
 
+		vec3 computeEyeDirection(vec3 eyeDir){
 
-    vec2 computeUV(vec2 uv, vec3 eyeDirection){
+			// Rotation matrice calcul :
+			// source : https://math.stackexchange.com/questions/180418/calculate-rotation-matrix-to-align-vector-a-to-vector-b-in-3d
 
-      // Steep parallax mapping
+			vec3 a = normalize(vNormal);
+			vec3 b = vec3(0.0,0.0,1.0);
 
-      vec2 deltaUV = eyeDirection.xy * 0.1 / (eyeDirection.z * nbLayers);
+			vec3 v = cross(a,b);
+			float s = sqrt(pow2(v[0])+pow2(v[1])+pow2(v[2])); // sin(teta)
+			float c = dot(a,b); //cos(teta)
 
-      float depth = texture2D(uSampler2,uv).r;
+			mat3 vs = mat3(	vec3(0,v[2],-v[1]),
+											vec3(-v[2],0,v[0]),
+											vec3(v[1],-v[0],0)
+			);
 
-      float layerDepth = 1.0/nbLayers;
-      float currentLayerDepth = 0.0;
+			mat3 I = mat3(	vec3(1,0,0),
+											vec3(0,1,0),
+											vec3(0,0,1)
+			);
 
-      vec2 currentUV = uv;
+			mat3 R = I + vs + vs*vs*((1.0-c)/pow2(s));
 
-      for (float i = 1.0; i != nbLayers;i++){
-        currentLayerDepth += layerDepth;
-        currentUV -= deltaUV;
-				depth = texture2D(uSampler2,currentUV).r;
-        if (currentLayerDepth >= depth){
-          break;
-        }
-      }
+			//------------------------------------
 
-      // Parallax occlusion mapping
+			return R*normalize(eyeDir);
 
-      vec2 previousUV = currentUV + deltaUV;
-      float next = depth - currentLayerDepth;
-      float previous = texture2D(uSampler2,previousUV).r - currentLayerDepth + layerDepth;
-      float weight = next / (next - previous);
+		}
 
-      return mix(currentUV,previousUV,weight);
+	  vec2 computeUV(vec2 uv, vec3 eyeDirection){
+
+		 	if (normalize(vNormal) != normalize(eyeDirection)){
+
+				eyeDirection = computeEyeDirection(eyeDirection);
+
+				if ( 0.0 > eyeDirection.z ){
+					// Steep parallax mapping
+					float layerDepth = 1.0/nbLayers;
+					float currentLayerDepth = 0.0;
+
+					vec2 deltaUV = eyeDirection.xy*0.05 / (eyeDirection.z*nbLayers);
+
+					vec2 currentUV = uv;
+
+					float depth = texture2D(uSampler2,currentUV).r;
+
+					for (float i = 1.0; i != nbLayers;i++){
+						currentLayerDepth += layerDepth;
+						currentUV -= deltaUV;
+						depth = texture2D(uSampler2,currentUV).r;
+						if (currentLayerDepth >= depth){
+							break;
+						}
+					}
+
+					// Parallax occlusion mapping
+
+					vec2 previousUV = currentUV + deltaUV;
+					float next = depth - currentLayerDepth;
+					float previous = texture2D(uSampler2,previousUV).r - currentLayerDepth + layerDepth;
+					float weight = next / (next - previous);
+
+					return mix(currentUV,previousUV,weight);
+				}
+			}
+
+			return uv;
     }
 
     void main(void){
@@ -120,21 +161,17 @@
       // eye direction
       vec3 eyeDirection = normalize(-vPosition.xyz);
 
-      vec2 newUV = computeUV(vTextureCoord,eyeDirection);
+
+
+      vec2 uv = computeUV(vTextureCoord,eyeDirection);
 			//vec2 uv = vTextureCoord;
 
-      /*vec4 texColor  = texture2D(uSampler0, uv);
-
-      vec3 normal = normalize(texture2D(uSampler1,uv).rgb * 2.0 - 1.0);
-
-      //  diffuse term
-      float diffuse = max(dot(lightDirection,normal), 0.0);*/
-
+			// Calcul des tangent et biTangent
       // normalize normal
       vec3 oldNormal = normalize(vNormal);
       // new normal in tangent space
-      vec3 newNormalTS = normalize(2.0*texture2D(uSampler1, newUV).xyz -1.0) ;
-      //newNormalTS.z = newNormalTS.z*1000.0;
+      vec3 newNormalTS = normalize(2.0*texture2D(uSampler1, uv).xyz -1.0) ;
+
       // newNormalTS = normalize(newNormalTS);
       // TS to View
       vec3 biTangent = cross(oldNormal,vec3(0.0,0.0,1.0));
@@ -150,17 +187,17 @@
       // transform normal
       vec3 normal = TBN*newNormalTS ;
       //  diffuse term
+
       float diffuseLightWeight = max(dot(lightDirection,normal), 0.0);
 
       // texture color
-      vec4 texColor  = texture2D(uSampler0, newUV);
-
+      vec4 texColor  = texture2D(uSampler0, uv);
 
       // light color
-      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ;
+      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ; // Kd*uAmbientColor*texColor.rgb +
 
-      //gl_FragColor = vec4(texColor * diffuse * Kd);
 			gl_FragColor = vec4(lightColor,1.0);
+
     }
 
 
