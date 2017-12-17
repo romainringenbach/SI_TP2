@@ -11,11 +11,11 @@
 	<link rel="stylesheet" type="text/css" href="css/atomicUI.css">
 
 	<!-- External Libs -->
-	<script type="text/javascript" src="utils/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="utils/glMatrix-0.js"></script>
-	<script type="text/javascript" src="utils/webgl-utils.js"></script>
-	<script type="text/javascript" src="utils/webgl-debug.js"></script>
-	<script type="text/javascript" src="utils/stats.min.js"></script>
+	<script type="text/javascript" src="js/utils/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/utils/glMatrix-0.js"></script>
+	<script type="text/javascript" src="js/utils/webgl-utils.js"></script>
+	<script type="text/javascript" src="js/utils/webgl-debug.js"></script>
+	<script type="text/javascript" src="js/utils/stats.min.js"></script>
 
 	<!-- ATOMICGL ENGINE -->
 	<!-- load 3D OBJETCS modules -->
@@ -24,26 +24,14 @@
 	<script type="text/javascript" src="example_shader_cartoon_objs/plane.js"></script>
 	<script type="text/javascript" src="example_shader_cartoon_objs/cylinder.js"></script>
 
-
-	<!-- load "modules" -->
-	<script type="text/javascript" src="atomicGL2Controls.js"></script>
-	<script type="text/javascript" src="atomicGL2UI.js"></script>
-	<script type="text/javascript" src="atomicGL2Context.js"></script>
-	<script type="text/javascript" src="atomicGL2MatrixStack.js"></script>
-	<script type="text/javascript" src="atomicGL2SceneGraph.2.js"></script>
-	<script type="text/javascript" src="atomicGL2Texture.js"></script>
-	<script type="text/javascript" src="atomicGL2Clock.js"></script>
-	<script type="text/javascript" src="atomicGLWalkCamera.js"></script>
-	<script type="text/javascript" src="atomicGL2Shader.2.js"></script>
-	<script type="text/javascript" src="atomicGL2Object3d.js"></script>
-	<script type="text/javascript" src="atomicGL2xml.2.js"></script>
-	<script type="text/javascript" src="atomicGL2App.js"></script>
+	<!-- AtomicGL2 Main Script -->
+	<script type="module" src="js/atomicGL2App.js"></script>
 </head>
 
-<body onload="webGLStart('example_shader_cartoon_scene.xml');">
+<body id="example_shader_cartoon_scene.xml">
 	<!-- Toggleable Menu -->
 	<div class="sidenav" id="sideMenu">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a id="menubutton" href="javascript:void(0)" class="closebtn">&times;</a>
 		<a href="https://github.com/nealith/SI_TP2" target="_blank" rel="noopener noreferrer">About</a>
 	</div>
 	<!-- WebGL Canvas -->

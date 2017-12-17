@@ -1,3 +1,5 @@
+import atomicGL2UI from './atomicGL2UI.js';
+
 // atomicGL
 //----------------------------------------------------------------------------------------
 // author: RC				
@@ -9,6 +11,7 @@
 //----------------------------------------------------------------------------------------
 
 class atomicGL2Controls {
+    
     constructor(agl, sgxml) {
         this.agl = agl;
         this.sgxml = sgxml;
@@ -18,6 +21,7 @@ class atomicGL2Controls {
         this.windowHalfY = 0;
         this.currentlyPressedKeys = {};
         this.menuOpened = false;
+        this.UI = new atomicGL2UI();
 
         // Mouse movements
         document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
@@ -95,10 +99,10 @@ class atomicGL2Controls {
         if (eventKey === "m") // (M) Side Menu
         {
             if (this.menuOpened) {
-                closeNav();
+                this.UI.closeNav();
                 this.menuOpened = false;
             } else {
-                openNav();
+                this.UI.openNav();
                 this.menuOpened = true;
             }
         }
@@ -114,3 +118,5 @@ class atomicGL2Controls {
         this.mouseY = (event.clientY - this.windowHalfY) / this.windowHalfY;
     }
 }
+
+export default atomicGL2Controls;
