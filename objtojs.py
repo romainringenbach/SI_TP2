@@ -41,7 +41,7 @@ def convertFile(path):
 
             tri = []
 
-            if len(arrayLine) == 4:
+            if len(arrayLine) == 4 or (len(arrayLine) == 5 and arrayLine[4] == ''):
                 for value in arrayLine[1:len(arrayLine)]:
 
                     fData = value.split('/')
@@ -57,7 +57,7 @@ def convertFile(path):
 
                 f.append(tri)
 
-            if len(arrayLine) == 5:
+            elif len(arrayLine) == 5:
                 for value in arrayLine[1:len(arrayLine)-1]:
 
                     fData = value.split('/')
