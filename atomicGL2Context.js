@@ -61,7 +61,7 @@ class atomicGL2Context {
 		}
 		else { // GL context initialised -> first init (background color, DEPTH_TEST)
 			//DEBUG
-			console.log(this.gl.getContextAttributes());
+			//console.log(this.gl.getContextAttributes());
 			this.viewportWidth = canvas.width;
 			this.viewportHeight = canvas.height;
 			this.gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], 1.0);
@@ -111,7 +111,7 @@ class atomicGL2Context {
 	pushProgram(prog) {
 		//console.log("atomicGLContext::pushProgram");
 		this.shaderPrograms.push(prog);
-		var id = this.shaderPrograms.length - 1;
+		let id = this.shaderPrograms.length - 1;
 		//console.log("-- atomicGLContext::pushProgram("+prog.name+")-> index:"+id);
 		return id;
 	}
@@ -121,9 +121,9 @@ class atomicGL2Context {
 	// input: 	id - string: id name of texture
 	// output:	int - index of texture in this.textures
 	indexOfTexture(id) {
-		var res = -1;
-		for (var i = 0; i < this.textures.length; i++) {
-			var idTex = this.textures[i].id;
+		let res = -1;
+		for (let i = 0; i < this.textures.length; i++) {
+			let idTex = this.textures[i].id;
 			if (id == idTex) { res = i; break }
 		}
 		return res;
@@ -134,9 +134,9 @@ class atomicGL2Context {
 	// input: 	id - string: id name of shader
 	// output:	int - index of shader in this.shaders
 	indexOfShader(id) {
-		var res = -1;
-		for (var i = 0; i < this.shaderPrograms.length; i++) {
-			var shadername = this.shaderPrograms[i].name;
+		let res = -1;
+		for (let i = 0; i < this.shaderPrograms.length; i++) {
+			let shadername = this.shaderPrograms[i].name;
 			if (id == shadername) { res = i; break }
 		}
 		return res;
@@ -147,9 +147,9 @@ class atomicGL2Context {
 	// input: 	id - string: id name of shape
 	// output:	int - index of shape in this.shapes
 	indexOfShape(id) {
-		var res = -1;
-		for (var i = 0; i < this.shapes.length; i++) {
-			var shapename = this.shapes[i].name;
+		let res = -1;
+		for (let i = 0; i < this.shapes.length; i++) {
+			let shapename = this.shapes[i].name;
 			if (id == shapename) { res = i; break }
 		}
 		return res;
