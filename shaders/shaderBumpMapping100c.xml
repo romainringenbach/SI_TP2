@@ -71,6 +71,9 @@
     	uniform sampler2D uSampler0; // Texture
     	uniform sampler2D uSampler1; // Normal Map
       uniform sampler2D uSampler2; // Depth Map
+			uniform int uPointLightNumber;
+			uniform float uPointLightPositions[300];
+			uniform float uPointLightColors[300];
 
     // lights
 		// ambient
@@ -84,6 +87,10 @@
 			return x*x;
 		}
 
+		float norm(vec3 v){
+			return sqrt(pow2(v[0])+pow2(v[1])+pow2(v[2]));
+		}
+
 		vec3 computeEyeDirection(vec3 eyeDir){
 
 			// Rotation matrice calcul :
@@ -93,7 +100,7 @@
 			vec3 b = vec3(0.0,0.0,1.0);
 
 			vec3 v = cross(a,b);
-			float s = sqrt(pow2(v[0])+pow2(v[1])+pow2(v[2])); // sin(teta)
+			float s = norm(v); // sin(teta)
 			float c = dot(a,b); //cos(teta)
 
 			mat3 vs = mat3(	vec3(0,v[2],-v[1]),
@@ -157,7 +164,7 @@
     void main(void){
 
       // light direction
-      vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
+      vec3 lightDirection = vec3(0.0,0.0,0.0);
       // eye direction
       vec3 eyeDirection = normalize(-vPosition.xyz);
 
@@ -188,16 +195,34 @@
       vec3 normal = TBN*newNormalTS ;
       //  diffuse term
 
-
-
-      float diffuseLightWeight = max(dot(lightDirection,normal), 0.0);
-
-      // texture color
+			// texture color
       vec4 texColor  = texture2D(uSampler0, uv);
 
-      // light color
-      vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ; // Kd*uAmbientColor*texColor.rgb +
+      float diffuseLightWeight = 0.0;
+			vec3 lightColor = texColor.xyz;
 
+			if(uPointLightNumber >0){
+				lightColor = vec3(0.0,0.0,0.0);
+				for(int i = 0; i != 100 ; i++){
+					if(i == uPointLightNumber){
+						break;
+					}
+					vec3 c = vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
+					vec3 p = vec3(uPointLightPositions[i * 3 + 0],uPointLightPositions[i * 3 + 1],uPointLightPositions[i * 3 + 2]);
+
+					lightDirection = p - vPosition.xyz;
+					diffuseLightWeight = max(dot(normalize(lightDirection),normal), 0.0);
+					lightColor = lightColor + (diffuseLightWeight*c/pow2(norm(lightDirection)))*texColor.rgb*Kd;
+
+				}
+
+			}
+
+
+
+      // light color
+      //vec3 lightColor = Kd*uAmbientColor*texColor.rgb + Kd*diffuseLightWeight*uPointLightColor0 *texColor.rgb ; // Kd*uAmbientColor*texColor.rgb +
+			lightColor = lightColor + Kd*uAmbientColor*texColor.rgb;
 			gl_FragColor = vec4(lightColor,1.0);
 
     }
