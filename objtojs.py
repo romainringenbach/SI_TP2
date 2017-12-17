@@ -41,7 +41,7 @@ def convertFile(path):
 
             tri = []
 
-            if len(arrayLine) == 4:
+            if len(arrayLine) == 4 or (len(arrayLine) == 5 and arrayLine[4] == ''):
                 for value in arrayLine[1:len(arrayLine)]:
 
                     fData = value.split('/')
@@ -57,40 +57,39 @@ def convertFile(path):
 
                 f.append(tri)
 
-            if len(arrayLine) == 5:
-                if arrayLine[4] != '':
-                    for value in arrayLine[1:len(arrayLine)-1]:
+            elif len(arrayLine) == 5:
+                for value in arrayLine[1:len(arrayLine)-1]:
 
-                        fData = value.split('/')
+                    fData = value.split('/')
 
-                        ver = ()
+                    ver = ()
 
-                        if fData[1] == '':
-                            ver = (int(fData[0]),-1,int(fData[2]))
-                        else:
-                            ver = (int(fData[0]),int(fData[1]),int(fData[2]))
+                    if fData[1] == '':
+                        ver = (int(fData[0]),-1,int(fData[2]))
+                    else:
+                        ver = (int(fData[0]),int(fData[1]),int(fData[2]))
 
-                        tri.append(ver)
+                    tri.append(ver)
 
-                    f.append(tri)
-                    tri = []
+                f.append(tri)
+                tri = []
 
-                    tmp = [arrayLine[1],arrayLine[3],arrayLine[4]]
+                tmp = [arrayLine[1],arrayLine[3],arrayLine[4]]
 
-                    for value in tmp:
+                for value in tmp:
 
-                        fData = value.split('/')
+                    fData = value.split('/')
 
-                        ver = ()
+                    ver = ()
 
-                        if fData[1] == '':
-                            ver = (int(fData[0]),-1,int(fData[2]))
-                        else:
-                            ver = (int(fData[0]),int(fData[1]),int(fData[2]))
+                    if fData[1] == '':
+                        ver = (int(fData[0]),-1,int(fData[2]))
+                    else:
+                        ver = (int(fData[0]),int(fData[1]),int(fData[2]))
 
-                        tri.append(ver)
+                    tri.append(ver)
 
-                    f.append(tri)
+                f.append(tri)
 
 
 
