@@ -1,7 +1,7 @@
-# Converti un fihier .obj en .js et place ce dernier au même endroit
+# Convertit un fihier .obj en .js et place ce dernier au même endroit
 
 # pour charger dans la console python :  exec(open("path/objtojs.py").read())
-# pour convertire un obj : convertFile("path/name.obj")
+# pour convertir un obj : convertFile("path/name.obj")
 from os import listdir
 from os.path import isfile, join
 
@@ -24,7 +24,7 @@ def convertFile(path):
     arrayLines = fileString.split('\n')
 
     name = ''
-
+    materialName = 'default'
     v = []
     vn = []
     vt = []
@@ -101,6 +101,12 @@ def convertFile(path):
             v.append((float(arrayLine[1]),float(arrayLine[2]),float(arrayLine[3])))
         if arrayLine[0] == 'vt':
             vt.append((float(arrayLine[1]),float(arrayLine[2])))
+        if arrayLine[0] == 'usemtl':
+            writeJSFile(path,v,vn,vt,f,material)
+            material = arrayLine[1]
+            f = []
+
+def writeJSFile(path, v, vn, vt, f, material)
 
     #Treat new list
 
@@ -115,7 +121,7 @@ def convertFile(path):
     for t in f:
 
         tindex = []
-        # Give a index to each group, add their values in the ordre to each array
+        # Give a index to each group, add their values in the order to each array
         for ts in t:
             if ts in valuesindex.keys():
                 tindex.append(valuesindex[ts])
@@ -146,17 +152,11 @@ def convertFile(path):
         for j in tindex:
             index.append(j)
 
-
-
-
-
-
-
-    newpath = path[0:len(path)-3] + "js"
+    newpath = path[0:len(path)-4] + "_"+material+".js"
 
     js = open(newpath,"w")
 
-    js.write(name+" = function(){"+"\r\n")
+    js.write(name+"_"+material+" = function(){"+"\r\n")
 
 
     #vertices
