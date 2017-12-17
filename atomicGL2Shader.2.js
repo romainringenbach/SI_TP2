@@ -132,6 +132,9 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.ambientColorUniform;
 		this.pointLightLocationUniform = [];
 		this.pointLightColorUniform = [];
+		this.pointLightColorUniformArray;
+		this.pointLightLocationUniformArray;
+		this.pointLightNumber;
 		// texture -sampler
 		this.samplerUniform = [];
 		// time
@@ -259,6 +262,10 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			this.pointLightColorUniform[i] = agl.gl.getUniformLocation(program, "uPointLightColor" + i);
 		}
 
+		this.pointLightColorUniformArray = agl.gl.getUniformLocation(program, "uPointLightPositions");
+		this.pointLightLocationUniformArray =  agl.gl.getUniformLocation(program, "uPointLightColors");
+		this.pointLightNumber =  agl.gl.getUniformLocation(program, "uPointLightNumber");
+
 		// textures
 		for (var i = 0; i < this.nbTex; i++) {
 			//console.log("atomicGLShader::createProgram - getUniformLocation ->"+"uSampler"+i);
@@ -312,6 +319,33 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			aGL.gl.uniform3f(this.pointLightLocationUniform[i], aGL.omniLightLocation[i * 3 + 0], aGL.omniLightLocation[i * 3 + 1], aGL.omniLightLocation[i * 3 + 2]);
 			aGL.gl.uniform3f(this.pointLightColorUniform[i], aGL.omniLightColor[i * 3 + 0], aGL.omniLightColor[i * 3 + 1], aGL.omniLightColor[i * 3 + 2]);
 		}
+
+		// New pointlights management
+
+		var tmpLightsColors = new Float32Array();
+		var tmpLightsLocations = new Float32Array();
+
+		for (var i = 0; i < aGL.omniLightNumber; i++) {
+			var tmpLightColor = new Float32Array();
+			var tmpLightLocation = new Float32Array();
+
+			tmpLightColor[0] = aGL.omniLightColor[i * 3 + 0];
+			tmpLightLocation[0] = aGL.omniLightLocation[i * 3 + 0];
+
+			tmpLightColor[1] = aGL.omniLightColor[i * 3 + 1];
+			tmpLightLocation[1] = aGL.omniLightLocation[i * 3 + 1];
+
+			tmpLightColor[2] = aGL.omniLightColor[i * 3 + 2];
+			tmpLightLocation[2] = aGL.omniLightLocation[i * 3 + 2];
+
+			tmpLightsColors[i] = tmpLightColor;
+			tmpLightsLocations[i] = tmpLightLocation;
+		}
+
+		aGL.gl.uniform1fv(this.pointLightLocationUniformArray,aGL.omniLightLocation);
+		aGL.gl.uniform1fv(this.pointLightColorUniformArray,aGL.omniLightColor);
+		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
+
 
 		// textures
 	}
