@@ -40,7 +40,7 @@ class atomicGL2App {
         //HTML canvas
         this.canvas;
 
-        this.init();
+        // this.init();
     }
     
     // Basic components init
@@ -131,4 +131,4 @@ class atomicGL2App {
 }
 
 let app = new atomicGL2App();
-// window.addEventListener("load", new atomicGL2App());
+window.addEventListener("load", app.init());

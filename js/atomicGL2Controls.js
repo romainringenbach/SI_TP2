@@ -92,15 +92,29 @@ class atomicGL2Controls {
         }
         if (eventKey === "p")	// Shader Cartoon
         {
-            //Avec la syntaxe => 'this' réfère à l'instance d'atomicGL2Controls
-            this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("cartoon")));
-            this.sgxml.root.shaderId = 0;
-            document.getElementById("shadName").textContent = "cartoon";
+            let shaderBox = document.getElementById("shadName");
+            if (shaderBox.textContent != "cartoon") {
+                //Avec la syntaxe => 'this' réfère à l'instance d'atomicGL2Controls
+                this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("cartoon")));
+                this.sgxml.root.shaderId = 0;
+                shaderBox.textContent = "cartoon";
+            }
         }
         if (eventKey === "o") { // Shader Old Movie
-            this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("blackAndWhiteMovie")));
-            this.sgxml.root.shaderId = this.agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
-            document.getElementById("shadName").textContent = "old movie";
+            let shaderBox = document.getElementById("shadName");
+            if (shaderBox.textContent != "old movie") {
+                this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("blackAndWhiteMovie")));
+                this.sgxml.root.shaderId = this.agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
+                shaderBox.textContent = "old movie";
+            }
+        }
+        if (eventKey === "f") { // Fog Diff Shader
+            let shaderBox = document.getElementById("shadName");
+            if (shaderBox.textContent != "fog") {
+                this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("texDiffFog")));
+                this.sgxml.root.shaderId = 0;
+                shaderBox.textContent = "fog";
+            }
         }
         if (eventKey === "c") // (C) debug
         {
