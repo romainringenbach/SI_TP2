@@ -12,9 +12,9 @@ import atomicGL2UI from './atomicGL2UI.js';
 
 class atomicGL2Controls {
     
-    constructor(agl, sgxml) {
-        this.agl = agl;
-        this.sgxml = sgxml;
+    constructor() {
+        this.agl;
+        this.sgxml;
         this.mouseX = 0.0;
         this.mouseY = 0.0;
         this.windowHalfX = 0;
@@ -32,6 +32,10 @@ class atomicGL2Controls {
         document.addEventListener('keyup', this.handleMenuKeyUp.bind(this), false);
     }
 
+    setAglXml(agl, sgxml) {
+        this.agl = agl;
+        this.sgxml = sgxml;
+    }
     // keyboard movements
     // --------------------------------
     key(pressed, event) { this.currentlyPressedKeys[event.key] = pressed; }
@@ -79,6 +83,12 @@ class atomicGL2Controls {
         const eventKey = event.key;
         if (eventKey === ".") { // Show shaders menu
             $("#overlay").toggle();
+            // let overlay = document.getElementById('overlay');
+            // if (overlay.style.display === 'none') {
+            //     overlay.style.display = 'inline';
+            // } else {
+            //     overlay.style.display = 'none';
+            // }
         }
         if (eventKey === "p")	// Shader Cartoon
         {

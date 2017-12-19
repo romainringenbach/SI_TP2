@@ -37,49 +37,62 @@ class atomicGL2App {
         this.fov = 45;
         // Canvas background color
         this.bgcolor = [0.15, 0.1, 0.5];
+        //HTML canvas
+        this.canvas;
 
-        this.webGLStart();
+        this.init();
     }
     
-    webGLStart() {
-        // init
-        // -----------------------------
-        // recover OpenGL canvas
-        this.agl = new atomicGL2Context();
+    // Basic components init
+    init() {
         this.ams = new atomicGL2MatrixStack();
         this.sceneClock = new atomicGL2Clock();
-    
-    
-        let canvas = document.getElementById("oglcanvas");
-        // Handle context lost
-        canvas.addEventListener('webglcontextlost', this.handleContextLost.bind(this), false);
-        // init OpenGL context
-        // canvas, background color
-        this.agl.initGL(canvas, this.bgcolor);
-    
-        // scenegraph creation from xml file
-        let sceneXmlFile = document.getElementsByTagName("body")[0].id;
-        console.log(sceneXmlFile);
-        this.sgxml = new atomicGL2xml(this.agl, sceneXmlFile); //'example_castle_scene.xml'
-        this.objectList = this.sgxml.objectList;
-    
-        // init Matrix Stack
-        this.ams.initMatrix(this.agl, this.fov);
-    
         //Init controls
-        this.controls = new atomicGL2Controls(this.agl, this.sgxml);
-    
+        this.controls = new atomicGL2Controls();
         //Add default text to shader menu
         document.getElementById("shadName").textContent = "default shaders";
-    
+        //fps counter
         this.stats = new Stats();
         this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
         document.getElementById('oglcontainer').appendChild(this.stats.dom);
+
+        this.canvas = document.getElementById("oglcanvas");
+        
+        // DEBUG : test context lost and restore
+        /* this.canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(this.canvas);
+        // lose the context when I press click the mouse.
+        var _this = this;
+        window.addEventListener("mousedown", function() {
+            _this.canvas.loseContext();
+        }, false);
+        this.canvas.setRestoreTimeout(5000);  // recover in 5 seconds */
+
+        // Handle context lost
+        this.canvas.addEventListener('webglcontextlost', this.handleContextLost.bind(this), false);
+        this.canvas.addEventListener('webglcontextrestored', this.restoreLostContext.bind(this), false);
+        
+        this.webGLStart();
+    }
     
+    //WebGL init
+    webGLStart() {
+        // init OpenGL context
+        // canvas, background color
+        this.agl = new atomicGL2Context();
+        this.agl.initGL(this.canvas, this.bgcolor);
+        // scenegraph creation from xml file : shaders, program, textures, buffers
+        let sceneXmlFile = document.getElementsByTagName("body")[0].id;
+        console.log(sceneXmlFile);
+        this.sgxml = new atomicGL2xml(this.agl, sceneXmlFile);
+        this.objectList = this.sgxml.objectList;
+        //reset attribs if context lost
+        this.controls.setAglXml(this.agl, this.sgxml);
+        // init Matrix Stack
+        this.ams.initMatrix(this.agl, this.fov);
         // start the animation
         this.nextFrame();
     }
-    
+
     // draw
     // -----------------------------
     sceneDraw() {
@@ -107,7 +120,13 @@ class atomicGL2App {
     // If WebGL Context lost
     handleContextLost(event) {
         event.preventDefault();
+        console.log('context lost');
         cancelRequestAnimFrame(this.requestId);
+    }
+
+    restoreLostContext(e) {
+        console.log('context restored');
+        this.webGLStart();
     }
 }
 

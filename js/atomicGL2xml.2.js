@@ -39,6 +39,7 @@ class atomicGL2xml {
 	// loadXML
 	loadXML(agl, name) {
 		var xmlhttp = new XMLHttpRequest();
+		// TODO: charger le xml de façon asynchrone
 		xmlhttp.open("GET", name, false);
 		xmlhttp.send();
 		var xmlDoc = xmlhttp.responseXML;
