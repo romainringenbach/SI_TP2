@@ -18,7 +18,7 @@
 	<TEXTURES>
 		<TEXTURE id="plane" type="color">example_shader_cartoon_objs/plane.png</TEXTURE>
 		<TEXTURE id="skyTex" type="color">texture/skybox_texture.png</TEXTURE>
-				<TEXTURE id="5" type="color">texture/saloon/5.png"</TEXTURE>
+		<TEXTURE id="5" type="color">texture/saloon/5.png"</TEXTURE>
 		<TEXTURE id="BOARD08" type="color">texture/saloon/BOARD08.png"</TEXTURE>
 		<TEXTURE id="BOARD08B" type="normal">texture/saloon/BOARD08B.png"</TEXTURE>
 		<TEXTURE id="metbgr01" type="color">texture/saloon/metbgr01.png"</TEXTURE>
@@ -41,26 +41,57 @@
 			<GEOMETRY id="plane" uv="1.0,1.0">Plane()</GEOMETRY>
 			<TEXTID>plane</TEXTID>
 		</SHAPE>
-		<SHAPE id="saloon" type="obj">
-			<GEOMETRY id="saloon_geo" uv="0.2,0.2">saloon()</GEOMETRY>
-			<!--<TEXTID>wood1a</TEXTID>
+		<SHAPE id="saloon_5" type="obj">
+			<GEOMETRY id="saloon_geo_mat_5" uv="0.2,0.2">Western_Saloon_Material__34243()</GEOMETRY>
+			<TEXTID>5</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_8" type="obj">
+			<GEOMETRY id="saloon_geo_mat_8" uv="0.2,0.2">Western_Saloon_Material__34076()</GEOMETRY>
 			<TEXTID>BOARD08</TEXTID>
-			<TEXTID>BOARD08B</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_metbgr01" type="obj">
+			<GEOMETRY id="saloon_geo_mat_metbgr01" uv="0.2,0.2">Western_Saloon_Material__34491()</GEOMETRY>
 			<TEXTID>metbgr01</TEXTID>
-			<TEXTID>mod-wood</TEXTID>
-			<TEXTID>mod-wood_B</TEXTID>
-			<TEXTID>Saloon_Door</TEXTID>
-			<TEXTID>Saloon_sign</TEXTID>
-			<TEXTID>Sand01B</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_metbgr01_2" type="obj">
+			<GEOMETRY id="saloon_geo_mat_metbgr01_2" uv="0.2,0.2">Western_Saloon_Material__34504()</GEOMETRY>
+			<TEXTID>metbgr01</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_SHINGLES" type="obj">
+			<GEOMETRY id="saloon_geo_mat_SHINGLES" uv="0.2,0.2">Western_Saloon_Material__34102()</GEOMETRY>
 			<TEXTID>SHINGLES</TEXTID>
 			<TEXTID>SHINGLESB</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_TEXTURE2" type="obj">
+			<GEOMETRY id="saloon_geo_mat_TEXTURE2" uv="0.2,0.2">Western_Saloon_Material__63737()</GEOMETRY>
 			<TEXTID>TEXTURE2</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_window_pane_Grey" type="obj">
+			<GEOMETRY id="saloon_geo_mat_window_pane_Grey" uv="0.2,0.2">Western_Saloon_Material__34256()</GEOMETRY>
 			<TEXTID>window_pane_Grey</TEXTID>
-			<TEXTID>WOO006</TEXTID>
-			<TEXTID>WOO006B</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_BOARD08" type="obj">
+			<GEOMETRY id="saloon_geo_mat_BOARD08" uv="0.2,0.2">Western_Saloon_Material__34103()</GEOMETRY>
+			<TEXTID>BOARD08</TEXTID>
+			<TEXTID>BOARD08B</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_mod-wood" type="obj">
+			<GEOMETRY id="saloon_geo_mat_mod-wood" uv="0.2,0.2">Western_Saloon_Material__34104()</GEOMETRY>
+			<TEXTID>mod-wood</TEXTID>
+			<TEXTID>mod-wood_B</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_Saloon_Door" type="obj">
+			<GEOMETRY id="saloon_geo_mat_Saloon_Door" uv="0.2,0.2">Western_Saloon_Material__34050()</GEOMETRY>
+			<TEXTID>Saloon_Door</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_Saloon_sign" type="obj">
+			<GEOMETRY id="saloon_geo_mat_Saloon_sign" uv="0.2,0.2">Western_Saloon_Material__34077()</GEOMETRY>
+			<TEXTID>Saloon_sign</TEXTID>
+		</SHAPE>
+		<SHAPE id="saloon_wood1a" type="obj">
+			<GEOMETRY id="saloon_geo_mat_wood1a" uv="0.2,0.2">Western_Saloon_Material__34220()</GEOMETRY>
+			<TEXTID>wood1a</TEXTID>
 			<TEXTID>wood1b</TEXTID>
-			<TEXTID>5</TEXTID>-->
-			<TEXTID>plane</TEXTID>
 		</SHAPE>
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
@@ -68,7 +99,18 @@
 					<OBJECT3D id="obj_plane" shader="textProg">plane</OBJECT3D>
 			</TRANSFORM>
 			<TRANSFORM id="transform_sal" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0" scale="0.03,0.03,0.03">
-					<OBJECT3D id="saloon" shader="textProg">saloon</OBJECT3D>
+					<OBJECT3D id="saloon_mod-wood" shader="textProg">saloon_mod-wood</OBJECT3D>
+					<OBJECT3D id="saloon_Saloon_Door" shader="textProg">saloon_Saloon_Door</OBJECT3D>
+					<OBJECT3D id="saloon_wood1a" shader="textProg">saloon_wood1a</OBJECT3D>
+					<OBJECT3D id="saloon_5" shader="textProg">saloon_5</OBJECT3D>
+					<OBJECT3D id="saloon_8" shader="textProg">saloon_8</OBJECT3D>
+					<OBJECT3D id="saloon_metbgr01" shader="textProg">saloon_metbgr01</OBJECT3D>
+					<OBJECT3D id="saloon_metbgr01_2" shader="textProg">saloon_metbgr01_2</OBJECT3D>
+					<OBJECT3D id="saloon_SHINGLES" shader="textProg">saloon_SHINGLES</OBJECT3D>
+					<OBJECT3D id="saloon_TEXTURE2" shader="textProg">saloon_TEXTURE2</OBJECT3D>
+					<OBJECT3D id="saloon_window_pane_Grey" shader="textProg">saloon_window_pane_Grey</OBJECT3D>
+					<OBJECT3D id="saloon_BOARD08" shader="textProg">saloon_BOARD08</OBJECT3D>
+					<OBJECT3D id="saloon_Saloon_sign" shader="textProg">saloon_Saloon_sign</OBJECT3D>
 			</TRANSFORM>
 	</ROOT>
 </SCENE>

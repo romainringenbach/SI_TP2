@@ -4,6 +4,7 @@
 # pour convertire un obj : convertFile("path/name.obj")
 from os import listdir
 from os.path import isfile, join
+import os.path
 
 
 
@@ -24,6 +25,7 @@ def convertFile(path):
     arrayLines = fileString.split('\n')
 
     name = ''
+    materialName = 'default'
 
     v = []
     vn = []
@@ -42,7 +44,7 @@ def convertFile(path):
             tri = []
 
             if len(arrayLine) == 4 or (len(arrayLine) == 5 and arrayLine[4] == ''):
-                for value in arrayLine[1:len(arrayLine)]:
+                for value in arrayLine[1:4]:
 
                     fData = value.split('/')
 
@@ -101,6 +103,14 @@ def convertFile(path):
             v.append((float(arrayLine[1]),float(arrayLine[2]),float(arrayLine[3])))
         if arrayLine[0] == 'vt':
             vt.append((float(arrayLine[1]),float(arrayLine[2])))
+        if arrayLine[0] == 'usemtl':
+            if len(f) > 0:
+             writeJSFile(path,v,vn,vt,f,materialName, name)
+            materialName = arrayLine[1]
+            f = []
+    writeJSFile(path,v,vn,vt,f,materialName,name)
+	
+def writeJSFile(path, v, vn, vt, f, materialName, name):
 
     #Treat new list
 
@@ -150,13 +160,16 @@ def convertFile(path):
 
 
 
-
-
-    newpath = path[0:len(path)-3] + "js"
+    compteur = 0
+    newpath = path[0:len(path)-4] + "_"+materialName+str(compteur)+".js"
+    while os.path.exists(newpath):
+     compteur = compteur+1
+     newpath = path[0:len(path)-4] + "_"+materialName+str(compteur)+".js"
+    
 
     js = open(newpath,"w")
 
-    js.write(name+" = function(){"+"\r\n")
+    js.write(name+"_"+materialName+" = function(){"+"\r\n")
 
 
     #vertices

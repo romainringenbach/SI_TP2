@@ -289,6 +289,7 @@ class atomicGL2xml {
 				//node.toDEBUG();
 				break;
 			case "OBJECT3D":
+				// TODO : add animation && initialize animation in object
 				// object3D
 				// id
 				var id = e.getAttribute("id");
