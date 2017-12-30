@@ -78,16 +78,20 @@ class atomicGLObject3d {
 	}
 	
 	pushAnimationMatrices(agl, ams) {
-		ams.mvPushMatrix();
-		// position & orientation
-		ams.mvTranslate(this.animTranslation[0], this.animTranslation[1], this.animTranslation[2]);
-		ams.mvRotate(this.animRotationAngle, this.animRotationAxis);
-		// scale
-		ams.mvScale(this.animScale[0],this.animScale[1],this.animScale[2]);
+		if(this.animation){
+			ams.mvPushMatrix();
+			// position & orientation
+			ams.mvTranslate(this.animTranslation[0], this.animTranslation[1], this.animTranslation[2]);
+			ams.mvRotate(this.animRotationAngle, this.animRotationAxis);
+			// scale
+			ams.mvScale(this.animScale[0],this.animScale[1],this.animScale[2]);
+		}
 	}
 	
 	popAnimationMatrices(agl, ams) {
-		ams.mvPopMatrix();
+		if(this.animation){
+			ams.mvPopMatrix();
+		}
 	}
 
 	// initGLBuffers
@@ -141,7 +145,7 @@ class atomicGLObject3d {
 	// 			aMS: Matrix Stacks 	- atomicMatrixStack
 	// 			idProg: Shader index - integer
 	draw(aGL, aMS, idProg) {
-		pushAnimationMatrices(aGL, aMS);
+		this.pushAnimationMatrices(aGL, aMS);
 		// debug
 		// console.log("atomicGLObject3d("+this.name+")::draw(progId: "+idProg+")");
 		// activate shader
@@ -186,7 +190,7 @@ class atomicGLObject3d {
 		// draw Object3D
 		aGL.gl.drawElements(aGL.gl.TRIANGLES, this.vertexIndexBufferNumItems, aGL.gl.UNSIGNED_SHORT, 0);
 		
-		popAnimationMatrices(aGL,aMS);
+		this.popAnimationMatrices(aGL,aMS);
 	}
 }
 
