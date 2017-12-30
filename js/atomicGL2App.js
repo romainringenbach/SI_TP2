@@ -115,13 +115,6 @@ class atomicGL2App {
     animate() {
         // increase time
         this.sceneClock.tick();
-		// animate objects
-		for each (obj in this.agl.shapes) {
-			// if needs to be animated
-			if(obj.animation) {
-				obj.animate();
-			}
-		}
     }
     
     // If WebGL Context lost
