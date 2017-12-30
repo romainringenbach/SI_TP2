@@ -116,10 +116,10 @@ class atomicGL2App {
         // increase time
         this.sceneClock.tick();
 		// animate objects
-		for each (obj in this.agl.shapes) {
+		for (i = 0; i < this.agl.shapes.length; i++) {
 			// if needs to be animated
-			if(obj.animation) {
-				obj.animate();
+			if(agl.shapes[i].animation) {
+				agl.shapes[i].animate();
 			}
 		}
     }

@@ -19,7 +19,7 @@ class atomicGLObject3d {
 		// animation
 		this.animation = false;
 		this.animTranslation = [];
-		this.animRotationAngle = 0.0f;
+		this.animRotationAngle = 0.0;
 		this.animRotationAxis = [];	// [float, float, float]
 		this.animScale = [];
 		
@@ -185,8 +185,9 @@ class atomicGLObject3d {
 
 		// draw Object3D
 		aGL.gl.drawElements(aGL.gl.TRIANGLES, this.vertexIndexBufferNumItems, aGL.gl.UNSIGNED_SHORT, 0);
+		
+		popAnimationMatrices(aGL,aMS);
 	}
-	popAnimationMatrices(aGL,aMS);
 }
 
 //----------------------------------------------------------------------------------------
