@@ -220,7 +220,7 @@
 					<OBJECT3D id="obj_ground_grass" shader="texDiffProg">ground_grass</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_donjon1" translate="-10.0,0.05,-40.0" rotaxis="0.0,1.0,0.0" angle="90.0+t" scale="1.0,1.0,1.0">
+			<TRANSFORM id="transform_donjon1" translate="-10.0,0.05+0.01*t,-40.0" rotaxis="0.0,1.0,0.0" angle="90.0+t" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_donjon1Base" shader="texDiffNormalMapProg">donjon1Base</OBJECT3D>
 					<OBJECT3D id="donjon1Bois" shader="texDiffNormalMapProg">donjon1Bois</OBJECT3D>
 					<OBJECT3D id="obj_donjon1Fenetre" shader="texDiffProg">donjon1Fenetre</OBJECT3D>
