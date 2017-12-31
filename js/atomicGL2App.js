@@ -115,12 +115,8 @@ class atomicGL2App {
     animate() {
         // increase time
         this.sceneClock.tick();
-		// animate objects
-		for (var i = 0; i < this.agl.shapes.length; i++) {
-			// if object needs to be animated
-			if(this.agl.shapes[i].animation) {
-				this.agl.shapes[i].animate();
-			}
+		for(var i = 0; i < this.sgxml.animatedTransformations.length; i++) {
+			this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.get());
 		}
     }
     
