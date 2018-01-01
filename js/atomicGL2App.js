@@ -116,7 +116,7 @@ class atomicGL2App {
         // increase time
         this.sceneClock.tick();
 		for(var i = 0; i < this.sgxml.animatedTransformations.length; i++) {
-			this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.get());
+			this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.getTotal());
 		}
     }
     
