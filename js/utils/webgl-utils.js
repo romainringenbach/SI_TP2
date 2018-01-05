@@ -149,6 +149,8 @@ WebGLUtils = function () {
         context = canvas.getContext(names[ii], opt_attribs);
       } catch (e) { }
       if (context) {
+        //DEBUG
+        console.log('WebGL context :' + names[ii]);
         break;
       }
     }

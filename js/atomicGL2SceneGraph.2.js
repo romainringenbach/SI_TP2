@@ -122,8 +122,8 @@ class atomicGL2SGroot extends atomicGL2SceneGraph {
 			ams.mvPushMatrix();
 			// position & orientation
 			ams.mvTranslate(0.0, 0.0, 0.0);
-			ams.mvRotate(this.camera.phi, [1, 0, 0]);
-			ams.mvRotate(this.camera.theta, [0, 1, 0]);
+			ams.mvRotate(this.camera.phi, [1, 0, 0]); // Pitch
+			ams.mvRotate(this.camera.theta, [0, 1, 0]); // Yaw
 			// draw
 			this.skyBox.draw(agl,ams,this.shaderId); 	
 

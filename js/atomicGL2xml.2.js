@@ -81,7 +81,8 @@ class atomicGL2xml {
 			// debug
 			console.log("atomicGLxml::shaders >> find shader(" + i + "): " + shader_name + "-file: " + file);
 		}
-		var listIMSHAD = this.dom.getElementsByTagName("IMATSHADER");
+		// IMATSHADER : What is it used for ?
+		/* var listIMSHAD = this.dom.getElementsByTagName("IMATSHADER");
 		for (var i = 0; i < listIMSHAD.length; i++) {
 			//
 			var SHAD = listIMSHAD[i];
@@ -94,7 +95,7 @@ class atomicGL2xml {
 			agl.pushProgram(new atomicGL2MatShader(shader_name, agl, new atomicGL2ShaderLoaderScriptInLine(vertex, fragment), nbtex, nblight));
 			// debug
 			console.log("atomicGLxml::shaders >> find shader(" + i + "): " + shader_name + "-vertex: " + vertex + "-fragment: " + fragment);
-		}
+		} */
 	}
 
 	// textures

@@ -15,37 +15,35 @@ class atomicGLWalkCamera {
 	
 	constructor() {
 		// attributes
+		// for camera movement see atomicGL2SceneGraph (from line 121)
 		// -------------------------------------------------
-		// camera position
-		this.xc = 0.0;
-		this.yc = 2.0;
-		this.zc = 0.0;
-		// camera orientation
-		this.theta = 0.0;
-		this.phi = 0.0;
-		// step
-		this.step = 0.10;
-		// rot
-		this.rot = 0.5;
+		// camera starting position (translation)
+		this.xc = 0.0; // position laterale
+		this.yc = 2.0; // hauteur des "yeux"
+		this.zc = 65.0; // position longitudinale
+		// camera starting orientation (rotation)
+		this.theta = 0.0; // Yaw
+		this.phi = 0.0; // Pitch
+		// step (walk speed)
+		this.step = 0.15;
+		// Clamp pitch angle (degrees)
+		this.maxPitch = 40;
 	}
 
-	// methods
-	// --------------------------------------------------
-	// up/right/left/down
-	//---------------------------
-	up() {
+	// Keyboard up/right/left/down controls
+	forward() {
 		this.xc += +this.step * Math.sin(this.theta * 3.14 / 180.0);
 		this.zc += -this.step * Math.cos(this.theta * 3.14 / 180.0);
 	}
-	down() {
+	backward() {
 		this.xc += -this.step * Math.sin(this.theta * 3.14 / 180.0);
 		this.zc += +this.step * Math.cos(this.theta * 3.14 / 180.0);
 	}
-	right() {
+	strafeRight() {
 		this.xc += +this.step * Math.cos(this.theta * 3.14 / 180.0);
 		this.zc += +this.step * Math.sin(this.theta * 3.14 / 180.0);
 	}
-	left() {
+	strafeLeft() {
 		this.xc += -this.step * Math.cos(this.theta * 3.14 / 180.0);
 		this.zc += -this.step * Math.sin(this.theta * 3.14 / 180.0);
 	}
@@ -55,14 +53,17 @@ class atomicGLWalkCamera {
 	flyDown() {
 		this.yc += -this.step;
 	}
-	turnright(a) {
-		this.theta += +a;
+	// Mouse controls
+	turnright(a) { // Yaw
+		this.theta += a;
 	}
-	turnleft(a) {
-		this.theta += +a;
-	}
-	turnup(a) {
-		this.phi = a;
+	turnup(a) { // Pitch
+		this.phi += a;
+		//console.log(this.phi);
+		if (this.phi < -this.maxPitch)
+			this.phi = -this.maxPitch;
+		if (this.phi > this.maxPitch)
+			this.phi = this.maxPitch;
 	}
 }
 

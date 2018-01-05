@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHADER name="sepiaSkybox">
+	<VERTEX>
+	// vertex shader
+	// ------------------------------------------------------
+	// texture diffuse shader per fragment
+	// ------------------------------------------------------
+	// lights nb: 1
+	// textures nb: 1
+	// ------------------------------------------------------
+
+	// attributes inputs  (vertex arrays)
+		attribute vec3 aVertexPosition;
+		attribute vec2 aVertexTexCoord;
+		attribute vec3 aVertexNormal;
+
+	// uniform matrices
+		uniform mat4 uMVMatrix;
+		uniform mat4 uPMatrix;
+		uniform mat3 uNMatrix;
+		
+	// time for noise animation
+		uniform float uRandom;
+		
+	// output
+    	varying vec2 vTextureCoord;
+		varying float vRandom;
+    void main(void) {
+	
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+		// vTextureCoord
+        vTextureCoord = aVertexTexCoord;
+		vRandom = uRandom;
+    }
+	</VERTEX>
+	<FRAGMENT>
+	#ifdef GL_ES
+	precision highp float;
+	#endif
+	// fragment shader
+	// ------------------------------------------------------
+	// texture diffuse shader per fragment
+	// ------------------------------------------------------
+	// lights nb: 1
+	// textures nb: 1
+	// ------------------------------------------------------
+
+	// local constant
+		// Kd: diffuse coeff
+		float Kd = 1.0 ;
+        // Sepia conversion
+        vec3 sepiaR = vec3(.393, .769, .189);
+        vec3 sepiaG = vec3(.349, .686, .168);
+        vec3 sepiaB = vec3(.272, .534, .131);
+
+	// inputs
+    	varying vec2 vTextureCoord;
+		varying float vRandom;
+				
+    // Uniform
+    	uniform sampler2D uSampler0;
+
+    // lights
+    // ambient
+        uniform vec3 uAmbientColor;
+
+    void main(void) {
+		// texture color
+		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
+
+        float finalR = dot(texColor.rgb, sepiaR);
+        float finalG = dot(texColor.rgb, sepiaG);
+        float finalB = dot(texColor.rgb, sepiaB);
+		
+        gl_FragColor = vec4(finalR, finalG, finalB, texColor.a);
+    }
+	</FRAGMENT>
+</SHADER>
