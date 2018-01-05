@@ -27,7 +27,10 @@ class atomicGL2Clock {
 		// debug
 		// console.log("atomicGLClock::tick");	
 		var timeNow = new Date().getTime();
-		if (this.lastTime != 0) { this.elapsed = timeNow - this.lastTime; this.totalElapsed = this.totalElapsed + this.elapsed; }
+		if (this.lastTime != 0) {
+			this.elapsed = timeNow - this.lastTime;
+			this.totalElapsed = this.totalElapsed + this.elapsed;
+		}
 		this.lastTime = timeNow;
 	}
 	// get()
@@ -37,7 +40,7 @@ class atomicGL2Clock {
 		// console.log("atomicGLClock::get");	
 		return this.elapsed;
 	}
-	
+
 	getTotal() {
 		return this.totalElapsed;
 	}

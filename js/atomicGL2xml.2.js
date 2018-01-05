@@ -248,7 +248,7 @@ class atomicGL2xml {
 				var camId = e.getAttribute("camera");
 				var camera = null;
 				switch (camId) {
-					case "walk": camera = new atomicGLWalkCamera();
+					case "walk": camera = new atomicGLWalkCamera(agl.clock);
 				}
 				// JS6
 				node = new atomicGL2SGroot(e.getAttribute("id"));

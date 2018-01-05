@@ -69,6 +69,8 @@ class atomicGL2Controls {
     // --------------------------------
     // Called each frame
     handleKeys() {
+        if (!this.mouseLocked)
+            return;
         // Keyboard camera movement
         if (this.currentlyPressedKeys["d"]) // (D) strafeRight
         {
