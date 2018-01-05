@@ -102,7 +102,13 @@ class atomicGL2Controls {
         const eventKey = event.key;
         let shaderBox = document.getElementById("shadName");
         if (eventKey === ".") { // Show shaders menu
-            $("#shaderMenu").toggle();
+            // $("#shaderMenu").toggle();
+            let shaderMenu = document.getElementById('shaderMenu');
+            if (shaderMenu.style.display === 'none') {
+                shaderMenu.style.display = 'inline';
+            } else {
+                shaderMenu.style.display = 'none';
+            }
         }
         if (eventKey === "p")	// Shader Cartoon
         {
@@ -137,7 +143,7 @@ class atomicGL2Controls {
         if (eventKey === "u") { // shaderPsycho
             if (shaderBox.textContent != "shaderPsycho") {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("shaderPsycho")));
-                this.sgxml.root.shaderId = 0;
+                this.sgxml.root.shaderId = this.agl.indexOfShader("psychoSkybox");	// Apply shader to skybox
                 shaderBox.textContent = "shaderPsycho";
             }
         }

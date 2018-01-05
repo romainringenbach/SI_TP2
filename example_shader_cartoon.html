@@ -28,20 +28,61 @@
 </head>
 
 <body id="example_shader_cartoon_scene.xml">
-	<!-- Toggleable Menu -->
-	<div class="sidenav" id="sideMenu">
-		<a id="menubutton" href="javascript:void(0)" class="closebtn">&times;</a>
-		<a href="https://github.com/nealith/SI_TP2" target="_blank" rel="noopener noreferrer">About</a>
-	</div>
-	<!-- WebGL Canvas -->
-	<div class="container" id="oglcontainer">
-		<canvas id="oglcanvas"></canvas>
-		<div class="hidden" id="overlay">
-			<div>Shader actif:
-				<span id="shadName"></span>
+
+	<header>
+		<h1>La classe américaine</h1>
+	</header>
+
+	<div class="wrapper">
+
+		<!-- Canvas -->
+		<div id="canvas-container">
+			<canvas id="oglcanvas">
+				Please use a browser that supports "canvas".
+				<br/>
+				<a href="https://www.mozilla.org/" target="_blank">
+					https://www.mozilla.org/
+				</a>
+			</canvas>
+			<!-- Shader menu -->
+			<div class="hidden" id="shaderMenu">
+				<div>Shader actif:
+					<span id="shadName"></span>
+				</div>
+			</div>
+			<!-- Instructions overlay -->
+			<div id="blocker">
+				<div id="instructions" class="unselectable">
+					<span style="font-size:40px">Click to begin</span>
+					<br /> (Z,Q,S,D = Move, SPACE = Fly up, CTRL = Fly down, MOUSE = Look)
+				</div>
 			</div>
 		</div>
+		<!-- Canvas -->
+
 	</div>
+	<!-- Wrapper -->
+
+	<!-- Controls -->
+	<div id="checkbox-container">
+		<input type="checkbox" id="FullScreenBtn" name="FullScreenBtn" />
+		<label for="FullScreenBtn"> FullScreen</label>
+
+		<input type="checkbox" id="FpsBtn" name="FpsBtn" checked/>
+		<label for="FpsBtn"> Fps</label>
+
+		<input type="checkbox" id="SoundBtn" name="SoundBtn" />
+		<label for="SoundBtn"> Sound</label>
+	</div>
+	<!-- Controls -->
+
+	<footer>
+		<p>AtomicGL2 Rémi Cozot</p>
+		<p>Contact:
+			<a href="cozot@irisa.fr">cozot@irisa.fr</a>
+		</p>
+	</footer>
+
 </body>
 
 </html>

@@ -128,17 +128,17 @@
 			float g = max(1.0 - abs(level - 2.0) * 0.5, 0.0);
 			float b = (1.0 - (level - 4.0) * 0.5) * float(level &gt;= 4.0);
 			return vec3(r, g, b);
-		}
+    	}
 
 		void main()
 		{
 			// Apply a wobbly effect on textures
 			vec2 wobblyTexCoords = sineCoords(vTextureCoord);
-			vec4 texColor = texture2D(uSampler0, wobblyTexCoords);//wobblyTexCoords
-			//gl_FragColor = phong(texColor) * vec4(rainbow(vNormal.x), 1.0);
+			vec4 texColor = texture2D(uSampler0, wobblyTexCoords);
+			vec4 phongCol = phong(texColor);
+			gl_FragColor = phongCol * vec4(rainbow(phongCol.r * wobblyTexCoords.s + phongCol.g * wobblyTexCoords.t), 0.85);
 			//gl_FragColor = texColor * vec4(vNormal, 1.0);
-			vec4 phongCol = phong(texColor); 
-			gl_FragColor =  phongCol * vec4(vNormal, phongCol.a);
+			//gl_FragColor =  phongCol * vec4(vNormal, phongCol.a);
 		}
 	</FRAGMENT>
 </SHADER>

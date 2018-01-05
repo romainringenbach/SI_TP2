@@ -26,6 +26,7 @@
 	// output
     	varying vec2 vTextureCoord;
 		varying float vRandom;
+		
     void main(void) {
 	
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
