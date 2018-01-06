@@ -34,7 +34,7 @@ class atomicGL2Controls {
         this.canvas.requestPointerLock = this.canvas.requestPointerLock ||
             this.canvas.mozRequestPointerLock;
 
-        if (! this.canvas.requestPointerLock) {
+        if (!this.canvas.requestPointerLock) {
             this.instructions.innerHTML = 'Your browser does not support Pointer Lock API.<br/> \
                                         Update your browser and try again.';
         }
@@ -44,16 +44,35 @@ class atomicGL2Controls {
 
         document.addEventListener('pointerlockerror', this.lockError, false);
         document.addEventListener('mozpointerlockerror', this.lockError, false);
-        document.addEventListener( 'webkitpointerlockerror', this.lockError, false );
+        document.addEventListener('webkitpointerlockerror', this.lockError, false);
 
-        this.instructions.onclick = (function () {
-            this.instructions.style.display = 'none';
-            this.canvas.requestPointerLock();
-        }).bind(this);
+        this.instructions.addEventListener('click', this.lockPointer.bind(this), false);
 
         document.addEventListener('pointerlockchange', this.pointerlockChange.bind(this), false);
         document.addEventListener('mozpointerlockchange', this.pointerlockChange.bind(this), false);
         document.addEventListener('webkitpointerlockchange', this.pointerlockChange.bind(this), false);
+
+        // FullScreen stuff
+        if (
+            document.fullscreenEnabled ||
+            document.webkitFullscreenEnabled ||
+            document.mozFullScreenEnabled ||
+            document.msFullscreenEnabled
+        ) {
+            this.canvas.requestFullscreen = this.canvas.requestFullscreen ||
+                this.canvas.webkitRequestFullscreen || this.canvas.mozRequestFullScreen ||
+                this.canvas.msRequestFullscreen;
+
+            document.addEventListener("fullscreenchange", this.fullScreenChange.bind(this), false);
+            document.addEventListener("mozfullscreenchange", this.fullScreenChange.bind(this), false);
+            document.addEventListener("webkitfullscreenchange", this.fullScreenChange.bind(this), false);
+            document.addEventListener("MSFullscreenChange", this.fullScreenChange.bind(this), false);
+
+            document.getElementById('FullScreenBtn').addEventListener('click', this.clickFullScreen.bind(this), false);
+        } else {
+            document.getElementById('FullScreenBtn').src = './images/x-button.png';
+            document.getElementById('FullScreenBtn').style.cursor = 'not-allowed';
+        }
     }
 
     setAglXml(agl, sgxml) {
@@ -71,6 +90,9 @@ class atomicGL2Controls {
     handleKeys() {
         if (!this.mouseLocked)
             return;
+        //Set un attribut frameDelta avec clock.get() dans la classe camera depuis ici
+        //plutôt que d'appeler plusieurs fois get() dans la camera.
+
         // Keyboard camera movement
         if (this.currentlyPressedKeys["d"]) // (D) strafeRight
         {
@@ -158,11 +180,6 @@ class atomicGL2Controls {
     // mouse movements
     // ------------------------------
     onDocumentMouseMove(event) {
-        //Use client width and height instead of window's
-            /* this.windowHalfX = this.agl.gl.canvas.clientWidth / 2;
-            this.windowHalfY = this.agl.gl.canvas.clientHeight / 2;
-            this.mouseX = (event.clientX - this.windowHalfX) / this.windowHalfX;
-            this.mouseY = (event.clientY - this.windowHalfY) / this.windowHalfY; */
         if (this.mouseLocked) {
             this.mouseX = this.friction * event.movementX;
             this.mouseY = this.friction * event.movementY;
@@ -184,6 +201,27 @@ class atomicGL2Controls {
             this.blocker.style.display = '-moz-box';
             this.blocker.style.display = '-webkit-box';
             this.instructions.style.display = '';
+        }
+    }
+
+    lockPointer() {
+        this.instructions.style.display = 'none';
+        this.canvas.requestPointerLock();
+    }
+
+    clickFullScreen() {
+        this.canvas.requestFullscreen();
+    }
+
+    fullScreenChange() {
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        ) {
+            this.instructions.style.display = 'none';
+            this.canvas.requestPointerLock();
         }
     }
 

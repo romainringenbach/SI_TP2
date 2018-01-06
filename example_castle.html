@@ -93,6 +93,7 @@
 				<div id="instructions" class="unselectable">
 					<span style="font-size:40px">Click to begin</span>
 					<br /> (Z,Q,S,D = Move, SPACE = Fly up, CTRL = Fly down, MOUSE = Look)
+					<br /> (ESC = Exit pointerLock or fullScreen)
 				</div>
 			</div>
 		</div> <!-- Canvas -->
@@ -100,8 +101,8 @@
 	</div> <!-- Wrapper -->
 
 	<!-- Controls -->
-	<div id="checkbox-container">
-		<input type="checkbox" id="FullScreenBtn" name="FullScreenBtn"/>
+	<div id="checkbox-container" class="unselectable">
+		<img src="./images/fullscreen.png" id="FullScreenBtn" />
 		<label for="FullScreenBtn"> FullScreen</label>
 		
 		<input type="checkbox" id="FpsBtn" name="FpsBtn" checked/>
