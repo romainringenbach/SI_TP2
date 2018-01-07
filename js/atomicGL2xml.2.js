@@ -1,4 +1,4 @@
-import {atomicGL2SGroot, atomicGL2SGtransform, atomicGL2SGobject3d} from './atomicGL2SceneGraph.2.js';
+import {atomicGL2SGroot, atomicGL2SGtransform, atomicGL2SGobject3d, atomicGL2SGtransformAnim} from './atomicGL2SceneGraph.2.js';
 import {atomicGL2ObjMesh, atomicGL2SkyBox, atomicGL2Sphere} from './atomicGL2Object3d.js';
 import {atomicGL2ShaderLoaderScriptInLine, atomicGL2ShaderLoaderScriptXML, atomicGL2MatShader} from './atomicGL2Shader.2.js';
 import atomicGL2Texture from './atomicGL2Texture.js';
@@ -24,6 +24,7 @@ class atomicGL2xml {
 		this.dom = null;
 		this.objectList = [];
 		this.root = null;
+		this.animatedTransformations = [];
 
 		this.shadersBis = [];
 
@@ -81,7 +82,8 @@ class atomicGL2xml {
 			// debug
 			console.log("atomicGLxml::shaders >> find shader(" + i + "): " + shader_name + "-file: " + file);
 		}
-		var listIMSHAD = this.dom.getElementsByTagName("IMATSHADER");
+		// IMATSHADER : What is it used for ?
+		/* var listIMSHAD = this.dom.getElementsByTagName("IMATSHADER");
 		for (var i = 0; i < listIMSHAD.length; i++) {
 			//
 			var SHAD = listIMSHAD[i];
@@ -94,7 +96,7 @@ class atomicGL2xml {
 			agl.pushProgram(new atomicGL2MatShader(shader_name, agl, new atomicGL2ShaderLoaderScriptInLine(vertex, fragment), nbtex, nblight));
 			// debug
 			console.log("atomicGLxml::shaders >> find shader(" + i + "): " + shader_name + "-vertex: " + vertex + "-fragment: " + fragment);
-		}
+		} */
 	}
 
 	// textures
@@ -246,7 +248,7 @@ class atomicGL2xml {
 				var camId = e.getAttribute("camera");
 				var camera = null;
 				switch (camId) {
-					case "walk": camera = new atomicGLWalkCamera();
+					case "walk": camera = new atomicGLWalkCamera(agl.clock);
 				}
 				// JS6
 				node = new atomicGL2SGroot(e.getAttribute("id"));
@@ -261,28 +263,58 @@ class atomicGL2xml {
 				// console.log(s+e.getAttribute("id"));
 				// id
 				var id = e.getAttribute("id");
+				var isAnimated = false;
 				// translate
 				var transS = e.getAttribute("translate").split(",");
-				var tx = parseFloat(transS[0]);
-				var ty = parseFloat(transS[1]);
-				var tz = parseFloat(transS[2]);
+				var tx = Number(transS[0]);
+				var ty = Number(transS[1]);
+				var tz = Number(transS[2]);
+				if(isNaN(tx) || isNaN(ty) || isNaN(tz)) {
+					tx = transS[0];
+					ty = transS[1];
+					tz = transS[2];
+					isAnimated = true;
+				}
 				// rotaxis
 				var rotAxisS = e.getAttribute("rotaxis").split(",");
-				var ax = parseFloat(rotAxisS[0]);
-				var ay = parseFloat(rotAxisS[1]);
-				var az = parseFloat(rotAxisS[2]);
+				var ax = Number(rotAxisS[0]);
+				var ay = Number(rotAxisS[1]);
+				var az = Number(rotAxisS[2]);
+				if(isNaN(ax) || isNaN(ay) || isNaN(az)) {
+					ax = rotAxisS[0];
+					ay = rotAxisS[1];
+					az = rotAxisS[2];
+					isAnimated = true;
+				}
 				// angle
-				var theta = parseFloat(e.getAttribute("angle"));
+				var theta = Number(e.getAttribute("angle"));
+				if(isNaN(theta)) {
+					theta = e.getAttribute("angle");
+					isAnimated = true;
+				}
 
 				// scale
 				var scaleS = e.getAttribute("scale").split(",");
-				var sx = parseFloat(scaleS[0]);
-				var sy = parseFloat(scaleS[1]);
-				var sz = parseFloat(scaleS[2]);
+
+				var sx = Number(scaleS[0]);
+				var sy = Number(scaleS[1]);
+				var sz = Number(scaleS[2]);
+				if(isNaN(sx) || isNaN(sy) || isNaN(sz)) {
+					sx = scaleS[0];
+					sy = scaleS[1];
+					sz = scaleS[2];
+					isAnimated = true;
+				}
 
 				// node
 				// JS6
-				node = new atomicGL2SGtransform(id);
+				if(isAnimated) {
+					node = new atomicGL2SGtransformAnim(id);
+					this.animatedTransformations.push(node);
+				}
+				else {
+					node = new atomicGL2SGtransform(id);
+				}
 				node.setTransform([tx, ty, tz], [ax, ay, az], theta, [sx, sy, sz]);
 				s.addChild(node);
 				// debug

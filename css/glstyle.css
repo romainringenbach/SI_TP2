@@ -1,34 +1,132 @@
+html {display: flex; flex-direction: column;}
+
 body {
-    margin: 0;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* affichage vertical */
+    min-height: 100vh; /* toute la hauteur du viewport (compatible IE9+) */
 }
 
-.container {
+.wrapper {
+    display: block; /* IE fix */
+    flex: 1 1 auto; /* occupe la hauteur restante */
+    display: flex;
+    flex-direction: row; /* affichage horizontal */
+}
+
+#checkbox-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    background-color: rgba(82, 79, 79, 0.5);
+}
+
+body {
+	margin: 0;
+	background: #fff;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 1.1em;
+}
+
+header, footer, #checkbox-container, #canvas-container {
+	padding: 10px;
+	margin: 0;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	color: #fff;
+}
+
+#canvas-container {
     position: relative;
+    width: 854px;
+    height: 480px;
+    border: 1px solid black;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 2px 2px 12px #555;
+}
+
+header {
+    text-align: center;
+    background: rgb(158, 158, 194);
+}
+
+footer {
+    background: rgb(158, 158, 194);
+    text-align: center;
 }
 
 .hidden {
     display: none;
 }
 
-#oglcanvas {
-    /* width: 80%;
-    height: 80%; */
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    border: none;
+.unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
-#overlay {
+#oglcanvas {
     position: absolute;
-    bottom: 8px;
-    left: 16px;
+    width: 854px;
+    height: 480px;
+    /* display: flex; */
+    /* z-index: 1; */
+}
+
+/* CANVAS INSTSRUCTIONS OVERLAY */
+#blocker {
+    position: absolute;
+    width: 854px;
+    height: 480px;
+    background-color: rgba(0,0,0,0.5);
+    margin: auto;
+    /* z-index: 2; */
+}
+
+#instructions {
+    width: 854px;
+    height: 480px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+/* --------------------------- */
+
+input[type=checkbox]:hover {
+    box-shadow:0px 0px 10px #1300ff;
+}
+
+
+#FullScreenBtn {
+    cursor: pointer;
+    padding-right: 3px;
+}
+
+#shaderMenu {
+    position: absolute;
+    /* z-index: 2; */
+    bottom: 15px;
+    left: 15px;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     font-family: monospace;
     padding: 1em;
     border-radius: 1em;
-    border: 5px solid #f00;
+    border: 3px solid #f00;
     text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white;
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Simple passThrough shader to use as a base for more complex shaders -->
+
+<SHADER name="passThrough">
+	<VERTEX>
+		// attributes inputs  (vertex arrays)
+			attribute vec3 aVertexPosition;
+			attribute vec2 aVertexTexCoord;
+		// uniform matrices
+			uniform mat4 uMVMatrix;
+			uniform mat4 uPMatrix;
+		// output
+		varying vec2 vTextureCoord;
+
+		void main(void) {
+			// pass texture coords to fragment shader
+			vTextureCoord = aVertexTexCoord;
+			// Transform 2D screen-space coords into 3D world-space coords
+			gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+		}
+
+	</VERTEX>
+	<FRAGMENT>
+		#ifdef GL_ES
+		precision highp float;
+		#endif
+
+        // Texture sampler
+		uniform sampler2D uSample0;
+
+		// varying input (output of the vertex shader)
+		varying vec2 vTextureCoord;
+
+		void main(void) {
+			vec4 texColor = texture2D(uSample0, vTextureCoord);
+			//Final color
+			gl_FragColor = texColor;
+		}
+	</FRAGMENT>
+</SHADER>

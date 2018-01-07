@@ -39,25 +39,28 @@ class atomicGL2App {
         this.bgcolor = [0.15, 0.1, 0.5];
         //HTML canvas
         this.canvas;
-
-        // this.init();
     }
     
     // Basic components init
     init() {
         this.ams = new atomicGL2MatrixStack();
         this.sceneClock = new atomicGL2Clock();
-        //Init controls
-        this.controls = new atomicGL2Controls();
         //Add default text to shader menu
         document.getElementById("shadName").textContent = "default shaders";
         //fps counter
         this.stats = new Stats();
         this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-        document.getElementById('oglcontainer').appendChild(this.stats.dom);
+        this.stats.dom.style.position = 'absolute';
+        this.stats.dom.style.top = '15px';
+        this.stats.dom.style.left = '15px';
+        document.getElementById('canvas-container').appendChild(this.stats.dom);
+        document.querySelector('input[name=FpsBtn]').addEventListener('change', this.toggleStatsPanel.bind(this), false);
 
         this.canvas = document.getElementById("oglcanvas");
         
+        //Init controls
+        this.controls = new atomicGL2Controls(this.canvas);
+
         // DEBUG : test context lost and restore
         /* this.canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(this.canvas);
         // lose the context when I press click the mouse.
@@ -74,18 +77,23 @@ class atomicGL2App {
         this.webGLStart();
     }
     
+    toggleStatsPanel() {
+        let checked = document.querySelector('input[name=FpsBtn]').checked;
+        this.stats.dom.style.display = checked ? 'block' : 'none';
+    }
+
     //WebGL init
     webGLStart() {
         // init OpenGL context
         // canvas, background color
-        this.agl = new atomicGL2Context();
+        this.agl = new atomicGL2Context(this.sceneClock);
         this.agl.initGL(this.canvas, this.bgcolor);
         // scenegraph creation from xml file : shaders, program, textures, buffers
         let sceneXmlFile = document.getElementsByTagName("body")[0].id;
         console.log(sceneXmlFile);
         this.sgxml = new atomicGL2xml(this.agl, sceneXmlFile);
         this.objectList = this.sgxml.objectList;
-        //reset attribs if context lost
+        //set attribs (or reset if context lost)
         this.controls.setAglXml(this.agl, this.sgxml);
         // init Matrix Stack
         this.ams.initMatrix(this.agl, this.fov);
@@ -97,12 +105,14 @@ class atomicGL2App {
     // -----------------------------
     sceneDraw() {
         this.agl.initDraw();
+        // Actually "moves" the camera
         this.agl.scenegraph.draw(this.agl, this.ams);
     }
     
     // nextFrame
     // -----------------------------
-    nextFrame() {
+    //https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+    nextFrame(timestamp) {
         this.controls.handleKeys();
         this.requestId = requestAnimFrame(this.nextFrame.bind(this)); //called every frame
         this.sceneDraw();
@@ -115,6 +125,9 @@ class atomicGL2App {
     animate() {
         // increase time
         this.sceneClock.tick();
+		for(var i = 0; i < this.sgxml.animatedTransformations.length; i++) {
+			this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.getTotal());
+		}
     }
     
     // If WebGL Context lost
@@ -131,4 +144,4 @@ class atomicGL2App {
 }
 
 let app = new atomicGL2App();
-window.addEventListener("load", app.init());
+window.addEventListener('load', app.init());

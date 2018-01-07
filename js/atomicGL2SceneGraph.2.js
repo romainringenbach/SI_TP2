@@ -35,6 +35,7 @@ class atomicGL2SceneGraph {
 		switch (this.type) {
 			case "root": this.children.push(o); break;
 			case "transform": this.children.push(o); break;
+			case "transformAnim": this.children.push(o); break;
 			default: console.log("atomicGL:atomicGLSceneGraph(" + this.name + "/" + this.type + "):can not add child to " + this.type);
 		}
 	}
@@ -122,8 +123,8 @@ class atomicGL2SGroot extends atomicGL2SceneGraph {
 			ams.mvPushMatrix();
 			// position & orientation
 			ams.mvTranslate(0.0, 0.0, 0.0);
-			ams.mvRotate(this.camera.phi, [1, 0, 0]);
-			ams.mvRotate(this.camera.theta, [0, 1, 0]);
+			ams.mvRotate(this.camera.phi, [1, 0, 0]); // Pitch
+			ams.mvRotate(this.camera.theta, [0, 1, 0]); // Yaw
 			// draw
 			this.skyBox.draw(agl,ams,this.shaderId); 	
 
@@ -193,6 +194,61 @@ class atomicGL2SGtransform extends atomicGL2SceneGraph {
 }
 
 //----------------------------------------------------------------------------------------
+// atomicGL2SGtransformAnim extends atomicGL2SceneGraph
+//----------------------------------------------------------------------------------------
+class atomicGL2SGtransformAnim extends atomicGL2SceneGraph {
+	constructor(name) {
+		super("transformAnim", name);
+		// attributes
+		// type= transform - translation & rotation
+		this.translate = ["", "", ""];
+		this.rotAxis = ["", "", ""];
+		this.rotation = "";
+		this.scale = ["", "", ""];
+		this.t = 0.0;
+		// debug
+		//console.log("atomicGL2SGtransform extends atomicGL2SceneGraph::constructor ->"+this.type+" - "+this.name);
+	}
+
+	// setTransform
+	// -------------------------
+	// inputs: 	tr - vec3: translation vector
+	//			ax - vec3: rotation axis vector
+	//			ro - float: rotationangle
+	setTransform(tr, ax, ro, sc) {
+		this.translate = tr;
+		this.rotAxis = ax;
+		this.rotation = ro;
+		this.scale = sc;
+	}
+	
+	updateTime(time) {
+		this.t = time;
+	}
+
+	// draw
+	// -------------------------
+	// inputs: 	agl - atomicGLContext
+	//			ams - atomicGLMatrixStack
+	draw(agl, ams) {
+		var t = this.t;
+		// debug
+		// console.log("atomicGLSceneGraph::draw("+this.type+","+this.name+", shaderId:"+this.shaderId+")"); 
+		// matrix
+		ams.mvPushMatrix();
+		// position & orientation
+		ams.mvTranslate(eval(this.translate[0]), eval(this.translate[1]), eval(this.translate[2]));
+		ams.mvRotate(eval(this.rotation)%360, [eval(this.rotAxis[0]),eval(this.rotAxis[1]),eval(this.rotAxis[2])]);
+		// scale
+		ams.mvScale(eval(this.scale[0]),eval(this.scale[1]),eval(this.scale[2]));
+		// children
+		for (var i = 0; i < this.children.length; i++) { this.children[i].draw(agl, ams); }
+		// matrix pop
+		ams.mvPopMatrix();
+	}
+}
+
+//----------------------------------------------------------------------------------------
 // atomicGL2SGobject3d extends atomicGL2SceneGraph
 //----------------------------------------------------------------------------------------
 class atomicGL2SGobject3d extends atomicGL2SceneGraph {
@@ -235,4 +291,4 @@ class atomicGL2SGobject3d extends atomicGL2SceneGraph {
 	}		
 }
 
-export {atomicGL2SGroot, atomicGL2SGtransform, atomicGL2SGobject3d};
+export {atomicGL2SGroot, atomicGL2SGtransform, atomicGL2SGobject3d, atomicGL2SGtransformAnim};

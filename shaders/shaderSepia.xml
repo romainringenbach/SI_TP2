@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHADER name="texDiffSepia">
+	<VERTEX>
+	// vertex shader
+	// ------------------------------------------------------
+	// texture diffuse shader per fragment
+	// ------------------------------------------------------
+	// lights nb: 1
+	// textures nb: 1
+	// ------------------------------------------------------
+
+	// attributes inputs  (vertex arrays)
+		attribute vec3 aVertexPosition;
+		attribute vec2 aVertexTexCoord;
+		attribute vec3 aVertexNormal;
+
+	// uniform matrices
+		uniform mat4 uMVMatrix;
+		uniform mat4 uPMatrix;
+		uniform mat3 uNMatrix;
+
+	// output
+    	varying vec2 vTextureCoord;
+		varying vec4 vPosition;
+		varying vec3 vNormal;
+
+    void main(void) {
+		// vPosition
+		vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
+
+    	// vNormal
+		vNormal = uNMatrix * aVertexNormal;
+
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+		// vTextureCoord
+        vTextureCoord = aVertexTexCoord;
+    }
+	</VERTEX>
+	<FRAGMENT>
+	#ifdef GL_ES
+	precision highp float;
+	#endif
+	// fragment shader
+	// ------------------------------------------------------
+	// texture diffuse shader per fragment
+	// ------------------------------------------------------
+	// lights nb: 1
+	// textures nb: 1
+	// ------------------------------------------------------
+
+	// local constant
+		float Kd = 0.3;
+		float Ks = 0.3;
+		float sh = 8.0;
+		vec3 specColor = vec3(0.8,0.6,0.2);
+
+	// inputs
+    	varying vec2 vTextureCoord;
+		varying vec4 vPosition;
+		varying vec3 vNormal;
+
+    // Uniform
+    	uniform sampler2D uSampler0;
+
+		// lights
+		// ambient
+		uniform vec3 uAmbientColor;
+
+		//point light ie omni dir:  location, color
+		uniform vec3 uPointLightPosition0;
+		uniform vec3 uPointLightColor0;
+
+	vec4 phong(vec4 texColor) {
+		// light direction, eye direction
+		vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
+		vec3 eyeDirection = normalize(-vPosition.xyz);
+
+		// normalize normal
+		vec3 normal = normalize(vNormal);
+
+		// reflection direction
+		vec3 reflectDirection = normalize(reflect(-lightDirection,normal));
+
+		//  diffuse term and specular term
+		float diffuse = max(dot(normal, lightDirection), 0.0);
+		float specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
+
+		// light color
+		vec3 lightColor =
+			Kd*uAmbientColor*texColor.rgb +
+			Kd*diffuse*uPointLightColor0 *texColor.rgb +
+			Ks*specular*uPointLightColor0*specColor;
+
+		return vec4(lightColor, texColor.a);
+	}
+
+    void main(void) {
+		// texture color
+		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
+		vec4 phongColor = phong(texColor);
+
+        vec3 sepiaR = vec3(.393, .769, .189);
+        vec3 sepiaG = vec3(.349, .686, .168);
+        vec3 sepiaB = vec3(.272, .534, .131);
+
+        float finalR = dot(phongColor.rgb, sepiaR);
+        float finalG = dot(phongColor.rgb, sepiaG);
+        float finalB = dot(phongColor.rgb, sepiaB);
+
+        gl_FragColor = vec4(vec3(finalR, finalG, finalB), texColor.a);
+    }
+	</FRAGMENT>
+</SHADER>

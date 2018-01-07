@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<SHADER name="blackAndWhite">
+<SHADER name="psychoSkybox">
 	<VERTEX>
 	// vertex shader
 	// ------------------------------------------------------
@@ -19,21 +19,13 @@
 		uniform mat4 uMVMatrix;
 		uniform mat4 uPMatrix;
 		uniform mat3 uNMatrix;
-		
-	// time for noise animation
-		uniform float uRandom;
-		
+
 	// output
     	varying vec2 vTextureCoord;
-		varying float vRandom;
-		
-    void main(void) {
-	
+    
+	void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-
-		// vTextureCoord
         vTextureCoord = aVertexTexCoord;
-		vRandom = uRandom;
     }
 	</VERTEX>
 	<FRAGMENT>
@@ -48,46 +40,24 @@
 	// textures nb: 1
 	// ------------------------------------------------------
 
-	// local constant
-		// Kd: diffuse coeff
-		float Kd = 1.0 ;
-
 	// inputs
     	varying vec2 vTextureCoord;
-		
-		varying float vRandom;
-		
-		
+				
     // Uniform
     	uniform sampler2D uSampler0;
 
-		
-		// lights
-		// ambient
-		uniform vec3 uAmbientColor;
-		
-		// rand function
-		float rand(vec2 co){
-			return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
-		}
+    vec3 rainbow(float pos) {
+        float level = floor((-pos * 0.5 + 0.5) * 6.0);
+        float r = float(level &lt;= 2.0) + float(level &gt; 4.0) * 0.5;
+        float g = max(1.0 - abs(level - 2.0) * 0.5, 0.0);
+        float b = (1.0 - (level - 4.0) * 0.5) * float(level &gt;= 4.0);
+        return vec3(r, g, b);
+    }
 
     void main(void) {
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
-
-		// light color
-		vec3 lightColor = texColor.rgb ;
-
-		lightColor.r = lightColor.r * .21 + lightColor.g * .72 + lightColor.b * .07;
-		lightColor.g = lightColor.r;
-		lightColor.b = lightColor.r;
-		
-		float randfloat = rand(vec2(vRandom*lightColor.r, vRandom*vTextureCoord.s + vRandom*vTextureCoord.t));
-		if( randfloat > 0.9) {
-			lightColor = vec3(0.0,0.0,0.0);
-		}
-		
-        gl_FragColor = vec4(lightColor,1.0);
+        gl_FragColor = vec4(rainbow(texColor.r * vTextureCoord.s + texColor.g * vTextureCoord.t), 0.85);
     }
 	</FRAGMENT>
 </SHADER>

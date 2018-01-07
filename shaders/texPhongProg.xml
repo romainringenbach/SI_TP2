@@ -97,7 +97,7 @@
      	vec3 lightColor =
      		Kd*uAmbientColor*texColor.rgb +
      		Kd*diffuse*uPointLightColor0 *texColor.rgb +
-     		Ks*specular*uPointLightColor0*specColor ;
+     		Ks*specular*uPointLightColor0*specColor;
 
         gl_FragColor = vec4(lightColor,1.0);
 

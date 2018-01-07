@@ -13,56 +13,63 @@
 //------------------------
 class atomicGLWalkCamera {
 	
-	constructor() {
+	constructor(clk) {
 		// attributes
+		// for camera movement see atomicGL2SceneGraph (from line 121)
 		// -------------------------------------------------
-		// camera position
-		this.xc = 0.0;
-		this.yc = 2.0;
-		this.zc = 0.0;
-		// camera orientation
-		this.theta = 0.0;
-		this.phi = 0.0;
-		// step
-		this.step = 0.10;
-		// rot
-		this.rot = 0.5;
+		// scene clock
+		this.clock = clk;
+		// camera starting position (translation)
+		this.xc = 0.0; // position laterale
+		this.yc = 2.0; // hauteur des "yeux"
+		this.zc = 65.0; // position longitudinale
+		// camera starting orientation (rotation)
+		this.theta = 0.0; // Yaw
+		this.phi = 0.0; // Pitch
+		// step (walk speed)
+		this.step = 9.375 / 1000; //0.15
+		// Clamp pitch angle (degrees)
+		this.maxPitch = 40;
 	}
 
-	// methods
-	// --------------------------------------------------
-	// up/right/left/down
-	//---------------------------
-	up() {
-		this.xc += +this.step * Math.sin(this.theta * 3.14 / 180.0);
-		this.zc += -this.step * Math.cos(this.theta * 3.14 / 180.0);
+	// Keyboard up/right/left/down controls
+	forward() {
+		let frameTime = this.clock.get();
+		this.xc += (+this.step * frameTime) * Math.sin(this.theta * 3.14 / 180.0);
+		this.zc += (-this.step* frameTime) * Math.cos(this.theta * 3.14 / 180.0);
 	}
-	down() {
-		this.xc += -this.step * Math.sin(this.theta * 3.14 / 180.0);
-		this.zc += +this.step * Math.cos(this.theta * 3.14 / 180.0);
+	backward() {
+		let frameTime = this.clock.get();
+		this.xc += (-this.step * frameTime) * Math.sin(this.theta * 3.14 / 180.0);
+		this.zc += (+this.step * frameTime) * Math.cos(this.theta * 3.14 / 180.0);
 	}
-	right() {
-		this.xc += +this.step * Math.cos(this.theta * 3.14 / 180.0);
-		this.zc += +this.step * Math.sin(this.theta * 3.14 / 180.0);
+	strafeRight() {
+		let frameTime = this.clock.get();
+		this.xc += (+this.step * frameTime) * Math.cos(this.theta * 3.14 / 180.0);
+		this.zc += (+this.step * frameTime) * Math.sin(this.theta * 3.14 / 180.0);
 	}
-	left() {
-		this.xc += -this.step * Math.cos(this.theta * 3.14 / 180.0);
-		this.zc += -this.step * Math.sin(this.theta * 3.14 / 180.0);
+	strafeLeft() {
+		let frameTime = this.clock.get();
+		this.xc += (-this.step * frameTime) * Math.cos(this.theta * 3.14 / 180.0);
+		this.zc += (-this.step * frameTime) * Math.sin(this.theta * 3.14 / 180.0);
 	}
 	flyUp() {
-		this.yc += +this.step;
+		this.yc += (+this.step * this.clock.get());
 	}
 	flyDown() {
-		this.yc += -this.step;
+		this.yc += (-this.step * this.clock.get());
 	}
-	turnright(a) {
-		this.theta += +a;
+	// Mouse controls
+	turnright(a) { // Yaw
+		this.theta += a;
 	}
-	turnleft(a) {
-		this.theta += +a;
-	}
-	turnup(a) {
-		this.phi = a;
+	turnup(a) { // Pitch
+		this.phi += a;
+		//console.log(this.phi);
+		if (this.phi < -this.maxPitch)
+			this.phi = -this.maxPitch;
+		if (this.phi > this.maxPitch)
+			this.phi = this.maxPitch;
 	}
 }
 

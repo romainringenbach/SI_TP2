@@ -138,12 +138,14 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		// texture -sampler
 		this.samplerUniform = [];
 		// time
-		this.time;
+		//this.time;
 		// random
 		this.random;
 		// Fog
 		this.uFogColor;
 		this.uFogDist;
+		// Sobel
+		this.uRes;
 
 		this.build(agl, shaderloader);
 	}
@@ -255,6 +257,9 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.uFogDist = agl.gl.getUniformLocation(program, "uFogDist");
 		this.uFogColor = agl.gl.getUniformLocation(program, "uFogColor");
 
+		// Sobel
+		this.uRes = agl.gl.getUniformLocation(program, "uRes");
+
 		// lights
 		// uAmbientColor
 		// uPointLightingPosition0|1|2 required per light in the shader
@@ -299,15 +304,6 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		//		Normal built from Model->view
 		aGL.gl.uniformMatrix4fv(this.pMatrixUniform, false, aMS.pMatrix);
 		aGL.gl.uniformMatrix4fv(this.mvMatrixUniform, false, aMS.mvMatrix);
-
-		if(this.time != null) {
-			var d = new Date();
-			aGL.gl.uniform1f(this.time, d.getMilliseconds());
-			//aGL.gl.uniform1f(this.time, d.getTime()/1000000);	// potentiel LSD
-		}
-		if(this.random != null) {
-			aGL.gl.uniform1f(this.random,Math.random());
-		}
 
 		var normalMatrix = mat3.create();
 		mat4.toInverseMat3(aMS.mvMatrix, normalMatrix);
@@ -354,12 +350,22 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		aGL.gl.uniform1fv(this.pointLightColorUniformArray,aGL.omniLightColor);
 		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
 
-		//Fog stuff
+		// Fog stuff
 		let fogColor = new Float32Array([0.5,0.5,0.5]);
-		let fogDist = new Float32Array([50, 80]);
+		let fogDist = new Float32Array([30, 60]);
 		aGL.gl.uniform3fv(this.uFogColor, fogColor);
 		aGL.gl.uniform2fv(this.uFogDist, fogDist);
 
+		// Sobel
+		let resolution = new Float32Array([aGL.gl.drawingBufferWidth, aGL.gl.drawingBufferHeight]);
+		aGL.gl.uniform2fv(this.uRes, resolution);
+		
+		// Time
+		aGL.gl.uniform1f(this.time, aGL.clock.get());
+		// Random
+		if(this.random != null) {
+			aGL.gl.uniform1f(this.random, Math.random());
+		}
 		// textures
 	}
 

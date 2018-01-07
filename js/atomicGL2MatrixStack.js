@@ -13,11 +13,11 @@ export default class atomicGL2MatrixStack {
 	constructor() {
 		// attributes
 		// -------------------------------------------------
-		// model -> view Matrix 
+		// model -> view Matrix  (combine modelMatrix and viewMatrix (object space -> view space))
 		this.mvMatrix = mat4.create();
 		// model -> view Matrix stack
 		this.mvMatrixStack = [];
-		// projection Matrix
+		// projection Matrix (implements perspective from the view point)
 		this.pMatrix = mat4.create();
 		this.fov;
 	}
@@ -32,7 +32,8 @@ export default class atomicGL2MatrixStack {
 		// perspective matrix
 		this.fov = fov;
 		//Reset perspective based on canvas client resize
-		mat4.perspective(fov, aGL.gl.canvas.clientWidth / aGL.gl.canvas.clientHeight, 0.1, 1000.0, this.pMatrix);
+		// mat4.perspective(fov, aGL.gl.canvas.clientWidth / aGL.gl.canvas.clientHeight, 0.1, 1000.0, this.pMatrix);
+		mat4.perspective(fov, aGL.gl.canvas.width / aGL.gl.canvas.height, 0.1, 1000.0, this.pMatrix);
 		// model -> view matrix
 		mat4.identity(this.mvMatrix);
 	}
@@ -60,7 +61,7 @@ export default class atomicGL2MatrixStack {
 	// mvPushMatrix()
 	//---------------------------	
 	mvPushMatrix() {
-		var copy = mat4.create();
+		let copy = mat4.create();
 		mat4.set(this.mvMatrix, copy);
 		this.mvMatrixStack.push(copy);
 	}

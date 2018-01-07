@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<SHADER name="blackAndWhite">
+<SHADER name="sepiaSkybox">
 	<VERTEX>
 	// vertex shader
 	// ------------------------------------------------------
@@ -20,20 +20,13 @@
 		uniform mat4 uPMatrix;
 		uniform mat3 uNMatrix;
 		
-	// time for noise animation
-		uniform float uRandom;
-		
 	// output
     	varying vec2 vTextureCoord;
 		varying float vRandom;
-		
-    void main(void) {
-	
+    
+	void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-
-		// vTextureCoord
         vTextureCoord = aVertexTexCoord;
-		vRandom = uRandom;
     }
 	</VERTEX>
 	<FRAGMENT>
@@ -51,43 +44,26 @@
 	// local constant
 		// Kd: diffuse coeff
 		float Kd = 1.0 ;
+        // Sepia conversion
+        vec3 sepiaR = vec3(.393, .769, .189);
+        vec3 sepiaG = vec3(.349, .686, .168);
+        vec3 sepiaB = vec3(.272, .534, .131);
 
 	// inputs
     	varying vec2 vTextureCoord;
-		
-		varying float vRandom;
-		
-		
+				
     // Uniform
     	uniform sampler2D uSampler0;
-
-		
-		// lights
-		// ambient
-		uniform vec3 uAmbientColor;
-		
-		// rand function
-		float rand(vec2 co){
-			return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
-		}
 
     void main(void) {
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
 
-		// light color
-		vec3 lightColor = texColor.rgb ;
-
-		lightColor.r = lightColor.r * .21 + lightColor.g * .72 + lightColor.b * .07;
-		lightColor.g = lightColor.r;
-		lightColor.b = lightColor.r;
+        float finalR = dot(texColor.rgb, sepiaR);
+        float finalG = dot(texColor.rgb, sepiaG);
+        float finalB = dot(texColor.rgb, sepiaB);
 		
-		float randfloat = rand(vec2(vRandom*lightColor.r, vRandom*vTextureCoord.s + vRandom*vTextureCoord.t));
-		if( randfloat > 0.9) {
-			lightColor = vec3(0.0,0.0,0.0);
-		}
-		
-        gl_FragColor = vec4(lightColor,1.0);
+        gl_FragColor = vec4(finalR, finalG, finalB, texColor.a);
     }
 	</FRAGMENT>
 </SHADER>

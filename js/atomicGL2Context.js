@@ -9,8 +9,9 @@
 //----------------------------------------------------------------------------------------
 class atomicGL2Context {
 	// constructor
+	// clk : scene clock
 	//------------------------
-	constructor() {
+	constructor(clk) {
 		// attributes
 		// -------------------------------------------------
 		// GL context
@@ -41,6 +42,8 @@ class atomicGL2Context {
 		this.shapes = [];
 		// scene graph
 		this.scenegraph = null;
+		// Scene Clock
+		this.clock = clk;
 	}
 
 	// methods
@@ -55,6 +58,7 @@ class atomicGL2Context {
 		// recover canvas openGL
 		//Simplified way to grab WebGL context (see https://www.khronos.org/webgl/wiki/FAQ)
 		this.gl = WebGLUtils.setupWebGL(canvas);
+		console.log(this.gl.getSupportedExtensions());
 
 		if (!this.gl) { // error in the initialisation of GL context
 			alert("atomicGLContext::Could not initialise WebGL");
@@ -66,6 +70,8 @@ class atomicGL2Context {
 			this.viewportHeight = canvas.height;
 			this.gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], 1.0);
 			this.gl.enable(this.gl.DEPTH_TEST);
+			// For derivative functions : fwidth, dFdx, dFdy
+			this.gl.getExtension('OES_standard_derivatives');
 		}
 
 		// GLtexture

@@ -10,6 +10,10 @@
 		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffFog.xml" nbtex="1" nblight="1">texDiffFog</XMATSHADER>
+		<XMATSHADER file="shaders/shaderSepia.xml" nbtex="1" nblight="1">texDiffSepia</XMATSHADER>
+		<XMATSHADER file="shaders/shaderSepiaSkybox.xml" nbtex="1" nblight="1">sepiaSkybox</XMATSHADER>
+		<XMATSHADER file="shaders/shaderPsycho.xml" nbtex="1" nblight="1">shaderPsycho</XMATSHADER>
+		<XMATSHADER file="shaders/shaderPsychoSkybox.xml" nbtex="1" nblight="1">psychoSkybox</XMATSHADER>
 	</SHADERS>
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
@@ -220,7 +224,7 @@
 					<OBJECT3D id="obj_ground_grass" shader="texDiffProg">ground_grass</OBJECT3D>
 			</TRANSFORM>
 
-			<TRANSFORM id="transform_donjon1" translate="-10.0,0.05,-40.0" rotaxis="0.0,1.0,0.0" angle="90.0" scale="1.0,1.0,1.0">
+			<TRANSFORM id="transform_donjon1" translate="-10.0,0.05+0.01*t,-40.0" rotaxis="0.0,1.0,0.0" angle="90.0+t" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_donjon1Base" shader="texDiffNormalMapProg">donjon1Base</OBJECT3D>
 					<OBJECT3D id="donjon1Bois" shader="texDiffNormalMapProg">donjon1Bois</OBJECT3D>
 					<OBJECT3D id="obj_donjon1Fenetre" shader="texDiffProg">donjon1Fenetre</OBJECT3D>
