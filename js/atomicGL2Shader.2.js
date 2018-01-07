@@ -327,7 +327,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			aGL.gl.uniform3f(this.pointLightLocationUniform[i], aGL.omniLightLocation[i * 3 + 0], aGL.omniLightLocation[i * 3 + 1], aGL.omniLightLocation[i * 3 + 2]);
 			aGL.gl.uniform3f(this.pointLightColorUniform[i], aGL.omniLightColor[i * 3 + 0], aGL.omniLightColor[i * 3 + 1], aGL.omniLightColor[i * 3 + 2]);
 		}
-		
+
 		// New pointlights management
 
 		var tmpLightsColors = new Float32Array();
