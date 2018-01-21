@@ -77,8 +77,8 @@
   		// Kd: diffuse coeff
   		float Kd = 1.0 ;
 
-			const float nbLayers = 32.0;
-			const float bump_scale = 0.09;
+			const float nbLayers = 64.0;
+			const float bump_scale = 0.1;
 
   	// inputs
   		varying vec4 vPosition;
@@ -97,63 +97,6 @@
 		//point light ie omni dir:  location, color
 		uniform vec3 uPointLightPosition0;
 		uniform vec3 uPointLightColor0;
-
-		float pow2 (float x){
-			return x*x;
-		}
-
-		mat3 transpose(mat3 inMatrix)
-		{
-		    vec3 i0 = inMatrix[0];
-		    vec3 i1 = inMatrix[1];
-		    vec3 i2 = inMatrix[2];
-
-		    mat3 outMatrix = mat3(
-		        vec3(i0.x, i1.x, i2.x),
-		        vec3(i0.y, i1.y, i2.y),
-		        vec3(i0.z, i1.z, i2.z)
-		    );
-
-		    return outMatrix;
-		}
-
-		float det(mat3 m){
-			vec3 c0 = m[0];
-			vec3 c1 = m[1];
-			vec3 c2 = m[2];
-
-			return c0[0]*c1[1]*c2[2] + c1[0]*c2[1]*c0[2] + c2[0]*c0[1]*c1[2] - c0[2]*c1[1]*c2[0] - c1[2]*c2[1]*c0[0] - c2[2]*c0[1]*c1[0];
-
-		}
-
-		mat3 I(void){
-
-			vec3 c0 = vec3(1.0,0.0,0.0);
-			vec3 c1 = vec3(0.0,1.0,0.0);
-			vec3 c2 = vec3(0.0,0.0,1.0);
-
-			return mat3(c0,c1,c2);
-
-		}
-
-		float tr(mat3 m){
-			vec3 c0 = m[0];
-			vec3 c1 = m[1];
-			vec3 c2 = m[2];
-
-			return c0[0]+c1[1]+c2[2];
-		}
-
-		mat3 inverse(mat3 m){
-
-			float d = det(m);
-			float t = tr(m);
-
-			mat3 msquare = m*m;
-
-			return (1.0/d) * ( 0.5*((t*t)-tr(msquare))*I() - t*m+msquare ) ;
-
-		}
 
 		vec3 computeEyeDirection(vec3 eyeDir){
 

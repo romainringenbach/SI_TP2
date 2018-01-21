@@ -91,7 +91,47 @@
 			return sqrt(pow2(v[0])+pow2(v[1])+pow2(v[2]));
 		}
 
+		mat3 transpose(mat3 inMatrix)
+		{
+		    vec3 i0 = inMatrix[0];
+		    vec3 i1 = inMatrix[1];
+		    vec3 i2 = inMatrix[2];
+
+		    mat3 outMatrix = mat3(
+		        vec3(i0.x, i1.x, i2.x),
+		        vec3(i0.y, i1.y, i2.y),
+		        vec3(i0.z, i1.z, i2.z)
+		    );
+
+		    return outMatrix;
+		}
+
 		vec3 computeEyeDirection(vec3 eyeDir){
+
+			// Calcul des tangent et biTangent
+			// normalize normal
+			vec3 oldNormal = normalize(vNormal);
+
+			// TS to View
+			vec3 biTangent = cross(oldNormal,vec3(0.0,0.0,1.0));
+			// test tangent
+			if (dot(biTangent,biTangent) == 0.0){biTangent = cross(oldNormal,vec3(0.0,1.0,0.0));}
+			vec3 tangent =  cross(biTangent,oldNormal);
+			// no transpose
+			vec3 u1 = tangent ;
+			vec3 u2 = biTangent;
+			vec3 u3 = oldNormal;
+			// TS to view matrix
+			mat3 TBN = mat3(u1,u2,u3);
+			// transform normal
+
+			return transpose(TBN)*-eyeDir;
+
+			//vec3 v = transpose(TBN)*vCameraPosition;
+
+			//return vec3(vTextureCoord,0.0)-v;
+
+			/*
 
 			// Rotation matrice calcul :
 			// source : https://math.stackexchange.com/questions/180418/calculate-rotation-matrix-to-align-vector-a-to-vector-b-in-3d
@@ -100,7 +140,7 @@
 			vec3 b = vec3(0.0,0.0,1.0);
 
 			vec3 v = cross(a,b);
-			float s = norm(v); // sin(teta)
+			float s = sqrt(pow2(v[0])+pow2(v[1])+pow2(v[2])); // sin(teta)
 			float c = dot(a,b); //cos(teta)
 
 			mat3 vs = mat3(	vec3(0,v[2],-v[1]),
@@ -117,7 +157,7 @@
 
 			//------------------------------------
 
-			return R*normalize(eyeDir);
+			return R*normalize(eyeDir);*/
 
 		}
 
