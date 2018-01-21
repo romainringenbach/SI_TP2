@@ -90,9 +90,10 @@ class atomicGL2Controls {
     handleKeys() {
         if (!this.mouseLocked)
             return;
+
         //Set un attribut frameDelta avec clock.get() dans la classe camera depuis ici
         //plutôt que d'appeler plusieurs fois get() dans la camera.
-
+        this.agl.scenegraph.camera.setframeTime(this.agl.clock.get());
         // Keyboard camera movement
         if (this.currentlyPressedKeys["d"]) // (D) strafeRight
         {
