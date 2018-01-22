@@ -7,6 +7,7 @@ from os.path import isfile, join
 
 
 
+
 def convertFiles(path):
     files = listdir(path)
     if path[len(path)-1:len(path)] != "/":
@@ -25,6 +26,10 @@ def convertFile(path):
 
     name = ''
 
+    current_mtl = 0
+
+    mtl = []
+
     v = []
     vn = []
     vt = []
@@ -37,6 +42,12 @@ def convertFile(path):
         arrayLine = line.split(' ')
         if arrayLine[0] == 'o':
             name = arrayLine[1]
+        if arrayLine[0] == 'usemtl':
+            if arrayLine[1] in mtl:
+                current_mtl = mtl.index(arrayLine[1]) +1
+            else:
+                mtl.append(arrayLine[1])
+                current_mtl = len(mtl)
         if arrayLine[0] == 'f':
 
             tri = []
@@ -55,6 +66,7 @@ def convertFile(path):
 
                     tri.append(ver)
 
+                tri.append(current_mtl)
                 f.append(tri)
 
             elif len(arrayLine) == 5:
@@ -71,6 +83,7 @@ def convertFile(path):
 
                     tri.append(ver)
 
+                tri.append(current_mtl)
                 f.append(tri)
                 tri = []
 
@@ -89,6 +102,7 @@ def convertFile(path):
 
                     tri.append(ver)
 
+                tri.append(current_mtl)
                 f.append(tri)
 
 
@@ -102,6 +116,40 @@ def convertFile(path):
         if arrayLine[0] == 'vt':
             vt.append((float(arrayLine[1]),float(arrayLine[2])))
 
+    if name == '' or '.' in name:
+
+        name = path[0:len(path)-4]
+        if path[0] == '.':
+            name = path[2:len(path)-4]
+
+
+
+
+    if len(mtl) != 0:
+        i = 1
+        for m in mtl:
+            tmp_f = []
+            for one_f in f:
+                if one_f[3] == i:
+                    tmp_f.append(one_f[0:3])
+
+            if '#' in m:
+                j = m.index('#')
+                tmp_m = list(m)
+                tmp_m[j] = '_'
+                m = ''.join(tmp_m)
+
+            create_js(vn,v,vt,tmp_f,name,m,i,path)
+
+            i = i + 1
+    else:
+        for one_f in f:
+            del one_f[-1]
+        create_js(vn,v,vt,f,name,"none",0,path)
+
+
+def create_js(vn,v,vt,f,name,mtl,no_mtl,path):
+
     #Treat new list
 
     vertices = []
@@ -109,55 +157,40 @@ def convertFile(path):
     uv = []
     index = []
 
-    valuesindex = {}
-    valuesindexcount = 0
-
-    for t in f:
-
-        tindex = []
-        # Give a index to each group, add their values in the ordre to each array
-        for ts in t:
-            if ts in valuesindex.keys():
-                tindex.append(valuesindex[ts])
+    vertex_index = {}
+    last_index = 0;
+    for face in f:
+        for vertex in face:
+            if vertex in vertex_index.keys():
+                index.append(vertex_index[vertex])
             else:
-                valuesindex[ts] = valuesindexcount
-                tindex.append(valuesindexcount)
+                vertex_index[vertex] = last_index;
+                index.append(last_index)
+                last_index += 1
 
                 # Add vertice
 
-                vertice = v[ts[0]-1]
+                vertice = v[vertex[0]-1]
                 vertices.append(vertice)
 
 
                 # Add normals
 
-                normal = vn[ts[2]-1]
+                normal = vn[vertex[2]-1]
                 normals.append(normal)
 
                 # Add uv
 
-                if ts[1] != -1:
-                    ct = vt[ts[1]-1]
-                    uv.append(ct)
+                ct = vt[vertex[1]-1]
+                uv.append(ct)
 
 
-                valuesindexcount += 1
-
-        for j in tindex:
-            index.append(j)
-
-
-
-
-
-
-
-    newpath = path[0:len(path)-3] + "js"
+    newpath = path[0:len(path)-4] +"_"+str(no_mtl)+".js"
 
     js = open(newpath,"w")
 
-    js.write(name+" = function(){"+"\r\n")
-
+    js.write(name+"_"+mtl+" = function(){"+"\r\n")
+    js.write("//"+mtl+"\r\n")
 
     #vertices
     js.write("this.vertices = ["+"\r\n")
