@@ -31,6 +31,9 @@ class atomicGL2Context {
 		// GLtexture
 		this.GLtexture = [];
 
+		this.nbTexture = 0;
+		this.nbTextureLoaded = 0;
+
 		// -------------------------------------------------
 		// scene assets
 		// -------------------------------------------------

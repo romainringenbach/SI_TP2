@@ -5,7 +5,7 @@ import atomicGL2Clock from './atomicGL2Clock.js';
 import atomicGL2xml from './atomicGL2xml.2.js';
 // atomicGL
 //----------------------------------------------------------------------------------------
-// author: RC				
+// author: RC
 // contact: cozot@irisa.fr
 // version: 0.1
 // current version date: 2017/11/27
@@ -40,7 +40,7 @@ class atomicGL2App {
         //HTML canvas
         this.canvas;
     }
-    
+
     // Basic components init
     init() {
         this.ams = new atomicGL2MatrixStack();
@@ -57,7 +57,7 @@ class atomicGL2App {
         document.querySelector('input[name=FpsBtn]').addEventListener('change', this.toggleStatsPanel.bind(this), false);
 
         this.canvas = document.getElementById("oglcanvas");
-        
+
         //Init controls
         this.controls = new atomicGL2Controls(this.canvas);
 
@@ -73,10 +73,10 @@ class atomicGL2App {
         // Handle context lost
         this.canvas.addEventListener('webglcontextlost', this.handleContextLost.bind(this), false);
         this.canvas.addEventListener('webglcontextrestored', this.restoreLostContext.bind(this), false);
-        
+
         this.webGLStart();
     }
-    
+
     toggleStatsPanel() {
         let checked = document.querySelector('input[name=FpsBtn]').checked;
         this.stats.dom.style.display = checked ? 'block' : 'none';
@@ -98,7 +98,19 @@ class atomicGL2App {
         // init Matrix Stack
         this.ams.initMatrix(this.agl, this.fov);
         // start the animation
-        this.nextFrame();
+
+        let agl = this.agl;
+        let a = this;
+        let wait = function(){
+          if(agl.nbTextureLoaded != agl.nbTexture) {
+            console.log("waiting for texture loading ......")
+            window.setTimeout(wait,1000);
+          } else {
+            a.nextFrame();
+          }
+        }
+        wait();
+
     }
 
     // draw
@@ -108,7 +120,7 @@ class atomicGL2App {
         // Actually "moves" the camera
         this.agl.scenegraph.draw(this.agl, this.ams);
     }
-    
+
     // nextFrame
     // -----------------------------
     //https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
@@ -119,7 +131,7 @@ class atomicGL2App {
         this.animate();
         this.stats.update();
     }
-    
+
     // animate
     // ------------------------------
     animate() {
@@ -129,7 +141,7 @@ class atomicGL2App {
 			this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.getTotal());
 		}
     }
-    
+
     // If WebGL Context lost
     handleContextLost(event) {
         event.preventDefault();

@@ -142,11 +142,11 @@ class atomicGLObject3d {
 			aGL.gl.bindBuffer(aGL.gl.ARRAY_BUFFER, this.vertexTexCoordBuffer);
 			aGL.gl.vertexAttribPointer(aGL.shaderPrograms[idProg].texCoordAttribute, this.vertexTexCoordBufferItemSize, aGL.gl.FLOAT, false, 0, 0);
 		}
-		
+
 		for (let i = 0; i < this.textures.length; i++) {
 			// activate texture
 			// debug
-			// console.log("atomicGLObject3d("+this.name+")::activateTexture: "+agl.GLtexture[i]+"/"+agl.gl.TEXTURE0);
+			// console.log("atomicGLObject3d("+this.name+")::activateTexture: "+aGL.GLtexture[i]+"/"+aGL.gl.TEXTURE0);
 			aGL.gl.activeTexture(aGL.GLtexture[i]);
 			// debug
 			// console.log("atomicGLObject3d("+this.name+")::bindTexture: "+this.textures[i].texture);

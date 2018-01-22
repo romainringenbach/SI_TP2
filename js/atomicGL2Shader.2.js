@@ -359,7 +359,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		// Sobel
 		let resolution = new Float32Array([aGL.gl.drawingBufferWidth, aGL.gl.drawingBufferHeight]);
 		aGL.gl.uniform2fv(this.uRes, resolution);
-		
+
 		// Time
 		aGL.gl.uniform1f(this.time, aGL.clock.get());
 		// Random
