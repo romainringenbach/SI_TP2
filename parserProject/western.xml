@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCENE>
+	<SHADERS>
+		<XMATSHADER file="shaders/passThrough.xml" nbtex="0" nblight="0">passThrough</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">shaderBaW</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">shaderBaWMovie</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBumpMapping.xml" nbtex="3" nblight="1">shaderBumpMapping</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBumpMapping100c.xml" nbtex="3" nblight="1">shaderBumpMapping100c</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoonCylinder.xml" nbtex="1" nblight="1">shaderCartoonCylinder</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoonPlane.xml" nbtex="1" nblight="1">shaderCartoonPlane</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoonSphere.xml" nbtex="1" nblight="1">shaderCartoonSphere</XMATSHADER>
+		<XMATSHADER file="shaders/shaderPsycho.xml" nbtex="0" nblight="0">shaderPsycho</XMATSHADER>
+		<XMATSHADER file="shaders/shaderPsychoSkybox.xml" nbtex="1" nblight="1">shaderPsychoSkybox</XMATSHADER>
+		<XMATSHADER file="shaders/shaderSepia.xml" nbtex="1" nblight="1">shaderSepia</XMATSHADER>
+		<XMATSHADER file="shaders/shaderSepiaSkybox.xml" nbtex="1" nblight="1">shaderSepiaSkybox</XMATSHADER>
+		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">shaderToon</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffFog.xml" nbtex="1" nblight="1">texDiffFog</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
+		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texNormalMapProg</XMATSHADER>
+		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="1" nblight="1">texPhongProg</XMATSHADER>
+		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">texProg</XMATSHADER>
+	</SHADERS>
+	<LIGHTS>
+		<LIGHT id="ambientLight1" position="0,4.24914245649023,0" color="0.0,0.0,0.0">ambientLight1</LIGHT>
+	</LIGHTS>
+	<TEXTURES>
+		<TEXTURE id="bitume1" type="color">texture/bitume1.png</TEXTURE>
+		<TEXTURE id="bleue" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="bois1" type="color">texture/bois1.png</TEXTURE>
+		<TEXTURE id="bois2" type="color">texture/bois2.png</TEXTURE>
+		<TEXTURE id="bronze" type="color">texture/bronze.png</TEXTURE>
+		<TEXTURE id="crate" type="color">texture/crate.png</TEXTURE>
+		<TEXTURE id="crate1" type="color">texture/crate1.png</TEXTURE>
+		<TEXTURE id="crate2" type="color">texture/crate2.png</TEXTURE>
+		<TEXTURE id="crate3" type="color">texture/crate3.png</TEXTURE>
+		<TEXTURE id="eau1" type="color">texture/eau1.png</TEXTURE>
+		<TEXTURE id="herbe1" type="color">texture/herbe1.png</TEXTURE>
+		<TEXTURE id="herbe2" type="color">texture/herbe2.png</TEXTURE>
+		<TEXTURE id="marbre1" type="color">texture/marbre1.png</TEXTURE>
+		<TEXTURE id="mur2" type="color">texture/mur2.png</TEXTURE>
+		<TEXTURE id="mur2_normal" type="normal">texture/mur2_normal.png</TEXTURE>
+		<TEXTURE id="mur3" type="color">texture/mur3.png</TEXTURE>
+		<TEXTURE id="mur3_normal" type="normal">texture/mur3_normal.png</TEXTURE>
+		<TEXTURE id="mur_pierre1" type="color">texture/mur_pierre1.png</TEXTURE>
+		<TEXTURE id="mur_pierre1_normal" type="normal">texture/mur_pierre1_normal.png</TEXTURE>
+		<TEXTURE id="normal" type="normal">texture/normal.png</TEXTURE>
+		<TEXTURE id="pave1" type="color">texture/pave1.png</TEXTURE>
+		<TEXTURE id="pave2" type="color">texture/pave2.png</TEXTURE>
+		<TEXTURE id="pave2_normal" type="normal">texture/pave2_normal.png</TEXTURE>
+		<TEXTURE id="pierre2" type="color">texture/pierre2.png</TEXTURE>
+		<TEXTURE id="pierre2_normal" type="normal">texture/pierre2_normal.png</TEXTURE>
+		<TEXTURE id="pierre3" type="color">texture/pierre3.png</TEXTURE>
+		<TEXTURE id="pierre3_normal" type="normal">texture/pierre3_normal.png</TEXTURE>
+		<TEXTURE id="rouge" type="color">texture/rouge.png</TEXTURE>
+		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>
+		<TEXTURE id="skybox" type="color">texture/skybox.png</TEXTURE>
+		<TEXTURE id="skybox_texture" type="color">texture/skybox_texture.png</TEXTURE>
+		<TEXTURE id="sol1" type="color">texture/sol1.png</TEXTURE>
+		<TEXTURE id="sol2" type="color">texture/sol2.png</TEXTURE>
+		<TEXTURE id="sol3" type="color">texture/sol3.png</TEXTURE>
+		<TEXTURE id="sol4" type="color">texture/sol4.png</TEXTURE>
+		<TEXTURE id="sol4_normal" type="normal">texture/sol4_normal.png</TEXTURE>
+		<TEXTURE id="sol5" type="color">texture/sol5.png</TEXTURE>
+		<TEXTURE id="test" type="color">texture/test.png</TEXTURE>
+		<TEXTURE id="toit1" type="color">texture/toit1.png</TEXTURE>
+		<TEXTURE id="toit1_normal" type="normal">texture/toit1_normal.png</TEXTURE>
+		<TEXTURE id="toit2" type="color">texture/toit2.png</TEXTURE>
+		<TEXTURE id="toit2_normal" type="normal">texture/toit2_normal.png</TEXTURE>
+		<TEXTURE id="vert" type="color">texture/vert.png</TEXTURE>
+		<TEXTURE id="Sack1" type="color">texture/western/Sack1.png</TEXTURE>
+		<TEXTURE id="M_03___Default1" type="color">texture/western/M_03___Default1.png</TEXTURE>
+		<TEXTURE id="M_02___Default1" type="color">texture/western/M_02___Default1.png</TEXTURE>
+	</TEXTURES>
+	<SHAPES>
+		<SHAPE id="barrel_and_wood_box" type="obj">
+			<GEOMETRY id="barrel_and_wood_box_1" uv="1.0,1.0">barrel_and_wood_box_1()</GEOMETRY>
+			<TEXTID>Sack1</TEXTID>
+			<GEOMETRY id="barrel_and_wood_box_2" uv="1.0,1.0">barrel_and_wood_box_2()</GEOMETRY>
+			<TEXTID>M_03___Default1</TEXTID>
+			<GEOMETRY id="barrel_and_wood_box_3" uv="1.0,1.0">barrel_and_wood_box_3()</GEOMETRY>
+			<TEXTID>M_02___Default1</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon:polySurface1" type="obj">
+			<GEOMETRY id="buiding1_saloon:polySurface1_geo" uv="1.0,1.0">buiding1_saloon:polySurface1()</GEOMETRY>
+			<TEXTID>buiding1_saloon:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom:polySurface1" type="obj">
+			<GEOMETRY id="building_bom:polySurface1_geo" uv="1.0,1.0">building_bom:polySurface1()</GEOMETRY>
+			<TEXTID>building_bom:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1:polySurface1" type="obj">
+			<GEOMETRY id="building_bom1:polySurface1_geo" uv="1.0,1.0">building_bom1:polySurface1()</GEOMETRY>
+			<TEXTID>building_bom1:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3:polySurface1" type="obj">
+			<GEOMETRY id="buildings_3:polySurface1_geo" uv="1.0,1.0">buildings_3:polySurface1()</GEOMETRY>
+			<TEXTID>buildings_3:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="cactus:polySurface1" type="obj">
+			<GEOMETRY id="cactus:polySurface1_geo" uv="1.0,1.0">cactus:polySurface1()</GEOMETRY>
+			<TEXTID>cactus:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="cowboy:polySurface1" type="obj">
+			<GEOMETRY id="cowboy:polySurface1_geo" uv="1.0,1.0">cowboy:polySurface1()</GEOMETRY>
+			<TEXTID>cowboy:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="fence:polySurface1" type="obj">
+			<GEOMETRY id="fence:polySurface1_geo" uv="1.0,1.0">fence:polySurface1()</GEOMETRY>
+			<TEXTID>fence:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="fence_boa:polySurface1" type="obj">
+			<GEOMETRY id="fence_boa:polySurface1_geo" uv="1.0,1.0">fence_boa:polySurface1()</GEOMETRY>
+			<TEXTID>fence_boa:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="hung_wood:polySurface1" type="obj">
+			<GEOMETRY id="hung_wood:polySurface1_geo" uv="1.0,1.0">hung_wood:polySurface1()</GEOMETRY>
+			<TEXTID>hung_wood:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="post_telephone:polySurface1" type="obj">
+			<GEOMETRY id="post_telephone:polySurface1_geo" uv="1.0,1.0">post_telephone:polySurface1()</GEOMETRY>
+			<TEXTID>post_telephone:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10:polySurface1" type="obj">
+			<GEOMETRY id="wagon_10:polySurface1_geo" uv="1.0,1.0">wagon_10:polySurface1()</GEOMETRY>
+			<TEXTID>wagon_10:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse:polySurface1" type="obj">
+			<GEOMETRY id="wagon_horse:polySurface1_geo" uv="1.0,1.0">wagon_horse:polySurface1()</GEOMETRY>
+			<TEXTID>wagon_horse:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="water_tower:polySurface1" type="obj">
+			<GEOMETRY id="water_tower:polySurface1_geo" uv="1.0,1.0">water_tower:polySurface1()</GEOMETRY>
+			<TEXTID>water_tower:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="wood:polySurface1" type="obj">
+			<GEOMETRY id="wood:polySurface1_geo" uv="1.0,1.0">wood:polySurface1()</GEOMETRY>
+			<TEXTID>wood:polySurface1_tex</TEXTID>
+		</SHAPE>
+		<SHAPE id="pPlane1" type="obj">
+			<GEOMETRY id="pPlane1_geo" uv="1.0,1.0">pPlane1()</GEOMETRY>
+			<TEXTID>pPlane1_tex</TEXTID>
+		</SHAPE>
+	</SHAPES>
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+
+		<TRANSFORM id="transform_barrel_and_wood_box:polySurface1" translate="-2.95674100489601,0,8.3142686342186" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00885559901747146,0.00885559901747146,0.00885559901747146" >
+				<OBJECT3D id="obj_barrel_and_wood_box:polySurface1" shader="texDiffNormalMapProg">barrel_and_wood_box:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_buiding1_saloon:polySurface1" translate="-1.68455075590183,0,11.9866702006941" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00985931014029878,0.00985931014029878,0.00985931014029878" >
+			<TRANSFORM id="transform_buiding1_saloon:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="obj_buiding1_saloon:polySurface1" shader="texDiffNormalMapProg">buiding1_saloon:polySurface1</OBJECT3D>
+			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_building_bom:polySurface1" translate="-7.80610848193305,0,12.3448263505614" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00781530428294129,0.00781530428294129,0.00781530428294129" >
+				<OBJECT3D id="obj_building_bom:polySurface1" shader="texDiffNormalMapProg">building_bom:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_building_bom1:polySurface1" translate="0.549829459216129,0,9.16877303799996" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0115954616684787,0.0115954616684787,0.0115954616684787" >
+			<TRANSFORM id="transform_building_bom1:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="obj_building_bom1:polySurface1" shader="texDiffNormalMapProg">building_bom1:polySurface1</OBJECT3D>
+			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_buildings_3:polySurface1" translate="1.42189586127994,0,-6.68090570425639" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00971391807331483,0.00971391807331483,0.00971391807331483" >
+			<TRANSFORM id="transform_buildings_3:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="obj_buildings_3:polySurface1" shader="texDiffNormalMapProg">buildings_3:polySurface1</OBJECT3D>
+			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus:polySurface1" translate="-0.742963654594383,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="obj_cactus:polySurface1" shader="texDiffNormalMapProg">cactus:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cowboy:polySurface1" translate="-1.81031937277291,0,1.27448722680399" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0113643487265158,0.0113643487265158,0.0113643487265158" >
+				<OBJECT3D id="obj_cowboy:polySurface1" shader="texDiffNormalMapProg">cowboy:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_fence:polySurface1" translate="4.69610620005251,0,2.76501402526168" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0111922133132316,0.0111922133132316,0.0111922133132316" >
+			<TRANSFORM id="transform_fence:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="obj_fence:polySurface1" shader="texDiffNormalMapProg">fence:polySurface1</OBJECT3D>
+			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_fence_boa:polySurface1" translate="-2.27168407510948,0,-0.512353942988909" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0157515722571418,0.0157515722571418,0.0157515722571418" >
+			<TRANSFORM id="transform_fence_boa:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="obj_fence_boa:polySurface1" shader="texDiffNormalMapProg">fence_boa:polySurface1</OBJECT3D>
+			</TRANSFORM>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_hung_wood:polySurface1" translate="5.62047693732795,0,3.95087900784616" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0101149138735789,0.0101149138735789,0.0101149138735789" >
+				<OBJECT3D id="obj_hung_wood:polySurface1" shader="texDiffNormalMapProg">hung_wood:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_post_telephone:polySurface1" translate="-5.46592909631749,0,-5.45516290023014" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0142677398002877,0.0142677398002877,0.0142677398002877" >
+				<OBJECT3D id="obj_post_telephone:polySurface1" shader="texDiffNormalMapProg">post_telephone:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_wagon_10:polySurface1" translate="2.83263634611706,0,4.18176973349277" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00848036044150531,0.00848036044150531,0.00848036044150531" >
+				<OBJECT3D id="obj_wagon_10:polySurface1" shader="texDiffNormalMapProg">wagon_10:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_wagon_horse:polySurface1" translate="8.5629440676201,0,1.53329856602502" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
+				<OBJECT3D id="obj_wagon_horse:polySurface1" shader="texDiffNormalMapProg">wagon_horse:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_water_tower:polySurface1" translate="0,0,13.68506458377" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0116411061257294,0.0116411061257294,0.0116411061257294" >
+				<OBJECT3D id="obj_water_tower:polySurface1" shader="texDiffNormalMapProg">water_tower:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_wood:polySurface1" translate="-0.975086669477491,0,11.4648818000863" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0107751347713196,0.0107751347713196,0.0107751347713196" >
+				<OBJECT3D id="obj_wood:polySurface1" shader="texDiffNormalMapProg">wood:polySurface1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="33.6755530117396,33.6755530117396,33.6755530117396" >
+				<OBJECT3D id="obj_pPlane1" shader="texDiffNormalMapProg">pPlane1</OBJECT3D>
+		</TRANSFORM>
+
+	</ROOT>
+</SCENE>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCENE>
+	<SHADERS>
+		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">textProg</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
+		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
+		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
+		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
+		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
+	</SHADERS>
+	<LIGHTS>
+		<LIGHT id="sun" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+	</LIGHTS>
+	<TEXTURES>
+		<TEXTURE id="5" type="color">texture/5.jpg"</TEXTURE>
+		<TEXTURE id="BOARD08" type="color">texture/BOARD08.JPG"</TEXTURE>
+		<TEXTURE id="BOARD08B" type="color">texture/BOARD08B.JPG"</TEXTURE>
+		<TEXTURE id="metbgr01" type="color">texture/metbgr01.jpg"</TEXTURE>
+		<TEXTURE id="mod-wood" type="color">texture/mod-wood.bmp"</TEXTURE>
+		<TEXTURE id="mod-wood_B" type="color">texture/mod-wood_B.jpg"</TEXTURE>
+		<TEXTURE id="RATBODY" type="color">texture/RATBODY.JPG"</TEXTURE>
+		<TEXTURE id="Saloon_Door" type="color">texture/Saloon_Door.jpg"</TEXTURE>
+		<TEXTURE id="Saloon_sign" type="color">texture/Saloon_sign.jpg"</TEXTURE>
+		<TEXTURE id="Sand01B" type="color">texture/Sand01B.jpg"</TEXTURE>
+		<TEXTURE id="SHINGLES" type="color">texture/SHINGLES.JPG"</TEXTURE>
+		<TEXTURE id="SHINGLESB" type="color">texture/SHINGLESB.jpg"</TEXTURE>
+		<TEXTURE id="TEXTURE2" type="color">texture/TEXTURE2.JPG"</TEXTURE>
+		<TEXTURE id="Western_Saloon" type="color">texture/Western_Saloon.mtl"</TEXTURE>
+		<TEXTURE id="window_pane_Grey" type="color">texture/window_pane_Grey.bmp"</TEXTURE>
+		<TEXTURE id="WOO006" type="color">texture/WOO006.JPG"</TEXTURE>
+		<TEXTURE id="WOO006B" type="color">texture/WOO006B.JPG"</TEXTURE>
+		<TEXTURE id="wood1a" type="color">texture/wood1a.jpg"</TEXTURE>
+		<TEXTURE id="wood1b" type="color">texture/wood1b.jpg"</TEXTURE>
+		<TEXTURE id="skyTex" type="color">texture/skybox_texture.png</TEXTURE>
+	</TEXTURES>
+	<SHAPES>
+		<SHAPE id="Western_Saloon1:Western_Saloon1:Saloon" type="obj">
+			<GEOMETRY id="Western_Saloon1:Western_Saloon1:Saloon_geo" uv="1.0,1.0">saloon()</GEOMETRY>
+			<TEXTID>5</TEXTID>
+			<TEXTID>BOARD08</TEXTID>
+			<TEXTID>BOARD08B</TEXTID>
+			<TEXTID>metbgr01</TEXTID>
+			<TEXTID>mod-wood</TEXTID>
+			<TEXTID>mod-wood_B</TEXTID>
+			<TEXTID>RATBODY</TEXTID>
+			<TEXTID>Saloon_Door</TEXTID>
+			<TEXTID>Saloon_sign</TEXTID>
+			<TEXTID>Sand01B</TEXTID>
+			<TEXTID>SHINGLES</TEXTID>
+			<TEXTID>SHINGLESB</TEXTID>
+			<TEXTID>TEXTURE2</TEXTID>
+			<TEXTID>window_pane_Grey</TEXTID>
+			<TEXTID>WOO006</TEXTID>
+			<TEXTID>WOO006B</TEXTID>
+			<TEXTID>wood1a</TEXTID>
+			<TEXTID>wood1b</TEXTID>
+		</SHAPE>
+	</SHAPES>
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+
+		<TRANSFORM id="transform_Western_Saloon1:Western_Saloon1:Saloon" translate="-0.481953808120052,0,-7.90345498303995" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0173106575459775,0.0173106575459775,0.0173106575459775" >
+			<TRANSFORM id="transform_Western_Saloon1:Western_Saloon1:Saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="88.5934243162186" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="obj_Western_Saloon1:Western_Saloon1:Saloon" shader="texDiffNormalMapProg">Western_Saloon1:Western_Saloon1:Saloon</OBJECT3D>
+			</TRANSFORM>
+		</TRANSFORM>
+
+	</ROOT>
+</SCENE>

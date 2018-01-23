@@ -1,4 +1,4 @@
-# Converti un fihier .obj en .js et place ce dernier au même endroit
+﻿# Converti un fihier .obj en .js et place ce dernier au même endroit
 
 # pour charger dans la console python :  exec(open("path/objtojs.py").read())
 # pour convertire un obj : convertFile("path/name.obj")
@@ -183,6 +183,7 @@ def create_js(vn,v,vt,f,name,mtl,no_mtl,path):
 
                 ct = vt[vertex[1]-1]
                 uv.append(ct)
+                #print(last_index)
 
 
     newpath = path[0:len(path)-4] +"_"+str(no_mtl)+".js"

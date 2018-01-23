@@ -1,3 +1,3 @@
 :: java -jar Main.jar
 
-java -jar Main.jar stuff.fbx sceneGraph.xml ../texture ../shaders texDiffNormalMapProg
+java -jar Main.jar western.fbx western.xml ../texture ../shaders texDiffNormalMapProg
