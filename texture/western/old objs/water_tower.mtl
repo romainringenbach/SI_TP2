@@ -1,0 +1,33 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2006 Google, Inc.
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Siding4_
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 0.443137 0.368627
+Ks 0.330000 0.330000 0.330000
+map_Kd water_tower/_Siding4_.jpg
+
+newmtl Material1
+Ka 0.000000 0.000000 0.000000
+Kd 0.329412 0.305882 0.227451
+Ks 0.330000 0.330000 0.330000
+map_Kd water_tower/Material1.jpg
+
+newmtl _Siding4_3
+Ka 0.000000 0.000000 0.000000
+Kd 0.376471 0.337255 0.278431
+Ks 0.330000 0.330000 0.330000
+map_Kd water_tower/_Siding4_3.jpg
+
+newmtl person_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.556863 0.376471 0.227451
+Ks 0.330000 0.330000 0.330000
+map_Kd water_tower/person_2.jpg
+

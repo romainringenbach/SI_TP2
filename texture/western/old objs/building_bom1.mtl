@@ -1,0 +1,45 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2006 Google, Inc.
+
+newmtl Material1
+Ka 0.000000 0.000000 0.000000
+Kd 0.725490 0.317647 0.133333
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Siding4_
+Ka 0.000000 0.000000 0.000000
+Kd 0.509804 0.478431 0.352941
+Ks 0.330000 0.330000 0.330000
+map_Kd building_bom1/_Siding4_.jpg
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl _GAF_Country_Estates_
+Ka 0.000000 0.000000 0.000000
+Kd 0.317647 0.301961 0.290196
+Ks 0.330000 0.330000 0.330000
+map_Kd building_bom1/_GAF_Country_Estates_.jpg
+
+newmtl _Wood_cherry_
+Ka 0.000000 0.000000 0.000000
+Kd 0.596078 0.337255 0.164706
+Ks 0.330000 0.330000 0.330000
+map_Kd building_bom1/_Wood_cherry_.jpg
+
+newmtl _Glass_Sky_Reflection_
+Ka 0.000000 0.000000 0.000000
+Kd 0.494118 0.541176 0.717647
+Ks 0.330000 0.330000 0.330000
+d 0.520000
+map_Kd building_bom1/_Glass_Sky_Reflection_.jpg
+
+newmtl _Siding3_
+Ka 0.000000 0.000000 0.000000
+Kd 0.435294 0.411765 0.372549
+Ks 0.330000 0.330000 0.330000
+map_Kd building_bom1/_Siding3_.jpg
+

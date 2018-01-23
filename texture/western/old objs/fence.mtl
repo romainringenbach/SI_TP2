@@ -1,0 +1,21 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2006 Google, Inc.
+
+newmtl _CorrogateRust_
+Ka 0.000000 0.000000 0.000000
+Kd 0.027451 0.023529 0.015686
+Ks 0.330000 0.330000 0.330000
+map_Kd fence/_CorrogateRust_.jpg
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl _Wood_cherry_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.596078 0.435294 0.290196
+Ks 0.330000 0.330000 0.330000
+map_Kd fence/_Wood_cherry_2.jpg
+
