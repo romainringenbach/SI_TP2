@@ -16,7 +16,7 @@
 		<TEXTURE id="bleue" type="color">texture/bleue.png</TEXTURE>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>
 		<TEXTURE id="skybox" type="color">texture/skybox.png</TEXTURE>
-		<TEXTURE id="skybox_texture" type="color">texture/skybox_texture.png</TEXTURE>
+		<TEXTURE id="skyTex" type="color">texture/skybox_texture.png</TEXTURE>
 		<TEXTURE id="Sack1" type="color">texture/western/barrel_and_wood_box/Sack1.png</TEXTURE>
 		<TEXTURE id="M_03___Default1" type="color">texture/western/barrel_and_wood_box/M_03___Default1.png</TEXTURE>
 		<TEXTURE id="M_02___Default1" type="color">texture/western/barrel_and_wood_box/M_02___Default1.png</TEXTURE>
