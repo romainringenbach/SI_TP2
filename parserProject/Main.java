@@ -345,7 +345,7 @@ public class Main {
 				finalS.append("\n").append(addTabFor).append("<TRANSFORM id=\"transform_").append(modelName)
 						.append("_rot_y").append("\" ").append("translate=\"0.0,0.0,0.0\"");
 				finalS.append(" rotaxis=\"0.0,1.0,0.0\" angle=\"").append(resValuesR[1]).append("\"")
-						.append(" scale=\"0.0,0.0,0.0\" ").append(">");
+						.append(" scale=\"1.0,1.0,1.0\" ").append(">");
 				endTransform.insert(0, "\n" + addTabFor + "</TRANSFORM>");
 				// endTransform = "\n"+addTabFor+"</TRANSFORM>" + endTransform;
 				addTabFor.append("\t");
@@ -354,7 +354,7 @@ public class Main {
 				finalS.append("\n").append(addTabFor).append("<TRANSFORM id=\"transform_").append(modelName)
 						.append("_rot_x").append("\" ").append("translate=\"0.0,0.0,0.0\"");
 				finalS.append("\" rotaxis=\"0.0,0.0,1.0\" angle=\"").append(resValuesR[2]).append("\"")
-						.append(" scale=\"0.0,0.0,0.0\" ").append(">");
+						.append(" scale=\"1.0,1.0,1.0\" ").append(">");
 				endTransform.insert(0, "\n" + addTabFor + "</TRANSFORM>");
 				// endTransform = "\n"+addTabFor+"</TRANSFORM>" + endTransform;
 				addTabFor.append("\t");

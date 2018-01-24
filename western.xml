@@ -781,7 +781,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_buiding1_saloon" translate="-1.68455075590183,0,11.9866702006941" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00985931014029878,0.00985931014029878,0.00985931014029878" >
-			<TRANSFORM id="transform_buiding1_saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_buiding1_saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="buiding1_saloon_Wood_Floor_Dark" shader="texPhongProg">buiding1_saloon_Wood_Floor_Dark</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Wood_Lumber_ButtJoined" shader="texPhongProg">buiding1_saloon_Wood_Lumber_ButtJoined</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Color_D04" shader="texPhongProg">buiding1_saloon_Color_D04</OBJECT3D>
@@ -808,7 +808,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_building_bom1" translate="0.549829459216129,0,9.16877303799996" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0115954616684787,0.0115954616684787,0.0115954616684787" >
-			<TRANSFORM id="transform_building_bom1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_building_bom1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="building_bom2_Material1" shader="texPhongProg">building_bom2_Material1</OBJECT3D>
 					<OBJECT3D id="building_bom2_Siding4_" shader="texPhongProg">building_bom2_Siding4_</OBJECT3D>
 					<OBJECT3D id="building_bom2_FrontColor" shader="texPhongProg">building_bom2_FrontColor</OBJECT3D>
@@ -820,7 +820,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_buildings_3" translate="1.42189586127994,0,-6.68090570425639" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00971391807331483,0.00971391807331483,0.00971391807331483" >
-			<TRANSFORM id="transform_buildings_3_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_buildings_3_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="buildings_3_Wood_cherry_5" shader="texPhongProg">buildings_3_Wood_cherry_5</OBJECT3D>
 					<OBJECT3D id="buildings_3_CornflowerBlue" shader="texPhongProg">buildings_3_CornflowerBlue</OBJECT3D>
 					<OBJECT3D id="buildings_3_FrontColor" shader="texPhongProg">buildings_3_FrontColor</OBJECT3D>
@@ -899,7 +899,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_fence" translate="4.69610620005251,0,2.76501402526168" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0111922133132316,0.0111922133132316,0.0111922133132316" >
-			<TRANSFORM id="transform_fence_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_fence_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="fence_CorrogateRust_" shader="texPhongProg">fence_CorrogateRust_</OBJECT3D>
 					<OBJECT3D id="fence_FrontColor" shader="texPhongProg">fence_FrontColor</OBJECT3D>
 					<OBJECT3D id="fence_Wood_cherry_2" shader="texPhongProg">fence_Wood_cherry_2</OBJECT3D>
@@ -907,7 +907,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_fence_boa" translate="-2.27168407510948,0,-0.512353942988909" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0157515722571418,0.0157515722571418,0.0157515722571418" >
-			<TRANSFORM id="transform_fence_boa_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_fence_boa_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="fence_boa_Wood_Pole_Utility" shader="texPhongProg">fence_boa_Wood_Pole_Utility</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
