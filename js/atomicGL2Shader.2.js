@@ -141,9 +141,6 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		//this.time;
 		// random
 		this.random;
-		// Fog
-		this.uFogColor;
-		this.uFogDist;
 		// Sobel
 		this.uRes;
 
@@ -253,10 +250,6 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.time = agl.gl.getUniformLocation(program, "uTime");
 		this.random = agl.gl.getUniformLocation(program, "uRandom");
 
-		//fog shader
-		this.uFogDist = agl.gl.getUniformLocation(program, "uFogDist");
-		this.uFogColor = agl.gl.getUniformLocation(program, "uFogColor");
-
 		// Sobel
 		this.uRes = agl.gl.getUniformLocation(program, "uRes");
 
@@ -349,12 +342,6 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		aGL.gl.uniform1fv(this.pointLightLocationUniformArray,aGL.omniLightLocation);
 		aGL.gl.uniform1fv(this.pointLightColorUniformArray,aGL.omniLightColor);
 		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
-
-		// Fog stuff
-		let fogColor = new Float32Array([0.5,0.5,0.5]);
-		let fogDist = new Float32Array([15, 60]);
-		aGL.gl.uniform3fv(this.uFogColor, fogColor);
-		aGL.gl.uniform2fv(this.uFogDist, fogDist);
 
 		// Sobel
 		let resolution = new Float32Array([aGL.gl.drawingBufferWidth, aGL.gl.drawingBufferHeight]);
