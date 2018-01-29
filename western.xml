@@ -259,7 +259,7 @@
 			<TEXTID>building_bom1_Translucent_Glass_Sky_Reflection</TEXTID>
 		</SHAPE>
 		<SHAPE id="building_bom1_Brick_Antique_1" type="obj">
-			<GEOMETRY id="building_bom1_Brick_Antique_1" uv="1.0,1.0">building_bom1_Brick_Antique_1()</GEOMETRY>
+			<GEOMETRY id="building_bom1_Brick_Antique_1" uv="0.05,0.05">building_bom1_Brick_Antique_1()</GEOMETRY>
 			<TEXTID>building_bom1_Brick_Antique_1</TEXTID>
 		</SHAPE>
 		<SHAPE id="building_bom1_Wood_Lumber_ButtJoined_1" type="obj">
@@ -327,6 +327,7 @@
 			<TEXTID>buildings_3_Wood_cherry_4</TEXTID>
 		</SHAPE>
 		<SHAPE id="buildings_3_Wood_cherry_9" type="obj">
+			<!--<GEOMETRY id="buildings_3_Wood_cherry_9" uv="0.05,0.05">buildings_3_Wood_cherry_9()</GEOMETRY>-->
 			<GEOMETRY id="buildings_3_Wood_cherry_9" uv="1.0,1.0">buildings_3_Wood_cherry_9()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_9</TEXTID>
 		</SHAPE>
@@ -781,6 +782,7 @@
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 
+	<TRANSFORM id="transform_all" translate="0.95674100489601,0,58.3142686342186" rotaxis="0.0,1.0,0.0" angle="90" scale="1.3,1.3,1.3" >
 		<TRANSFORM id="transform_barrel_and_wood_box" translate="-2.95674100489601,0,8.3142686342186" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00885559901747146,0.00885559901747146,0.00885559901747146" >
 				<OBJECT3D id="barrel_and_wood_box_Sack1" shader="texPhongProg">barrel_and_wood_box_Sack1</OBJECT3D>
 				<OBJECT3D id="barrel_and_wood_box_M_03___Default1" shader="texPhongProg">barrel_and_wood_box_M_03___Default1</OBJECT3D>
@@ -811,8 +813,8 @@
 				<OBJECT3D id="building_bom1_Wood_Lumber_ButtJoined_1" shader="texPhongProg">building_bom1_Wood_Lumber_ButtJoined_1</OBJECT3D>
 				<OBJECT3D id="building_bom1_Wood_Cherry_Original_2" shader="texPhongProg">building_bom1_Wood_Cherry_Original_2</OBJECT3D>
 				<OBJECT3D id="building_bom1_Translucent_Glass_Gray" shader="texPhongProg">building_bom1_Translucent_Glass_Gray</OBJECT3D>
-				<OBJECT3D id="building_bom1_FrontColor" shader="texPhongProg">building_bom1_FrontColor</OBJECT3D>
 				<OBJECT3D id="building_bom1_Color_A21" shader="texPhongProg">building_bom1_Color_A21</OBJECT3D>
+				<OBJECT3D id="building_bom1_FrontColor" shader="texPhongProg">building_bom1_FrontColor</OBJECT3D>
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_building_bom1" translate="0.549829459216129,0,9.16877303799996" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0115954616684787,0.0115954616684787,0.0115954616684787" >
@@ -831,7 +833,6 @@
 			<TRANSFORM id="transform_buildings_3_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="buildings_3_Wood_cherry_5" shader="texPhongProg">buildings_3_Wood_cherry_5</OBJECT3D>
 					<OBJECT3D id="buildings_3_CornflowerBlue" shader="texPhongProg">buildings_3_CornflowerBlue</OBJECT3D>
-					<OBJECT3D id="buildings_3_FrontColor" shader="texPhongProg">buildings_3_FrontColor</OBJECT3D>
 					<OBJECT3D id="buildings_3_Wood_cherry_3" shader="texPhongProg">buildings_3_Wood_cherry_3</OBJECT3D>
 					<OBJECT3D id="buildings_3_Siding4_2" shader="texPhongProg">buildings_3_Siding4_2</OBJECT3D>
 					<OBJECT3D id="buildings_3_Siding4_4" shader="texPhongProg">buildings_3_Siding4_4</OBJECT3D>
@@ -890,6 +891,7 @@
 					<OBJECT3D id="buildings_3_Wood_cherry_3_16_" shader="texPhongProg">buildings_3_Wood_cherry_3_16_</OBJECT3D>
 					<OBJECT3D id="buildings_3_Wood_cherry_3_14_" shader="texPhongProg">buildings_3_Wood_cherry_3_14_</OBJECT3D>
 					<OBJECT3D id="buildings_3_Wood_cherry_3_13_" shader="texPhongProg">buildings_3_Wood_cherry_3_13_</OBJECT3D>
+					<OBJECT3D id="buildings_3_FrontColor" shader="texPhongProg">buildings_3_FrontColor</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
 
@@ -982,13 +984,13 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_wood" translate="-0.975086669477491,0,11.4648818000863" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0107751347713196,0.0107751347713196,0.0107751347713196" >
-				<OBJECT3D id="wood_Wood_cherry_" shader="texPhongProg">wood_Wood_cherry_</OBJECT3D>
 				<OBJECT3D id="wood_Wood_floor_light_" shader="texPhongProg">wood_Wood_floor_light_</OBJECT3D>
+				<OBJECT3D id="wood_Wood_cherry_" shader="texPhongProg">wood_Wood_cherry_</OBJECT3D>
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="33.6755530117396,33.6755530117396,33.6755530117396" >
 				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
-
+	</TRANSFORM>
 	</ROOT>
 </SCENE>
