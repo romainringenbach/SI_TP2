@@ -161,7 +161,7 @@
 		<TEXTURE id="wagon_horse_M_0131_Silver" type="color">texture/western/wagon_horse_M_0131_Silver.png</TEXTURE>
 		<TEXTURE id="wagon_horse_M_0134_DimGray" type="color">texture/western/wagon_horse_M_0134_DimGray.png</TEXTURE>
 		<TEXTURE id="water_tower_FrontColor" type="color">texture/western/water_tower_FrontColor.png</TEXTURE>
-		<TEXTURE id="water_tower_Material1" type="color">texture/western/Material1.png</TEXTURE>
+		<TEXTURE id="water_tower_Material1" type="color">texture/western/water_tower/Material1.png</TEXTURE>
 		<TEXTURE id="water_tower_Siding4_" type="color">texture/western/water_tower/_Siding4_.png</TEXTURE>
 		<TEXTURE id="water_tower_Siding4_3" type="color">texture/western/water_tower/_Siding4_3.png</TEXTURE>
 		<TEXTURE id="water_tower_person_2" type="color">texture/western/water_tower/person_2.png</TEXTURE>
