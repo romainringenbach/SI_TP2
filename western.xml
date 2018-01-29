@@ -28,12 +28,16 @@
 		<TEXTURE id="M_03___Default1" type="color">texture/western/barrel_and_wood_box/M_03___Default1.png</TEXTURE>
 		<TEXTURE id="M_02___Default1" type="color">texture/western/barrel_and_wood_box/M_02___Default1.png</TEXTURE>
 		<TEXTURE id="Coffin1" type="color">texture/western/barrel_and_wood_box/Coffin1.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>
+		<!--<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>-->
+		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buildings_3/_Siding4_7.png</TEXTURE>
+		<!---->
 		<TEXTURE id="buiding1_saloon_Wood_Lumber_ButtJoined" type="color">texture/western/buiding1_saloon/Wood_Lumber_ButtJoined.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Color_D04" type="color">texture/western/buiding1_saloon_Color_D04.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Translucent_Glass_Blue" type="color">texture/western/buiding1_saloon_Translucent_Glass_Blue.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Roofing_Shingles_GAF_Estates" type="color">texture/western/buiding1_saloon/Roofing_Shingles_GAF_Estates.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>
+		<!--<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>-->
+		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/building_bom/Wood_Floor2.png</TEXTURE>
+		<!---->
 		<TEXTURE id="buiding1_saloon_Blinds_Cellular_White" type="color">texture/western/buiding1_saloon/Blinds_Cellular_White.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Asphalt_New" type="color">texture/western/buiding1_saloon/Asphalt_New.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Metal_Rusted" type="color">texture/western/buiding1_saloon/Metal_Rusted.png</TEXTURE>
@@ -215,7 +219,7 @@
 			<TEXTID>buiding1_saloon_Roofing_Shingles_GAF_Estates</TEXTID>
 		</SHAPE>
 		<SHAPE id="buiding1_saloon_Wood_Floor_Light" type="obj">
-			<GEOMETRY id="buiding1_saloon_Wood_Floor_Light" uv="1.0,1.0">buiding1_saloon_Wood_Floor_Light()</GEOMETRY>
+			<GEOMETRY id="buiding1_saloon_Wood_Floor_Light" uv="1.45,1.45">buiding1_saloon_Wood_Floor_Light()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Wood_Floor_Light</TEXTID>
 		</SHAPE>
 		<SHAPE id="buiding1_saloon_Blinds_Cellular_White" type="obj">
