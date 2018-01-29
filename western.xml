@@ -28,24 +28,32 @@
 		<TEXTURE id="M_03___Default1" type="color">texture/western/barrel_and_wood_box/M_03___Default1.png</TEXTURE>
 		<TEXTURE id="M_02___Default1" type="color">texture/western/barrel_and_wood_box/M_02___Default1.png</TEXTURE>
 		<TEXTURE id="Coffin1" type="color">texture/western/barrel_and_wood_box/Coffin1.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>
+		<!--<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>-->
+		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buildings_3/_Siding4_7.png</TEXTURE>
+		<!---->
 		<TEXTURE id="buiding1_saloon_Wood_Lumber_ButtJoined" type="color">texture/western/buiding1_saloon/Wood_Lumber_ButtJoined.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Color_D04" type="color">texture/western/buiding1_saloon_Color_D04.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Translucent_Glass_Blue" type="color">texture/western/buiding1_saloon_Translucent_Glass_Blue.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Roofing_Shingles_GAF_Estates" type="color">texture/western/buiding1_saloon/Roofing_Shingles_GAF_Estates.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>
+		<!--<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>-->
+		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/building_bom/Wood_Floor2.png</TEXTURE>
+		<!---->
 		<TEXTURE id="buiding1_saloon_Blinds_Cellular_White" type="color">texture/western/buiding1_saloon/Blinds_Cellular_White.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Asphalt_New" type="color">texture/western/buiding1_saloon/Asphalt_New.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Metal_Rusted" type="color">texture/western/buiding1_saloon/Metal_Rusted.png</TEXTURE>
 		<TEXTURE id="building_bom1_Color_A21" type="color">texture/western/building_bom_Color_A21.png</TEXTURE>
 		<TEXTURE id="building_bom1_Translucent_Glass_Gray" type="color">texture/western/building_bom_Translucent_Glass_Gray.png</TEXTURE>
-		<TEXTURE id="building_bom1_FrontColor" type="color">texture/western/building_bom_FrontColor.png</TEXTURE>
+		<!--<TEXTURE id="building_bom1_FrontColor" type="color">texture/western/building_bom_FrontColor.png</TEXTURE>-->
+		<TEXTURE id="building_bom1_FrontColor" type="color">texture/western/buildings_3/_Siding4_7.png</TEXTURE>
+		<!---->
 		<TEXTURE id="building_bom1_Brick_antique_" type="color">texture/western/building_bom/_Brick_antique_.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Floor2" type="color">texture/western/building_bom/Wood_Floor2.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Bamboo_Medium" type="color">texture/western/building_bom/Wood_Bamboo_Medium.png</TEXTURE>
 		<TEXTURE id="building_bom1_Translucent_Glass_Sky_Reflection" type="color">texture/western/building_bom/Translucent_Glass_Sky_Reflection.png</TEXTURE>
 		<TEXTURE id="building_bom1_Brick_Antique_1" type="color">texture/western/building_bom/_Brick_Antique_1.png</TEXTURE>
-		<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/building_bom/_Wood_Lumber_ButtJoined_1.png</TEXTURE>
+		<!--<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/building_bom/_Wood_Lumber_ButtJoined_1.png</TEXTURE>-->
+		<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/buildings_3/_Wood_cherry_9.png</TEXTURE>
+		<!---->
 		<TEXTURE id="building_bom1_Wood_Cherry_Original_2" type="color">texture/western/building_bom/_Wood_Cherry_Original_2.png</TEXTURE>
 		<TEXTURE id="building_bom2_Material1" type="color">texture/western/building_bom1_Material1.png</TEXTURE>
 		<TEXTURE id="building_bom2_Siding4_" type="color">texture/western/building_bom1/_Siding4_.png</TEXTURE>
@@ -215,7 +223,7 @@
 			<TEXTID>buiding1_saloon_Roofing_Shingles_GAF_Estates</TEXTID>
 		</SHAPE>
 		<SHAPE id="buiding1_saloon_Wood_Floor_Light" type="obj">
-			<GEOMETRY id="buiding1_saloon_Wood_Floor_Light" uv="1.0,1.0">buiding1_saloon_Wood_Floor_Light()</GEOMETRY>
+			<GEOMETRY id="buiding1_saloon_Wood_Floor_Light" uv="1.45,1.45">buiding1_saloon_Wood_Floor_Light()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Wood_Floor_Light</TEXTID>
 		</SHAPE>
 		<SHAPE id="buiding1_saloon_Blinds_Cellular_White" type="obj">
@@ -239,7 +247,7 @@
 			<TEXTID>building_bom1_Translucent_Glass_Gray</TEXTID>
 		</SHAPE>
 		<SHAPE id="building_bom1_FrontColor" type="obj">
-			<GEOMETRY id="building_bom1_FrontColor" uv="1.0,1.0">building_bom1_FrontColor()</GEOMETRY>
+			<GEOMETRY id="building_bom1_FrontColor" uv="0.015,0.015">building_bom1_FrontColor()</GEOMETRY>
 			<TEXTID>building_bom1_FrontColor</TEXTID>
 		</SHAPE>
 		<SHAPE id="building_bom1_Brick_antique_" type="obj">
@@ -263,7 +271,7 @@
 			<TEXTID>building_bom1_Brick_Antique_1</TEXTID>
 		</SHAPE>
 		<SHAPE id="building_bom1_Wood_Lumber_ButtJoined_1" type="obj">
-			<GEOMETRY id="building_bom1_Wood_Lumber_ButtJoined_1" uv="1.0,1.0">building_bom1_Wood_Lumber_ButtJoined_1()</GEOMETRY>
+			<GEOMETRY id="building_bom1_Wood_Lumber_ButtJoined_1" uv="0.20,0.20">building_bom1_Wood_Lumber_ButtJoined_1()</GEOMETRY>
 			<TEXTID>building_bom1_Wood_Lumber_ButtJoined_1</TEXTID>
 		</SHAPE>
 		<SHAPE id="building_bom1_Wood_Cherry_Original_2" type="obj">
