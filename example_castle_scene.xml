@@ -10,6 +10,7 @@
 		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffFog.xml" nbtex="1" nblight="1">texDiffFog</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffFogSkybox.xml" nbtex="1" nblight="1">texDiffFogSkybox</XMATSHADER>
 		<XMATSHADER file="shaders/shaderSepia.xml" nbtex="1" nblight="1">texDiffSepia</XMATSHADER>
 		<XMATSHADER file="shaders/shaderSepiaSkybox.xml" nbtex="1" nblight="1">sepiaSkybox</XMATSHADER>
 		<XMATSHADER file="shaders/shaderPsycho.xml" nbtex="1" nblight="1">shaderPsycho</XMATSHADER>

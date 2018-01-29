@@ -352,7 +352,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 
 		// Fog stuff
 		let fogColor = new Float32Array([0.5,0.5,0.5]);
-		let fogDist = new Float32Array([30, 60]);
+		let fogDist = new Float32Array([15, 60]);
 		aGL.gl.uniform3fv(this.uFogColor, fogColor);
 		aGL.gl.uniform2fv(this.uFogDist, fogDist);
 
