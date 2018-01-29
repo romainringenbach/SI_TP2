@@ -88,6 +88,7 @@
 		float Ks = 0.7;
 		float sh = 8.0;
 		vec3 specColor = vec3(0.2,0.5,0.7);
+		vec3 rimColor = vec3(0.2, 0.2, 0.2);
 
 		vec4 phong(vec4 texColor) {
 			// light direction, eye direction
@@ -103,12 +104,18 @@
 			//  diffuse term and specular term
 			float diffuse = max(dot(normal, lightDirection), 0.0);
 			float specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
+			
+			// rim
+			float rim = 1.0 - max(dot(eyeDirection, normal), 0.0);
+			rim = smoothstep(0.6, 1.0, rim);
+			vec3 finalRim = rimColor * vec3(rim, rim, rim);
 
 			// light color
 			vec3 lightColor =
 				Kd*uAmbientColor*texColor.rgb +
 				Kd*diffuse*uPointLightColor0 *texColor.rgb +
-				Ks*specular*uPointLightColor0*specColor;
+				Ks*specular*uPointLightColor0*specColor +
+				finalRim;
 
 			return vec4(lightColor, texColor.a);
 		}
@@ -137,8 +144,6 @@
 			vec4 texColor = texture2D(uSampler0, wobblyTexCoords);
 			vec4 phongCol = phong(texColor);
 			gl_FragColor = phongCol * vec4(rainbow(phongCol.r * wobblyTexCoords.s + phongCol.g * wobblyTexCoords.t), 0.85);
-			//gl_FragColor = texColor * vec4(vNormal, 1.0);
-			//gl_FragColor =  phongCol * vec4(vNormal, phongCol.a);
 		}
 	</FRAGMENT>
 </SHADER>
