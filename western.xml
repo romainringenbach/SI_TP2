@@ -122,7 +122,7 @@
 		<TEXTURE id="fence_Wood_cherry_2" type="color">texture/western/fence/_Wood_cherry_2.png</TEXTURE>
 		<TEXTURE id="hung_wood_Color_D09" type="color">texture/western/hung_wood_Color_D09.png</TEXTURE>
 		<TEXTURE id="hung_wood_Color_C24" type="color">texture/western/hung_wood_Color_C24.png</TEXTURE>
-		<TEXTURE id="hung_wood_FrontColor" type="color">texture/western/fence_FrontColor.png</TEXTURE>
+		<TEXTURE id="hung_wood_FrontColor" type="color">texture/western/hung_wood_FrontColor.png</TEXTURE>
 		<TEXTURE id="post_telephone_WarmGray8_1" type="color">texture/western/post_telephone__WarmGray8_1.png</TEXTURE>
 		<TEXTURE id="post_telephone_Dark_Brown_" type="color">texture/western/post_telephone_Dark_Brown_.png</TEXTURE>
 		<TEXTURE id="wagon_10_Metal_Seamed" type="color">texture/western/wagon_10/Metal_Seamed.png</TEXTURE>
