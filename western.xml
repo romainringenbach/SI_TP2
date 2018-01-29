@@ -24,16 +24,16 @@
 		<TEXTURE id="Coffin1" type="color">texture/western/barrel_and_wood_box/Coffin1.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Wood_Lumber_ButtJoined" type="color">texture/western/buiding1_saloon/Wood_Lumber_ButtJoined.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Color_D04" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Translucent_Glass_Blue" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buiding1_saloon_Color_D04" type="color">texture/western/buiding1_saloon_Color_D04.png</TEXTURE>
+		<TEXTURE id="buiding1_saloon_Translucent_Glass_Blue" type="color">texture/western/buiding1_saloon_Translucent_Glass_Blue.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Roofing_Shingles_GAF_Estates" type="color">texture/western/buiding1_saloon/Roofing_Shingles_GAF_Estates.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Blinds_Cellular_White" type="color">texture/western/buiding1_saloon/Blinds_Cellular_White.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Asphalt_New" type="color">texture/western/buiding1_saloon/Asphalt_New.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Metal_Rusted" type="color">texture/western/buiding1_saloon/Metal_Rusted.png</TEXTURE>
-		<TEXTURE id="building_bom1_Color_A21" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="building_bom1_Translucent_Glass_Gray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="building_bom1_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="building_bom1_Color_A21" type="color">texture/western/building_bom_Color_A21.png</TEXTURE>
+		<TEXTURE id="building_bom1_Translucent_Glass_Gray" type="color">texture/western/building_bom_Translucent_Glass_Gray.png</TEXTURE>
+		<TEXTURE id="building_bom1_FrontColor" type="color">texture/western/building_bom_FrontColor.png</TEXTURE>
 		<TEXTURE id="building_bom1_Brick_antique_" type="color">texture/western/building_bom/_Brick_antique_.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Floor2" type="color">texture/western/building_bom/Wood_Floor2.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Bamboo_Medium" type="color">texture/western/building_bom/Wood_Bamboo_Medium.png</TEXTURE>
@@ -41,16 +41,16 @@
 		<TEXTURE id="building_bom1_Brick_Antique_1" type="color">texture/western/building_bom/_Brick_Antique_1.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/building_bom/_Wood_Lumber_ButtJoined_1.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Cherry_Original_2" type="color">texture/western/building_bom/_Wood_Cherry_Original_2.png</TEXTURE>
-		<TEXTURE id="building_bom2_Material1" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="building_bom2_Material1" type="color">texture/western/building_bom1_Material1.png</TEXTURE>
 		<TEXTURE id="building_bom2_Siding4_" type="color">texture/western/building_bom1/_Siding4_.png</TEXTURE>
-		<TEXTURE id="building_bom2_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="building_bom2_FrontColor" type="color">texture/western/building_bom1_FrontColor.png</TEXTURE>
 		<TEXTURE id="building_bom2_Wood_cherry_" type="color">texture/western/building_bom1/_Wood_cherry_.png</TEXTURE>
 		<TEXTURE id="building_bom2_Siding3_" type="color">texture/western/building_bom1/_Siding3_.png</TEXTURE>
 		<TEXTURE id="building_bom2_Glass_Sky_Reflection_" type="color">texture/western/building_bom1/_Glass_Sky_Reflection_.png</TEXTURE>
 		<TEXTURE id="building_bom2_GAF_Country_Estates_" type="color">texture/western/building_bom1/_GAF_Country_Estates_.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_5" type="color">texture/western/buildings_3/_Wood_cherry_5.png</TEXTURE>
-		<TEXTURE id="buildings_3_CornflowerBlue" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="buildings_3_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buildings_3_CornflowerBlue" type="color">texture/western/buildings_3_CornflowerBlue.png</TEXTURE>
+		<TEXTURE id="buildings_3_FrontColor" type="color">texture/western/buildings_3_FrontColor.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_3" type="color">texture/western/buildings_3/_Wood_cherry_3.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_2" type="color">texture/western/buildings_3/_Siding4_2.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_4" type="color">texture/western/buildings_3/_Siding4_4.png</TEXTURE>
@@ -59,10 +59,10 @@
 		<TEXTURE id="buildings_3_Siding4_6" type="color">texture/western/buildings_3/_Siding4_3.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_Deck_Worn" type="color">texture/western/buildings_3/Wood_Deck_Worn.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood__Floor" type="color">texture/western/buildings_3/Wood__Floor.png</TEXTURE>
-		<TEXTURE id="buildings_3_Brick_Red_2" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buildings_3_Brick_Red_2" type="color">texture/western/buildings_3__Brick_Red_2.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_8" type="color">texture/western/buildings_3/_Siding4_6.png</TEXTURE>
 		<TEXTURE id="buildings_3_Stucco_1" type="color">texture/western/buildings_3/_Stucco_1.png</TEXTURE>
-		<TEXTURE id="buildings_3_OldLace_" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buildings_3_OldLace_" type="color">texture/western/buildings_3__OldLace_.png</TEXTURE>
 		<TEXTURE id="buildings_3_Concrete_1" type="color">texture/western/buildings_3/_Concrete_1.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_1" type="color">texture/western/buildings_3/_Siding4_1.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_11" type="color">texture/western/buildings_3/_Wood_cherry_11.png</TEXTURE>
@@ -113,55 +113,55 @@
 		<TEXTURE id="cowboy_teeth1" type="color">texture/western/cowboy/teeth1.png</TEXTURE>
 		<TEXTURE id="cowboy_cowboy_01_head1" type="color">texture/western/cowboy/cowboy_01_head1.png</TEXTURE>
 		<TEXTURE id="cowboy_cowboy_01_torso1" type="color">texture/western/cowboy/cowboy_01_torso1.png</TEXTURE>
-		<TEXTURE id="cowboy_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="cowboy_FrontColor" type="color">texture/western/cowboy_FrontColor.png</TEXTURE>
 		<TEXTURE id="cowboy_cowboy_01_legs1" type="color">texture/western/cowboy/cowboy_01_legs1.png</TEXTURE>
 		<TEXTURE id="cowboy_eye1" type="color">texture/western/cowboy/eye1.png</TEXTURE>
 		<TEXTURE id="fence_boa_Wood_Pole_Utility" type="color">texture/western/fence_boa/Wood_Pole_Utility.png</TEXTURE>
 		<TEXTURE id="fence_CorrogateRust_" type="color">texture/western/fence/_CorrogateRust_.png</TEXTURE>
-		<TEXTURE id="fence_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="fence_FrontColor" type="color">texture/western/fence_FrontColor.png</TEXTURE>
 		<TEXTURE id="fence_Wood_cherry_2" type="color">texture/western/fence/_Wood_cherry_2.png</TEXTURE>
-		<TEXTURE id="hung_wood_Color_D09" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="hung_wood_Color_C24" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="hung_wood_FrontColor" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="post_telephone_WarmGray8_1" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="post_telephone_Dark_Brown_" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="hung_wood_Color_D09" type="color">texture/western/hung_wood_Color_D09.png</TEXTURE>
+		<TEXTURE id="hung_wood_Color_C24" type="color">texture/western/hung_wood_Color_C24.png</TEXTURE>
+		<TEXTURE id="hung_wood_FrontColor" type="color">texture/western/fence_FrontColor.png</TEXTURE>
+		<TEXTURE id="post_telephone_WarmGray8_1" type="color">texture/western/post_telephone__WarmGray8_1.png</TEXTURE>
+		<TEXTURE id="post_telephone_Dark_Brown_" type="color">texture/western/post_telephone_Dark_Brown_.png</TEXTURE>
 		<TEXTURE id="wagon_10_Metal_Seamed" type="color">texture/western/wagon_10/Metal_Seamed.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0136_Charcoal" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0136_Charcoal" type="color">texture/western/wagon_10_M_0136_Charcoal.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Cherry_Original" type="color">texture/western/wagon_10/Wood_Cherry_Original.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_005" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_FrontColor" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0135_DarkGray" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_005" type="color">texture/western/wagon_10_Color_005.png</TEXTURE>
+		<TEXTURE id="wagon_10_FrontColor" type="color">texture/western/wagon_10_FrontColor.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0135_DarkGray" type="color">texture/western/wagon_10_M_0135_DarkGray.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Grain_Stain" type="color">texture/western/wagon_10/Wood_Grain_Stain.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Grain_Light" type="color">texture/western/wagon_10/Wood_Grain_Light.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Grain_Dark" type="color">texture/western/wagon_10/Wood_Grain_Dark.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0047_Khaki" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0133_Gray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0043_SaddleBrown" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0131_Silver" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0134_DimGray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_I03" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_I21" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_E12" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0045_Goldenrod" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0042_Sienna" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0056_Yellow" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0047_Khaki" type="color">texture/western/wagon_10_M_0047_Khaki.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0133_Gray" type="color">texture/western/wagon_10_M_0133_Gray.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0043_SaddleBrown" type="color">texture/western/wagon_10_M_0043_SaddleBrown.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0131_Silver" type="color">texture/western/wagon_10_M_0131_Silver.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0134_DimGray" type="color">texture/western/wagon_10_M_0134_DimGray.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_I03" type="color">texture/western/wagon_10_Color_I03.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_I21" type="color">texture/western/wagon_10_Color_I21.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_E12" type="color">texture/western/wagon_10_Color_E12.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0045_Goldenrod" type="color">texture/western/wagon_10_M_0045_Goldenrod.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0042_Sienna" type="color">texture/western/wagon_10_M_0042_Sienna.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0056_Yellow" type="color">texture/western/wagon_10_M_0056_Yellow.png</TEXTURE>
 		<TEXTURE id="wagon_horse_STDBRED1" type="color">texture/western/wagon_horse/STDBRED1.png</TEXTURE>
-		<TEXTURE id="wagon_horse_BLACK_MATTE1" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_H_EARS1" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_BLACK_MATTE1" type="color">texture/western/wagon_horse_BLACK_MATTE1.png</TEXTURE>
+		<TEXTURE id="wagon_horse_H_EARS1" type="color">texture/western/wagon_horse_H_EARS1.png</TEXTURE>
 		<TEXTURE id="wagon_horse_Metal_Seamed" type="color">texture/western/wagon_horse/Metal_Seamed.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0136_Charcoal" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0136_Charcoal" type="color">texture/western/wagon_horse_M_0136_Charcoal.png</TEXTURE>
 		<TEXTURE id="wagon_horse_Wood_Cherry_Original" type="color">texture/western/wagon_horse/Wood_Cherry_Original.png</TEXTURE>
-		<TEXTURE id="wagon_horse_Color_005" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_Color_005" type="color">texture/western/wagon_horse_Color_005.png</TEXTURE>
 		<TEXTURE id="wagon_horse_Wood_Grain_Stain" type="color">texture/western/wagon_horse/Wood_Grain_Stain.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0135_DarkGray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0047_Khaki" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0133_Gray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0043_SaddleBrown" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_Wood_Bamboo_Dark" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0131_Silver" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0134_DimGray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="water_tower_FrontColor" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="water_tower_Material1" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0135_DarkGray" type="color">texture/western/wagon_horse_M_0135_DarkGray.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0047_Khaki" type="color">texture/western/wagon_horse_M_0047_Khaki.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0133_Gray" type="color">texture/western/wagon_horse_M_0133_Gray.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0043_SaddleBrown" type="color">texture/western/wagon_horse_M_0043_SaddleBrown.png</TEXTURE>
+		<TEXTURE id="wagon_horse_Wood_Bamboo_Dark" type="color">texture/western/wagon_horse/Wood_Bamboo_Dark.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0131_Silver" type="color">texture/western/wagon_horse_M_0131_Silver.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0134_DimGray" type="color">texture/western/wagon_horse_M_0134_DimGray.png</TEXTURE>
+		<TEXTURE id="water_tower_FrontColor" type="color">texture/western/water_tower_FrontColor.png</TEXTURE>
+		<TEXTURE id="water_tower_Material1" type="color">texture/western/Material1.png</TEXTURE>
 		<TEXTURE id="water_tower_Siding4_" type="color">texture/western/water_tower/_Siding4_.png</TEXTURE>
 		<TEXTURE id="water_tower_Siding4_3" type="color">texture/western/water_tower/_Siding4_3.png</TEXTURE>
 		<TEXTURE id="water_tower_person_2" type="color">texture/western/water_tower/person_2.png</TEXTURE>
