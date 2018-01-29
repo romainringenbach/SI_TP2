@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHADER name="texDiffFogSkybox">
+	<VERTEX>
+	// vertex shader
+	// ------------------------------------------------------
+	// texture diffuse shader per fragment
+	// ------------------------------------------------------
+	// lights nb: 1
+	// textures nb: 1
+	// ------------------------------------------------------
+
+	// attributes inputs  (vertex arrays)
+		attribute vec3 aVertexPosition;
+		attribute vec2 aVertexTexCoord;
+		attribute vec3 aVertexNormal;
+
+	// uniform matrices
+		uniform mat4 uMVMatrix;
+		uniform mat4 uPMatrix;
+		uniform mat3 uNMatrix;
+
+	// output
+    	varying vec2 vTextureCoord;
+    
+	void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        vTextureCoord = aVertexTexCoord;
+    }
+	</VERTEX>
+	<FRAGMENT>
+	#ifdef GL_ES
+	precision highp float;
+	#endif
+	// fragment shader
+	// ------------------------------------------------------
+	// texture diffuse shader per fragment
+	// ------------------------------------------------------
+	// lights nb: 1
+	// textures nb: 1
+	// ------------------------------------------------------
+
+	// inputs
+    	varying vec2 vTextureCoord;
+				
+    // Uniform
+    	uniform sampler2D uSampler0;
+        //fog color
+        uniform vec3 uFogColor;
+
+    void main(void) {
+		// texture color
+		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
+        vec3 color = mix(uFogColor, texColor.rgb, 0.5);
+        gl_FragColor = vec4(color, texColor.a);
+    }
+	</FRAGMENT>
+</SHADER>

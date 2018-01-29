@@ -154,7 +154,7 @@ class atomicGL2Controls {
         if (eventKey === "f") { // Fog Diff Shader
             if (shaderBox.textContent != "fog") {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("texDiffFog")));
-                this.sgxml.root.shaderId = 0;
+                this.sgxml.root.shaderId = this.agl.indexOfShader("texDiffFogSkybox");	// Apply shader to skybox
                 shaderBox.textContent = "fog";
             }
         }
