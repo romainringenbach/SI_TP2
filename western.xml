@@ -796,7 +796,7 @@
 			<TEXTID>wood_Wood_floor_light_</TEXTID>
 		</SHAPE>
 		<SHAPE id="pPlane1" type="obj">
-			<GEOMETRY id="pPlane1_geo" uv="1.0,1.0">sol_western_lambert2SG()</GEOMETRY>
+			<GEOMETRY id="pPlane1_geo" uv="5.0,5.0">sol_western_lambert2SG()</GEOMETRY>
 			<TEXTID>sable1</TEXTID>
 		</SHAPE>
 		<SHAPE id="Rock1" type="obj">
@@ -840,7 +840,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_buiding1_saloon" translate="-1.68455075590183,0,13.3122320565381" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00985931014029878,0.00985931014029878,0.00985931014029878" >
-			<TRANSFORM id="transform_buiding1_saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_buiding1_saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="buiding1_saloon_Color_D04" shader="texPhongProg">buiding1_saloon_Color_D04</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Translucent_Glass_Blue" shader="texPhongProg">buiding1_saloon_Translucent_Glass_Blue</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Roofing_Shingles_GAF_Estates" shader="texPhongProg">buiding1_saloon_Roofing_Shingles_GAF_Estates</OBJECT3D>
@@ -867,7 +867,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_building_bom1" translate="5.42168927265234,0,9.16877303799996" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0115954616684787,0.0115954616684787,0.0115954616684787" >
-			<TRANSFORM id="transform_building_bom1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_building_bom1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="building_bom2_Material1" shader="texPhongProg">building_bom2_Material1</OBJECT3D>
 					<OBJECT3D id="building_bom2_Siding4_" shader="texPhongProg">building_bom2_Siding4_</OBJECT3D>
 					<OBJECT3D id="building_bom2_FrontColor" shader="texPhongProg">building_bom2_FrontColor</OBJECT3D>
@@ -879,7 +879,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_buildings_3" translate="1.42189586127994,0,-11.6882146413787" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00971391807331483,0.00971391807331483,0.00971391807331483" >
-			<TRANSFORM id="transform_buildings_3_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_buildings_3_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="buildings_3_Wood_cherry_5" shader="texPhongProg">buildings_3_Wood_cherry_5</OBJECT3D>
 					<OBJECT3D id="buildings_3_CornflowerBlue" shader="texPhongProg">buildings_3_CornflowerBlue</OBJECT3D>
 					<OBJECT3D id="buildings_3_Wood_cherry_3" shader="texPhongProg">buildings_3_Wood_cherry_3</OBJECT3D>
@@ -958,7 +958,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_fence" translate="9.56796601348872,0,2.76501402526168" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0111922133132316,0.0111922133132316,0.0111922133132316" >
-			<TRANSFORM id="transform_fence_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_fence_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="fence_CorrogateRust_" shader="texPhongProg">fence_CorrogateRust_</OBJECT3D>
 					<OBJECT3D id="fence_FrontColor" shader="texPhongProg">fence_FrontColor</OBJECT3D>
 					<OBJECT3D id="fence_Wood_cherry_2" shader="texPhongProg">fence_Wood_cherry_2</OBJECT3D>
@@ -966,7 +966,7 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_fence_boa" translate="2.60017573832674,0,-0.512353942988909" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0157515722571418,0.0157515722571418,0.0157515722571418" >
-			<TRANSFORM id="transform_fence_boa_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="0.0,0.0,0.0" >
+			<TRANSFORM id="transform_fence_boa_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="1.0,1.0,1.0" >
 					<OBJECT3D id="fence_boa_Wood_Pole_Utility" shader="texPhongProg">fence_boa_Wood_Pole_Utility</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
@@ -1037,30 +1037,30 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
-				<OBJECT3D id="obj_pPlane1" shader="texDiffNormalMapProg">pPlane1</OBJECT3D>
+				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_cactus1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cactus2" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+		<TRANSFORM id="transform_cactus2" translate="21,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cactus3" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+		<TRANSFORM id="transform_cactus3" translate="8,0,13" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cactus4" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+		<TRANSFORM id="transform_cactus4" translate="5,0,-9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cactus5" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+		<TRANSFORM id="transform_cactus5" translate="18,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cactus6" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+		<TRANSFORM id="transform_cactus6" translate="1,0,22" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
@@ -1069,15 +1069,15 @@
 				<OBJECT3D id="post_telephone_Dark_Brown_" shader="texPhongProg">post_telephone_Dark_Brown_</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_rock" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+		<TRANSFORM id="transform_rock" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="Rock1" shader="texDiffNormalMapProg">Rock1</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_rock1" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+		<TRANSFORM id="transform_rock1" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="Rock1" shader="texDiffNormalMapProg">Rock1</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_rock2" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+		<TRANSFORM id="transform_rock2" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="Rock1" shader="texDiffNormalMapProg">Rock1</OBJECT3D>
 		</TRANSFORM>
 
