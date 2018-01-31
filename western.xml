@@ -1043,6 +1043,15 @@
 		<TRANSFORM id="transform_pPlane2" translate="0,-0.002,-20" rotaxis="0.0,1.0,0.0" angle="180" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
+		
+		<TRANSFORM id="transform_pPlane3" translate="40,-0.002,-5" rotaxis="0.0,1.0,0.0" angle="140" scale="1.0,1.0,1.0" >
+				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
+		</TRANSFORM>
+		
+		<TRANSFORM id="transform_post_telephone1" translate="45,0,-2" rotaxis="0.0,1.0,0.0" angle="-50" scale="0.0142677398002877,0.0142677398002877,0.0142677398002877" >
+				<OBJECT3D id="post_telephone_WarmGray8_1" shader="texPhongProg">post_telephone_WarmGray8_1</OBJECT3D>
+				<OBJECT3D id="post_telephone_Dark_Brown_" shader="texPhongProg">post_telephone_Dark_Brown_</OBJECT3D>
+		</TRANSFORM>
 
 		<TRANSFORM id="transform_cactus1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
