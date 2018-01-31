@@ -1039,6 +1039,10 @@
 		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
+		
+		<TRANSFORM id="transform_pPlane2" translate="0,-0.002,-20" rotaxis="0.0,1.0,0.0" angle="180" scale="1.0,1.0,1.0" >
+				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
+		</TRANSFORM>
 
 		<TRANSFORM id="transform_cactus1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
 				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
