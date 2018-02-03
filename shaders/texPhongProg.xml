@@ -54,8 +54,8 @@
 		float Kd = 0.5 ;
 		float Ks = 0.5 ;
 		float sh = 8.0 ;
-		vec3 specColor = vec3(1.0,1.0,1.0);
-
+		vec3 specColor = vec3(0.7,0.7,0.5);
+		vec3 rimColor = vec3(0.2, 0.2, 0.2);
 
 	// inputs
     	varying vec2 vTextureCoord;
@@ -83,6 +83,11 @@
 		// normalize normal
 		vec3 normal = normalize(vNormal);
 
+		// rim
+		//float rim = 1.0 - max(dot(eyeDirection, normal), 0.0);
+		float rim = pow(1.0+dot(eyeDirection, normal), 2.0);
+		rim = smoothstep(0.2, 0.6, rim);
+
 		// reflection direction
 		vec3 reflectDirection = normalize(reflect(-lightDirection,normal));
 
@@ -98,6 +103,7 @@
      		Kd*uAmbientColor*texColor.rgb +
      		Kd*diffuse*uPointLightColor0 *texColor.rgb +
      		Ks*specular*uPointLightColor0*specColor;
+		lightColor += 0.12*rim;
 
         gl_FragColor = vec4(lightColor,1.0);
 

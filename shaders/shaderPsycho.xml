@@ -24,38 +24,28 @@
 			vec4 position = uMVMatrix * vec4(aVertexPosition, 1.0);
 			//vec4 position = vec4(aVertexPosition, 1.0);
 
-			/*			
 			float distance2D = position.x * position.x + position.z * position.z;
-
-			float randomized = ( (uTime / 1000.) * 20. + 36000.0);
-			
+			float randomized = ( (uTime / 2000.0) * 20. + 36000.0);
 			position.y += 5.0 * sin(distance2D * sin(randomized / 143.0) / 1000.0);
-
 			float y = position.y;
 			float x = position.x;
-	
 			float om = sin(distance2D * sin(randomized / 256.0) / 5000.0) * sin(randomized / 200.0);
-	
 			position.y = x * sin(om) + y * cos(om);
 			position.x = x * cos(om) - y * sin(om);
-			*/
 			
-
 			// pass texture coords to fragment shader
 			vTextureCoord = aVertexTexCoord;
 
 			float dist = length(position);
-			float freq = .3;
+			float freq = .1 * (uTime / 8000.0);
 			float amplitude = 0.3;
 
 			// wobble and ripple
-			position.y += sin(1.0 * 3.14159265 * dist * freq) * amplitude;			
+			position.y += sin(1.0 * 3.14159265 * dist * freq) * amplitude;
 			
 			// vNormal
 			vNormal = uNMatrix * aVertexNormal;
-
 			vPosition = position;
-
 			// Transform 2D screen-space coords into 3D world-space coords
 			gl_Position = uPMatrix * position;
 		}
@@ -107,7 +97,7 @@
 			
 			// rim
 			float rim = 1.0 - max(dot(eyeDirection, normal), 0.0);
-			rim = smoothstep(0.6, 1.0, rim);
+			rim = smoothstep(0.2, 0.4, rim);
 			vec3 finalRim = rimColor * vec3(rim, rim, rim);
 
 			// light color
@@ -124,9 +114,47 @@
 			float amplitude = 0.1;
 			float freq = 5.0 * 3.14159265;
 			float phi = 50.0 * 3.14159265 / 180.0;
-			float tdisp = sin(freq * texCoords.s + phi) * amplitude;
-			//float sdisp = sin(freq * texCoords.t + phi) * amplitude;
-			return vec2(texCoords.s /*+ sdisp*/, texCoords.t + tdisp);
+			float tdisp = sin((uTime / 1000.0) * texCoords.s + phi) * amplitude;
+			float sdisp = sin((uTime / 1000.0) * texCoords.t + phi) * amplitude;
+			return vec2(texCoords.s * sdisp, texCoords.t * tdisp);
+		}
+
+		float hash(float n)
+		{
+			return fract(sin(n)*43758.5453);
+		}
+
+		float noise(vec3 v)
+		{
+			vec3 p = floor(v);
+			vec3 k = fract(v);
+			k = k*k*(3.0-2.0*k);
+			float n = v.x + v.y*57.0 + v.z*113.0;
+
+			float a = hash(n);
+			float b = hash(n+1.0);
+			float c = hash(n+57.0);
+			float d = hash(n+58.0);
+			//float e = hash(n+113.0);
+			//float f = hash(n+114.0);
+			//float g = hash(n+170.0);
+			//float h = hash(n+171.0);
+
+			float res = mix( mix(a,b,k.x), mix(c,d,k.x), k.y);
+			return res;
+			//return mix( mix( mix(a,b,k.x), mix(c,d,k.x), k.y),
+			//			mix( mix(e,f,k.x), mix(g,h,k.x), k.y),
+			//			k.z);
+		}
+
+		float fbm(vec3 p)
+		{
+			float f = 0.0;
+			f += 0.5*noise(p); p *= 2.02;
+			f += 0.25*noise(p); p *= 2.01;
+			f += 0.125*noise(p); p *= 2.03;
+			f += 0.0625*noise(p);
+			return f / 0.9375;
 		}
 
 		vec3 rainbow(float pos) {
@@ -143,7 +171,11 @@
 			vec2 wobblyTexCoords = sineCoords(vTextureCoord);
 			vec4 texColor = texture2D(uSampler0, wobblyTexCoords);
 			vec4 phongCol = phong(texColor);
-			gl_FragColor = phongCol * vec4(rainbow(phongCol.r * wobblyTexCoords.s + phongCol.g * wobblyTexCoords.t), 0.85);
+			vec3 psycho = rainbow(phongCol.r * wobblyTexCoords.s + phongCol.g * wobblyTexCoords.t);
+			float f = smoothstep(0.2, 0.7, fbm(vPosition.xyz));
+			psycho = mix(psycho, phongCol.rgb, f);
+			//gl_FragColor = phongCol * vec4(psycho, 0.85);
+			gl_FragColor = vec4(psycho, 1.0);
 		}
 	</FRAGMENT>
 </SHADER>
