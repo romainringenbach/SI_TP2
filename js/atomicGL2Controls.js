@@ -17,7 +17,7 @@ class atomicGL2Controls {
         this.mouseX = 0.0;
         this.mouseY = 0.0;
         this.mouseLocked = false;
-        this.friction = 0.025;
+        this.mouseLookFriction = 0.025;
         this.currentlyPressedKeys = {};
         this.blocker = document.getElementById('blocker');
         this.instructions = document.getElementById('instructions');
@@ -182,8 +182,8 @@ class atomicGL2Controls {
     // ------------------------------
     onDocumentMouseMove(event) {
         if (this.mouseLocked) {
-            this.mouseX = this.friction * event.movementX;
-            this.mouseY = this.friction * event.movementY;
+            this.mouseX = this.mouseLookFriction * event.movementX;
+            this.mouseY = this.mouseLookFriction * event.movementY;
             this.agl.scenegraph.camera.turnright(this.mouseX);
             this.agl.scenegraph.camera.turnup(this.mouseY);
         }
