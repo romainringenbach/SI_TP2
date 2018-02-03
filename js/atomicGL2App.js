@@ -90,7 +90,6 @@ class atomicGL2App {
         this.agl.initGL(this.canvas, this.bgcolor);
         // scenegraph creation from xml file : shaders, program, textures, buffers
         let sceneXmlFile = document.getElementsByTagName("body")[0].id;
-        console.log(sceneXmlFile);
         this.sgxml = new atomicGL2xml(this.agl, sceneXmlFile);
         this.objectList = this.sgxml.objectList;
         //set attribs (or reset if context lost)
@@ -99,18 +98,18 @@ class atomicGL2App {
         this.ams.initMatrix(this.agl, this.fov);
         // start the animation
 
-        let agl = this.agl;
-        let a = this;
-        let wait = function(){
-          if(agl.nbTextureLoaded != agl.nbTexture) {
-            console.log("waiting for texture loading ......")
-            window.setTimeout(wait,1000);
-          } else {
-            a.nextFrame();
-          }
-        }
-        wait();
+        //Waiting for objects/textures loading
+        let wait = function () {
+            if (this.agl.nbTextureLoaded != this.agl.nbTexture) {
+                console.log("waiting for texture loading ......")
+                window.setTimeout(wait, 1000);
+            } else {
+                this.controls.clearLoadStatus();
+                this.nextFrame();
+            }
+        }.bind(this);
 
+        wait();
     }
 
     // draw
@@ -137,9 +136,9 @@ class atomicGL2App {
     animate() {
         // increase time
         this.sceneClock.tick();
-		for(var i = 0; i < this.sgxml.animatedTransformations.length; i++) {
-			this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.getTotal());
-		}
+        for (var i = 0; i < this.sgxml.animatedTransformations.length; i++) {
+            this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.getTotal());
+        }
     }
 
     // If WebGL Context lost

@@ -73,6 +73,8 @@ class atomicGL2Controls {
             document.getElementById('FullScreenBtn').src = './images/x-button.png';
             document.getElementById('FullScreenBtn').style.cursor = 'not-allowed';
         }
+
+        this.showLoadStatus();
     }
 
     setAglXml(agl, sgxml) {
@@ -229,6 +231,17 @@ class atomicGL2Controls {
     lockError(e) {
         alert("Pointer lock failed");
         this.instructions.style.display = '';
+    }
+
+    showLoadStatus() {
+        this.instructions.innerHTML = '<span style="font-size:40px">Loading scene...</span> \
+                                    <br /> Please wait.';
+    }
+
+    clearLoadStatus() {
+        this.instructions.innerHTML = '<span style="font-size:40px">Click to begin</span> \
+                                    <br /> (Z,Q,S,D = Move, SPACE = Fly up, CTRL = Fly down, MOUSE = Look) \
+                                    <br /> (ESC = Exit pointerLock or fullScreen)';
     }
 }
 
