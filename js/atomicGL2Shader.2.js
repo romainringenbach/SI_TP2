@@ -270,8 +270,8 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			this.pointLightColorUniform[i] = agl.gl.getUniformLocation(program, "uPointLightColor" + i);
 		}
 
-		this.pointLightColorUniformArray = agl.gl.getUniformLocation(program, "uPointLightPositions");
-		this.pointLightLocationUniformArray =  agl.gl.getUniformLocation(program, "uPointLightColors");
+		this.pointLightColorUniformArray = agl.gl.getUniformLocation(program, "uPointLightColors");
+		this.pointLightLocationUniformArray =  agl.gl.getUniformLocation(program, "uPointLightPositions");
 		this.pointLightNumber =  agl.gl.getUniformLocation(program, "uPointLightNumber");
 		this.pointLightScope =  agl.gl.getUniformLocation(program, "uPointLightScope");
 

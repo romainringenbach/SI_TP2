@@ -13,10 +13,11 @@
 
 	</SHADERS>
 	<LIGHTS>
-		<!--<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>-->
+		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
 		<LIGHT id="ambient1" type="ambient" color="0.1,0.1,0.1">ambient1</LIGHT>
 		<LIGHT id="test1" type="point" position="10.0,0.0,-10.0" color="0.0,0.5,0.0">light2</LIGHT>
-		<LIGHT id="test2" type="point" position="-10.0,0.0,0.0" color="0.0,0.0,0.5">light3</LIGHT>
+		<LIGHT id="test2" type="point" position="0.0,0.0,0.0" color="0.0,0.0,0.5">light3</LIGHT>
+		<LIGHT id="test2" type="point" position="-10.0,0.0,-10.0" color="0.5,0.0,0.0">light3</LIGHT>
 	</LIGHTS>
 	<TEXTURES>
 		<TEXTURE id="diffuse" type="color">example_shader_pom_objs/diffuse.png</TEXTURE>

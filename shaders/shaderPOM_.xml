@@ -224,7 +224,7 @@
       vec3 normal = TBN*newNormalTS ;
 
 
-			normal = computeNormalFromMap(uv);
+			//normal = computeNormalFromMap(uv);
 
 			// texture color
 			vec4 texColor  = texture2D(uSampler0, uv);
@@ -241,13 +241,13 @@
 			///////////////////////////////////////////////////////////////////////////
 			// New pointlight system : doesn't work
 
-			/*if(uPointLightNumber >0){
+			if(uPointLightNumber >0){
 				for(int i = 0; i != 100 ; i++){
 					if(i == uPointLightNumber){
 						break;
 					}
-					vec3 lightColor = vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
-					vec3 lightPosition = vec3(uPointLightPositions[i * 3 + 0],uPointLightPositions[i * 3 + 1],uPointLightPositions[i * 3 + 2]);
+					vec3 lightColor = uPointLightColors[i]; //vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
+					vec3 lightPosition = uPointLightPositions[i]; //vec3(uPointLightPositions[i * 3 + 0],uPointLightPositions[i * 3 + 1],uPointLightPositions[i * 3 + 2]);
 
 					lightDirection = lightPosition - vPosition.xyz;
 
@@ -256,8 +256,8 @@
 					specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
 
 					phongI =
-	     		((Kd*diffuse* lightColor) +
-	     		Ks*specular* lightColor *specColor)/pow(length(lightDirection),2.0);
+	     		(Kd*diffuse* lightColor*texColor.rgb)/length(lightDirection) +
+	     		Ks*specular* lightColor *specColor;
 
 					if(uPointLightScope[i] == -1.0){
 						phongFinal = phongFinal + phongI;
@@ -269,12 +269,12 @@
 
 				}
 
-			}*/
+			}
 			///////////////////////////////////////////////////////////////////////////
 
 			///////////////////////////////////////////////////////////////////////////
 			// Test with the first pointlight : doesn't work
-
+			/*
 			const int i = 0;
 
 			vec3 lightColor = uPointLightColors[0]; //vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
@@ -289,9 +289,9 @@
 
 			phongI =
 			((Kd*diffuse* lightColor) +
-			Ks*specular* lightColor *specColor)/pow(length(lightDirection),2.0);
+			Ks*specular* lightColor *specColor)/lightDirection;
 
-			phongFinal = phongFinal + phongI;
+			phongFinal = phongFinal + phongI;*/
 			///////////////////////////////////////////////////////////////////////////
 
 
@@ -313,7 +313,7 @@
 			///////////////////////////////////////////////////////////////////////////
 
 			// light color
-			phongFinal = phongFinal*texColor.rgb + uAmbientColor*Kd*texColor.rgb;
+			phongFinal = phongFinal + uAmbientColor*Kd*texColor.rgb;
 			gl_FragColor = vec4(phongFinal,1.0);
 
     }

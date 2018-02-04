@@ -12,7 +12,7 @@
 
 //------------------------
 class atomicGLWalkCamera {
-	
+
 	constructor() {
 		// attributes
 		// for camera movement see atomicGL2SceneGraph (from line 121)
@@ -25,7 +25,7 @@ class atomicGLWalkCamera {
 		this.theta = 0.0; // Yaw
 		this.phi = 0.0; // Pitch
 		// step (walk speed)
-		this.step = 2.6 / 1000; //0.15
+		this.step = 2.6 / 200; //0.15
 		// Clamp pitch angle (degrees)
 		this.maxPitch = 40;
 		// frame delta in ms
