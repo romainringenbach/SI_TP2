@@ -43,7 +43,7 @@
 			<TEXTID>sphere</TEXTID>
 		</SHAPE>
 	</SHAPES>
-	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="13.0" campos="0.0,0.7,0.0">
 
 			<TRANSFORM id="transform_plane" translate="-10.0,0.0,-110" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_plane" shader="shaderCartoonPlane">plane</OBJECT3D>

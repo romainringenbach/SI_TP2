@@ -71,7 +71,7 @@
 		</SHAPE>
 
 	</SHAPES>
-	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="13.0" campos="0.0,0.7,5.0">
 			<TRANSFORM id="transform_sal" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="avion_Body_Front" shader="texPhongProg">avion_Body_Front</OBJECT3D>
 					<OBJECT3D id="avion_Cockpit" shader="texPhongProg">avion_Cockpit</OBJECT3D>
