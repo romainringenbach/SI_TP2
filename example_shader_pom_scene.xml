@@ -10,7 +10,6 @@
 		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
-
 	</SHADERS>
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
@@ -37,7 +36,7 @@
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 
 			<TRANSFORM id="transform_plane" translate="0.0,0.0,-5.0" rotaxis="1.0,0.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
-					M<OBJECT3D id="obj_plane" shader="shaderPOM">cube</OBJECT3D>
+					<OBJECT3D id="obj_plane" shader="shaderPOM">cube</OBJECT3D>
 			</TRANSFORM>
 	</ROOT>
 </SCENE>

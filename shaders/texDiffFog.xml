@@ -24,7 +24,6 @@
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
-        varying float vDist;
 
     void main(void) {
 		// vPosition
@@ -34,8 +33,6 @@
 		vNormal = uNMatrix * aVertexNormal;
 
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-        // z value of vertices
-        vDist = gl_Position.w;
 		// vTextureCoord
         vTextureCoord = aVertexTexCoord;
     }
@@ -64,7 +61,6 @@
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
-        varying float vDist;
 
     // Uniform
     	uniform sampler2D uSampler0;

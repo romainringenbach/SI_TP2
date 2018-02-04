@@ -104,7 +104,7 @@
 		uniform int uPointLightNumber;
 		uniform vec3 uPointLightPositions[100];
 		uniform vec3 uPointLightColors[100];
-		uniform float uPointLightScope[100];
+		uniform float uPointLightScope[100]; //100
 
 		vec3 computeEyeDirection(vec3 eyeDir){
 
