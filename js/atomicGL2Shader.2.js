@@ -135,6 +135,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pointLightColorUniformArray;
 		this.pointLightLocationUniformArray;
 		this.pointLightNumber;
+		this.pointLightScope
 		// texture -sampler
 		this.samplerUniform = [];
 		// time
@@ -270,8 +271,9 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		}
 
 		this.pointLightColorUniformArray = agl.gl.getUniformLocation(program, "uPointLightPositions");
-		this.pointLightLocationUniformArray = agl.gl.getUniformLocation(program, "uPointLightColors");
-		this.pointLightNumber = agl.gl.getUniformLocation(program, "uPointLightNumber");
+		this.pointLightLocationUniformArray =  agl.gl.getUniformLocation(program, "uPointLightColors");
+		this.pointLightNumber =  agl.gl.getUniformLocation(program, "uPointLightNumber");
+		this.pointLightScope =  agl.gl.getUniformLocation(program, "uPointLightScope");
 
 		// textures
 		for (var i = 0; i < this.nbTex; i++) {
@@ -317,31 +319,10 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			aGL.gl.uniform3f(this.pointLightColorUniform[i], aGL.omniLightColor[i * 3 + 0], aGL.omniLightColor[i * 3 + 1], aGL.omniLightColor[i * 3 + 2]);
 		}
 
-		// New pointlights management
-
-		var tmpLightsColors = new Float32Array();
-		var tmpLightsLocations = new Float32Array();
-
-		for (var i = 0; i < aGL.omniLightNumber; i++) {
-			var tmpLightColor = new Float32Array();
-			var tmpLightLocation = new Float32Array();
-
-			tmpLightColor[0] = aGL.omniLightColor[i * 3 + 0];
-			tmpLightLocation[0] = aGL.omniLightLocation[i * 3 + 0];
-
-			tmpLightColor[1] = aGL.omniLightColor[i * 3 + 1];
-			tmpLightLocation[1] = aGL.omniLightLocation[i * 3 + 1];
-
-			tmpLightColor[2] = aGL.omniLightColor[i * 3 + 2];
-			tmpLightLocation[2] = aGL.omniLightLocation[i * 3 + 2];
-
-			tmpLightsColors[i] = tmpLightColor;
-			tmpLightsLocations[i] = tmpLightLocation;
-		}
-
-		aGL.gl.uniform1fv(this.pointLightLocationUniformArray, aGL.omniLightLocation);
-		aGL.gl.uniform1fv(this.pointLightColorUniformArray, aGL.omniLightColor);
-		aGL.gl.uniform1i(this.pointLightNumber, aGL.omniLightNumber);
+		aGL.gl.uniform3fv(this.pointLightLocationUniformArray,new Float32Array(aGL.omniLightLocation));
+		aGL.gl.uniform3fv(this.pointLightColorUniformArray,new Float32Array(aGL.omniLightColor));
+		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
+		aGL.gl.uniform1fv(this.pointLightScope,new Float32Array(aGL.omniLightScope));
 
 		// Sobel
 		let resolution = new Float32Array([aGL.gl.drawingBufferWidth, aGL.gl.drawingBufferHeight]);

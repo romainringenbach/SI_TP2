@@ -22,11 +22,12 @@ class atomicGL2Context {
 
 		// lights
 		// ambient
-		this.ambientLightColor = [0.01, 0.01, 0.1];
+		this.ambientLightColor = [0.01, 0.01, 0.01];
 		// omniDirLight
 		this.omniLightColor = [];
 		this.omniLightLocation = [];
 		this.omniLightNumber = 0;
+		this.omniLightScope = [];
 
 		// GLtexture
 		this.GLtexture = [];
@@ -101,7 +102,8 @@ class atomicGL2Context {
 	// ---------------------------
 	// inputs: 	lightPos : float3 - light position
 	// 			lightColor: float3 - light color
-	pushLight(lightPos, lightColor) {
+	//			lightScope: float3 - light scope
+	pushLight(lightPos, lightColor, lightScope) {
 		//console.log("atomicGLContext::pushLight");
 		// increase Light number
 		this.omniLightNumber = this.omniLightNumber + 1;
@@ -112,6 +114,8 @@ class atomicGL2Context {
 		this.omniLightColor.push(lightColor[0]);
 		this.omniLightColor.push(lightColor[1]);
 		this.omniLightColor.push(lightColor[2]);
+		this.omniLightScope.push(lightScope);
+
 	}
 
 	// pushProgram(prog)

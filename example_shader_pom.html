@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>atomicGL2 SCENE test </title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<!-- Css style sheets -->
+	<link rel="stylesheet" type="text/css" href="css/glstyle.css">
+
+	<!-- External Libs -->
+	<script type="text/javascript" src="js/utils/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/utils/glMatrix-0.js"></script>
+	<script type="text/javascript" src="js/utils/webgl-utils.js"></script>
+	<script type="text/javascript" src="js/utils/webgl-debug.js"></script>
+	<script type="text/javascript" src="js/utils/stats.min.js"></script>
+
+	<!-- ATOMICGL ENGINE -->
+	<!-- load 3D OBJETCS modules -->
+	<script type="text/javascript" src="example_shader_pom_objs/cube.js"></script>
+
+	<!-- AtomicGL2 Main Script -->
+	<script type="module" src="js/atomicGL2App.js"></script>
+</head>
+
+<body id="example_shader_pom_scene.xml">
+
+	<header>
+		<h1>La classe américaine</h1>
+	</header>
+
+	<div class="wrapper">
+
+		<!-- Canvas -->
+		<div id="canvas-container">
+			<canvas id="oglcanvas">
+				<!-- width="854" height="480" -->
+				Please use a browser that supports "canvas".
+				<br/>
+				<a href="https://www.mozilla.org/" target="_blank">
+					https://www.mozilla.org/
+				</a>
+			</canvas>
+			<!-- Shader menu -->
+			<div class="hidden" id="shaderMenu">
+				<div>Shader actif:
+					<span id="shadName"></span>
+				</div>
+			</div>
+			<!-- Instructions overlay -->
+			<div id="blocker">
+				<div id="instructions" class="unselectable">
+				</div>
+			</div>
+		</div>
+		<!-- Canvas -->
+
+	</div>
+	<!-- Wrapper -->
+
+	<!-- Controls -->
+	<div id="checkbox-container" class="unselectable">
+		<img src="./images/fullscreen.png" id="FullScreenBtn" />
+		<label for="FullScreenBtn"> FullScreen</label>
+
+		<input type="checkbox" id="FpsBtn" name="FpsBtn" checked/>
+		<label for="FpsBtn"> Fps</label>
+
+		<input type="checkbox" id="SoundBtn" name="SoundBtn" />
+		<label for="SoundBtn"> Sound</label>
+	</div>
+	<!-- Controls -->
+
+	<footer>
+		<p>AtomicGL2 Rémi Cozot</p>
+		<p>Contact:
+			<a href="cozot@irisa.fr">cozot@irisa.fr</a>
+		</p>
+	</footer>
+
+</body>
+
+</html>
