@@ -139,7 +139,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		// texture -sampler
 		this.samplerUniform = [];
 		// time
-		//this.time;
+		this.time;
 		// random
 		this.random;
 		// Sobel
@@ -329,7 +329,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		aGL.gl.uniform2fv(this.uRes, resolution);
 
 		// Time
-		aGL.gl.uniform1f(this.time, aGL.clock.get());
+		aGL.gl.uniform1f(this.time, aGL.clock.getTotal());
 		// Random
 		if(this.random != null) {
 			aGL.gl.uniform1f(this.random, Math.random());

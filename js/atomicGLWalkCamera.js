@@ -19,13 +19,13 @@ class atomicGLWalkCamera {
 		// -------------------------------------------------
 		// camera starting position (translation)
 		this.xc = 0.0; // position laterale
-		this.yc = 2.0; // hauteur des "yeux"
+		this.yc = 0.7; // hauteur des "yeux"
 		this.zc = 65.0; // position longitudinale
 		// camera starting orientation (rotation)
 		this.theta = 0.0; // Yaw
 		this.phi = 0.0; // Pitch
 		// step (walk speed)
-		this.step = 9.375 / 1000; //0.15
+		this.step = 2.6 / 1000; //0.15
 		// Clamp pitch angle (degrees)
 		this.maxPitch = 40;
 		// frame delta in ms

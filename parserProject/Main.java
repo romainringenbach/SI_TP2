@@ -319,7 +319,7 @@ public class Main {
 			}
 
 			Matcher mScale = pScale.matcher(line.get(i));
-			String[] resValuesS = { "0", "0", "0" };
+			String[] resValuesS = { "1", "1", "1" };
 			while (mScale.find()) {
 				String[] resS = mScale.group(0).split(",");
 				resValuesS[0] = resS[resS.length - 3];

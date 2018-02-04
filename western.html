@@ -15,6 +15,8 @@
 	<script type="text/javascript" src="js/utils/webgl-utils.js"></script>
 	<script type="text/javascript" src="js/utils/webgl-debug.js"></script>
 	<script type="text/javascript" src="js/utils/stats.min.js"></script>
+	<script type="text/javascript" src="js/utils/howler.js"></script>
+
 
 	<!-- ATOMICGL ENGINE -->
 	<!-- load 3D OBJETCS modules -->
@@ -168,6 +170,12 @@
 	<script type="text/javascript" src="models_js/wood_tri_1.js"></script>
 	<script type="text/javascript" src="models_js/wood_tri_2.js"></script>
 	<script type="text/javascript" src="models_js/sol_western_1.js"></script>
+	<script type="text/javascript" src="models_js/rock_01_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock_1.js"></script>
+	<script type="text/javascript" src="models_js/rock02_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock03_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock04_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock05_tri_1.js"></script>
 
 	<!-- AtomicGL2 Main Script -->
 	<script type="module" src="js/atomicGL2App.js"></script>
@@ -198,8 +206,6 @@
 			<!-- Instructions overlay -->
 			<div id="blocker">
 				<div id="instructions" class="unselectable">
-					<span style="font-size:40px">Click to begin</span>
-					<br /> (Z,Q,S,D = Move, SPACE = Fly up, CTRL = Fly down, MOUSE = Look)
 				</div>
 			</div>
 		</div> <!-- Canvas -->
@@ -208,7 +214,7 @@
 
 	<!-- Controls -->
 	<div id="checkbox-container">
-		<img src="./fullscreen.png" id="FullScreenBtn" />
+		<img src="./images/fullscreen.png" id="FullScreenBtn" />
 		<label for="FullScreenBtn"> FullScreen</label>
 
 		<input type="checkbox" id="FpsBtn" name="FpsBtn" checked/>

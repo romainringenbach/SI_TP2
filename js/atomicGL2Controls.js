@@ -17,7 +17,7 @@ class atomicGL2Controls {
         this.mouseX = 0.0;
         this.mouseY = 0.0;
         this.mouseLocked = false;
-        this.friction = 0.025;
+        this.mouseLookFriction = 0.025;
         this.currentlyPressedKeys = {};
         this.blocker = document.getElementById('blocker');
         this.instructions = document.getElementById('instructions');
@@ -73,6 +73,8 @@ class atomicGL2Controls {
             document.getElementById('FullScreenBtn').src = './images/x-button.png';
             document.getElementById('FullScreenBtn').style.cursor = 'not-allowed';
         }
+
+        this.showLoadStatus();
     }
 
     setAglXml(agl, sgxml) {
@@ -182,8 +184,8 @@ class atomicGL2Controls {
     // ------------------------------
     onDocumentMouseMove(event) {
         if (this.mouseLocked) {
-            this.mouseX = this.friction * event.movementX;
-            this.mouseY = this.friction * event.movementY;
+            this.mouseX = this.mouseLookFriction * event.movementX;
+            this.mouseY = this.mouseLookFriction * event.movementY;
             this.agl.scenegraph.camera.turnright(this.mouseX);
             this.agl.scenegraph.camera.turnup(this.mouseY);
         }
@@ -229,6 +231,17 @@ class atomicGL2Controls {
     lockError(e) {
         alert("Pointer lock failed");
         this.instructions.style.display = '';
+    }
+
+    showLoadStatus() {
+        this.instructions.innerHTML = '<span style="font-size:40px">Loading scene...</span> \
+                                    <br /> Please wait.';
+    }
+
+    clearLoadStatus() {
+        this.instructions.innerHTML = '<span style="font-size:40px">Click to begin</span> \
+                                    <br /> (Z,Q,S,D = Move, SPACE = Fly up, CTRL = Fly down, MOUSE = Look) \
+                                    <br /> (ESC = Exit pointerLock or fullScreen)';
     }
 }
 

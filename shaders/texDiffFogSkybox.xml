@@ -54,6 +54,7 @@
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
         vec3 color = mix(fogColor, texColor.rgb, 0.5);
+		color *= 0.5;
         gl_FragColor = vec4(color, texColor.a);
     }
 	</FRAGMENT>

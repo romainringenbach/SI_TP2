@@ -54,9 +54,11 @@
 
 	// local constant
 		// Kd: diffuse coeff
-		float Kd = 1.0 ;
+		float Kd = 0.7 ;
 		vec3 FogColor = vec3(0.5, 0.5, 0.5);
-		vec3 rimColor = vec3(0.1, 0.1, 0.1);
+		float Ks = 0.5;
+		float sh = 8.0 ;
+		vec3 specColor = vec3(0.7,0.7,0.5);
 
 	// inputs
     	varying vec2 vTextureCoord;
@@ -83,27 +85,35 @@
 		vec3 eyeDirection = normalize(-vPosition.xyz);
 		// normalize normal
 		vec3 normal = normalize(vNormal);
-		// rim
-		float rim = 1.0 - max(dot(eyeDirection, normal), 0.0);
-		rim = smoothstep(0.6, 1.0, rim);
-		vec3 finalRim = rimColor * vec3(rim, rim, rim);
 		//  diffuse term
 		float diffuse = max(dot(normal, lightDirection), 0.0);
+		// spec
+		vec3 reflectDirection = normalize(reflect(-lightDirection,normal));
+		float specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
 		// texture color
 		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
 		// light color
 		vec3 lightColor =
 			Kd*uAmbientColor*texColor.rgb +
 			Kd*diffuse*uPointLightColor0 *texColor.rgb +
-			finalRim;
+			Ks*specular*uPointLightColor0*specColor;
 
-		// Exponential Fog
+		// FOG
 		float rangeDist = length(vPosition);
-		float fogValue = 1.0 / exp( (rangeDist * 0.05) * (rangeDist * 0.05) );
-		fogValue = clamp(fogValue, 0.0, 1.0);
-        // lerp : https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/mix.xhtml
-        vec3 color = mix(FogColor, lightColor, fogValue);
-        gl_FragColor = vec4(color, texColor.a); // texColor.a or 1.0
+		
+		// Exponential Fog
+			//float fogValue = 1.0 / exp( (rangeDist * 0.10) * (rangeDist * 0.10) );
+			//fogValue = clamp(fogValue, 0.0, 1.0);
+			//vec3 color = mix(FogColor, lightColor, fogValue);
+		
+		// Fog with scattering and height based extinction
+			float be = (25.0 - vPosition.y) * 0.01;
+			float bi = (25.0 - vPosition.y) * 0.005;
+			float ext = exp(-rangeDist * be);
+			float sca = exp(-rangeDist * bi);
+			vec3 color = lightColor * ext + FogColor * (1.0 - sca);
+
+        gl_FragColor = vec4(color, texColor.a);
     }
 	</FRAGMENT>
 </SHADER>

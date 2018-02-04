@@ -15,91 +15,62 @@
 		<XMATSHADER file="shaders/shaderSepiaSkybox.xml" nbtex="1" nblight="1">shaderSepiaSkybox</XMATSHADER>
 		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">shaderToon</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffFog.xml" nbtex="1" nblight="1">texDiffFog</XMATSHADER>
+		<XMATSHADER file="shaders/texDiffFogSkybox.xml" nbtex="1" nblight="1">texDiffFogSkybox</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
 		<XMATSHADER file="shaders/texNormalMapProg.xml" nbtex="2" nblight="1">texNormalMapProg</XMATSHADER>
 		<XMATSHADER file="shaders/texPhongProg.xml" nbtex="1" nblight="1">texPhongProg</XMATSHADER>
 		<XMATSHADER file="shaders/texProg.xml" nbtex="1" nblight="0">texProg</XMATSHADER>
 	</SHADERS>
 	<LIGHTS>
-		<LIGHT id="ambientLight1" position="0,4.24914245649023,0" color="0.0,0.0,0.0">ambientLight1</LIGHT>
+		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>
+		<LIGHT id="ambient1" type="ambient" color="1.0,1.0,1.0">ambient1</LIGHT>
 	</LIGHTS>
 	<TEXTURES>
-		<TEXTURE id="bitume1" type="color">texture/bitume1.png</TEXTURE>
 		<TEXTURE id="bleue" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="bois1" type="color">texture/bois1.png</TEXTURE>
-		<TEXTURE id="bois2" type="color">texture/bois2.png</TEXTURE>
-		<TEXTURE id="bronze" type="color">texture/bronze.png</TEXTURE>
-		<TEXTURE id="crate" type="color">texture/crate.png</TEXTURE>
-		<TEXTURE id="crate1" type="color">texture/crate1.png</TEXTURE>
-		<TEXTURE id="crate2" type="color">texture/crate2.png</TEXTURE>
-		<TEXTURE id="crate3" type="color">texture/crate3.png</TEXTURE>
-		<TEXTURE id="eau1" type="color">texture/eau1.png</TEXTURE>
-		<TEXTURE id="herbe1" type="color">texture/herbe1.png</TEXTURE>
-		<TEXTURE id="herbe2" type="color">texture/herbe2.png</TEXTURE>
-		<TEXTURE id="marbre1" type="color">texture/marbre1.png</TEXTURE>
-		<TEXTURE id="mur2" type="color">texture/mur2.png</TEXTURE>
-		<TEXTURE id="mur2_normal" type="normal">texture/mur2_normal.png</TEXTURE>
-		<TEXTURE id="mur3" type="color">texture/mur3.png</TEXTURE>
-		<TEXTURE id="mur3_normal" type="normal">texture/mur3_normal.png</TEXTURE>
-		<TEXTURE id="mur_pierre1" type="color">texture/mur_pierre1.png</TEXTURE>
-		<TEXTURE id="mur_pierre1_normal" type="normal">texture/mur_pierre1_normal.png</TEXTURE>
-		<TEXTURE id="normal" type="normal">texture/normal.png</TEXTURE>
-		<TEXTURE id="pave1" type="color">texture/pave1.png</TEXTURE>
-		<TEXTURE id="pave2" type="color">texture/pave2.png</TEXTURE>
-		<TEXTURE id="pave2_normal" type="normal">texture/pave2_normal.png</TEXTURE>
-		<TEXTURE id="pierre2" type="color">texture/pierre2.png</TEXTURE>
-		<TEXTURE id="pierre2_normal" type="normal">texture/pierre2_normal.png</TEXTURE>
-		<TEXTURE id="pierre3" type="color">texture/pierre3.png</TEXTURE>
-		<TEXTURE id="pierre3_normal" type="normal">texture/pierre3_normal.png</TEXTURE>
-		<TEXTURE id="rouge" type="color">texture/rouge.png</TEXTURE>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>
 		<TEXTURE id="skybox" type="color">texture/skybox.png</TEXTURE>
-		<TEXTURE id="skybox_texture" type="color">texture/skybox_texture.png</TEXTURE>
-		<TEXTURE id="sol1" type="color">texture/sol1.png</TEXTURE>
-		<TEXTURE id="sol2" type="color">texture/sol2.png</TEXTURE>
-		<TEXTURE id="sol3" type="color">texture/sol3.png</TEXTURE>
-		<TEXTURE id="sol4" type="color">texture/sol4.png</TEXTURE>
-		<TEXTURE id="sol4_normal" type="normal">texture/sol4_normal.png</TEXTURE>
-		<TEXTURE id="sol5" type="color">texture/sol5.png</TEXTURE>
-		<TEXTURE id="test" type="color">texture/test.png</TEXTURE>
-		<TEXTURE id="toit1" type="color">texture/toit1.png</TEXTURE>
-		<TEXTURE id="toit1_normal" type="normal">texture/toit1_normal.png</TEXTURE>
-		<TEXTURE id="toit2" type="color">texture/toit2.png</TEXTURE>
-		<TEXTURE id="toit2_normal" type="normal">texture/toit2_normal.png</TEXTURE>
-		<TEXTURE id="vert" type="color">texture/vert.png</TEXTURE>
+		<TEXTURE id="skyTex" type="color">texture/skybox_texture.png</TEXTURE>
 		<TEXTURE id="Sack1" type="color">texture/western/barrel_and_wood_box/Sack1.png</TEXTURE>
 		<TEXTURE id="M_03___Default1" type="color">texture/western/barrel_and_wood_box/M_03___Default1.png</TEXTURE>
 		<TEXTURE id="M_02___Default1" type="color">texture/western/barrel_and_wood_box/M_02___Default1.png</TEXTURE>
 		<TEXTURE id="Coffin1" type="color">texture/western/barrel_and_wood_box/Coffin1.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>
+		<!--<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buiding1_saloon/Wood_Floor_Dark.png</TEXTURE>-->
+		<TEXTURE id="buiding1_saloon_Wood_Floor_Dark" type="color">texture/western/buildings_3/_Siding4_7.png</TEXTURE>
+		<!---->
 		<TEXTURE id="buiding1_saloon_Wood_Lumber_ButtJoined" type="color">texture/western/buiding1_saloon/Wood_Lumber_ButtJoined.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Color_D04" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Translucent_Glass_Blue" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buiding1_saloon_Color_D04" type="color">texture/western/buiding1_saloon_Color_D04.png</TEXTURE>
+		<TEXTURE id="buiding1_saloon_Translucent_Glass_Blue" type="color">texture/western/buiding1_saloon_Translucent_Glass_Blue.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Roofing_Shingles_GAF_Estates" type="color">texture/western/buiding1_saloon/Roofing_Shingles_GAF_Estates.png</TEXTURE>
-		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>
+		<!--<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/buiding1_saloon/Wood_Floor_Light.png</TEXTURE>-->
+		<TEXTURE id="buiding1_saloon_Wood_Floor_Light" type="color">texture/western/building_bom/Wood_Floor2.png</TEXTURE>
+		<!---->
 		<TEXTURE id="buiding1_saloon_Blinds_Cellular_White" type="color">texture/western/buiding1_saloon/Blinds_Cellular_White.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Asphalt_New" type="color">texture/western/buiding1_saloon/Asphalt_New.png</TEXTURE>
 		<TEXTURE id="buiding1_saloon_Metal_Rusted" type="color">texture/western/buiding1_saloon/Metal_Rusted.png</TEXTURE>
-		<TEXTURE id="building_bom1_Color_A21" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="building_bom1_Translucent_Glass_Gray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="building_bom1_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="building_bom1_Color_A21" type="color">texture/western/building_bom_Color_A21.png</TEXTURE>
+		<TEXTURE id="building_bom1_Translucent_Glass_Gray" type="color">texture/western/building_bom_Translucent_Glass_Gray.png</TEXTURE>
+		<!--<TEXTURE id="building_bom1_FrontColor" type="color">texture/western/building_bom_FrontColor.png</TEXTURE>-->
+		<TEXTURE id="building_bom1_FrontColor" type="color">texture/western/buildings_3/_Siding4_7.png</TEXTURE>
+		<!---->
 		<TEXTURE id="building_bom1_Brick_antique_" type="color">texture/western/building_bom/_Brick_antique_.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Floor2" type="color">texture/western/building_bom/Wood_Floor2.png</TEXTURE>
 		<TEXTURE id="building_bom1_Wood_Bamboo_Medium" type="color">texture/western/building_bom/Wood_Bamboo_Medium.png</TEXTURE>
 		<TEXTURE id="building_bom1_Translucent_Glass_Sky_Reflection" type="color">texture/western/building_bom/Translucent_Glass_Sky_Reflection.png</TEXTURE>
 		<TEXTURE id="building_bom1_Brick_Antique_1" type="color">texture/western/building_bom/_Brick_Antique_1.png</TEXTURE>
-		<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/building_bom/_Wood_Lumber_ButtJoined_1.png</TEXTURE>
+		<!--<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/building_bom/_Wood_Lumber_ButtJoined_1.png</TEXTURE>-->
+		<TEXTURE id="building_bom1_Wood_Lumber_ButtJoined_1" type="color">texture/western/buildings_3/_Wood_cherry_9.png</TEXTURE>
+		<!---->
 		<TEXTURE id="building_bom1_Wood_Cherry_Original_2" type="color">texture/western/building_bom/_Wood_Cherry_Original_2.png</TEXTURE>
-		<TEXTURE id="building_bom2_Material1" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="building_bom2_Material1" type="color">texture/western/building_bom1_Material1.png</TEXTURE>
 		<TEXTURE id="building_bom2_Siding4_" type="color">texture/western/building_bom1/_Siding4_.png</TEXTURE>
-		<TEXTURE id="building_bom2_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="building_bom2_FrontColor" type="color">texture/western/building_bom1_FrontColor.png</TEXTURE>
 		<TEXTURE id="building_bom2_Wood_cherry_" type="color">texture/western/building_bom1/_Wood_cherry_.png</TEXTURE>
 		<TEXTURE id="building_bom2_Siding3_" type="color">texture/western/building_bom1/_Siding3_.png</TEXTURE>
 		<TEXTURE id="building_bom2_Glass_Sky_Reflection_" type="color">texture/western/building_bom1/_Glass_Sky_Reflection_.png</TEXTURE>
 		<TEXTURE id="building_bom2_GAF_Country_Estates_" type="color">texture/western/building_bom1/_GAF_Country_Estates_.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_5" type="color">texture/western/buildings_3/_Wood_cherry_5.png</TEXTURE>
-		<TEXTURE id="buildings_3_CornflowerBlue" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="buildings_3_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buildings_3_CornflowerBlue" type="color">texture/western/buildings_3_CornflowerBlue.png</TEXTURE>
+		<TEXTURE id="buildings_3_FrontColor" type="color">texture/western/buildings_3_FrontColor.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_3" type="color">texture/western/buildings_3/_Wood_cherry_3.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_2" type="color">texture/western/buildings_3/_Siding4_2.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_4" type="color">texture/western/buildings_3/_Siding4_4.png</TEXTURE>
@@ -108,10 +79,10 @@
 		<TEXTURE id="buildings_3_Siding4_6" type="color">texture/western/buildings_3/_Siding4_3.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_Deck_Worn" type="color">texture/western/buildings_3/Wood_Deck_Worn.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood__Floor" type="color">texture/western/buildings_3/Wood__Floor.png</TEXTURE>
-		<TEXTURE id="buildings_3_Brick_Red_2" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buildings_3_Brick_Red_2" type="color">texture/western/buildings_3__Brick_Red_2.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_8" type="color">texture/western/buildings_3/_Siding4_6.png</TEXTURE>
 		<TEXTURE id="buildings_3_Stucco_1" type="color">texture/western/buildings_3/_Stucco_1.png</TEXTURE>
-		<TEXTURE id="buildings_3_OldLace_" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="buildings_3_OldLace_" type="color">texture/western/buildings_3__OldLace_.png</TEXTURE>
 		<TEXTURE id="buildings_3_Concrete_1" type="color">texture/western/buildings_3/_Concrete_1.png</TEXTURE>
 		<TEXTURE id="buildings_3_Siding4_1" type="color">texture/western/buildings_3/_Siding4_1.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_11" type="color">texture/western/buildings_3/_Wood_cherry_11.png</TEXTURE>
@@ -158,478 +129,982 @@
 		<TEXTURE id="buildings_3_Wood_cherry_3_16_" type="color">texture/western/buildings_3/_Wood_cherry_3_16_.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_3_14_" type="color">texture/western/buildings_3/_Wood_cherry_3_14_.png</TEXTURE>
 		<TEXTURE id="buildings_3_Wood_cherry_3_13_" type="color">texture/western/buildings_3/_Wood_cherry_3_13_.png</TEXTURE>
-		<TEXTURE id="cactus_CorrogateRust_1" type="color">texture/western/cactus/cactus_CorrogateRust_1.png</TEXTURE>
+		<TEXTURE id="cactus_CorrogateRust_1" type="color">texture/western/cactus/_CorrogateRust_1.png</TEXTURE>
 		<TEXTURE id="cowboy_teeth1" type="color">texture/western/cowboy/teeth1.png</TEXTURE>
 		<TEXTURE id="cowboy_cowboy_01_head1" type="color">texture/western/cowboy/cowboy_01_head1.png</TEXTURE>
 		<TEXTURE id="cowboy_cowboy_01_torso1" type="color">texture/western/cowboy/cowboy_01_torso1.png</TEXTURE>
-		<TEXTURE id="cowboy_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="cowboy_FrontColor" type="color">texture/western/cowboy_FrontColor.png</TEXTURE>
 		<TEXTURE id="cowboy_cowboy_01_legs1" type="color">texture/western/cowboy/cowboy_01_legs1.png</TEXTURE>
-		<TEXTURE id="cowboy_eye1" type="color">texture/western/cowboy/cowboy_eye1.png</TEXTURE>
+		<TEXTURE id="cowboy_eye1" type="color">texture/western/cowboy/eye1.png</TEXTURE>
 		<TEXTURE id="fence_boa_Wood_Pole_Utility" type="color">texture/western/fence_boa/Wood_Pole_Utility.png</TEXTURE>
 		<TEXTURE id="fence_CorrogateRust_" type="color">texture/western/fence/_CorrogateRust_.png</TEXTURE>
-		<TEXTURE id="fence_FrontColor" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="fence_FrontColor" type="color">texture/western/fence_FrontColor.png</TEXTURE>
 		<TEXTURE id="fence_Wood_cherry_2" type="color">texture/western/fence/_Wood_cherry_2.png</TEXTURE>
-		<TEXTURE id="hung_wood_Color_D09" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="hung_wood_Color_C24" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="hung_wood_FrontColor" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="post_telephone_WarmGray8_1" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="post_telephone_Dark_Brown_" type="color">texture/bleue.png</TEXTURE>
+		<!--<TEXTURE id="hung_wood_Color_D09" type="color">texture/western/hung_wood_Color_D09.png</TEXTURE>-->
+		<TEXTURE id="hung_wood_Color_D09" type="color">texture/western/water_tower/_Siding4_3.png</TEXTURE>
+		<!---->
+		<TEXTURE id="hung_wood_Color_C24" type="color">texture/western/hung_wood_Color_C24.png</TEXTURE>
+		<TEXTURE id="hung_wood_FrontColor" type="color">texture/western/hung_wood_FrontColor.png</TEXTURE>
+		<TEXTURE id="post_telephone_WarmGray8_1" type="color">texture/western/post_telephone__WarmGray8_1.png</TEXTURE>
+		<TEXTURE id="post_telephone_Dark_Brown_" type="color">texture/western/post_telephone_Dark_Brown_.png</TEXTURE>
 		<TEXTURE id="wagon_10_Metal_Seamed" type="color">texture/western/wagon_10/Metal_Seamed.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0136_Charcoal" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0136_Charcoal" type="color">texture/western/wagon_10_M_0136_Charcoal.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Cherry_Original" type="color">texture/western/wagon_10/Wood_Cherry_Original.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_005" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_FrontColor" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0135_DarkGray" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_005" type="color">texture/western/wagon_10_Color_005.png</TEXTURE>
+		<TEXTURE id="wagon_10_FrontColor" type="color">texture/western/wagon_10_FrontColor.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0135_DarkGray" type="color">texture/western/wagon_10_M_0135_DarkGray.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Grain_Stain" type="color">texture/western/wagon_10/Wood_Grain_Stain.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Grain_Light" type="color">texture/western/wagon_10/Wood_Grain_Light.png</TEXTURE>
 		<TEXTURE id="wagon_10_Wood_Grain_Dark" type="color">texture/western/wagon_10/Wood_Grain_Dark.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0047_Khaki" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0133_Gray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0043_SaddleBrown" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0131_Silver" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0134_DimGray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_I03" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_I21" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_Color_E12" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0045_Goldenrod" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_10_M_0042_Sienna" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0047_Khaki" type="color">texture/western/wagon_10_M_0047_Khaki.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0133_Gray" type="color">texture/western/wagon_10_M_0133_Gray.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0043_SaddleBrown" type="color">texture/western/wagon_10_M_0043_SaddleBrown.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0131_Silver" type="color">texture/western/wagon_10_M_0131_Silver.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0134_DimGray" type="color">texture/western/wagon_10_M_0134_DimGray.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_I03" type="color">texture/western/wagon_10_Color_I03.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_I21" type="color">texture/western/wagon_10_Color_I21.png</TEXTURE>
+		<TEXTURE id="wagon_10_Color_E12" type="color">texture/western/wagon_10_Color_E12.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0045_Goldenrod" type="color">texture/western/wagon_10_M_0045_Goldenrod.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0042_Sienna" type="color">texture/western/wagon_10_M_0042_Sienna.png</TEXTURE>
+		<TEXTURE id="wagon_10_M_0056_Yellow" type="color">texture/western/wagon_10_M_0056_Yellow.png</TEXTURE>
 		<TEXTURE id="wagon_horse_STDBRED1" type="color">texture/western/wagon_horse/STDBRED1.png</TEXTURE>
-		<TEXTURE id="wagon_horse_BLACK_MATTE1" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_H_EARS1" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_BLACK_MATTE1" type="color">texture/western/wagon_horse_BLACK_MATTE1.png</TEXTURE>
+		<TEXTURE id="wagon_horse_H_EARS1" type="color">texture/western/wagon_horse_H_EARS1.png</TEXTURE>
 		<TEXTURE id="wagon_horse_Metal_Seamed" type="color">texture/western/wagon_horse/Metal_Seamed.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0136_Charcoal" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0136_Charcoal" type="color">texture/western/wagon_horse_M_0136_Charcoal.png</TEXTURE>
 		<TEXTURE id="wagon_horse_Wood_Cherry_Original" type="color">texture/western/wagon_horse/Wood_Cherry_Original.png</TEXTURE>
-		<TEXTURE id="wagon_horse_Color_005" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_Color_005" type="color">texture/western/wagon_horse_Color_005.png</TEXTURE>
 		<TEXTURE id="wagon_horse_Wood_Grain_Stain" type="color">texture/western/wagon_horse/Wood_Grain_Stain.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0135_DarkGray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0047_Khaki" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0133_Gray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0043_SaddleBrown" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_Wood_Bamboo_Dark" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0131_Silver" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="wagon_horse_M_0134_DimGray" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="water_tower_FrontColor" type="color">texture/bleue.png</TEXTURE>
-		<TEXTURE id="water_tower_Material1" type="color">texture/bleue.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0135_DarkGray" type="color">texture/western/wagon_horse_M_0135_DarkGray.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0047_Khaki" type="color">texture/western/wagon_horse_M_0047_Khaki.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0133_Gray" type="color">texture/western/wagon_horse_M_0133_Gray.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0043_SaddleBrown" type="color">texture/western/wagon_horse_M_0043_SaddleBrown.png</TEXTURE>
+		<TEXTURE id="wagon_horse_Wood_Bamboo_Dark" type="color">texture/western/wagon_horse/Wood_Bamboo_Dark.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0131_Silver" type="color">texture/western/wagon_horse_M_0131_Silver.png</TEXTURE>
+		<TEXTURE id="wagon_horse_M_0134_DimGray" type="color">texture/western/wagon_horse_M_0134_DimGray.png</TEXTURE>
+		<TEXTURE id="water_tower_FrontColor" type="color">texture/western/water_tower_FrontColor.png</TEXTURE>
+		<TEXTURE id="water_tower_Material1" type="color">texture/western/water_tower/Material1.png</TEXTURE>
 		<TEXTURE id="water_tower_Siding4_" type="color">texture/western/water_tower/_Siding4_.png</TEXTURE>
 		<TEXTURE id="water_tower_Siding4_3" type="color">texture/western/water_tower/_Siding4_3.png</TEXTURE>
 		<TEXTURE id="water_tower_person_2" type="color">texture/western/water_tower/person_2.png</TEXTURE>
 		<TEXTURE id="wood_Wood_cherry_" type="color">texture/western/wood/_Wood_cherry_.png</TEXTURE>
 		<TEXTURE id="wood_Wood_floor_light_" type="color">texture/western/wood/_Wood_floor_light_.png</TEXTURE>
+		<TEXTURE id="Rock1" type="color">texture/western/Rock1.png</TEXTURE>
+		<TEXTURE id="Rock01" type="color">texture/western/Rock01.png</TEXTURE>
+		<TEXTURE id="Rock01Normal" type="normal">texture/western/Rock01N.png</TEXTURE>
+		<TEXTURE id="Rock02" type="color">texture/western/Rock02.png</TEXTURE>
+		<TEXTURE id="Rock02Normal" type="normal">texture/western/Rock02N.png</TEXTURE>
+		<TEXTURE id="Rock03" type="color">texture/western/Rock03.png</TEXTURE>
+		<TEXTURE id="Rock03Normal" type="normal">texture/western/Rock03N.png</TEXTURE>
+		<TEXTURE id="Rock04" type="color">texture/western/Rock04.png</TEXTURE>
+		<TEXTURE id="Rock04Normal" type="normal">texture/western/Rock04N.png</TEXTURE>
+		<TEXTURE id="Rock05" type="color">texture/western/Rock05.png</TEXTURE>
+		<TEXTURE id="Rock05Normal" type="normal">texture/western/Rock05N.png</TEXTURE>
+		
 		
 	</TEXTURES>
 	<SHAPES>
-		<SHAPE id="barrel_and_wood_box" type="obj">
+		<SHAPE id="barrel_and_wood_box_Sack1" type="obj">
 			<GEOMETRY id="barrel_and_wood_box_Sack1" uv="1.0,1.0">barrel_and_wood_box_Sack1()</GEOMETRY>
 			<TEXTID>Sack1</TEXTID>
+		</SHAPE>
+		<SHAPE id="barrel_and_wood_box_M_03___Default1" type="obj">
 			<GEOMETRY id="barrel_and_wood_box_M_03___Default1" uv="1.0,1.0">barrel_and_wood_box_M_03___Default1()</GEOMETRY>
 			<TEXTID>M_03___Default1</TEXTID>
+		</SHAPE>
+		<SHAPE id="barrel_and_wood_box_M_02___Default1" type="obj">
 			<GEOMETRY id="barrel_and_wood_box_M_02___Default1" uv="1.0,1.0">barrel_and_wood_box_M_02___Default1()</GEOMETRY>
 			<TEXTID>M_02___Default1</TEXTID>
+		</SHAPE>
+		<SHAPE id="barrel_and_wood_box_Coffin1" type="obj">
 			<GEOMETRY id="barrel_and_wood_box_Coffin1" uv="1.0,1.0">barrel_and_wood_box_Coffin1()</GEOMETRY>
 			<TEXTID>Coffin1</TEXTID>
 		</SHAPE>
-		<SHAPE id="buiding1_saloon" type="obj">
+		<SHAPE id="buiding1_saloon_Wood_Floor_Dark" type="obj">
 			<GEOMETRY id="buiding1_saloon_Wood_Floor_Dark" uv="1.0,1.0">buiding1_saloon_Wood_Floor_Dark()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Wood_Floor_Dark</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Wood_Lumber_ButtJoined" type="obj">
 			<GEOMETRY id="buiding1_saloon_Wood_Lumber_ButtJoined" uv="1.0,1.0">buiding1_saloon_Wood_Lumber_ButtJoined()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Wood_Lumber_ButtJoined</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Color_D04" type="obj">
 			<GEOMETRY id="buiding1_saloon_Color_D04" uv="1.0,1.0">buiding1_saloon_Color_D04()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Color_D04</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Translucent_Glass_Blue" type="obj">
 			<GEOMETRY id="buiding1_saloon_Translucent_Glass_Blue" uv="1.0,1.0">buiding1_saloon_Translucent_Glass_Blue()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Translucent_Glass_Blue</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Roofing_Shingles_GAF_Estates" type="obj">
 			<GEOMETRY id="buiding1_saloon_Roofing_Shingles_GAF_Estates" uv="1.0,1.0">buiding1_saloon_Roofing_Shingles_GAF_Estates()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Roofing_Shingles_GAF_Estates</TEXTID>
-			<GEOMETRY id="buiding1_saloon_Wood_Floor_Light" uv="1.0,1.0">buiding1_saloon_Wood_Floor_Light()</GEOMETRY>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Wood_Floor_Light" type="obj">
+			<GEOMETRY id="buiding1_saloon_Wood_Floor_Light" uv="1.45,1.45">buiding1_saloon_Wood_Floor_Light()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Wood_Floor_Light</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Blinds_Cellular_White" type="obj">
 			<GEOMETRY id="buiding1_saloon_Blinds_Cellular_White" uv="1.0,1.0">buiding1_saloon_Blinds_Cellular_White()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Blinds_Cellular_White</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Asphalt_New" type="obj">
 			<GEOMETRY id="buiding1_saloon_Asphalt_New" uv="1.0,1.0">buiding1_saloon_Asphalt_New()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Asphalt_New</TEXTID>
+		</SHAPE>
+		<SHAPE id="buiding1_saloon_Metal_Rusted" type="obj">
 			<GEOMETRY id="buiding1_saloon_Metal_Rusted" uv="1.0,1.0">buiding1_saloon_Metal_Rusted()</GEOMETRY>
 			<TEXTID>buiding1_saloon_Metal_Rusted</TEXTID>
 		</SHAPE>
-		<SHAPE id="building_bom" type="obj">
+		<SHAPE id="building_bom1_Color_A21" type="obj">
 			<GEOMETRY id="building_bom1_Color_A21" uv="1.0,1.0">building_bom1_Color_A21()</GEOMETRY>
 			<TEXTID>building_bom1_Color_A21</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1_Translucent_Glass_Gray" type="obj">
 			<GEOMETRY id="building_bom1_Translucent_Glass_Gray" uv="1.0,1.0">building_bom1_Translucent_Glass_Gray()</GEOMETRY>
 			<TEXTID>building_bom1_Translucent_Glass_Gray</TEXTID>
-			<GEOMETRY id="building_bom1_FrontColor" uv="1.0,1.0">building_bom1_FrontColor()</GEOMETRY>
+		</SHAPE>
+		<SHAPE id="building_bom1_FrontColor" type="obj">
+			<GEOMETRY id="building_bom1_FrontColor" uv="0.015,0.015">building_bom1_FrontColor()</GEOMETRY>
 			<TEXTID>building_bom1_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1_Brick_antique_" type="obj">
 			<GEOMETRY id="building_bom1_Brick_antique_" uv="1.0,1.0">building_bom1_Brick_antique_()</GEOMETRY>
 			<TEXTID>building_bom1_Brick_antique_</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1_Wood_Floor2" type="obj">
 			<GEOMETRY id="building_bom1_Wood_Floor2" uv="1.0,1.0">building_bom1_Wood_Floor2()</GEOMETRY>
 			<TEXTID>building_bom1_Wood_Floor2</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1_Wood_Bamboo_Medium" type="obj">
 			<GEOMETRY id="building_bom1_Wood_Bamboo_Medium" uv="1.0,1.0">building_bom1_Wood_Bamboo_Medium()</GEOMETRY>
 			<TEXTID>building_bom1_Wood_Bamboo_Medium</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1_Translucent_Glass_Sky_Reflection" type="obj">
 			<GEOMETRY id="building_bom1_Translucent_Glass_Sky_Reflection" uv="1.0,1.0">building_bom1_Translucent_Glass_Sky_Reflection()</GEOMETRY>
 			<TEXTID>building_bom1_Translucent_Glass_Sky_Reflection</TEXTID>
-			<GEOMETRY id="building_bom1_Brick_Antique_1" uv="1.0,1.0">building_bom1_Brick_Antique_1()</GEOMETRY>
+		</SHAPE>
+		<SHAPE id="building_bom1_Brick_Antique_1" type="obj">
+			<GEOMETRY id="building_bom1_Brick_Antique_1" uv="0.05,0.05">building_bom1_Brick_Antique_1()</GEOMETRY>
 			<TEXTID>building_bom1_Brick_Antique_1</TEXTID>
-			<GEOMETRY id="building_bom1_Wood_Lumber_ButtJoined_1" uv="1.0,1.0">building_bom1_Wood_Lumber_ButtJoined_1()</GEOMETRY>
+		</SHAPE>
+		<SHAPE id="building_bom1_Wood_Lumber_ButtJoined_1" type="obj">
+			<GEOMETRY id="building_bom1_Wood_Lumber_ButtJoined_1" uv="0.20,0.20">building_bom1_Wood_Lumber_ButtJoined_1()</GEOMETRY>
 			<TEXTID>building_bom1_Wood_Lumber_ButtJoined_1</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom1_Wood_Cherry_Original_2" type="obj">
 			<GEOMETRY id="building_bom1_Wood_Cherry_Original_2" uv="1.0,1.0">building_bom1_Wood_Cherry_Original_2()</GEOMETRY>
 			<TEXTID>building_bom1_Wood_Cherry_Original_2</TEXTID>
 		</SHAPE>
-		<SHAPE id="building_bom1" type="obj">
+		<SHAPE id="building_bom2_Material1" type="obj">
 			<GEOMETRY id="building_bom2_Material1" uv="1.0,1.0">building_bom2_Material1()</GEOMETRY>
 			<TEXTID>building_bom2_Material1</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom2_Siding4_" type="obj">
 			<GEOMETRY id="building_bom2_Siding4_" uv="1.0,1.0">building_bom2_Siding4_()</GEOMETRY>
 			<TEXTID>building_bom2_Siding4_</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom2_FrontColor" type="obj">
 			<GEOMETRY id="building_bom2_FrontColor" uv="1.0,1.0">building_bom2_FrontColor()</GEOMETRY>
 			<TEXTID>building_bom2_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom2_Wood_cherry_" type="obj">
 			<GEOMETRY id="building_bom2_Wood_cherry_" uv="1.0,1.0">building_bom2_Wood_cherry_()</GEOMETRY>
 			<TEXTID>building_bom2_Wood_cherry_</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom2_Siding3_" type="obj">
 			<GEOMETRY id="building_bom2_Siding3_" uv="1.0,1.0">building_bom2_Siding3_()</GEOMETRY>
 			<TEXTID>building_bom2_Siding3_</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom2_Glass_Sky_Reflection_" type="obj">
 			<GEOMETRY id="building_bom2_Glass_Sky_Reflection_" uv="1.0,1.0">building_bom2_Glass_Sky_Reflection_()</GEOMETRY>
 			<TEXTID>building_bom2_Glass_Sky_Reflection_</TEXTID>
+		</SHAPE>
+		<SHAPE id="building_bom2_GAF_Country_Estates_" type="obj">
 			<GEOMETRY id="building_bom2_GAF_Country_Estates_" uv="1.0,1.0">building_bom2_GAF_Country_Estates_()</GEOMETRY>
 			<TEXTID>building_bom2_GAF_Country_Estates_</TEXTID>
 		</SHAPE>
-		<SHAPE id="buildings_3" type="obj">
+		<SHAPE id="buildings_3_Wood_cherry_5" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_5" uv="1.0,1.0">buildings_3_Wood_cherry_5()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_5</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_CornflowerBlue" type="obj">
 			<GEOMETRY id="buildings_3_CornflowerBlue" uv="1.0,1.0">buildings_3_CornflowerBlue()</GEOMETRY>
 			<TEXTID>buildings_3_CornflowerBlue</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_FrontColor" type="obj">
 			<GEOMETRY id="buildings_3_FrontColor" uv="1.0,1.0">buildings_3_FrontColor()</GEOMETRY>
 			<TEXTID>buildings_3_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3" uv="1.0,1.0">buildings_3_Wood_cherry_3()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Siding4_2" type="obj">
 			<GEOMETRY id="buildings_3_Siding4_2" uv="1.0,1.0">buildings_3_Siding4_2()</GEOMETRY>
 			<TEXTID>buildings_3_Siding4_2</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Siding4_4" type="obj">
 			<GEOMETRY id="buildings_3_Siding4_4" uv="1.0,1.0">buildings_3_Siding4_4()</GEOMETRY>
 			<TEXTID>buildings_3_Siding4_4</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4" uv="1.0,1.0">buildings_3_Wood_cherry_4()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_9" type="obj">
+			<!--<GEOMETRY id="buildings_3_Wood_cherry_9" uv="0.05,0.05">buildings_3_Wood_cherry_9()</GEOMETRY>-->
 			<GEOMETRY id="buildings_3_Wood_cherry_9" uv="1.0,1.0">buildings_3_Wood_cherry_9()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_9</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Siding4_6" type="obj">
 			<GEOMETRY id="buildings_3_Siding4_6" uv="1.0,1.0">buildings_3_Siding4_6()</GEOMETRY>
 			<TEXTID>buildings_3_Siding4_6</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_Deck_Worn" type="obj">
 			<GEOMETRY id="buildings_3_Wood_Deck_Worn" uv="1.0,1.0">buildings_3_Wood_Deck_Worn()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_Deck_Worn</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood__Floor" type="obj">
 			<GEOMETRY id="buildings_3_Wood__Floor" uv="1.0,1.0">buildings_3_Wood__Floor()</GEOMETRY>
 			<TEXTID>buildings_3_Wood__Floor</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Brick_Red_2" type="obj">
 			<GEOMETRY id="buildings_3_Brick_Red_2" uv="1.0,1.0">buildings_3_Brick_Red_2()</GEOMETRY>
 			<TEXTID>buildings_3_Brick_Red_2</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Siding4_8" type="obj">
 			<GEOMETRY id="buildings_3_Siding4_8" uv="1.0,1.0">buildings_3_Siding4_8()</GEOMETRY>
 			<TEXTID>buildings_3_Siding4_8</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Stucco_1" type="obj">
 			<GEOMETRY id="buildings_3_Stucco_1" uv="1.0,1.0">buildings_3_Stucco_1()</GEOMETRY>
 			<TEXTID>buildings_3_Stucco_1</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_OldLace_" type="obj">
 			<GEOMETRY id="buildings_3_OldLace_" uv="1.0,1.0">buildings_3_OldLace_()</GEOMETRY>
 			<TEXTID>buildings_3_OldLace_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Concrete_1" type="obj">
 			<GEOMETRY id="buildings_3_Concrete_1" uv="1.0,1.0">buildings_3_Concrete_1()</GEOMETRY>
 			<TEXTID>buildings_3_Concrete_1</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Siding4_1" type="obj">
 			<GEOMETRY id="buildings_3_Siding4_1" uv="1.0,1.0">buildings_3_Siding4_1()</GEOMETRY>
 			<TEXTID>buildings_3_Siding4_1</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_11" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_11" uv="1.0,1.0">buildings_3_Wood_cherry_11()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_11</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Siding4_11" type="obj">
 			<GEOMETRY id="buildings_3_Siding4_11" uv="1.0,1.0">buildings_3_Siding4_11()</GEOMETRY>
 			<TEXTID>buildings_3_Siding4_11</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Stucco_" type="obj">
 			<GEOMETRY id="buildings_3_Stucco_" uv="1.0,1.0">buildings_3_Stucco_()</GEOMETRY>
 			<TEXTID>buildings_3_Stucco_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Stucco_4" type="obj">
 			<GEOMETRY id="buildings_3_Stucco_4" uv="1.0,1.0">buildings_3_Stucco_4()</GEOMETRY>
 			<TEXTID>buildings_3_Stucco_4</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_13" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_13" uv="1.0,1.0">buildings_3_Wood_cherry_13()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_13</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_15" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_15" uv="1.0,1.0">buildings_3_Wood_cherry_15()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_15</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_17" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_17" uv="1.0,1.0">buildings_3_Wood_cherry_17()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_17</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_5_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_5_" uv="1.0,1.0">buildings_3_Wood_cherry_4_5_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_5_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_11_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_11_" uv="1.0,1.0">buildings_3_Wood_cherry_4_11_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_11_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_4_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_4_" uv="1.0,1.0">buildings_3_Wood_cherry_4_4_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_4_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_1_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_1_" uv="1.0,1.0">buildings_3_Wood_cherry_4_1_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_1_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_8_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_8_" uv="1.0,1.0">buildings_3_Wood_cherry_4_8_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_8_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_7_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_7_" uv="1.0,1.0">buildings_3_Wood_cherry_4_7_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_7_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_2_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_2_" uv="1.0,1.0">buildings_3_Wood_cherry_4_2_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_2_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_3_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_3_" uv="1.0,1.0">buildings_3_Wood_cherry_4_3_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_3_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_9_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_9_" uv="1.0,1.0">buildings_3_Wood_cherry_4_9_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_9_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_10_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_10_" uv="1.0,1.0">buildings_3_Wood_cherry_4_10_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_10_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_6_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_6_" uv="1.0,1.0">buildings_3_Wood_cherry_4_6_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_6_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_4_12_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_4_12_" uv="1.0,1.0">buildings_3_Wood_cherry_4_12_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_4_12_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Glass_Sky_Reflection_1" type="obj">
 			<GEOMETRY id="buildings_3_Glass_Sky_Reflection_1" uv="1.0,1.0">buildings_3_Glass_Sky_Reflection_1()</GEOMETRY>
 			<TEXTID>buildings_3_Glass_Sky_Reflection_1</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_1_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_1_" uv="1.0,1.0">buildings_3_Wood_cherry_3_1_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_1_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_4_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_4_" uv="1.0,1.0">buildings_3_Wood_cherry_3_4_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_4_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_18_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_18_" uv="1.0,1.0">buildings_3_Wood_cherry_3_18_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_18_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_9_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_9_" uv="1.0,1.0">buildings_3_Wood_cherry_3_9_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_9_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_10_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_10_" uv="1.0,1.0">buildings_3_Wood_cherry_3_10_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_10_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_6_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_6_" uv="1.0,1.0">buildings_3_Wood_cherry_3_6_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_6_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_3_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_3_" uv="1.0,1.0">buildings_3_Wood_cherry_3_3_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_3_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_20_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_20_" uv="1.0,1.0">buildings_3_Wood_cherry_3_20_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_20_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_5_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_5_" uv="1.0,1.0">buildings_3_Wood_cherry_3_5_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_5_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_8_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_8_" uv="1.0,1.0">buildings_3_Wood_cherry_3_8_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_8_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_2_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_2_" uv="1.0,1.0">buildings_3_Wood_cherry_3_2_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_2_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_7_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_7_" uv="1.0,1.0">buildings_3_Wood_cherry_3_7_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_7_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_19_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_19_" uv="1.0,1.0">buildings_3_Wood_cherry_3_19_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_19_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_22_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_22_" uv="1.0,1.0">buildings_3_Wood_cherry_3_22_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_22_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_12_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_12_" uv="1.0,1.0">buildings_3_Wood_cherry_3_12_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_12_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_21_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_21_" uv="1.0,1.0">buildings_3_Wood_cherry_3_21_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_21_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_11_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_11_" uv="1.0,1.0">buildings_3_Wood_cherry_3_11_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_11_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_23_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_23_" uv="1.0,1.0">buildings_3_Wood_cherry_3_23_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_23_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_17_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_17_" uv="1.0,1.0">buildings_3_Wood_cherry_3_17_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_17_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_15_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_15_" uv="1.0,1.0">buildings_3_Wood_cherry_3_15_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_15_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_24_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_24_" uv="1.0,1.0">buildings_3_Wood_cherry_3_24_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_24_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_16_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_16_" uv="1.0,1.0">buildings_3_Wood_cherry_3_16_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_16_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_14_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_14_" uv="1.0,1.0">buildings_3_Wood_cherry_3_14_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_14_</TEXTID>
+		</SHAPE>
+		<SHAPE id="buildings_3_Wood_cherry_3_13_" type="obj">
 			<GEOMETRY id="buildings_3_Wood_cherry_3_13_" uv="1.0,1.0">buildings_3_Wood_cherry_3_13_()</GEOMETRY>
 			<TEXTID>buildings_3_Wood_cherry_3_13_</TEXTID>
-			
 		</SHAPE>
 		<SHAPE id="cactus" type="obj">
 			<GEOMETRY id="cactus_CorrogateRust_1" uv="1.0,1.0">cactus_CorrogateRust_1()</GEOMETRY>
 			<TEXTID>cactus_CorrogateRust_1</TEXTID>
 		</SHAPE>
-		<SHAPE id="cowboy" type="obj">
+		<SHAPE id="cowboy_teeth1" type="obj">
 			<GEOMETRY id="cowboy_teeth1" uv="1.0,1.0">cowboy_teeth1()</GEOMETRY>
 			<TEXTID>cowboy_teeth1</TEXTID>
+		</SHAPE>
+		<SHAPE id="cowboy_cowboy_01_head1" type="obj">
 			<GEOMETRY id="cowboy_cowboy_01_head1" uv="1.0,1.0">cowboy_cowboy_01_head1()</GEOMETRY>
 			<TEXTID>cowboy_cowboy_01_head1</TEXTID>
+		</SHAPE>
+		<SHAPE id="cowboy_cowboy_01_torso1" type="obj">
 			<GEOMETRY id="cowboy_cowboy_01_torso1" uv="1.0,1.0">cowboy_cowboy_01_torso1()</GEOMETRY>
 			<TEXTID>cowboy_cowboy_01_torso1</TEXTID>
+		</SHAPE>
+		<SHAPE id="cowboy_FrontColor" type="obj">
 			<GEOMETRY id="cowboy_FrontColor" uv="1.0,1.0">cowboy_FrontColor()</GEOMETRY>
 			<TEXTID>cowboy_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="cowboy_cowboy_01_legs1" type="obj">
 			<GEOMETRY id="cowboy_cowboy_01_legs1" uv="1.0,1.0">cowboy_cowboy_01_legs1()</GEOMETRY>
 			<TEXTID>cowboy_cowboy_01_legs1</TEXTID>
+		</SHAPE>
+		<SHAPE id="cowboy_eye1" type="obj">
 			<GEOMETRY id="cowboy_eye1" uv="1.0,1.0">cowboy_eye1()</GEOMETRY>
 			<TEXTID>cowboy_eye1</TEXTID>
-			
 		</SHAPE>
-		<SHAPE id="fence" type="obj">
+		<SHAPE id="fence_CorrogateRust_" type="obj">
 			<GEOMETRY id="fence_CorrogateRust_" uv="1.0,1.0">fence_CorrogateRust_()</GEOMETRY>
 			<TEXTID>fence_CorrogateRust_</TEXTID>
+		</SHAPE>
+		<SHAPE id="fence_FrontColor" type="obj">
 			<GEOMETRY id="fence_FrontColor" uv="1.0,1.0">fence_FrontColor()</GEOMETRY>
 			<TEXTID>fence_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="fence_Wood_cherry_2" type="obj">
 			<GEOMETRY id="fence_Wood_cherry_2" uv="1.0,1.0">fence_Wood_cherry_2()</GEOMETRY>
 			<TEXTID>fence_Wood_cherry_2</TEXTID>
 		</SHAPE>
-		<SHAPE id="fence_boa" type="obj">
+		<SHAPE id="fence_boa_Wood_Pole_Utility" type="obj">
 			<GEOMETRY id="fence_boa_Wood_Pole_Utility" uv="1.0,1.0">fence_boa_Wood_Pole_Utility()</GEOMETRY>
 			<TEXTID>fence_boa_Wood_Pole_Utility</TEXTID>
 		</SHAPE>
-		<SHAPE id="hung_wood" type="obj">
-			<GEOMETRY id="hung_wood_Color_D09" uv="1.0,1.0">hung_wood_Color_D09()</GEOMETRY>
+		<SHAPE id="hung_wood_Color_D09" type="obj">
+			<GEOMETRY id="hung_wood_Color_D09" uv="0.1,0.1">hung_wood_Color_D09()</GEOMETRY>
 			<TEXTID>hung_wood_Color_D09</TEXTID>
+		</SHAPE>
+		<SHAPE id="hung_wood_Color_C24" type="obj">
 			<GEOMETRY id="hung_wood_Color_C24" uv="1.0,1.0">hung_wood_Color_C24()</GEOMETRY>
 			<TEXTID>hung_wood_Color_C24</TEXTID>
+		</SHAPE>
+		<SHAPE id="hung_wood_FrontColor" type="obj">
 			<GEOMETRY id="hung_wood_FrontColor" uv="1.0,1.0">hung_wood_FrontColor()</GEOMETRY>
 			<TEXTID>hung_wood_FrontColor</TEXTID>
 		</SHAPE>
-		<SHAPE id="post_telephone" type="obj">
+		<SHAPE id="post_telephone_WarmGray8_1" type="obj">
 			<GEOMETRY id="post_telephone_WarmGray8_1" uv="1.0,1.0">post_telephone_WarmGray8_1()</GEOMETRY>
 			<TEXTID>post_telephone_WarmGray8_1</TEXTID>
+		</SHAPE>
+		<SHAPE id="post_telephone_Dark_Brown_" type="obj">
 			<GEOMETRY id="post_telephone_Dark_Brown_" uv="1.0,1.0">post_telephone_Dark_Brown_()</GEOMETRY>
 			<TEXTID>post_telephone_Dark_Brown_</TEXTID>
 		</SHAPE>
-		<SHAPE id="wagon_10" type="obj">
+		<SHAPE id="wagon_10_Metal_Seamed" type="obj">
 			<GEOMETRY id="wagon_10_Metal_Seamed" uv="1.0,1.0">wagon_10_Metal_Seamed()</GEOMETRY>
 			<TEXTID>wagon_10_Metal_Seamed</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0136_Charcoal" type="obj">
 			<GEOMETRY id="wagon_10_M_0136_Charcoal" uv="1.0,1.0">wagon_10_M_0136_Charcoal()</GEOMETRY>
 			<TEXTID>wagon_10_M_0136_Charcoal</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Wood_Cherry_Original" type="obj">
 			<GEOMETRY id="wagon_10_Wood_Cherry_Original" uv="1.0,1.0">wagon_10_Wood_Cherry_Original()</GEOMETRY>
 			<TEXTID>wagon_10_Wood_Cherry_Original</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Color_005" type="obj">
 			<GEOMETRY id="wagon_10_Color_005" uv="1.0,1.0">wagon_10_Color_005()</GEOMETRY>
 			<TEXTID>wagon_10_Color_005</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_FrontColor" type="obj">
 			<GEOMETRY id="wagon_10_FrontColor" uv="1.0,1.0">wagon_10_FrontColor()</GEOMETRY>
 			<TEXTID>wagon_10_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0135_DarkGray" type="obj">
 			<GEOMETRY id="wagon_10_M_0135_DarkGray" uv="1.0,1.0">wagon_10_M_0135_DarkGray()</GEOMETRY>
 			<TEXTID>wagon_10_M_0135_DarkGray</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Wood_Grain_Stain" type="obj">
 			<GEOMETRY id="wagon_10_Wood_Grain_Stain" uv="1.0,1.0">wagon_10_Wood_Grain_Stain()</GEOMETRY>
 			<TEXTID>wagon_10_Wood_Grain_Stain</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Wood_Grain_Light" type="obj">
 			<GEOMETRY id="wagon_10_Wood_Grain_Light" uv="1.0,1.0">wagon_10_Wood_Grain_Light()</GEOMETRY>
 			<TEXTID>wagon_10_Wood_Grain_Light</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Wood_Grain_Dark" type="obj">
 			<GEOMETRY id="wagon_10_Wood_Grain_Dark" uv="1.0,1.0">wagon_10_Wood_Grain_Dark()</GEOMETRY>
 			<TEXTID>wagon_10_Wood_Grain_Dark</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0047_Khaki" type="obj">
 			<GEOMETRY id="wagon_10_M_0047_Khaki" uv="1.0,1.0">wagon_10_M_0047_Khaki()</GEOMETRY>
 			<TEXTID>wagon_10_M_0047_Khaki</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0133_Gray" type="obj">
 			<GEOMETRY id="wagon_10_M_0133_Gray" uv="1.0,1.0">wagon_10_M_0133_Gray()</GEOMETRY>
 			<TEXTID>wagon_10_M_0133_Gray</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0043_SaddleBrown" type="obj">
 			<GEOMETRY id="wagon_10_M_0043_SaddleBrown" uv="1.0,1.0">wagon_10_M_0043_SaddleBrown()</GEOMETRY>
 			<TEXTID>wagon_10_M_0043_SaddleBrown</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0131_Silver" type="obj">
 			<GEOMETRY id="wagon_10_M_0131_Silver" uv="1.0,1.0">wagon_10_M_0131_Silver()</GEOMETRY>
 			<TEXTID>wagon_10_M_0131_Silver</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0134_DimGray" type="obj">
 			<GEOMETRY id="wagon_10_M_0134_DimGray" uv="1.0,1.0">wagon_10_M_0134_DimGray()</GEOMETRY>
 			<TEXTID>wagon_10_M_0134_DimGray</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Color_I03" type="obj">
 			<GEOMETRY id="wagon_10_Color_I03" uv="1.0,1.0">wagon_10_Color_I03()</GEOMETRY>
 			<TEXTID>wagon_10_Color_I03</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Color_I21" type="obj">
 			<GEOMETRY id="wagon_10_Color_I21" uv="1.0,1.0">wagon_10_Color_I21()</GEOMETRY>
 			<TEXTID>wagon_10_Color_I21</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_Color_E12" type="obj">
 			<GEOMETRY id="wagon_10_Color_E12" uv="1.0,1.0">wagon_10_Color_E12()</GEOMETRY>
 			<TEXTID>wagon_10_Color_E12</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0045_Goldenrod" type="obj">
 			<GEOMETRY id="wagon_10_M_0045_Goldenrod" uv="1.0,1.0">wagon_10_M_0045_Goldenrod()</GEOMETRY>
 			<TEXTID>wagon_10_M_0045_Goldenrod</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0042_Sienna" type="obj">
 			<GEOMETRY id="wagon_10_M_0042_Sienna" uv="1.0,1.0">wagon_10_M_0042_Sienna()</GEOMETRY>
 			<TEXTID>wagon_10_M_0042_Sienna</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_10_M_0056_Yellow" type="obj">
 			<GEOMETRY id="wagon_10_M_0056_Yellow" uv="1.0,1.0">wagon_10_M_0056_Yellow()</GEOMETRY>
 			<TEXTID>wagon_10_M_0056_Yellow</TEXTID>
-			
 		</SHAPE>
-		<SHAPE id="wagon_horse" type="obj">
+		<SHAPE id="wagon_horse_STDBRED1" type="obj">
 			<GEOMETRY id="wagon_horse_STDBRED1" uv="1.0,1.0">wagon_horse_STDBRED1()</GEOMETRY>
 			<TEXTID>wagon_horse_STDBRED1</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_BLACK_MATTE1" type="obj">
 			<GEOMETRY id="wagon_horse_BLACK_MATTE1" uv="1.0,1.0">wagon_horse_BLACK_MATTE1()</GEOMETRY>
 			<TEXTID>wagon_horse_BLACK_MATTE1</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_H_EARS1" type="obj">
 			<GEOMETRY id="wagon_horse_H_EARS1" uv="1.0,1.0">wagon_horse_H_EARS1()</GEOMETRY>
 			<TEXTID>wagon_horse_H_EARS1</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_Metal_Seamed" type="obj">
 			<GEOMETRY id="wagon_horse_Metal_Seamed" uv="1.0,1.0">wagon_horse_Metal_Seamed()</GEOMETRY>
 			<TEXTID>wagon_horse_Metal_Seamed</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0136_Charcoal" type="obj">
 			<GEOMETRY id="wagon_horse_M_0136_Charcoal" uv="1.0,1.0">wagon_horse_M_0136_Charcoal()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0136_Charcoal</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_Wood_Cherry_Original" type="obj">
 			<GEOMETRY id="wagon_horse_Wood_Cherry_Original" uv="1.0,1.0">wagon_horse_Wood_Cherry_Original()</GEOMETRY>
 			<TEXTID>wagon_horse_Wood_Cherry_Original</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_Color_005" type="obj">
 			<GEOMETRY id="wagon_horse_Color_005" uv="1.0,1.0">wagon_horse_Color_005()</GEOMETRY>
 			<TEXTID>wagon_horse_Color_005</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_Wood_Grain_Stain" type="obj">
 			<GEOMETRY id="wagon_horse_Wood_Grain_Stain" uv="1.0,1.0">wagon_horse_Wood_Grain_Stain()</GEOMETRY>
 			<TEXTID>wagon_horse_Wood_Grain_Stain</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0135_DarkGray" type="obj">
 			<GEOMETRY id="wagon_horse_M_0135_DarkGray" uv="1.0,1.0">wagon_horse_M_0135_DarkGray()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0135_DarkGray</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0047_Khaki" type="obj">
 			<GEOMETRY id="wagon_horse_M_0047_Khaki" uv="1.0,1.0">wagon_horse_M_0047_Khaki()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0047_Khaki</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0133_Gray" type="obj">
 			<GEOMETRY id="wagon_horse_M_0133_Gray" uv="1.0,1.0">wagon_horse_M_0133_Gray()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0133_Gray</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0043_SaddleBrown" type="obj">
 			<GEOMETRY id="wagon_horse_M_0043_SaddleBrown" uv="1.0,1.0">wagon_horse_M_0043_SaddleBrown()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0043_SaddleBrown</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_Wood_Bamboo_Dark" type="obj">
 			<GEOMETRY id="wagon_horse_Wood_Bamboo_Dark" uv="1.0,1.0">wagon_horse_Wood_Bamboo_Dark()</GEOMETRY>
 			<TEXTID>wagon_horse_Wood_Bamboo_Dark</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0131_Silver" type="obj">
 			<GEOMETRY id="wagon_horse_M_0131_Silver" uv="1.0,1.0">wagon_horse_M_0131_Silver()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0131_Silver</TEXTID>
+		</SHAPE>
+		<SHAPE id="wagon_horse_M_0134_DimGray" type="obj">
 			<GEOMETRY id="wagon_horse_M_0134_DimGray" uv="1.0,1.0">wagon_horse_M_0134_DimGray()</GEOMETRY>
 			<TEXTID>wagon_horse_M_0134_DimGray</TEXTID>
-			
 		</SHAPE>
-		<SHAPE id="water_tower" type="obj">
+		<SHAPE id="water_tower_FrontColor" type="obj">
 			<GEOMETRY id="water_tower_FrontColor" uv="1.0,1.0">water_tower_FrontColor()</GEOMETRY>
 			<TEXTID>water_tower_FrontColor</TEXTID>
+		</SHAPE>
+		<SHAPE id="water_tower_Material1" type="obj">
 			<GEOMETRY id="water_tower_Material1" uv="1.0,1.0">water_tower_Material1()</GEOMETRY>
 			<TEXTID>water_tower_Material1</TEXTID>
+		</SHAPE>
+		<SHAPE id="water_tower_Siding4_" type="obj">
 			<GEOMETRY id="water_tower_Siding4_" uv="1.0,1.0">water_tower_Siding4_()</GEOMETRY>
 			<TEXTID>water_tower_Siding4_</TEXTID>
+		</SHAPE>
+		<SHAPE id="water_tower_Siding4_3" type="obj">
 			<GEOMETRY id="water_tower_Siding4_3" uv="1.0,1.0">water_tower_Siding4_3()</GEOMETRY>
 			<TEXTID>water_tower_Siding4_3</TEXTID>
+		</SHAPE>
+		<SHAPE id="water_tower_person_2" type="obj">
 			<GEOMETRY id="water_tower_person_2" uv="1.0,1.0">water_tower_person_2()</GEOMETRY>
 			<TEXTID>water_tower_person_2</TEXTID>
-			
 		</SHAPE>
-		<SHAPE id="wood" type="obj">
+		<SHAPE id="wood_Wood_cherry_" type="obj">
 			<GEOMETRY id="wood_Wood_cherry_" uv="1.0,1.0">wood_Wood_cherry_()</GEOMETRY>
 			<TEXTID>wood_Wood_cherry_</TEXTID>
+		</SHAPE>
+		<SHAPE id="wood_Wood_floor_light_" type="obj">
 			<GEOMETRY id="wood_Wood_floor_light_" uv="1.0,1.0">wood_Wood_floor_light_()</GEOMETRY>
 			<TEXTID>wood_Wood_floor_light_</TEXTID>
 		</SHAPE>
 		<SHAPE id="pPlane1" type="obj">
-			<GEOMETRY id="pPlane1_geo" uv="1.0,1.0">pPlane1()</GEOMETRY>
+			<GEOMETRY id="pPlane1_geo" uv="1.0,1.0">sol_western_lambert2SG()</GEOMETRY>
 			<TEXTID>sable1</TEXTID>
 		</SHAPE>
+		<SHAPE id="Rock1" type="obj">
+			<GEOMETRY id="Rock1_geo" uv="1.0,1.0">Rock1()</GEOMETRY>
+			<TEXTID>Rock1</TEXTID>
+		</SHAPE>
+		<SHAPE id="Rock01" type="obj">
+			<GEOMETRY id="Rock01_geo" uv="1.0,1.0">Rock01()</GEOMETRY>
+			<TEXTID>Rock01</TEXTID>
+			<TEXTID>Rock01Normal</TEXTID>
+		</SHAPE>
+		<SHAPE id="Rock02" type="obj">
+			<GEOMETRY id="Rock02_geo" uv="1.0,1.0">Rock02()</GEOMETRY>
+			<TEXTID>Rock02</TEXTID>
+			<TEXTID>Rock02Normal</TEXTID>
+		</SHAPE>
+		<SHAPE id="Rock03" type="obj">
+			<GEOMETRY id="Rock03_geo" uv="1.0,1.0">Rock03()</GEOMETRY>
+			<TEXTID>Rock03</TEXTID>
+			<TEXTID>Rock03Normal</TEXTID>
+		</SHAPE>
+		<SHAPE id="Rock04" type="obj">
+			<GEOMETRY id="Rock04_geo" uv="1.0,1.0">Rock04()</GEOMETRY>
+			<TEXTID>Rock04</TEXTID>
+			<TEXTID>Rock04Normal</TEXTID>
+		</SHAPE>
+		<SHAPE id="Rock05" type="obj">
+			<GEOMETRY id="Rock05_geo" uv="1.0,1.0">Rock05()</GEOMETRY>
+			<TEXTID>Rock05</TEXTID>
+			<TEXTID>Rock05Normal</TEXTID>
+		</SHAPE>
+		
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 
-		<TRANSFORM id="transform_barrel_and_wood_box" translate="-2.95674100489601,0,8.3142686342186" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00885559901747146,0.00885559901747146,0.00885559901747146" >
-				<OBJECT3D id="obj_barrel_and_wood_box" shader="texDiffNormalMapProg">barrel_and_wood_box</OBJECT3D>
+		<TRANSFORM id="transform_barrel_and_wood_box:polySurface1" translate="-2.95674100489601,0,8.3142686342186" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00885559901747146,0.00885559901747146,0.00885559901747146" >
+								<OBJECT3D id="barrel_and_wood_box_Sack1" shader="texPhongProg">barrel_and_wood_box_Sack1</OBJECT3D>
+				<OBJECT3D id="barrel_and_wood_box_M_03___Default1" shader="texPhongProg">barrel_and_wood_box_M_03___Default1</OBJECT3D>
+				<OBJECT3D id="barrel_and_wood_box_M_02___Default1" shader="texPhongProg">barrel_and_wood_box_M_02___Default1</OBJECT3D>
+				<OBJECT3D id="barrel_and_wood_box_Coffin1" shader="texPhongProg">barrel_and_wood_box_Coffin1</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_buiding1_saloon" translate="-1.68455075590183,0,11.9866702006941" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00985931014029878,0.00985931014029878,0.00985931014029878" >
-			<TRANSFORM id="transform_buiding1_saloon_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="0.0,0.0,0.0" >
-					<OBJECT3D id="obj_buiding1_saloon" shader="texDiffNormalMapProg">buiding1_saloon</OBJECT3D>
+		<TRANSFORM id="transform_buiding1_saloon:polySurface1" translate="-1.68455075590183,0,13.3122320565381" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00985931014029878,0.00985931014029878,0.00985931014029878" >
+			<TRANSFORM id="transform_buiding1_saloon:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-0.0500987220466214" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="buiding1_saloon_Color_D04" shader="texPhongProg">buiding1_saloon_Color_D04</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Translucent_Glass_Blue" shader="texPhongProg">buiding1_saloon_Translucent_Glass_Blue</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Roofing_Shingles_GAF_Estates" shader="texPhongProg">buiding1_saloon_Roofing_Shingles_GAF_Estates</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Wood_Floor_Light" shader="texPhongProg">buiding1_saloon_Wood_Floor_Light</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Blinds_Cellular_White" shader="texPhongProg">buiding1_saloon_Blinds_Cellular_White</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Asphalt_New" shader="texPhongProg">buiding1_saloon_Asphalt_New</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Metal_Rusted" shader="texPhongProg">buiding1_saloon_Metal_Rusted</OBJECT3D>					
+					<OBJECT3D id="buiding1_saloon_Wood_Floor_Dark" shader="texPhongProg">buiding1_saloon_Wood_Floor_Dark</OBJECT3D>
+					<OBJECT3D id="buiding1_saloon_Wood_Lumber_ButtJoined" shader="texPhongProg">buiding1_saloon_Wood_Lumber_ButtJoined</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_building_bom" translate="-7.80610848193305,0,12.3448263505614" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00781530428294129,0.00781530428294129,0.00781530428294129" >
-				<OBJECT3D id="obj_building_bom" shader="texDiffNormalMapProg">building_bom</OBJECT3D>
+		<TRANSFORM id="transform_building_bom:polySurface1" translate="-10.9213036806273,0,9.61011428576872" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00781530428294129,0.00781530428294129,0.00781530428294129" >
+				<OBJECT3D id="building_bom1_Brick_antique_" shader="texPhongProg">building_bom1_Brick_antique_</OBJECT3D>
+				<OBJECT3D id="building_bom1_Wood_Floor2" shader="texPhongProg">building_bom1_Wood_Floor2</OBJECT3D>
+				<OBJECT3D id="building_bom1_Wood_Bamboo_Medium" shader="texPhongProg">building_bom1_Wood_Bamboo_Medium</OBJECT3D>
+				<OBJECT3D id="building_bom1_Translucent_Glass_Sky_Reflection" shader="texPhongProg">building_bom1_Translucent_Glass_Sky_Reflection</OBJECT3D>
+				<OBJECT3D id="building_bom1_Brick_Antique_1" shader="texPhongProg">building_bom1_Brick_Antique_1</OBJECT3D>
+				<OBJECT3D id="building_bom1_Wood_Lumber_ButtJoined_1" shader="texPhongProg">building_bom1_Wood_Lumber_ButtJoined_1</OBJECT3D>
+				<OBJECT3D id="building_bom1_Wood_Cherry_Original_2" shader="texPhongProg">building_bom1_Wood_Cherry_Original_2</OBJECT3D>
+				<OBJECT3D id="building_bom1_Translucent_Glass_Gray" shader="texPhongProg">building_bom1_Translucent_Glass_Gray</OBJECT3D>
+				<OBJECT3D id="building_bom1_Color_A21" shader="texPhongProg">building_bom1_Color_A21</OBJECT3D>
+				<OBJECT3D id="building_bom1_FrontColor" shader="texPhongProg">building_bom1_FrontColor</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_building_bom1" translate="0.549829459216129,0,9.16877303799996" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0115954616684787,0.0115954616684787,0.0115954616684787" >
-			<TRANSFORM id="transform_building_bom1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="0.0,0.0,0.0" >
-					<OBJECT3D id="obj_building_bom1" shader="texDiffNormalMapProg">building_bom1</OBJECT3D>
+		<TRANSFORM id="transform_building_bom1:polySurface1" translate="5.42168927265234,0,9.16877303799996" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0115954616684787,0.0115954616684787,0.0115954616684787" >
+			<TRANSFORM id="transform_building_bom1:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-88.4257348383574" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="building_bom2_Material1" shader="texPhongProg">building_bom2_Material1</OBJECT3D>
+					<OBJECT3D id="building_bom2_Siding4_" shader="texPhongProg">building_bom2_Siding4_</OBJECT3D>
+					<OBJECT3D id="building_bom2_FrontColor" shader="texPhongProg">building_bom2_FrontColor</OBJECT3D>
+					<OBJECT3D id="building_bom2_Wood_cherry_" shader="texPhongProg">building_bom2_Wood_cherry_</OBJECT3D>
+					<OBJECT3D id="building_bom2_Siding3_" shader="texPhongProg">building_bom2_Siding3_</OBJECT3D>
+					<OBJECT3D id="building_bom2_Glass_Sky_Reflection_" shader="texPhongProg">building_bom2_Glass_Sky_Reflection_</OBJECT3D>
+					<OBJECT3D id="building_bom2_GAF_Country_Estates_" shader="texPhongProg">building_bom2_GAF_Country_Estates_</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_buildings_3" translate="1.42189586127994,0,-6.68090570425639" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00971391807331483,0.00971391807331483,0.00971391807331483" >
-			<TRANSFORM id="transform_buildings_3_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="0.0,0.0,0.0" >
-					<OBJECT3D id="obj_buildings_3" shader="texDiffNormalMapProg">buildings_3</OBJECT3D>
+		<TRANSFORM id="transform_buildings_3:polySurface1" translate="1.42189586127994,0,-11.6882146413787" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00971391807331483,0.00971391807331483,0.00971391807331483" >
+			<TRANSFORM id="transform_buildings_3:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="180.389772366072" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="buildings_3_Wood_cherry_5" shader="texPhongProg">buildings_3_Wood_cherry_5</OBJECT3D>
+					<OBJECT3D id="buildings_3_CornflowerBlue" shader="texPhongProg">buildings_3_CornflowerBlue</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3" shader="texPhongProg">buildings_3_Wood_cherry_3</OBJECT3D>
+					<OBJECT3D id="buildings_3_Siding4_2" shader="texPhongProg">buildings_3_Siding4_2</OBJECT3D>
+					<OBJECT3D id="buildings_3_Siding4_4" shader="texPhongProg">buildings_3_Siding4_4</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4" shader="texPhongProg">buildings_3_Wood_cherry_4</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_9" shader="texPhongProg">buildings_3_Wood_cherry_9</OBJECT3D>
+					<OBJECT3D id="buildings_3_Siding4_6" shader="texPhongProg">buildings_3_Siding4_6</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_Deck_Worn" shader="texPhongProg">buildings_3_Wood_Deck_Worn</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood__Floor" shader="texPhongProg">buildings_3_Wood__Floor</OBJECT3D>
+					<OBJECT3D id="buildings_3_Brick_Red_2" shader="texPhongProg">buildings_3_Brick_Red_2</OBJECT3D>
+					<OBJECT3D id="buildings_3_Siding4_8" shader="texPhongProg">buildings_3_Siding4_8</OBJECT3D>
+					<OBJECT3D id="buildings_3_Stucco_1" shader="texPhongProg">buildings_3_Stucco_1</OBJECT3D>
+					<OBJECT3D id="buildings_3_OldLace_" shader="texPhongProg">buildings_3_OldLace_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Concrete_1" shader="texPhongProg">buildings_3_Concrete_1</OBJECT3D>
+					<OBJECT3D id="buildings_3_Siding4_1" shader="texPhongProg">buildings_3_Siding4_1</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_11" shader="texPhongProg">buildings_3_Wood_cherry_11</OBJECT3D>
+					<OBJECT3D id="buildings_3_Siding4_11" shader="texPhongProg">buildings_3_Siding4_11</OBJECT3D>
+					<OBJECT3D id="buildings_3_Stucco_" shader="texPhongProg">buildings_3_Stucco_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Stucco_4" shader="texPhongProg">buildings_3_Stucco_4</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_13" shader="texPhongProg">buildings_3_Wood_cherry_13</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_15" shader="texPhongProg">buildings_3_Wood_cherry_15</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_17" shader="texPhongProg">buildings_3_Wood_cherry_17</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_5_" shader="texPhongProg">buildings_3_Wood_cherry_4_5_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_11_" shader="texPhongProg">buildings_3_Wood_cherry_4_11_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_4_" shader="texPhongProg">buildings_3_Wood_cherry_4_4_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_1_" shader="texPhongProg">buildings_3_Wood_cherry_4_1_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_8_" shader="texPhongProg">buildings_3_Wood_cherry_4_8_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_7_" shader="texPhongProg">buildings_3_Wood_cherry_4_7_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_2_" shader="texPhongProg">buildings_3_Wood_cherry_4_2_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_3_" shader="texPhongProg">buildings_3_Wood_cherry_4_3_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_9_" shader="texPhongProg">buildings_3_Wood_cherry_4_9_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_10_" shader="texPhongProg">buildings_3_Wood_cherry_4_10_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_6_" shader="texPhongProg">buildings_3_Wood_cherry_4_6_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_4_12_" shader="texPhongProg">buildings_3_Wood_cherry_4_12_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Glass_Sky_Reflection_1" shader="texPhongProg">buildings_3_Glass_Sky_Reflection_1</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_1_" shader="texPhongProg">buildings_3_Wood_cherry_3_1_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_4_" shader="texPhongProg">buildings_3_Wood_cherry_3_4_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_18_" shader="texPhongProg">buildings_3_Wood_cherry_3_18_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_9_" shader="texPhongProg">buildings_3_Wood_cherry_3_9_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_10_" shader="texPhongProg">buildings_3_Wood_cherry_3_10_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_6_" shader="texPhongProg">buildings_3_Wood_cherry_3_6_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_3_" shader="texPhongProg">buildings_3_Wood_cherry_3_3_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_20_" shader="texPhongProg">buildings_3_Wood_cherry_3_20_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_5_" shader="texPhongProg">buildings_3_Wood_cherry_3_5_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_8_" shader="texPhongProg">buildings_3_Wood_cherry_3_8_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_2_" shader="texPhongProg">buildings_3_Wood_cherry_3_2_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_7_" shader="texPhongProg">buildings_3_Wood_cherry_3_7_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_19_" shader="texPhongProg">buildings_3_Wood_cherry_3_19_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_22_" shader="texPhongProg">buildings_3_Wood_cherry_3_22_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_12_" shader="texPhongProg">buildings_3_Wood_cherry_3_12_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_21_" shader="texPhongProg">buildings_3_Wood_cherry_3_21_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_11_" shader="texPhongProg">buildings_3_Wood_cherry_3_11_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_23_" shader="texPhongProg">buildings_3_Wood_cherry_3_23_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_17_" shader="texPhongProg">buildings_3_Wood_cherry_3_17_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_15_" shader="texPhongProg">buildings_3_Wood_cherry_3_15_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_24_" shader="texPhongProg">buildings_3_Wood_cherry_3_24_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_16_" shader="texPhongProg">buildings_3_Wood_cherry_3_16_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_14_" shader="texPhongProg">buildings_3_Wood_cherry_3_14_</OBJECT3D>
+					<OBJECT3D id="buildings_3_Wood_cherry_3_13_" shader="texPhongProg">buildings_3_Wood_cherry_3_13_</OBJECT3D>
+					<OBJECT3D id="buildings_3_FrontColor" shader="texPhongProg">buildings_3_FrontColor</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cactus" translate="-0.742963654594383,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
-				<OBJECT3D id="obj_cactus" shader="texDiffNormalMapProg">cactus</OBJECT3D>
+		<TRANSFORM id="transform_cactus:polySurface1" translate="-3.41458820787245,0,17.947643571179" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_cowboy" translate="-1.81031937277291,0,1.27448722680399" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0113643487265158,0.0113643487265158,0.0113643487265158" >
-				<OBJECT3D id="obj_cowboy" shader="texDiffNormalMapProg">cowboy</OBJECT3D>
+		<TRANSFORM id="transform_cowboy:polySurface1" translate="-1.81031937277291,0,1.27448722680399" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0113643487265158,0.0113643487265158,0.0113643487265158" >
+				<OBJECT3D id="cowboy_teeth1" shader="texPhongProg">cowboy_teeth1</OBJECT3D>
+				<OBJECT3D id="cowboy_cowboy_01_head1" shader="texPhongProg">cowboy_cowboy_01_head1</OBJECT3D>
+				<OBJECT3D id="cowboy_cowboy_01_torso1" shader="texPhongProg">cowboy_cowboy_01_torso1</OBJECT3D>
+				<OBJECT3D id="cowboy_FrontColor" shader="texPhongProg">cowboy_FrontColor</OBJECT3D>
+				<OBJECT3D id="cowboy_cowboy_01_legs1" shader="texPhongProg">cowboy_cowboy_01_legs1</OBJECT3D>
+				<OBJECT3D id="cowboy_eye1" shader="texPhongProg">cowboy_eye1</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_fence" translate="4.69610620005251,0,2.76501402526168" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0111922133132316,0.0111922133132316,0.0111922133132316" >
-			<TRANSFORM id="transform_fence_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="0.0,0.0,0.0" >
-					<OBJECT3D id="obj_fence" shader="texDiffNormalMapProg">fence</OBJECT3D>
+		<TRANSFORM id="transform_fence:polySurface1" translate="9.56796601348872,0,2.76501402526168" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0111922133132316,0.0111922133132316,0.0111922133132316" >
+			<TRANSFORM id="transform_fence:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-178.761303293305" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="fence_CorrogateRust_" shader="texPhongProg">fence_CorrogateRust_</OBJECT3D>
+					<OBJECT3D id="fence_FrontColor" shader="texPhongProg">fence_FrontColor</OBJECT3D>
+					<OBJECT3D id="fence_Wood_cherry_2" shader="texPhongProg">fence_Wood_cherry_2</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_fence_boa" translate="-2.27168407510948,0,-0.512353942988909" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0157515722571418,0.0157515722571418,0.0157515722571418" >
-			<TRANSFORM id="transform_fence_boa_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="0.0,0.0,0.0" >
-					<OBJECT3D id="obj_fence_boa" shader="texDiffNormalMapProg">fence_boa</OBJECT3D>
+		<TRANSFORM id="transform_fence_boa:polySurface1" translate="2.60017573832674,0,-0.512353942988909" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0157515722571418,0.0157515722571418,0.0157515722571418" >
+			<TRANSFORM id="transform_fence_boa:polySurface1_rot_y" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="182.630930650574" scale="0.0,0.0,0.0" >
+					<OBJECT3D id="fence_boa_Wood_Pole_Utility" shader="texPhongProg">fence_boa_Wood_Pole_Utility</OBJECT3D>
 			</TRANSFORM>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_hung_wood" translate="5.62047693732795,0,3.95087900784616" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0101149138735789,0.0101149138735789,0.0101149138735789" >
-				<OBJECT3D id="obj_hung_wood" shader="texDiffNormalMapProg">hung_wood</OBJECT3D>
+		<TRANSFORM id="transform_hung_wood:polySurface1" translate="6.16072959536689,0,1.04489881475679" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0101149138735789,0.0101149138735789,0.0101149138735789" >
+				<OBJECT3D id="hung_wood_Color_C24" shader="texPhongProg">hung_wood_Color_C24</OBJECT3D>
+				<OBJECT3D id="hung_wood_FrontColor" shader="texPhongProg">hung_wood_FrontColor</OBJECT3D>
+				<OBJECT3D id="hung_wood_Color_D09" shader="texPhongProg">hung_wood_Color_D09</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_post_telephone" translate="-5.46592909631749,0,-5.45516290023014" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0142677398002877,0.0142677398002877,0.0142677398002877" >
-				<OBJECT3D id="obj_post_telephone" shader="texDiffNormalMapProg">post_telephone</OBJECT3D>
+		<TRANSFORM id="transform_post_telephone:polySurface1" translate="-26.2893648429221,0,-15.6602084348595" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0142677398002877,0.0142677398002877,0.0142677398002877" >
+				<OBJECT3D id="post_telephone_WarmGray8_1" shader="texPhongProg">post_telephone_WarmGray8_1</OBJECT3D>
+				<OBJECT3D id="post_telephone_Dark_Brown_" shader="texPhongProg">post_telephone_Dark_Brown_</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_wagon_10" translate="2.83263634611706,0,4.18176973349277" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00848036044150531,0.00848036044150531,0.00848036044150531" >
-				<OBJECT3D id="obj_wagon_10" shader="texDiffNormalMapProg">wagon_10</OBJECT3D>
+		<TRANSFORM id="transform_wagon_10:polySurface1" translate="5.14476618334162,0,4.18176973349277" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00848036044150531,0.00848036044150531,0.00848036044150531" >
+				<OBJECT3D id="wagon_10_Metal_Seamed" shader="texPhongProg">wagon_10_Metal_Seamed</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0136_Charcoal" shader="texPhongProg">wagon_10_M_0136_Charcoal</OBJECT3D>
+				<OBJECT3D id="wagon_10_Wood_Cherry_Original" shader="texPhongProg">wagon_10_Wood_Cherry_Original</OBJECT3D>
+				<OBJECT3D id="wagon_10_Color_005" shader="texPhongProg">wagon_10_Color_005</OBJECT3D>
+				<OBJECT3D id="wagon_10_FrontColor" shader="texPhongProg">wagon_10_FrontColor</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0135_DarkGray" shader="texPhongProg">wagon_10_M_0135_DarkGray</OBJECT3D>
+				<OBJECT3D id="wagon_10_Wood_Grain_Stain" shader="texPhongProg">wagon_10_Wood_Grain_Stain</OBJECT3D>
+				<OBJECT3D id="wagon_10_Wood_Grain_Light" shader="texPhongProg">wagon_10_Wood_Grain_Light</OBJECT3D>
+				<OBJECT3D id="wagon_10_Wood_Grain_Dark" shader="texPhongProg">wagon_10_Wood_Grain_Dark</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0047_Khaki" shader="texPhongProg">wagon_10_M_0047_Khaki</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0133_Gray" shader="texPhongProg">wagon_10_M_0133_Gray</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0043_SaddleBrown" shader="texPhongProg">wagon_10_M_0043_SaddleBrown</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0131_Silver" shader="texPhongProg">wagon_10_M_0131_Silver</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0134_DimGray" shader="texPhongProg">wagon_10_M_0134_DimGray</OBJECT3D>
+				<OBJECT3D id="wagon_10_Color_I03" shader="texPhongProg">wagon_10_Color_I03</OBJECT3D>
+				<OBJECT3D id="wagon_10_Color_I21" shader="texPhongProg">wagon_10_Color_I21</OBJECT3D>
+				<OBJECT3D id="wagon_10_Color_E12" shader="texPhongProg">wagon_10_Color_E12</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0045_Goldenrod" shader="texPhongProg">wagon_10_M_0045_Goldenrod</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0042_Sienna" shader="texPhongProg">wagon_10_M_0042_Sienna</OBJECT3D>
+				<OBJECT3D id="wagon_10_M_0056_Yellow" shader="texPhongProg">wagon_10_M_0056_Yellow</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_wagon_horse" translate="8.5629440676201,0,1.53329856602502" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
-				<OBJECT3D id="obj_wagon_horse" shader="texDiffNormalMapProg">wagon_horse</OBJECT3D>
+		<TRANSFORM id="transform_wagon_horse:polySurface1" translate="8.5629440676201,0,-2.47405319310153" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
+				<OBJECT3D id="wagon_horse_STDBRED1" shader="texPhongProg">wagon_horse_STDBRED1</OBJECT3D>
+				<OBJECT3D id="wagon_horse_BLACK_MATTE1" shader="texPhongProg">wagon_horse_BLACK_MATTE1</OBJECT3D>
+				<OBJECT3D id="wagon_horse_H_EARS1" shader="texPhongProg">wagon_horse_H_EARS1</OBJECT3D>
+				<OBJECT3D id="wagon_horse_Metal_Seamed" shader="texPhongProg">wagon_horse_Metal_Seamed</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0136_Charcoal" shader="texPhongProg">wagon_horse_M_0136_Charcoal</OBJECT3D>
+				<OBJECT3D id="wagon_horse_Wood_Cherry_Original" shader="texPhongProg">wagon_horse_Wood_Cherry_Original</OBJECT3D>
+				<OBJECT3D id="wagon_horse_Color_005" shader="texPhongProg">wagon_horse_Color_005</OBJECT3D>
+				<OBJECT3D id="wagon_horse_Wood_Grain_Stain" shader="texPhongProg">wagon_horse_Wood_Grain_Stain</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0135_DarkGray" shader="texPhongProg">wagon_horse_M_0135_DarkGray</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0047_Khaki" shader="texPhongProg">wagon_horse_M_0047_Khaki</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0133_Gray" shader="texPhongProg">wagon_horse_M_0133_Gray</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0043_SaddleBrown" shader="texPhongProg">wagon_horse_M_0043_SaddleBrown</OBJECT3D>
+				<OBJECT3D id="wagon_horse_Wood_Bamboo_Dark" shader="texPhongProg">wagon_horse_Wood_Bamboo_Dark</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0131_Silver" shader="texPhongProg">wagon_horse_M_0131_Silver</OBJECT3D>
+				<OBJECT3D id="wagon_horse_M_0134_DimGray" shader="texPhongProg">wagon_horse_M_0134_DimGray</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_water_tower" translate="0,0,13.68506458377" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0116411061257294,0.0116411061257294,0.0116411061257294" >
-				<OBJECT3D id="obj_water_tower" shader="texDiffNormalMapProg">water_tower</OBJECT3D>
+		<TRANSFORM id="transform_water_tower:polySurface1" translate="3.52989853756449,0,9.62385042036341" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0116411061257294,0.0116411061257294,0.0116411061257294" >
+				<OBJECT3D id="water_tower_FrontColor" shader="texPhongProg">water_tower_FrontColor</OBJECT3D>
+				<OBJECT3D id="water_tower_Material1" shader="texPhongProg">water_tower_Material1</OBJECT3D>
+				<OBJECT3D id="water_tower_Siding4_" shader="texPhongProg">water_tower_Siding4_</OBJECT3D>
+				<OBJECT3D id="water_tower_Siding4_3" shader="texPhongProg">water_tower_Siding4_3</OBJECT3D>
+				<OBJECT3D id="water_tower_person_2" shader="texPhongProg">water_tower_person_2</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_wood" translate="-0.975086669477491,0,11.4648818000863" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0107751347713196,0.0107751347713196,0.0107751347713196" >
-				<OBJECT3D id="obj_wood" shader="texDiffNormalMapProg">wood</OBJECT3D>
+		<TRANSFORM id="transform_wood:polySurface1" translate="-0.278708729627699,0,11.4648818000863" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0107751347713196,0.0107751347713196,0.0107751347713196" >
+				<OBJECT3D id="wood_Wood_floor_light_" shader="texPhongProg">wood_Wood_floor_light_</OBJECT3D>
+				<OBJECT3D id="wood_Wood_cherry_" shader="texPhongProg">wood_Wood_cherry_</OBJECT3D>
 		</TRANSFORM>
 
-		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="33.6755530117396,33.6755530117396,33.6755530117396" >
+		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="obj_pPlane1" shader="texDiffNormalMapProg">pPlane1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus1:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus2:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus3:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus4:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus5:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus6:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_post_telephone1:polySurface1" translate="-24.4017933587467,0,-15.6602084348595" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0142677398002877,0.0142677398002877,0.0142677398002877" >
+				<OBJECT3D id="post_telephone_WarmGray8_1" shader="texPhongProg">post_telephone_WarmGray8_1</OBJECT3D>
+				<OBJECT3D id="post_telephone_Dark_Brown_" shader="texPhongProg">post_telephone_Dark_Brown_</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock:polySurface1" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+				<OBJECT3D id="Rock1" shader="texDiffNormalMapProg">Rock1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock1:polySurface1" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+				<OBJECT3D id="Rock1" shader="texDiffNormalMapProg">Rock1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock2:polySurface1" translate="-20.4780487217909,-0.113400806663506,-0.976448914639657" rotaxis="1.0,0.0,0.0" angle="0" scale="0,0,0" >
+				<OBJECT3D id="Rock1" shader="texDiffNormalMapProg">Rock1</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_cactus7:polySurface1" translate="-0.537395718771735,0,9.61052432858414" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0181736944996937,0.0181736944996937,0.0181736944996937" >
+				<OBJECT3D id="cactus" shader="texPhongProg">cactus</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock_01:rock_01" translate="-24.2556139495364,0,-0.320138246440646" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0411166435881617,0.0411166435881617,0.0411166435881617" >
+				<OBJECT3D id="Rock01" shader="texDiffNormalMapProg">Rock01</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock_02:rock_02" translate="14.177721569788,-0.480864196003852,-25.1299150460429" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0370580824929163,0.0370580824929163,0.0370580824929163" >
+				<OBJECT3D id="Rock02" shader="texDiffNormalMapProg">Rock02</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock_04:RoadKillOut" translate="21.7670926137175,1.51533195189784,7.51157857784639" rotaxis="1.0,0.0,0.0" angle="0" scale="0.044140532775302,0.044140532775302,0.044140532775302" >
+				<OBJECT3D id="Rock04" shader="texDiffNormalMapProg">Rock04</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_rock_05:rock_05" translate="0,7.61473368957791,37.9427618144474" rotaxis="1.0,0.0,0.0" angle="0" scale="0.242115346732731,0.242115346732731,0.242115346732731" >
+				<OBJECT3D id="Rock05" shader="texDiffNormalMapProg">Rock05</OBJECT3D>
 		</TRANSFORM>
 
 	</ROOT>
