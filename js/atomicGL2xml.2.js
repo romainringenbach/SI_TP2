@@ -255,8 +255,15 @@ class atomicGL2xml {
 				// camera
 				var camId = e.getAttribute("camera");
 				var camera = null;
+				// Get camera params
+				let campos = e.getAttribute("campos");
+				let campos_t = [];
+				campos_t[0] = parseFloat(campos.split(",")[0]);
+				campos_t[1] = parseFloat(campos.split(",")[1]);
+				campos_t[2] = parseFloat(campos.split(",")[2]);
+				let camspeed = parseFloat(e.getAttribute("camspeed"));
 				switch (camId) {
-					case "walk": camera = new atomicGLWalkCamera();
+					case "walk": camera = new atomicGLWalkCamera(camspeed, campos_t);
 				}
 				// JS6
 				node = new atomicGL2SGroot(e.getAttribute("id"));

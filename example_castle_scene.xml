@@ -216,7 +216,7 @@
 			<TEXTID>toit2_normal</TEXTID>
 		</SHAPE>
 	</SHAPES>
-	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="2.6" campos="0.0,2.0,65.0">
 
 			<TRANSFORM id="transform_ground" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_ground_road" shader="texDiffNormalMapProg">ground_road</OBJECT3D>
