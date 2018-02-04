@@ -1,0 +1,39 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2006 Google, Inc.
+
+newmtl teeth1
+Ka 0.000000 0.000000 0.000000
+Kd 0.815686 0.662745 0.584314
+Ks 0.330000 0.330000 0.330000
+map_Kd cowboy/teeth1.JPG
+
+newmtl cowboy_01_head1
+Ka 0.000000 0.000000 0.000000
+Kd 0.337255 0.239216 0.192157
+Ks 0.330000 0.330000 0.330000
+map_Kd cowboy/cowboy_01_head1.JPG
+
+newmtl cowboy_01_torso1
+Ka 0.000000 0.000000 0.000000
+Kd 0.313725 0.274510 0.262745
+Ks 0.330000 0.330000 0.330000
+map_Kd cowboy/cowboy_01_torso1.JPG
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl cowboy_01_legs1
+Ka 0.000000 0.000000 0.000000
+Kd 0.250980 0.156863 0.113725
+Ks 0.330000 0.330000 0.330000
+map_Kd cowboy/cowboy_01_legs1.JPG
+
+newmtl eye1
+Ka 0.000000 0.000000 0.000000
+Kd 0.352941 0.435294 0.474510
+Ks 0.330000 0.330000 0.330000
+map_Kd cowboy/eye1.JPG
+
