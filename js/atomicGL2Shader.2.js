@@ -168,7 +168,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		console.log("atomicGLShader2::createProgram -> compile result: " + agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS));
 		// check erreur de compilation sans perte de contexte
 		if (!agl.gl.getShaderParameter(vertexShader, agl.gl.COMPILE_STATUS) && !agl.gl.isContextLost()) {
-			alert("Error compiling vertex shader "+this.name+" :\n" + agl.gl.getShaderInfoLog(vertexShader));
+			alert("Error compiling vertex shader " + this.name + " :\n" + agl.gl.getShaderInfoLog(vertexShader));
 			return null;
 		}
 		// fragment
@@ -181,7 +181,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		console.log("atomicGLShader2::createProgram -> compile result: " + agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS));
 		// check erreur de compilation sans perte de contexte
 		if (!agl.gl.getShaderParameter(fragmentShader, agl.gl.COMPILE_STATUS) && !agl.gl.isContextLost()) {
-			alert("Error compiling fragment shader "+this.name+" :\n" + agl.gl.getShaderInfoLog(fragmentShader));
+			alert("Error compiling fragment shader " + this.name + " :\n" + agl.gl.getShaderInfoLog(fragmentShader));
 			return null;
 		}
 
@@ -270,8 +270,8 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		}
 
 		this.pointLightColorUniformArray = agl.gl.getUniformLocation(program, "uPointLightPositions");
-		this.pointLightLocationUniformArray =  agl.gl.getUniformLocation(program, "uPointLightColors");
-		this.pointLightNumber =  agl.gl.getUniformLocation(program, "uPointLightNumber");
+		this.pointLightLocationUniformArray = agl.gl.getUniformLocation(program, "uPointLightColors");
+		this.pointLightNumber = agl.gl.getUniformLocation(program, "uPointLightNumber");
 
 		// textures
 		for (var i = 0; i < this.nbTex; i++) {
@@ -339,18 +339,18 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			tmpLightsLocations[i] = tmpLightLocation;
 		}
 
-		aGL.gl.uniform1fv(this.pointLightLocationUniformArray,aGL.omniLightLocation);
-		aGL.gl.uniform1fv(this.pointLightColorUniformArray,aGL.omniLightColor);
-		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
+		aGL.gl.uniform1fv(this.pointLightLocationUniformArray, aGL.omniLightLocation);
+		aGL.gl.uniform1fv(this.pointLightColorUniformArray, aGL.omniLightColor);
+		aGL.gl.uniform1i(this.pointLightNumber, aGL.omniLightNumber);
 
 		// Sobel
 		let resolution = new Float32Array([aGL.gl.drawingBufferWidth, aGL.gl.drawingBufferHeight]);
 		aGL.gl.uniform2fv(this.uRes, resolution);
-
+		
 		// Time
 		aGL.gl.uniform1f(this.time, aGL.clock.getTotal());
 		// Random
-		if(this.random != null) {
+		if (this.random != null) {
 			aGL.gl.uniform1f(this.random, Math.random());
 		}
 		// textures
@@ -361,4 +361,4 @@ class atomicGL2MatShader extends atomicGL2Shader {
 	build(agl, shaderloader) { this.program = this.createProgram(agl, shaderloader.getVertex(), shaderloader.getFragment()); }
 }
 
-export {atomicGL2ShaderLoaderScriptInLine, atomicGL2ShaderLoaderScriptXML, atomicGL2MatShader};
+export { atomicGL2ShaderLoaderScriptInLine, atomicGL2ShaderLoaderScriptXML, atomicGL2MatShader };

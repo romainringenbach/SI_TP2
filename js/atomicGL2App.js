@@ -3,6 +3,7 @@ import atomicGL2MatrixStack from './atomicGL2MatrixStack.js';
 import atomicGL2Context from './atomicGL2Context.js';
 import atomicGL2Clock from './atomicGL2Clock.js';
 import atomicGL2xml from './atomicGL2xml.2.js';
+import atomicGL2Sounds from './atomicGL2Sounds.js';
 // atomicGL
 //----------------------------------------------------------------------------------------
 // author: RC

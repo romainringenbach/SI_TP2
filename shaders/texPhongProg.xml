@@ -85,8 +85,9 @@
 
 		// rim
 		float rim = 1.0 - max(dot(eyeDirection, normal), 0.0);
-		//float rim = pow(1.0+dot(eyeDirection, normal), 2.5);
+		//float rim = pow(1.0+dot(eyeDirection, normal), 2.0);
 		rim = smoothstep(0.6, 1.0, rim);
+		vec3 finalRim = rimColor * vec3(rim, rim, rim);
 
 		// reflection direction
 		vec3 reflectDirection = normalize(reflect(-lightDirection,normal));
@@ -104,11 +105,12 @@
      		Kd*diffuse*uPointLightColor0 *texColor.rgb +
      		Ks*specular*uPointLightColor0*specColor;
 		
-		lightColor += 0.35*rim;
+		lightColor += 0.8*finalRim;
 
 		float ao = 0.5 + 0.5 * normal.y;
 		lightColor *= ao;
 
+		lightColor = pow( lightColor, vec3(1.0 / 1.5) );
         gl_FragColor = vec4(lightColor,1.0);
 
     }

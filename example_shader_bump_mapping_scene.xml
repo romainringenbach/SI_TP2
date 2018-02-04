@@ -10,7 +10,6 @@
 		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
-
 	</SHADERS>
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,500.0,500.0" color="1.0,0.8,0.8">light1</LIGHT>

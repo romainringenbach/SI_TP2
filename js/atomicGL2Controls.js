@@ -21,7 +21,9 @@ class atomicGL2Controls {
         this.currentlyPressedKeys = {};
         this.blocker = document.getElementById('blocker');
         this.instructions = document.getElementById('instructions');
-
+        // Sounds
+        this.howlers = new atomicGL2Sounds();
+        
         // Mouse movements
         this.canvas.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
         //	Movement keyboard callbacks
