@@ -1,3 +1,4 @@
+import atomicGL2Sounds from './atomicGL2Sounds.js';
 // atomicGL
 //----------------------------------------------------------------------------------------
 // author: RC

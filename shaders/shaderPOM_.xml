@@ -104,7 +104,7 @@
 		uniform int uPointLightNumber;
 		uniform vec3 uPointLightPositions[100];
 		uniform vec3 uPointLightColors[100];
-		uniform float uPointLightScope[100];
+		uniform float uPointLightScope[100]; //100
 
 		vec3 computeEyeDirection(vec3 eyeDir){
 
@@ -313,7 +313,8 @@
 			///////////////////////////////////////////////////////////////////////////
 
 			// light color
-			phongFinal = phongFinal*texColor.rgb + uAmbientColor*Kd*texColor.rgb;
+			//phongFinal*texColor.rgb + uAmbientColor*Kd*texColor.rgb;
+			phongFinal = uPointLightColors[0];
 			gl_FragColor = vec4(phongFinal,1.0);
 
     }
