@@ -202,6 +202,11 @@
 
       vec2 uv = computeUV(vTextureCoord,eyeDirection);
 
+			vec3 normal = vec3(0.0,0.0,0.0);
+
+			///////////////////////////////////////////////////////////////////////////
+			// Old normal bump mapping calcul
+			/*
 			// Calcul des tangent et biTangent
       // normalize normal
       vec3 oldNormal = normalize(vNormal);
@@ -221,10 +226,11 @@
       // TS to view matrix
       mat3 TBN = mat3(u1,u2,u3);
       // transform normal
-      vec3 normal = TBN*newNormalTS ;
+      normal = TBN*newNormalTS ;*/
+			///////////////////////////////////////////////////////////////////////////
 
-
-			//normal = computeNormalFromMap(uv);
+			// New normal bump mapping calcul
+			normal = computeNormalFromMap(uv);
 
 			// texture color
 			vec4 texColor  = texture2D(uSampler0, uv);
@@ -273,7 +279,7 @@
 			///////////////////////////////////////////////////////////////////////////
 
 			///////////////////////////////////////////////////////////////////////////
-			// Test with the first pointlight : doesn't work
+			// Test with the first pointlight
 			/*
 			const int i = 0;
 
