@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHADER name="shaderCartoonCylindre">
+	<VERTEX>
+		// vertex shader
+		// ------------------------------------------------------
+		// toon shader per fragment
+		// ------------------------------------------------------
+		// lights nb: 1
+		// textures nb: 1
+		// ------------------------------------------------------
+
+		// attributes inputs  (vertex arrays)
+			attribute vec3 aVertexPosition;
+			attribute vec2 aVertexTexCoord;
+			attribute vec3 aVertexNormal;
+
+		// uniform matrices
+			uniform mat4 uMVMatrix;
+			uniform mat4 uPMatrix;
+			uniform mat3 uNMatrix;
+
+		// output
+		varying vec4 vPosition;
+		varying vec2 vTextureCoord;
+		varying vec3 vNormal;
+
+    void main(void) {
+			// vPosition
+			vPosition =  uMVMatrix * vec4(aVertexPosition, 1.0);
+
+    	// vNormal
+			vNormal = uNMatrix * aVertexNormal;
+
+      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+			// vTextureCoord
+	    vTextureCoord = aVertexTexCoord;
+    }
+
+	</VERTEX>
+	<FRAGMENT>
+		#ifdef GL_ES
+		precision highp float;
+		#endif
+		// fragment shader
+		// ------------------------------------------------------
+		// toon shader per fragment
+		// ------------------------------------------------------
+		// lights nb: 1
+		// textures nb: 1
+		// ------------------------------------------------------
+
+		// varying input (output of the vertex shader)
+		varying vec4 vPosition;
+		varying vec2 vTextureCoord;
+		varying vec3 vNormal;
+
+		// lights
+		uniform vec3 uAmbientColor;
+		uniform vec3 uPointLightPosition0;
+		uniform vec3 uPointLightColor0;
+		// local constant - could be uniform
+     	uniform sampler2D uSampler0;
+
+			uniform int uPointLightNumber;
+			uniform vec3 uPointLightPositions[100];
+			uniform vec3 uPointLightColors[100];
+			uniform float uPointLightScope[100]; //100
+			uniform float uPointLightAbsolutePosition[100];
+
+			uniform mat4 uVMatrix;
+
+		// diffuse specular shininess
+		float Kd = 0.5 ;
+		float Ks = 0.5 ;
+		float sh = 8.0 ;
+		// thresholds
+		float shadowMidtone = 0.0;
+		float midToneHighLight = 0.95;
+		float edgeThreshold = 0.99;
+
+		vec3 specColor = vec3(1.0,1.0,1.0);
+
+		// main
+		void main(void) {
+		// light direction, eye direction
+		vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
+		vec3 eyeDirection = normalize(-vPosition.xyz);
+
+		// normalize normal
+		vec3 normal = normalize(vNormal);
+
+		//  diffuse term
+		float diffuseLightWeight = max(dot(normal, lightDirection), 0.0);
+
+		// texture color
+		vec4 texColor  = texture2D(uSampler0, vTextureCoord);
+
+		vec3 phongFinal = vec3(0.0,0.0,0.0);
+		vec3 phongI = texColor.rgb ;
+
+		// reflection direction
+		vec3 reflectDirection = vec3(0.0,0.0,0.0);
+
+		float diffuse = 0.0;
+		float specular = 0.0;
+
+			// edge color
+			vec3 edgeColor = vec3(0.3,0.3,0.3) * texColor.rgb;
+			// shadow color
+			vec3 shadowColor = vec3(0.65,0.65,0.65) * texColor.rgb;
+			// midtoneColor
+			vec3 midtoneColor = vec3(0.9,0.9,0.9) * texColor.rgb;
+			// highlight color
+			vec3 highLightColor = vec3(1.0,1.0,1.0) * texColor.rgb;
+			vec3 resC ;
+			///////////////////////////////////////////////////////////////////////////
+			// New pointlight system
+
+			if(uPointLightNumber >0){
+				for(int i = 0; i != 100 ; i++){
+					if(i == uPointLightNumber){
+						break;
+					}
+					vec3 lightColor = uPointLightColors[i]; //vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
+					vec3 lightPosition = uPointLightPositions[i]; //vec3(uPointLightPositions[i * 3 + 0],uPointLightPositions[i * 3 + 1],uPointLightPositions[i * 3 + 2]);
+
+					if(uPointLightAbsolutePosition[i] != 0.0){
+
+						lightPosition =  vec4(uVMatrix * vec4(lightPosition,1.0)).xyz;
+
+					}
+					lightDirection = lightPosition - vPosition.xyz;
+
+
+					reflectDirection = normalize(reflect(-lightDirection,normal));
+					diffuse = max(dot(normal, lightDirection), 0.0);
+					specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
+
+					// edge term
+					float edge = sqrt(1.0 - pow(max(dot(normal,eyeDirection),0.0),2.0));
+					// color
+					float light = Kd*diffuse + Ks*specular;
+
+
+
+					resC = vec3(1.0,0.0,0.0);
+					if (edge &gt; edgeThreshold) { resC = edgeColor;}
+					else if (!(light &gt; shadowMidtone)) { resC = shadowColor;}
+					else if (!(light &gt; midToneHighLight)) { resC = midtoneColor;}
+					else { resC = highLightColor;}
+
+					phongI =
+					( lightColor*resC) +
+					 lightColor *specColor;
+
+					if(uPointLightScope[i] == -1.0){
+						phongFinal = phongFinal + phongI/length(lightDirection);
+					} else {
+						if(uPointLightScope[i] > length(lightDirection)){
+							phongFinal = phongFinal + phongI*(uPointLightScope[i]-length(lightDirection))/uPointLightScope[i];
+						}
+					}
+
+				}
+
+			}
+			///////////////////////////////////////////////////////////////////////////
+			// light color
+			phongFinal = phongFinal + uAmbientColor*resC;
+			gl_FragColor = vec4(phongFinal,1.0);
+
+		}
+	</FRAGMENT>
+</SHADER>
