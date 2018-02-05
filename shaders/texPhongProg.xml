@@ -104,7 +104,7 @@
      		Kd*uAmbientColor*texColor.rgb +
      		Kd*diffuse*uPointLightColor0 *texColor.rgb +
      		Ks*specular*uPointLightColor0*specColor;
-		
+
 		lightColor += 0.8*finalRim;
 
 		float ao = 0.5 + 0.5 * normal.y;
