@@ -1,12 +1,12 @@
-﻿# Converti un fihier .obj en .js et place ce dernier au même endroit
-
-# pour charger dans la console python :  exec(open("path/objtojs.py").read())
-# pour convertire un obj : convertFile("path/name.obj")
 from os import listdir
 from os.path import isfile, join
 
+'''
+﻿Converti un fihier .obj en .js et place ce dernier au même endroit
 
-
+pour charger dans la console python :  exec(open("path/objtojs.py").read())
+pour convertire un obj : convertFile("path/name.obj")
+'''
 
 def convertFiles(path):
     files = listdir(path)

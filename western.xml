@@ -196,8 +196,8 @@
 		<TEXTURE id="Rock04Normal" type="normal">texture/western/Rock04N.png</TEXTURE>
 		<TEXTURE id="Rock05" type="color">texture/western/Rock05.png</TEXTURE>
 		<TEXTURE id="Rock05Normal" type="normal">texture/western/Rock05N.png</TEXTURE>
-		
-		
+
+
 	</TEXTURES>
 	<SHAPES>
 		<SHAPE id="barrel_and_wood_box_Sack1" type="obj">
@@ -830,7 +830,7 @@
 			<TEXTID>Rock05</TEXTID>
 			<TEXTID>Rock05Normal</TEXTID>
 		</SHAPE>
-		
+
 	</SHAPES>
 	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
 	<TRANSFORM id="transform_all" translate="0.95674100489601,0,58.3142686342186" rotaxis="0.0,1.0,0.0" angle="90" scale="1.3,1.3,1.3" >
@@ -849,7 +849,7 @@
 					<OBJECT3D id="buiding1_saloon_Wood_Floor_Light" shader="texPhongProg">buiding1_saloon_Wood_Floor_Light</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Blinds_Cellular_White" shader="texPhongProg">buiding1_saloon_Blinds_Cellular_White</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Asphalt_New" shader="texPhongProg">buiding1_saloon_Asphalt_New</OBJECT3D>
-					<OBJECT3D id="buiding1_saloon_Metal_Rusted" shader="texPhongProg">buiding1_saloon_Metal_Rusted</OBJECT3D>					
+					<OBJECT3D id="buiding1_saloon_Metal_Rusted" shader="texPhongProg">buiding1_saloon_Metal_Rusted</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Wood_Floor_Dark" shader="texPhongProg">buiding1_saloon_Wood_Floor_Dark</OBJECT3D>
 					<OBJECT3D id="buiding1_saloon_Wood_Lumber_ButtJoined" shader="texPhongProg">buiding1_saloon_Wood_Lumber_ButtJoined</OBJECT3D>
 			</TRANSFORM>
@@ -1041,15 +1041,15 @@
 		<TRANSFORM id="transform_pPlane1" translate="0,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
-		
+
 		<TRANSFORM id="transform_pPlane2" translate="0,-0.002,-20" rotaxis="0.0,1.0,0.0" angle="180" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
-		
+
 		<TRANSFORM id="transform_pPlane3" translate="40,-0.002,-5" rotaxis="0.0,1.0,0.0" angle="140" scale="1.0,1.0,1.0" >
 				<OBJECT3D id="obj_pPlane1" shader="texPhongProg">pPlane1</OBJECT3D>
 		</TRANSFORM>
-		
+
 		<TRANSFORM id="transform_post_telephone1" translate="45,0,-2" rotaxis="0.0,1.0,0.0" angle="-50" scale="0.0142677398002877,0.0142677398002877,0.0142677398002877" >
 				<OBJECT3D id="post_telephone_WarmGray8_1" shader="texPhongProg">post_telephone_WarmGray8_1</OBJECT3D>
 				<OBJECT3D id="post_telephone_Dark_Brown_" shader="texPhongProg">post_telephone_Dark_Brown_</OBJECT3D>
