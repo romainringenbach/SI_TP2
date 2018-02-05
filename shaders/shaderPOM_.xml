@@ -278,7 +278,7 @@
 						phongFinal = phongFinal + phongI/length(lightDirection);
 					} else {
 						if(uPointLightScope[i] > length(lightDirection)){
-							phongFinal = phongFinal + phongI*length(lightDirection)/uPointLightScope[i];
+							phongFinal = phongFinal + phongI*(uPointLightScope[i]-length(lightDirection))/uPointLightScope[i];
 						}
 					}
 
