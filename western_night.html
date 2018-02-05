@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>atomicGL2 SCENE test </title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<!-- Css style sheets -->
+	<link rel="stylesheet" type="text/css" href="css/glstyle.css">
+
+	<!-- External Libs -->
+	<script type="text/javascript" src="js/utils/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/utils/glMatrix-0.js"></script>
+	<script type="text/javascript" src="js/utils/webgl-utils.js"></script>
+	<script type="text/javascript" src="js/utils/webgl-debug.js"></script>
+	<script type="text/javascript" src="js/utils/stats.min.js"></script>
+	<script type="text/javascript" src="js/utils/howler.js"></script>
+
+
+	<!-- ATOMICGL ENGINE -->
+	<!-- load 3D OBJETCS modules -->
+	<script type="text/javascript" src="models_js/Petroleum_Lamp_1.js"></script>
+	<script type="text/javascript" src="models_js/Petroleum_Lamp_2.js"></script>
+	<script type="text/javascript" src="models_js/barrel_and_wood_box_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/barrel_and_wood_box_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/barrel_and_wood_box_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/barrel_and_wood_box_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_7.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_8.js"></script>
+	<script type="text/javascript" src="models_js/buiding1_saloon_tri_9.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_7.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_8.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_9.js"></script>
+	<script type="text/javascript" src="models_js/building_bom_tri_10.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/building_bom1_tri_7.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_7.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_8.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_9.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_10.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_11.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_12.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_13.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_14.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_15.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_16.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_17.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_18.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_19.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_20.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_21.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_22.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_23.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_24.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_25.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_26.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_27.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_28.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_29.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_30.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_31.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_32.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_33.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_34.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_35.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_36.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_37.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_38.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_39.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_40.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_41.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_42.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_43.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_44.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_45.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_46.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_47.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_48.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_49.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_50.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_51.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_52.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_53.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_54.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_55.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_56.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_57.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_58.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_59.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_60.js"></script>
+	<script type="text/javascript" src="models_js/buildings_3_tri_61.js"></script>
+	<script type="text/javascript" src="models_js/cactus_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/cowboy_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/cowboy_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/cowboy_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/cowboy_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/cowboy_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/cowboy_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/fence_boa_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/fence_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/fence_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/fence_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/hung_wood_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/hung_wood_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/hung_wood_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/post_telephone_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/post_telephone_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_7.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_8.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_9.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_10.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_11.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_12.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_13.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_14.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_15.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_16.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_17.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_18.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_19.js"></script>
+	<script type="text/javascript" src="models_js/wagon_10_tri_20.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_6.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_7.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_8.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_9.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_10.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_11.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_12.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_13.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_14.js"></script>
+	<script type="text/javascript" src="models_js/wagon_horse_tri_15.js"></script>
+	<script type="text/javascript" src="models_js/water_tower_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/water_tower_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/water_tower_tri_3.js"></script>
+	<script type="text/javascript" src="models_js/water_tower_tri_4.js"></script>
+	<script type="text/javascript" src="models_js/water_tower_tri_5.js"></script>
+	<script type="text/javascript" src="models_js/wood_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/wood_tri_2.js"></script>
+	<script type="text/javascript" src="models_js/sol_western_1.js"></script>
+	<script type="text/javascript" src="models_js/rock_01_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock_1.js"></script>
+	<script type="text/javascript" src="models_js/rock02_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock03_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock04_tri_1.js"></script>
+	<script type="text/javascript" src="models_js/rock05_tri_1.js"></script>
+
+	<!-- AtomicGL2 Main Script -->
+	<script type="module" src="js/atomicGL2App.js"></script>
+</head>
+
+<body id="western_night.xml">
+
+	<header>
+		<h1>La classe américaine</h1>
+	</header>
+
+	<div class="wrapper">
+
+		<!-- Canvas -->
+		<div id="canvas-container">
+			<canvas id="oglcanvas"><!-- width="854" height="480" -->
+				Please use a browser that supports "canvas".<br/>
+				<a href="https://www.mozilla.org/" target="_blank">
+					https://www.mozilla.org/
+				</a>
+			</canvas>
+			<!-- Shader menu -->
+			<div class="hidden" id="shaderMenu">
+				<div>Shader actif:
+					<span id="shadName"></span>
+				</div>
+			</div>
+			<!-- Instructions overlay -->
+			<div id="blocker">
+				<div id="instructions" class="unselectable">
+				</div>
+			</div>
+		</div> <!-- Canvas -->
+
+	</div> <!-- Wrapper -->
+
+	<!-- Controls -->
+	<div id="checkbox-container">
+		<img src="./images/fullscreen.png" id="FullScreenBtn" />
+		<label for="FullScreenBtn"> FullScreen</label>
+
+		<input type="checkbox" id="FpsBtn" name="FpsBtn" checked/>
+		<label for="FpsBtn"> Fps</label>
+
+		<input type="checkbox" id="SoundBtn" name="SoundBtn"/>
+		<label for="SoundBtn"> Sound</label>
+	</div> <!-- Controls -->
+
+	<footer>
+		<p>AtomicGL2 Rémi Cozot</p>
+		<p>Contact:
+			<a href="cozot@irisa.fr">cozot@irisa.fr</a>
+		</p>
+	</footer>
+
+</body>
+
+</html>
