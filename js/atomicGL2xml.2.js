@@ -206,19 +206,26 @@ class atomicGL2xml {
 					// parse position
 					var LIGHTpos = LIGHT.getAttribute("position");
 					var LIGHTscope = LIGHT.getAttribute("scope");
+					var LIGHTabs = LIGHT.getAttribute("absolutePos");
 					var pos = [];
 					pos[0] = parseFloat(LIGHTpos.split(",")[0]);
 					pos[1] = parseFloat(LIGHTpos.split(",")[1]);
 					pos[2] = parseFloat(LIGHTpos.split(",")[2]);
-					var scope
+					var scope;
+					var absPos;
 					if(LIGHTscope && LIGHTscope != ""){
 						scope = parseFloat(LIGHTscope);
 					} else {
 						scope = -1.0;
 					}
+					if(LIGHTabs && LIGHTabs != ""){
+						absPos = parseFloat(LIGHTabs);
+					} else {
+						absPos = 0.0;
+					}
 					console.log("scope:"+scope);
 					// create light and add it to context
-					agl.pushLight(pos, color,scope);
+					agl.pushLight(pos, color,scope,absPos);
 					break;
 				case "ambient":
 					//add ambient light color

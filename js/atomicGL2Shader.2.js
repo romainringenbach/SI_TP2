@@ -1,3 +1,5 @@
+import atomicGL2MatrixStack from './atomicGL2MatrixStack.js';
+
 // atomicGL2
 //----------------------------------------------------------------------------------------
 // author: RC
@@ -128,6 +130,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pMatrixUniform;
 		this.mvMatrixUniform;
 		this.nMatrixUniform;
+		this.viewMatrixUniform;
 		// light
 		this.ambientColorUniform;
 		this.pointLightLocationUniform = [];
@@ -135,7 +138,8 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pointLightColorUniformArray;
 		this.pointLightLocationUniformArray;
 		this.pointLightNumber;
-		this.pointLightScope
+		this.pointLightScope;
+		this.pointLightAbsolutePosition;
 		// texture -sampler
 		this.samplerUniform = [];
 		// time
@@ -246,6 +250,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pMatrixUniform = agl.gl.getUniformLocation(program, "uPMatrix");
 		this.mvMatrixUniform = agl.gl.getUniformLocation(program, "uMVMatrix");
 		this.nMatrixUniform = agl.gl.getUniformLocation(program, "uNMatrix");
+		this.viewMatrixUniform = agl.gl.getUniformLocation(program,"uVMatrix");
 
 		//Old movie shader
 		this.time = agl.gl.getUniformLocation(program, "uTime");
@@ -274,6 +279,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pointLightColorUniformArray =  agl.gl.getUniformLocation(program, "uPointLightColors");
 		this.pointLightNumber =  agl.gl.getUniformLocation(program, "uPointLightNumber");
 		this.pointLightScope =  agl.gl.getUniformLocation(program, "uPointLightScope");
+		this.pointLightAbsolutePosition =  agl.gl.getUniformLocation(program, "uPointLightAbsolutePosition");
 
 		// textures
 		for (var i = 0; i < this.nbTex; i++) {
@@ -319,10 +325,40 @@ class atomicGL2MatShader extends atomicGL2Shader {
 			aGL.gl.uniform3f(this.pointLightColorUniform[i], aGL.omniLightColor[i * 3 + 0], aGL.omniLightColor[i * 3 + 1], aGL.omniLightColor[i * 3 + 2]);
 		}
 
+
 		aGL.gl.uniform3fv(this.pointLightLocationUniformArray,new Float32Array(aGL.omniLightLocation));
 		aGL.gl.uniform3fv(this.pointLightColorUniformArray,new Float32Array(aGL.omniLightColor));
 		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
 		aGL.gl.uniform1fv(this.pointLightScope,new Float32Array(aGL.omniLightScope));
+		aGL.gl.uniform1fv(this.pointLightAbsolutePosition,new Float32Array(aGL.omniLightAbsolutePos));
+
+
+
+		let translate = [0.0, 0.0, 0.0];
+		let rotAxis = [0.0, 1.0, 0.0];
+		let rotation = 0.0;
+		let scale = [1.0, 1.0, 1.0];
+
+		let lightAMS = new atomicGL2MatrixStack();
+		lightAMS.initMatrix(aGL,45);
+
+		lightAMS.resetPerspective(aGL);
+		// push matrix
+		lightAMS.mvIdentity();
+		lightAMS.mvPushMatrix();
+
+		let camera = aGL.scenegraph.camera;
+
+		if (camera != null) {
+			lightAMS.mvRotate(camera.phi, [1, 0, 0]);
+			lightAMS.mvRotate(camera.theta, [0, 1, 0]);
+			lightAMS.mvTranslate(-camera.xc, -camera.yc, -camera.zc);
+		}
+
+		lightAMS.mvPushMatrix();
+
+		aGL.gl.uniformMatrix4fv(this.viewMatrixUniform, false, lightAMS.mvMatrix);
+
 
 		// Sobel
 		let resolution = new Float32Array([aGL.gl.drawingBufferWidth, aGL.gl.drawingBufferHeight]);
