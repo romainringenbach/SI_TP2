@@ -844,7 +844,7 @@
 		</SHAPE>
 
 	</SHAPES>
-	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="2.0" campos="0.0,0.7,65.0">
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="2.3" campos="0.0,0.7,65.0">
 	<TRANSFORM id="transform_all" translate="0.95674100489601,0,58.3142686342186" rotaxis="0.0,1.0,0.0" angle="90" scale="1.3,1.3,1.3" >
 		<TRANSFORM id="transform_barrel_and_wood_box" translate="-2.95674100489601,0,8.3142686342186" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00885559901747146,0.00885559901747146,0.00885559901747146" >
 								<OBJECT3D id="barrel_and_wood_box_Sack1" shader="texPhongProg">barrel_and_wood_box_Sack1</OBJECT3D>
