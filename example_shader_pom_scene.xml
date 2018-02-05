@@ -33,7 +33,7 @@
 		</SHAPE>
 
 	</SHAPES>
-	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="13.0" campos="0.0,0.7,5.0">
 
 			<TRANSFORM id="transform_plane" translate="0.0,0.0,-5.0" rotaxis="1.0,0.0,0.0" angle="0.0" scale="1.0,1.0,1.0">
 					<OBJECT3D id="obj_plane" shader="shaderPOM">cube</OBJECT3D>

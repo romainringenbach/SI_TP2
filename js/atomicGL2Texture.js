@@ -21,7 +21,7 @@ class atomicGL2Texture {
 
 	constructor(iid, ffile, ttype, aagl) {
 		// debug
-		console.log("atomicGLTexture::constructor("+ffile+")");
+		//console.log("atomicGLTexture::constructor("+ffile+")");
 		// attributes
 		// -------------------------------------------------
 		// local context
@@ -58,7 +58,7 @@ class atomicGL2Texture {
 	handleIMG() {
 		let o = this;
 		// debug
-		console.log("atomicGLTexture::onload("+o.file+")");
+		//console.log("atomicGLTexture::onload("+o.file+")");
 
 		o.agl.gl.pixelStorei(o.agl.gl.UNPACK_FLIP_Y_WEBGL, true);
 		// bindTexture
@@ -79,7 +79,7 @@ class atomicGL2Texture {
 	// --------------------------------------------------
 	// handle image load
 	build() {
-		console.log("atomicGLTexture::build("+this.file+")");
+		//console.log("atomicGLTexture::build("+this.file+")");
 		let file = this.file;
 		this.textureImage.onload = this.handleIMG.bind(this);
 		this.textureImage.onerror = function(e){

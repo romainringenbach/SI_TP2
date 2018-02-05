@@ -62,13 +62,15 @@ class atomicGL2App {
         this.controls = new atomicGL2Controls(this.canvas);
 
         // DEBUG : test context lost and restore
-        /* this.canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(this.canvas);
+        /*
+        this.canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(this.canvas);
         // lose the context when I press click the mouse.
         var _this = this;
         window.addEventListener("mousedown", function() {
             _this.canvas.loseContext();
         }, false);
-        this.canvas.setRestoreTimeout(5000);  // recover in 5 seconds */
+        this.canvas.setRestoreTimeout(5000);  // recover in 5 seconds
+        */
 
         // Handle context lost
         this.canvas.addEventListener('webglcontextlost', this.handleContextLost.bind(this), false);

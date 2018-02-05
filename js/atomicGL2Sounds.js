@@ -11,6 +11,7 @@
 class atomicGL2Sounds {
 
     constructor() {
+
         this.sfx = new Howl({
             src: ["sfx.webm", "sfx.ogg"],
             sprite: {
@@ -82,37 +83,51 @@ class atomicGL2Sounds {
             volume: 0.5
         });
         this.themes = new Howl({
-            src: ["themes.webm", "themes.ogg"],
+            src: ['./sounds/themes.webm', './sounds/themes.ogg'],
             sprite: {
-                "harmonica": [
+                harmonica: [
                     0,
                     210153.6054421769
                 ],
-                "JazzMusic": [
+                JazzMusic: [
                     212000,
                     242104.26303854876
                 ],
-                "PianoSong": [
+                PianoSong: [
                     456000,
                     166024.10430839006
                 ],
-                "psychedelic": [
+                psychedelic: [
                     624000,
                     282181.88208616775
                 ]
             },
+            //html5: true,
             volume: 0.5,
-            preload: true
+            preload: true,
+            loop: true
         });
 
-        this._theme;
-        this._sfx;
-
-        this.playTheme();
+        document.getElementById('SoundBtn').addEventListener('click', this.mute.bind(this), false);
+        this.muted = false;
+        this.bgplaying;
     }
 
-    playTheme(sprite) {
-        this._theme = this.themes.play(sprite);
+    playTheme(bgmusic) {
+        if (this.bgplaying) {
+            this.themes.fade(this.themes.volume(this.bgplaying), 0.0, 1100, this.bgplaying);
+            this.themes.once('fade', () => {
+                this.themes.stop(this.bgplaying);
+                this.bgplaying = this.themes.play(bgmusic);
+            }, this.bgplaying);
+        } else {
+            this.bgplaying = this.themes.play(bgmusic);
+        }
+    }
+
+    mute() {
+        this.muted = !this.muted;
+        Howler.mute(this.muted);
     }
 
 }

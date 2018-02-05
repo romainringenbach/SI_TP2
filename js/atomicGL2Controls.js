@@ -23,59 +23,7 @@ class atomicGL2Controls {
         this.blocker = document.getElementById('blocker');
         this.instructions = document.getElementById('instructions');
         // Sounds
-        this.howlers = new atomicGL2Sounds();
-
-        // Mouse movements
-        this.canvas.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
-        //	Movement keyboard callbacks
-        document.addEventListener('keydown', this.key.bind(this, true), false);
-        document.addEventListener('keyup', this.key.bind(this, false), false);
-        // Menu keyboard handling
-        document.addEventListener('keyup', this.handleMenuKeyUp.bind(this), false);
-
-        // Mouse pointer lock in canvas
-        this.canvas.requestPointerLock = this.canvas.requestPointerLock ||
-            this.canvas.mozRequestPointerLock;
-
-        if (!this.canvas.requestPointerLock) {
-            this.instructions.innerHTML = 'Your browser does not support Pointer Lock API.<br/> \
-                                        Update your browser and try again.';
-        }
-
-        document.exitPointerLock = document.exitPointerLock ||
-            document.mozExitPointerLock;
-
-        document.addEventListener('pointerlockerror', this.lockError, false);
-        document.addEventListener('mozpointerlockerror', this.lockError, false);
-        document.addEventListener('webkitpointerlockerror', this.lockError, false);
-
-        this.instructions.addEventListener('click', this.lockPointer.bind(this), false);
-
-        document.addEventListener('pointerlockchange', this.pointerlockChange.bind(this), false);
-        document.addEventListener('mozpointerlockchange', this.pointerlockChange.bind(this), false);
-        document.addEventListener('webkitpointerlockchange', this.pointerlockChange.bind(this), false);
-
-        // FullScreen stuff
-        if (
-            document.fullscreenEnabled ||
-            document.webkitFullscreenEnabled ||
-            document.mozFullScreenEnabled ||
-            document.msFullscreenEnabled
-        ) {
-            this.canvas.requestFullscreen = this.canvas.requestFullscreen ||
-                this.canvas.webkitRequestFullscreen || this.canvas.mozRequestFullScreen ||
-                this.canvas.msRequestFullscreen;
-
-            document.addEventListener("fullscreenchange", this.fullScreenChange.bind(this), false);
-            document.addEventListener("mozfullscreenchange", this.fullScreenChange.bind(this), false);
-            document.addEventListener("webkitfullscreenchange", this.fullScreenChange.bind(this), false);
-            document.addEventListener("MSFullscreenChange", this.fullScreenChange.bind(this), false);
-
-            document.getElementById('FullScreenBtn').addEventListener('click', this.clickFullScreen.bind(this), false);
-        } else {
-            document.getElementById('FullScreenBtn').src = './images/x-button.png';
-            document.getElementById('FullScreenBtn').style.cursor = 'not-allowed';
-        }
+        this.howlers;
 
         this.showLoadStatus();
     }
@@ -147,6 +95,7 @@ class atomicGL2Controls {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("cartoon")));
                 this.sgxml.root.shaderId = 0;
                 shaderBox.textContent = "cartoon";
+                this.howlers.playTheme('PianoSong');
             }
         }
         if (eventKey === "o") { // Shader Old Movie
@@ -154,6 +103,7 @@ class atomicGL2Controls {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("blackAndWhiteMovie")));
                 this.sgxml.root.shaderId = this.agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
                 shaderBox.textContent = "old movie";
+                this.howlers.playTheme('JazzMusic');
             }
         }
         if (eventKey === "f") { // Fog Diff Shader
@@ -175,6 +125,7 @@ class atomicGL2Controls {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("shaderPsycho")));
                 this.sgxml.root.shaderId = this.agl.indexOfShader("psychoSkybox");	// Apply shader to skybox
                 shaderBox.textContent = "shaderPsycho";
+                this.howlers.playTheme('psychedelic');
             }
         }
         if (eventKey === "c") // (C) debug
@@ -183,6 +134,65 @@ class atomicGL2Controls {
         }
     }
 
+    enableControls() {
+        this.initListeners();
+        this.howlers = new atomicGL2Sounds();
+        this.howlers.playTheme('harmonica');
+    }
+
+    initListeners() {
+        // Mouse movements
+        this.canvas.addEventListener('mousemove', this.onDocumentMouseMove.bind(this), false);
+        //	Movement keyboard callbacks
+        document.addEventListener('keydown', this.key.bind(this, true), false);
+        document.addEventListener('keyup', this.key.bind(this, false), false);
+        // Menu keyboard handling
+        document.addEventListener('keyup', this.handleMenuKeyUp.bind(this), false);
+
+        // Mouse pointer lock in canvas
+        this.canvas.requestPointerLock = this.canvas.requestPointerLock ||
+            this.canvas.mozRequestPointerLock;
+
+        if (!this.canvas.requestPointerLock) {
+            this.instructions.innerHTML = 'Your browser does not support Pointer Lock API.<br/> \
+                                        Update your browser and try again.';
+        }
+
+        document.exitPointerLock = document.exitPointerLock ||
+            document.mozExitPointerLock;
+
+        document.addEventListener('pointerlockerror', this.lockError, false);
+        document.addEventListener('mozpointerlockerror', this.lockError, false);
+        document.addEventListener('webkitpointerlockerror', this.lockError, false);
+
+        this.instructions.addEventListener('click', this.lockPointer.bind(this), false);
+
+        document.addEventListener('pointerlockchange', this.pointerlockChange.bind(this), false);
+        document.addEventListener('mozpointerlockchange', this.pointerlockChange.bind(this), false);
+        document.addEventListener('webkitpointerlockchange', this.pointerlockChange.bind(this), false);
+
+        // FullScreen stuff
+        if (
+            document.fullscreenEnabled ||
+            document.webkitFullscreenEnabled ||
+            document.mozFullScreenEnabled ||
+            document.msFullscreenEnabled
+        ) {
+            this.canvas.requestFullscreen = this.canvas.requestFullscreen ||
+                this.canvas.webkitRequestFullscreen || this.canvas.mozRequestFullScreen ||
+                this.canvas.msRequestFullscreen;
+
+            document.addEventListener("fullscreenchange", this.fullScreenChange.bind(this), false);
+            document.addEventListener("mozfullscreenchange", this.fullScreenChange.bind(this), false);
+            document.addEventListener("webkitfullscreenchange", this.fullScreenChange.bind(this), false);
+            document.addEventListener("MSFullscreenChange", this.fullScreenChange.bind(this), false);
+
+            document.getElementById('FullScreenBtn').addEventListener('click', this.clickFullScreen.bind(this), false);
+        } else {
+            document.getElementById('FullScreenBtn').src = './images/x-button.png';
+            document.getElementById('FullScreenBtn').style.cursor = 'not-allowed';
+        }
+    }
     // mouse movements
     // ------------------------------
     onDocumentMouseMove(event) {
@@ -245,6 +255,7 @@ class atomicGL2Controls {
         this.instructions.innerHTML = '<span style="font-size:40px">Click to begin</span> \
                                     <br /> (Z,Q,S,D = Move, SPACE = Fly up, CTRL = Fly down, MOUSE = Look) \
                                     <br /> (ESC = Exit pointerLock or fullScreen)';
+        this.enableControls();
     }
 }
 
