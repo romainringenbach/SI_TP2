@@ -5,7 +5,7 @@
 		<XMATSHADER file="shaders/texDiffProg.xml" nbtex="1" nblight="1">texDiffProg</XMATSHADER>
 		<XMATSHADER file="shaders/shaderNormalMap_.xml" nbtex="2" nblight="1">texDiffNormalMapProg</XMATSHADER>
 		<XMATSHADER file="shaders/shaderPhong_.xml" nbtex="2" nblight="1">texPhongProg</XMATSHADER>
-		<XMATSHADER file="shaders/shaderToon.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
+		<XMATSHADER file="shaders/shaderCartoon_.xml" nbtex="1" nblight="1">cartoon</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaWMovie.xml" nbtex="1" nblight="1">blackAndWhiteMovie</XMATSHADER>
 		<XMATSHADER file="shaders/shaderBaW.xml" nbtex="1" nblight="1">blackAndWhite</XMATSHADER>
 		<XMATSHADER file="shaders/texDiffFog.xml" nbtex="1" nblight="1">texDiffFog</XMATSHADER>
@@ -18,7 +18,7 @@
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,1000.0,500.0" color="0.01,0.01,0.2">light1</LIGHT>
 		<LIGHT id="ambient1" type="ambient" color="0.1,0.1,0.2">ambient1</LIGHT>
-		<LIGHT id="lamp1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,1.0,1.0" scope="10.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lamp1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,0.2,0.0" scope="5.0" absolutePos="1">lamp1</LIGHT>
 
 	</LIGHTS>
 	<TEXTURES>
@@ -844,7 +844,7 @@
 		</SHAPE>
 
 	</SHAPES>
-	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk">
+	<ROOT id="root" skybox="skyTex" skysize="800.0" skyshader="textProg" camera="walk" camspeed="2.0" campos="0.0,0.7,65.0">
 	<TRANSFORM id="transform_all" translate="0.95674100489601,0,58.3142686342186" rotaxis="0.0,1.0,0.0" angle="90" scale="1.3,1.3,1.3" >
 		<TRANSFORM id="transform_barrel_and_wood_box" translate="-2.95674100489601,0,8.3142686342186" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00885559901747146,0.00885559901747146,0.00885559901747146" >
 								<OBJECT3D id="barrel_and_wood_box_Sack1" shader="texPhongProg">barrel_and_wood_box_Sack1</OBJECT3D>
