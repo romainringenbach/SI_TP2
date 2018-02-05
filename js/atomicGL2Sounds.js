@@ -13,7 +13,7 @@ class atomicGL2Sounds {
     constructor() {
 
         this.sfx = new Howl({
-            src: ["sfx.webm"],
+            src: ['./sounds/sfx.webm'],
             sprite: {
                 balles: [
                     0,
@@ -23,43 +23,36 @@ class atomicGL2Sounds {
                     6000,
                     5093.877551020409
                 ],
-                nightambiance: [
-                    13000,
-                    99056.32653061223
-                ],
                 owl: [
-                    114000,
-                    9961.360544217683
+                    13000,
+                    10004.897959183672
                 ],
                 wolf: [
-                    125000,
-                    4046.8027210884256
+                    25000,
+                    4046.8027210884366
                 ]
             },
-            volume: 0.5
+            preload: true,
+            volume: 1.0
         });
-        this.themes = new Howl({
-            src: ['./sounds/themes.webm', './sounds/themes.ogg'],
+        this.background = new Howl({
+            src: ['./sounds/background.webm'],
             sprite: {
                 harmonica: [
                     0,
-                    210153.6054421769
+                    210147.1201814059
                 ],
-                JazzMusic: [
+                nightambiance: [
                     212000,
-                    242104.26303854876
+                    99056.32653061223
                 ],
                 PianoSong: [
-                    456000,
-                    166024.10430839006
-                ],
-                psychedelic: [
-                    624000,
-                    282181.88208616775
+                    313000,
+                    166017.59637188207
                 ]
             },
             //html5: true,
-            volume: 0.5,
+            volume: 0.3,
             preload: true,
             loop: true
         });
@@ -68,7 +61,7 @@ class atomicGL2Sounds {
         this.muted = false;
         this.bgplaying;
 
-        this.ambiance = this.sfx.play('nightambiance');
+        this.ambiance = this.background.play('nightambiance');
         this.randomsfx('owl');
         this.randomsfx('wolf');
     }
@@ -86,17 +79,17 @@ class atomicGL2Sounds {
     }
 
     randomsfx(sfx) {
-        setTimeout( () => {
+        setTimeout(() => {
             let x = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
             let z = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
-        
-            let id = this.sound.play(sfx);
 
-            this.sound.pos(x, 5.0, z, id);
-            this.sound.volume(1, id);
-            
+            let id = this.sfx.play(sfx);
+
+            this.sfx.pos(x, 5.0, z, id);
+            this.sfx.volume(1, id);
+
             this.randomsfx(sfx);
-        }, 5000 + Math.round(Math.random() * 10000));
+        }, 10000 + Math.round(Math.random() * 10000));
     }
 
     mute() {
