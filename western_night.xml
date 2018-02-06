@@ -17,13 +17,14 @@
 	</SHADERS>
 	<LIGHTS>
 		<!--<LIGHT id="sun" type="point" position="1000.0,1000.0,500.0" color="0.01,0.01,0.2">light1</LIGHT>-->
-		<LIGHT id="sun" type="directional" direction="0.0,2.0,10.0" color="1.0,0.01,0.2">light1</LIGHT>
+		<LIGHT id="sun" type="directional" direction="0.0,Math.sin(t/20000)*100,Math.cos(t/20000)*-100" color="0.8*Math.ceil(Math.sin(t/20000))/100.0,(0.5*Math.sin(t/20000))*Math.ceil(Math.sin(t/20000))/100.0,(0.5*Math.sin(t/20000))*Math.ceil(Math.sin(t/20000))/100.0">light1</LIGHT>
+		<LIGHT id="moon" type="directional" direction="0.0,Math.sin(t/20000)*-100,Math.cos(t/20000)*100" color="(0.05*Math.sin(t/20000))*Math.ceil(-Math.sin(t/20000))/100.0,(0.05*Math.sin(t/20000))*Math.ceil(-Math.sin(t/20000))/100.0,0.3*Math.ceil(-Math.sin(t/20000))/100.0">light1</LIGHT>
 		<LIGHT id="ambient_1" type="ambient" color="0.1,0.1,0.2">ambient1</LIGHT>
-		<LIGHT id="lamp_1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,0.2,0.0" scope="2.0+1.0*Math.cos(t)" absolutePos="1">lamp1</LIGHT>
-		<LIGHT id="lampBom1_1" type="point" position="-7.45674100489601,2.0,56.9242686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
-		<LIGHT id="lampSaloon" type="point" position="11.55674100489601,2.0,61.3142686342186" color="1.0,0.7,0.0" scope="4.0" absolutePos="1">lamp1</LIGHT>
-		<LIGHT id="lampBom_1" type="point" position="4.3995674100489601,2.0,72.0142686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
-		<LIGHT id="lampBom_2" type="point" position="12.2995674100489601,2.0,75.0142686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lamp_1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,0.2,0.0" scope="2.0* Math.ceil(-Math.sin(t/20000))" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampBom1_1" type="point" position="-7.45674100489601,2.0,56.9242686342186" color="1.0,0.7,0.0" scope="3.0* Math.ceil(-Math.sin(t/20000))" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampSaloon" type="point" position="11.55674100489601,2.0,61.3142686342186" color="1.0,0.7,0.0" scope="4.0* Math.ceil(-Math.sin(t/20000))" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampBom_1" type="point" position="4.3995674100489601,2.0,72.0142686342186" color="1.0,0.7,0.0" scope="3.0* Math.ceil(-Math.sin(t/20000))" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampBom_2" type="point" position="12.2995674100489601,2.0,75.0142686342186" color="1.0,0.7,0.0" scope="3.0* Math.ceil(-Math.sin(t/20000))" absolutePos="1">lamp1</LIGHT>
 
 	</LIGHTS>
 	<SOUNDS ambiance="background.json" sfx="sfx.json">
