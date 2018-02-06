@@ -1006,8 +1006,10 @@
 				<OBJECT3D id="wagon_10_M_0042_Sienna" shader="texPhongProg">wagon_10_M_0042_Sienna</OBJECT3D>
 				<OBJECT3D id="wagon_10_M_0056_Yellow" shader="texPhongProg">wagon_10_M_0056_Yellow</OBJECT3D>
 		</TRANSFORM>
-
+			
+		<TRANSFORM id="rotation_test" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="50*0.001*t" scale="1.0,1.0,1.0">
 		<TRANSFORM id="transform_wagon_horse" translate="8.5629440676201,0,-2.47405319310153" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
+		<!--<TRANSFORM id="rotation_test_2" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="50*0.001*t" scale="1.0,1.0,1.0">-->
 				<OBJECT3D id="wagon_horse_STDBRED1" shader="texPhongProg">wagon_horse_STDBRED1</OBJECT3D>
 				<OBJECT3D id="wagon_horse_BLACK_MATTE1" shader="texPhongProg">wagon_horse_BLACK_MATTE1</OBJECT3D>
 				<OBJECT3D id="wagon_horse_H_EARS1" shader="texPhongProg">wagon_horse_H_EARS1</OBJECT3D>
@@ -1023,8 +1025,10 @@
 				<OBJECT3D id="wagon_horse_Wood_Bamboo_Dark" shader="texPhongProg">wagon_horse_Wood_Bamboo_Dark</OBJECT3D>
 				<OBJECT3D id="wagon_horse_M_0131_Silver" shader="texPhongProg">wagon_horse_M_0131_Silver</OBJECT3D>
 				<OBJECT3D id="wagon_horse_M_0134_DimGray" shader="texPhongProg">wagon_horse_M_0134_DimGray</OBJECT3D>
+		<!--</TRANSFORM>-->
 		</TRANSFORM>
-
+		</TRANSFORM>
+		
 		<TRANSFORM id="transform_water_tower" translate="3.52989853756449,0,9.62385042036341" rotaxis="1.0,0.0,0.0" angle="0" scale="0.0116411061257294,0.0116411061257294,0.0116411061257294" >
 				<OBJECT3D id="water_tower_FrontColor" shader="texPhongProg">water_tower_FrontColor</OBJECT3D>
 				<OBJECT3D id="water_tower_Material1" shader="texPhongProg">water_tower_Material1</OBJECT3D>
