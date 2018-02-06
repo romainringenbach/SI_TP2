@@ -326,10 +326,10 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		}
 
 
-		aGL.gl.uniform3fv(this.pointLightLocationUniformArray,new Float32Array(aGL.omniLightLocation));
-		aGL.gl.uniform3fv(this.pointLightColorUniformArray,new Float32Array(aGL.omniLightColor));
+		aGL.gl.uniform3fv(this.pointLightLocationUniformArray,new Float32Array(aGL.getLightsLocation()));
+		aGL.gl.uniform3fv(this.pointLightColorUniformArray,new Float32Array(aGL.getLightsColor()));
 		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
-		aGL.gl.uniform1fv(this.pointLightScope,new Float32Array(aGL.omniLightScope));
+		aGL.gl.uniform1fv(this.pointLightScope,new Float32Array(aGL.getLightsScope()));
 		aGL.gl.uniform1fv(this.pointLightAbsolutePosition,new Float32Array(aGL.omniLightAbsolutePos));
 
 

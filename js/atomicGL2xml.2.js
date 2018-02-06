@@ -197,9 +197,15 @@ class atomicGL2xml {
 			// parse color
 			var LIGHTcolor = LIGHT.getAttribute("color");
 			var color = [];
-			color[0] = parseFloat(LIGHTcolor.split(",")[0]);
-			color[1] = parseFloat(LIGHTcolor.split(",")[1]);
-			color[2] = parseFloat(LIGHTcolor.split(",")[2]);
+			color[0] = Number(LIGHTcolor.split(",")[0]);
+			color[1] = Number(LIGHTcolor.split(",")[1]);
+			color[2] = Number(LIGHTcolor.split(",")[2]);
+
+			if (isNaN(color[0]) || isNaN(color[1]) || isNaN(color[2])) {
+				color[0] = LIGHTcolor.split(",")[0];
+				color[1] = LIGHTcolor.split(",")[1];
+				color[2] = LIGHTcolor.split(",")[2];
+			}
 
 			switch (type) {
 				case "point":
@@ -208,13 +214,23 @@ class atomicGL2xml {
 					var LIGHTscope = LIGHT.getAttribute("scope");
 					var LIGHTabs = LIGHT.getAttribute("absolutePos");
 					var pos = [];
-					pos[0] = parseFloat(LIGHTpos.split(",")[0]);
-					pos[1] = parseFloat(LIGHTpos.split(",")[1]);
-					pos[2] = parseFloat(LIGHTpos.split(",")[2]);
+					pos[0] = Number(LIGHTpos.split(",")[0]);
+					pos[1] = Number(LIGHTpos.split(",")[1]);
+					pos[2] = Number(LIGHTpos.split(",")[2]);
+
+					if (isNaN(pos[0]) || isNaN(pos[1]) || isNaN(pos[2])) {
+						pos[0] = LIGHTpos.split(",")[0];
+						pos[1] = LIGHTpos.split(",")[1];
+						pos[2] = LIGHTpos.split(",")[2];
+					}
 					var scope;
 					var absPos;
 					if(LIGHTscope && LIGHTscope != ""){
-						scope = parseFloat(LIGHTscope);
+						scope = Number(LIGHTscope);
+						if (isNaN(scope)) {
+							console.log("scope animée");
+							scope = LIGHTscope;
+						}
 					} else {
 						scope = -1.0;
 					}

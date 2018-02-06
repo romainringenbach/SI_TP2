@@ -49,6 +49,8 @@ class atomicGL2Context {
 		this.scenegraph = null;
 		// Scene Clock
 		this.clock = clk;
+
+		this.t = 0;
 	}
 
 	// methods
@@ -118,7 +120,10 @@ class atomicGL2Context {
 		this.omniLightScope.push(lightScope);
 		this.omniLightAbsolutePos.push(absolutePos);
 
-		console.log("abs:"+absolutePos);
+		//console.log("abs:"+absolutePos);
+		//console.log("lightpos:"+this.omniLightLocation);
+		//console.log("lightcolor:"+this.omniLightColor);
+		//console.log("lightscope:"+this.omniLightScope);
 
 	}
 
@@ -170,6 +175,44 @@ class atomicGL2Context {
 			if (id == shapename) { res = i; break }
 		}
 		return res;
+	}
+
+	updateTime(time){
+		this.t = time;
+
+	}
+
+	getLightsLocation(){
+		let t = this.t;
+		let locations = []
+
+		for (var i = 0; i < this.omniLightLocation.length; i++) {
+			locations.push(eval(this.omniLightLocation[i]));
+		}
+
+		return locations;
+	}
+
+	getLightsColor(){
+		let t = this.t;
+		let colors = []
+
+		for (var i = 0; i < this.omniLightColor.length; i++) {
+			colors.push(eval(this.omniLightColor[i]));
+		}
+
+		return colors;
+	}
+
+	getLightsScope(){
+		let t = this.t;
+		let scopes = []
+
+		for (var i = 0; i < this.omniLightScope.length; i++) {
+			scopes.push(eval(this.omniLightScope[i]));
+		}
+
+		return scopes;
 	}
 }
 
