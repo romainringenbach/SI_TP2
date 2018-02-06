@@ -25,8 +25,9 @@
 		<LIGHT id="lampBom_2" type="point" position="12.2995674100489601,2.0,75.0142686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
 
 	</LIGHTS>
-	<SOUNDS>
-		<SOUND></SOUND>
+	<SOUNDS ambiance="background.json" sfx="sfx.json">
+		<SOUND type="ambiance" sprite="nightambiance" vol="0.3" loop="true"></SOUND>
+		<SOUND type="sfx" sprite="wolf" vol="1.0" repeat="10000"></SOUND>
 	</SOUNDS>
 	<TEXTURES>
 		<TEXTURE id="petrol_lamp_main_diffuse" type="color">texture/petrol_lamp/Petroleum_Lamp_D.png</TEXTURE>

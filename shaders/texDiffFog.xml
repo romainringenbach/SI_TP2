@@ -50,19 +50,21 @@
 	// ------------------------------------------------------
 
 	// local constant
-		// Kd: diffuse coeff
-		float Kd = 0.7 ;
-		vec3 FogColor = vec3(0.5, 0.5, 0.5);
-		float Ks = 0.5;
-		float sh = 8.0 ;
-		vec3 specColor = vec3(0.7,0.7,0.5);
+	// Kd: diffuse coeff
+	float Kd = 1.0 ;
+	float Ks = 0.01 ;
+	float sh = 8.0 ;
+	vec3 specColor = vec3(1.0,1.0,1.0);
+	vec3 rimColor = vec3(0.15, 0.15, 0.15);
 
 	// inputs
     	varying vec2 vTextureCoord;
 		varying vec4 vPosition;
 		varying vec3 vNormal;
+		varying vec4 vPositionBrut;
 
-    // Uniform
+
+   // Uniform
     	uniform sampler2D uSampler0;
 
 		// lights
@@ -73,43 +75,102 @@
 		uniform vec3 uPointLightPosition0;
 		uniform vec3 uPointLightColor0;
 
+		uniform int uPointLightNumber;
+		uniform vec3 uPointLightPositions[100];
+		uniform vec3 uPointLightColors[100];
+		uniform float uPointLightScope[100]; //100
+		uniform float uPointLightAbsolutePosition[100];
+
+		uniform mat4 uVMatrix;
+
+		mat3 transpose(mat3 inMatrix)
+		{
+				vec3 i0 = inMatrix[0];
+				vec3 i1 = inMatrix[1];
+				vec3 i2 = inMatrix[2];
+
+				mat3 outMatrix = mat3(
+						vec3(i0.x, i1.x, i2.x),
+						vec3(i0.y, i1.y, i2.y),
+						vec3(i0.z, i1.z, i2.z)
+				);
+
+				return outMatrix;
+		}
 
     void main(void) {
-    	// light direction
+		// light direction, eye direction
 		vec3 lightDirection = normalize(uPointLightPosition0 - vPosition.xyz);
-		// eye direction
 		vec3 eyeDirection = normalize(-vPosition.xyz);
+
 		// normalize normal
 		vec3 normal = normalize(vNormal);
-		//  diffuse term
-		float diffuse = max(dot(normal, lightDirection), 0.0);
-		// spec
-		vec3 reflectDirection = normalize(reflect(-lightDirection,normal));
-		float specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
+
 		// texture color
-		vec4 texColor  = texture2D(uSampler0, vec2(vTextureCoord.s, vTextureCoord.t));
+		vec4 texColor  = texture2D(uSampler0, vTextureCoord);
+
+		vec3 phongFinal = vec3(0.0,0.0,0.0);
+		vec3 phongI = texColor.rgb ;
+
+		// reflection direction
+		vec3 reflectDirection = vec3(0.0,0.0,0.0);
+
+		float diffuse = 0.0;
+		float specular = 0.0;
+
+		///////////////////////////////////////////////////////////////////////////
+		// New pointlight system
+
+		if(uPointLightNumber >0){
+			for(int i = 0; i != 100 ; i++){
+				if(i == uPointLightNumber){
+					break;
+				}
+				vec3 lightColor = uPointLightColors[i]; //vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
+				vec3 lightPosition = uPointLightPositions[i]; //vec3(uPointLightPositions[i * 3 + 0],uPointLightPositions[i * 3 + 1],uPointLightPositions[i * 3 + 2]);
+
+				if(uPointLightAbsolutePosition[i] != 0.0){
+
+					lightPosition =  vec4(uVMatrix * vec4(lightPosition,1.0)).xyz;
+
+				}
+				lightDirection = lightPosition - vPosition.xyz;
+
+				if(0.0 > dot(normalize(normal),normalize(eyeDirection))){
+					normal = -normal;
+				}
+
+				reflectDirection = normalize(reflect(-lightDirection,normal));
+				diffuse = max(dot(normal, lightDirection), 0.0);
+				specular = pow(max(dot(reflectDirection,eyeDirection),0.0),sh);
+
+				phongI =
+				(Kd*diffuse* lightColor*texColor.rgb) +
+				Ks*specular* lightColor *specColor;
+
+				if(uPointLightScope[i] == -1.0){
+					phongFinal = phongFinal + phongI/length(lightDirection);
+				} else {
+					if(uPointLightScope[i] > length(lightDirection)){
+						phongFinal = phongFinal + phongI*(uPointLightScope[i]-length(lightDirection))/uPointLightScope[i];
+					}
+				}
+
+			}
+
+		}
+		///////////////////////////////////////////////////////////////////////////
 		// light color
-		vec3 lightColor =
-			Kd*uAmbientColor*texColor.rgb +
-			Kd*diffuse*uPointLightColor0 *texColor.rgb +
-			Ks*specular*uPointLightColor0*specColor;
+		phongFinal = phongFinal + uAmbientColor*Kd*texColor.rgb;
 
 		// FOG
+		vec3 FogColor = vec3(0.5, 0.5, 0.5);
 		float rangeDist = length(vPosition);
-		
-		// Exponential Fog
-			//float fogValue = 1.0 / exp( (rangeDist * 0.10) * (rangeDist * 0.10) );
-			//fogValue = clamp(fogValue, 0.0, 1.0);
-			//vec3 color = mix(FogColor, lightColor, fogValue);
-		
-		// Fog with scattering and height based extinction
-			float be = (25.0 - vPosition.y) * 0.01;
-			float bi = (25.0 - vPosition.y) * 0.005;
-			float ext = exp(-rangeDist * be);
-			float sca = exp(-rangeDist * bi);
-			vec3 color = lightColor * ext + FogColor * (1.0 - sca);
+		float fogValue = 1.0 / exp( (rangeDist * 0.10) * (rangeDist * 0.10) );
+		fogValue = clamp(fogValue, 0.0, 1.0);
+		vec3 color = mix(FogColor, phongFinal, fogValue);
 
-        gl_FragColor = vec4(color, texColor.a);
+		gl_FragColor = vec4(color,1.0);
     }
 	</FRAGMENT>
 </SHADER>

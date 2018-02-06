@@ -49,6 +49,8 @@ class atomicGL2Context {
 		this.scenegraph = null;
 		// Scene Clock
 		this.clock = clk;
+		// Scene sounds
+		this.howlers;
 
 		this.t = 0;
 	}

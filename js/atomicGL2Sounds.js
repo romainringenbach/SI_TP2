@@ -11,90 +11,63 @@
 class atomicGL2Sounds {
 
     constructor() {
-
-        this.sfx = new Howl({
-            src: ['./sounds/sfx.webm'],
-            sprite: {
-                balles: [
-                    0,
-                    4623.673469387755
-                ],
-                discuter: [
-                    6000,
-                    5093.877551020409
-                ],
-                owl: [
-                    13000,
-                    10004.897959183672
-                ],
-                wolf: [
-                    25000,
-                    4046.8027210884366
-                ]
-            },
-            preload: true,
-            volume: 1.0
-        });
-        this.background = new Howl({
-            "src": ["./sounds/background.webm"],
-            "sprite": {
-                "harmonica": [
-                    0,
-                    210147.1201814059
-                ],
-                "nightambiance": [
-                    212000,
-                    99056.32653061223
-                ],
-                "PianoSong": [
-                    313000,
-                    166017.59637188207
-                ]
-            },
-            //html5: true,
-            volume: 0.3,
-            preload: true,
-            loop: true
-        });
-
+        // Setup listener for the sound button
         document.getElementById('SoundBtn').addEventListener('click', this.mute.bind(this), false);
         this.muted = false;
-        this.bgplaying;
-
-        this.ambiance = this.background.play('nightambiance');
-        this.randomsfx('owl');
-        this.randomsfx('wolf');
+        this.ambiance;
+        this.sfx;
+        this.ambiancePlaying;
     }
 
     playTheme(bgmusic) {
-        if (this.bgplaying) {
-            this.themes.fade(this.themes.volume(this.bgplaying), 0.0, 1100, this.bgplaying);
-            this.themes.once('fade', () => {
-                this.themes.stop(this.bgplaying);
-                this.bgplaying = this.themes.play(bgmusic);
-            }, this.bgplaying);
+        if (this.ambiancePlaying) {
+            this.ambiance.fade(this.ambiance.volume(this.ambiancePlaying), 0.0, 1100, this.ambiancePlaying);
+            this.ambiance.once('fade', () => {
+                this.ambiance.stop(this.ambiancePlaying);
+                this.ambiancePlaying = this.ambiance.play(bgmusic);
+            }, this.ambiancePlaying);
         } else {
-            this.bgplaying = this.themes.play(bgmusic);
+            this.ambiancePlaying = this.ambiance.play(bgmusic);
         }
     }
 
-    randomsfx(sfx) {
+    //Load a json object located in ./sounds and make a Howler
+    loadAmbianceHowl(jsonfile) {
+        let json = this.loadJSON('./sounds/'+jsonfile);
+        let howl = JSON.parse(json);
+        this.ambiance = new Howl(howl);
+    }
+
+    loadSfxHowl(jsonfile) {
+        let json = this.loadJSON('./sounds/'+jsonfile);
+        let howl = JSON.parse(json);
+        this.sfx = new Howl(howl);
+    }
+
+    // play an sfx at a random pos randomly spaced out in time (repeat parm)
+    playSfxRandomized(sprite, repeat=10000) {
+        console.log(sprite);
         setTimeout(() => {
             let x = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
             let z = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
-
-            let id = this.sfx.play(sfx);
-
-            this.sfx.pos(x, 5.0, z, id);
+            let id = this.sfx.play(sprite);
+            this.sfx.pos(x, 3.0, z, id);
             // this.sfx.volume(1, id);
-
-            this.randomsfx(sfx);
-        }, 10000 + Math.round(Math.random() * 10000));
+            this.playSfxRandomized(sprite);
+        }, repeat + Math.round(Math.random() * repeat));
     }
 
     mute() {
         this.muted = !this.muted;
         Howler.mute(this.muted);
+    }
+
+    loadJSON(jsonPath) {
+        let jsonObj = new XMLHttpRequest();
+        jsonObj.overrideMimeType("application/json");
+        jsonObj.open('GET', jsonPath, false);
+        jsonObj.send(null);
+        return jsonObj.responseText;
     }
 
 }

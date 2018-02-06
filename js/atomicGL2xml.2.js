@@ -3,6 +3,7 @@ import {atomicGL2ObjMesh, atomicGL2SkyBox, atomicGL2Sphere} from './atomicGL2Obj
 import {atomicGL2ShaderLoaderScriptInLine, atomicGL2ShaderLoaderScriptXML, atomicGL2MatShader} from './atomicGL2Shader.2.js';
 import atomicGL2Texture from './atomicGL2Texture.js';
 import atomicGLWalkCamera from './atomicGLWalkCamera.js';
+import atomicGL2Sounds from './atomicGL2Sounds.js';
 // atomicGL
 //----------------------------------------------------------------------------------------
 // author: RC
@@ -40,7 +41,6 @@ class atomicGL2xml {
 	// loadXML
 	loadXML(agl, name) {
 		var xmlhttp = new XMLHttpRequest();
-		// TODO: charger le xml de façon asynchrone
 		xmlhttp.open("GET", name, false);
 		xmlhttp.send();
 		var xmlDoc = xmlhttp.responseXML;
@@ -251,6 +251,36 @@ class atomicGL2xml {
 		}
 	}
 
+	//<SOUNDS ambiance="background.json" sfx="sfx.json">
+	//	<SOUND></SOUND>
+	//</SOUNDS>
+	loadSounds(agl) {
+		agl.howlers = new atomicGL2Sounds();
+		let SOUNDSFiles = this.dom.getElementsByTagName("SOUNDS")[0];
+		let ambiance = SOUNDSFiles.getAttribute("ambiance");
+		let sfx = SOUNDSFiles.getAttribute("sfx");
+		agl.howlers.loadAmbianceHowl(ambiance);
+		agl.howlers.loadSfxHowl(sfx);
+		let SOUNDSList = this.dom.getElementsByTagName("SOUND");
+		for (let i = 0; i < SOUNDSList.length; i++) {
+			let SOUND = SOUNDSList[i];
+			let type = SOUND.getAttribute("type");
+			switch(type) {
+				case "ambiance": {
+					let sprite = SOUND.getAttribute("sprite");
+					agl.howlers.playTheme(sprite);
+				}
+				break;
+				case "sfx": {
+					let sprite = SOUND.getAttribute("sprite");
+					let repeat = parseFloat(SOUND.getAttribute("repeat"));
+					agl.howlers.playSfxRandomized(sprite, repeat);
+				}
+				break;
+			}
+		}
+	}
+
 	// traverse
 	// ---------------------------
 	// input
@@ -405,6 +435,8 @@ class atomicGL2xml {
 		this.shapes(agl);
 		// find lights
 		this.lights(agl);
+		// find sounds
+		this.loadSounds(agl);
 		// scenegraph
 		this.scenegraph(agl);
 	}
