@@ -36,17 +36,17 @@ class atomicGL2Sounds {
             volume: 1.0
         });
         this.background = new Howl({
-            src: ['./sounds/background.webm'],
-            sprite: {
-                harmonica: [
+            "src": ["./sounds/background.webm"],
+            "sprite": {
+                "harmonica": [
                     0,
                     210147.1201814059
                 ],
-                nightambiance: [
+                "nightambiance": [
                     212000,
                     99056.32653061223
                 ],
-                PianoSong: [
+                "PianoSong": [
                     313000,
                     166017.59637188207
                 ]
@@ -86,7 +86,7 @@ class atomicGL2Sounds {
             let id = this.sfx.play(sfx);
 
             this.sfx.pos(x, 5.0, z, id);
-            this.sfx.volume(1, id);
+            // this.sfx.volume(1, id);
 
             this.randomsfx(sfx);
         }, 10000 + Math.round(Math.random() * 10000));

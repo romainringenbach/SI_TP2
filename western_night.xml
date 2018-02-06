@@ -21,6 +21,9 @@
 		<LIGHT id="lamp1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,0.2,0.0" scope="5.0" absolutePos="1">lamp1</LIGHT>
 
 	</LIGHTS>
+	<SOUNDS>
+		<SOUND></SOUND>
+	</SOUNDS>
 	<TEXTURES>
 		<TEXTURE id="petrol_lamp_main_diffuse" type="color">texture/petrol_lamp/Petroleum_Lamp_D.png</TEXTURE>
 		<TEXTURE id="petrol_lamp_main_normal" type="normal">texture/petrol_lamp/Petroleum_Lamp_N.png</TEXTURE>
