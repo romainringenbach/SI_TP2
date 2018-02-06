@@ -75,8 +75,8 @@ class atomicGL2Sounds {
             this.sfx.loop(true, id);
             this.sfx.pannerAttr({
                 panningModel: 'HRTF',
-                refDistance: 1.2,
-                rolloffFactor: 2.5,
+                refDistance: 0.8,
+                rolloffFactor: 2.0,
                 distanceModel: 'exponential'
             }, id);
         });
