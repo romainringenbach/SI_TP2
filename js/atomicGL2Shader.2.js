@@ -140,6 +140,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pointLightNumber;
 		this.pointLightScope;
 		this.pointLightAbsolutePosition;
+		this.pointLightType;
 		// texture -sampler
 		this.samplerUniform = [];
 		// time
@@ -280,6 +281,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		this.pointLightNumber =  agl.gl.getUniformLocation(program, "uPointLightNumber");
 		this.pointLightScope =  agl.gl.getUniformLocation(program, "uPointLightScope");
 		this.pointLightAbsolutePosition =  agl.gl.getUniformLocation(program, "uPointLightAbsolutePosition");
+		this.pointLightType =  agl.gl.getUniformLocation(program, "uPointLightType");
 
 		// textures
 		for (var i = 0; i < this.nbTex; i++) {
@@ -331,6 +333,7 @@ class atomicGL2MatShader extends atomicGL2Shader {
 		aGL.gl.uniform1i(this.pointLightNumber,aGL.omniLightNumber);
 		aGL.gl.uniform1fv(this.pointLightScope,new Float32Array(aGL.getLightsScope()));
 		aGL.gl.uniform1fv(this.pointLightAbsolutePosition,new Float32Array(aGL.omniLightAbsolutePos));
+		aGL.gl.uniform1iv(this.pointLightType,new Float32Array(aGL.omniLightType));
 
 
 
