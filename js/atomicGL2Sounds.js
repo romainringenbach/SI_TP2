@@ -62,7 +62,7 @@ class atomicGL2Sounds {
             let id = this.sfx.play(sprite);
             //this.sfx.pos(x, 0.7, z, id);
             this.sfx.volume(vol, id);
-            this.playSfxRandomized(sprite);
+            this.playSfxRandomized(sprite, vol, repeat);
         }, repeat + Math.round(Math.random() * repeat));
     }
 
@@ -90,7 +90,7 @@ class atomicGL2Sounds {
     loadJSON(jsonPath) {
         let jsonObj = new XMLHttpRequest();
         jsonObj.overrideMimeType("application/json");
-        jsonObj.open('GET', jsonPath, false);
+        jsonObj.open('GET', jsonPath, false); //async=caca
         jsonObj.send(null);
         return jsonObj.responseText;
     }

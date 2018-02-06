@@ -26,6 +26,7 @@
 		<SOUND type="ambiance" subtype="positional" sprite="westworld-saloon" vol="0.6" pos="13.55674100489601,0.7,61.3142686342186">saloonambiance</SOUND>
 		<SOUND type="sfx" subtype="random" sprite="coyote" vol="0.15" repeat="150000"></SOUND>
 		<SOUND type="sfx" subtype="random" sprite="eagle" vol="0.15" repeat="10000"></SOUND>
+		<SOUND type="sfx" subtype="positional" sprite="fringues" vol="0.15" pos="2.9,0.7,61.3142686342186">cowboyspeech</SOUND>
 	</SOUNDS>
 	<TEXTURES>
 		<TEXTURE id="bleue" type="color">texture/bleue.png</TEXTURE>

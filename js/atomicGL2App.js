@@ -149,6 +149,7 @@ class atomicGL2App {
     updateHowlerPos() {
         let campos = this.agl.scenegraph.camera.getCamPos();
         Howler.pos(campos[0], campos[1], campos[2]);
+        //Todo: update Howler.rotation() based on camera rotation for still better spatial sounds effects.
     }
 
     // If WebGL Context lost
