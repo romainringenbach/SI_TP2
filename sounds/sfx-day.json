@@ -1,0 +1,16 @@
+{
+  "src": [
+    "./sounds/sfx-day.webm"
+  ],
+  "sprite": {
+    "coyote": [
+      0,
+      8916.462585034013
+    ],
+    "eagle": [
+      10000,
+      4085.487528344672
+    ]
+  },
+  "preload": true
+}

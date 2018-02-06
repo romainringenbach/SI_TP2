@@ -55,7 +55,7 @@ class atomicGL2Sounds {
     }
 
     // play an sfx at a random pos randomly spaced out in time (repeat parm)
-    playSfxRandomized(sprite, vol = 1.0, repeat = 10000) {
+    playSfxRandomized(sprite, vol = 0.5, repeat = 10000) {
         setTimeout(() => {
             //let x = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
             //let z = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;

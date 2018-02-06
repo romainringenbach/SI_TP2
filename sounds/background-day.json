@@ -1,6 +1,6 @@
 {
-  "urls": [
-    "backgroundday.webm"
+  "src": [
+    "./sounds/background-day.webm"
   ],
   "sprite": {
     "harmonica": [
@@ -15,5 +15,7 @@
       380000,
       174074.89795918367
     ]
-  }
+  },
+  "preload": true,
+  "loop": true
 }
