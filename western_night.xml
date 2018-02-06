@@ -28,6 +28,7 @@
 
 	</LIGHTS>
 	<SOUNDS ambiance="background-night.json" sfx="sfx-night.json">
+		<SOUND type="ambiance" subtype="scenewide" sprite="harmonica" vol="0.15"></SOUND>
 		<SOUND type="ambiance" subtype="scenewide" sprite="nightambiance" vol="0.3"></SOUND>
 		<SOUND type="ambiance" subtype="positional" sprite="PianoSong" vol="0.5" pos="13.55674100489601,0.7,61.3142686342186">saloonambiance</SOUND>
 		<SOUND type="sfx" subtype="random" sprite="wolf" vol="0.6" repeat="10000"></SOUND>
