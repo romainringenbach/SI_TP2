@@ -103,7 +103,7 @@ class atomicGL2App {
         //Waiting for objects/textures loading
         let wait = function () {
             if (this.agl.nbTextureLoaded != this.agl.nbTexture) {
-                console.log("waiting for texture loading ......")
+                //console.log("waiting for texture loading ......")
                 window.setTimeout(wait, 1000);
             } else {
                 this.controls.clearLoadStatus();
@@ -129,6 +129,7 @@ class atomicGL2App {
         this.controls.handleKeys();
         this.requestId = requestAnimFrame(this.nextFrame.bind(this)); //called every frame
         this.sceneDraw();
+        this.updateHowlerPos();
         this.animate();
         this.stats.update();
     }
@@ -143,6 +144,11 @@ class atomicGL2App {
         }
 
         this.agl.updateTime(this.sceneClock.getTotal());
+    }
+
+    updateHowlerPos() {
+        let campos = this.agl.scenegraph.camera.getCamPos();
+        Howler.pos(campos[0], campos[1], campos[2]);
     }
 
     // If WebGL Context lost

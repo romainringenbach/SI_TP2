@@ -255,12 +255,17 @@ class atomicGL2xml {
 	//	<SOUND></SOUND>
 	//</SOUNDS>
 	loadSounds(agl) {
+		// Create howlers
 		agl.howlers = new atomicGL2Sounds();
 		let SOUNDSFiles = this.dom.getElementsByTagName("SOUNDS")[0];
 		let ambiance = SOUNDSFiles.getAttribute("ambiance");
 		let sfx = SOUNDSFiles.getAttribute("sfx");
 		agl.howlers.loadAmbianceHowl(ambiance);
 		agl.howlers.loadSfxHowl(sfx);
+		// Set listener pos (same as camera)
+		let campos = agl.scenegraph.camera.getCamPos();
+		Howler.pos(campos[0], campos[1], campos[2]);
+		// Parse sounds
 		let SOUNDSList = this.dom.getElementsByTagName("SOUND");
 		for (let i = 0; i < SOUNDSList.length; i++) {
 			let SOUND = SOUNDSList[i];
@@ -268,13 +273,46 @@ class atomicGL2xml {
 			switch(type) {
 				case "ambiance": {
 					let sprite = SOUND.getAttribute("sprite");
-					agl.howlers.playTheme(sprite);
+					let subtype = SOUND.getAttribute("subtype");
+					switch(subtype) {
+						case "scenewide": {
+							let volume = parseFloat(SOUND.getAttribute("vol"));
+							agl.howlers.playAmbiance(sprite, volume);
+						}
+						break;
+						case "positional": {
+							let volume = parseFloat(SOUND.getAttribute("vol"));
+							let posAttr = SOUND.getAttribute("pos");
+							let pos = [];
+							pos[0] = parseFloat(posAttr.split(",")[0]);
+							pos[1] = parseFloat(posAttr.split(",")[1]);
+							pos[2] = parseFloat(posAttr.split(",")[2]);
+							agl.howlers.playAmbiancePositional(sprite, volume, pos);
+						}
+						break;
+					}
 				}
 				break;
 				case "sfx": {
+					let subtype = SOUND.getAttribute("subtype");
 					let sprite = SOUND.getAttribute("sprite");
-					let repeat = parseFloat(SOUND.getAttribute("repeat"));
-					agl.howlers.playSfxRandomized(sprite, repeat);
+					let volume = parseFloat(SOUND.getAttribute("vol"));
+					switch(subtype) {
+						case "random": {
+							let repeat = parseFloat(SOUND.getAttribute("repeat"));
+							agl.howlers.playSfxRandomized(sprite, volume, repeat);
+						}
+						break;
+						case "positional": {
+							let posAttr = SOUND.getAttribute("pos");
+							let pos = [];
+							pos[0] = parseFloat(posAttr.split(",")[0]);
+							pos[1] = parseFloat(posAttr.split(",")[1]);
+							pos[2] = parseFloat(posAttr.split(",")[2]);
+							agl.howlers.playPositionalSfx(sprite, volume, pos);
+						}
+						break;
+					}
 				}
 				break;
 			}
@@ -410,8 +448,8 @@ class atomicGL2xml {
 				break;
 		}
 		// children
-		for (var i = 0; i < e.children.length; i++) {
-			var child = e.children[i];
+		for (let i = 0; i < e.children.length; i++) {
+			let child = e.children[i];
 			this.traverse(agl, child, node);
 		}
 	}
@@ -435,10 +473,10 @@ class atomicGL2xml {
 		this.shapes(agl);
 		// find lights
 		this.lights(agl);
-		// find sounds
-		this.loadSounds(agl);
 		// scenegraph
 		this.scenegraph(agl);
+		// find sounds
+		this.loadSounds(agl);
 	}
 }
 
