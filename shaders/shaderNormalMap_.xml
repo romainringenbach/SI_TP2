@@ -160,13 +160,18 @@
 				(Kd*diffuse* lightColor*texColor.rgb) +
 				Ks*specular* lightColor *specColor;
 
-				if(uPointLightScope[i] == -1.0){
-					phongFinal = phongFinal + phongI/length(lightDirection);
-				} else {
-					if(uPointLightScope[i] > length(lightDirection)){
-						phongFinal = phongFinal + phongI*(uPointLightScope[i]-length(lightDirection))/uPointLightScope[i];
+				if(uPointLightType[i] == 1){
+					if(uPointLightScope[i] == -1.0){
+						phongFinal = phongFinal + phongI/length(lightDirection);
+					} else {
+						if(uPointLightScope[i] > length(lightDirection)){
+							phongFinal = phongFinal + phongI*(uPointLightScope[i]-length(lightDirection))/uPointLightScope[i];
+						}
 					}
+				} else if(uPointLightType[i] == 2){
+					phongFinal = phongFinal + phongI;
 				}
+
 
 			}
 
