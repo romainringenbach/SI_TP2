@@ -29,6 +29,7 @@ class atomicGL2Context {
 		this.omniLightNumber = 0;
 		this.omniLightScope = [];
 		this.omniLightAbsolutePos = [];
+		this.omniLightType = [];
 
 		// GLtexture
 		this.GLtexture = [];
@@ -108,7 +109,7 @@ class atomicGL2Context {
 	// inputs: 	lightPos : float3 - light position
 	// 			lightColor: float3 - light color
 	//			lightScope: float3 - light scope
-	pushLight(lightPos, lightColor, lightScope, absolutePos) {
+	pushLight(lightPos, lightColor, lightScope, absolutePos, lightType) {
 		//console.log("atomicGLContext::pushLight");
 		// increase Light number
 		this.omniLightNumber = this.omniLightNumber + 1;
@@ -120,6 +121,7 @@ class atomicGL2Context {
 		this.omniLightColor.push(lightColor[1]);
 		this.omniLightColor.push(lightColor[2]);
 		this.omniLightScope.push(lightScope);
+		this.omniLightType.push(lightType);
 		this.omniLightAbsolutePos.push(absolutePos);
 
 		//console.log("abs:"+absolutePos);

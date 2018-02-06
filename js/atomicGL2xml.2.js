@@ -240,8 +240,30 @@ class atomicGL2xml {
 						absPos = 0.0;
 					}
 					console.log("scope:"+scope);
+					type = 1;
 					// create light and add it to context
-					agl.pushLight(pos, color,scope,absPos);
+					agl.pushLight(pos, color,scope,absPos,type);
+					break;
+				case "directional":
+					// parse position
+					var LIGHTdir = LIGHT.getAttribute("direction");
+					var LIGHTscope = LIGHT.getAttribute("scope");
+					var dir = [];
+					dir[0] = Number(LIGHTdir.split(",")[0]);
+					dir[1] = Number(LIGHTdir.split(",")[1]);
+					dir[2] = Number(LIGHTdir.split(",")[2]);
+
+					if (isNaN(dir[0]) || isNaN(dir[1]) || isNaN(dir[2])) {
+						dir[0] = LIGHTdir.split(",")[0];
+						dir[1] = LIGHTdir.split(",")[1];
+						dir[2] = LIGHTdir.split(",")[2];
+					}
+					var scope = -1;
+					var absPos = -1;
+
+					type=2;
+					// create light and add it to context
+					agl.pushLight(dir, color,scope,absPos,type);
 					break;
 				case "ambient":
 					//add ambient light color

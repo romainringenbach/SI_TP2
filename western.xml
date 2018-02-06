@@ -1010,9 +1010,10 @@
 				<OBJECT3D id="wagon_10_M_0056_Yellow" shader="texPhongProg">wagon_10_M_0056_Yellow</OBJECT3D>
 		</TRANSFORM>
 			
-		<TRANSFORM id="rotation_test" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="50*0.001*t" scale="1.0,1.0,1.0">
-		<TRANSFORM id="transform_wagon_horse" translate="8.5629440676201,0,-2.47405319310153" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
-		<!--<TRANSFORM id="rotation_test_2" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="50*0.001*t" scale="1.0,1.0,1.0">-->
+		<TRANSFORM id="transform_wagon_horse_first_translate" translate="-15,0,65" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
+		<TRANSFORM id="transform_wagon_horse_rotation_circle_anim" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="10*0.001*t" scale="1.0,1.0,1.0">
+		<TRANSFORM id="transform_wagon_horse_translation_anim" translate="80,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
+		<TRANSFORM id="transform_wagon_horse_rotation_anim_2" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-10*0.001*t" scale="1.0,1.0,1.0">
 				<OBJECT3D id="wagon_horse_STDBRED1" shader="texPhongProg">wagon_horse_STDBRED1</OBJECT3D>
 				<OBJECT3D id="wagon_horse_BLACK_MATTE1" shader="texPhongProg">wagon_horse_BLACK_MATTE1</OBJECT3D>
 				<OBJECT3D id="wagon_horse_H_EARS1" shader="texPhongProg">wagon_horse_H_EARS1</OBJECT3D>
@@ -1028,7 +1029,8 @@
 				<OBJECT3D id="wagon_horse_Wood_Bamboo_Dark" shader="texPhongProg">wagon_horse_Wood_Bamboo_Dark</OBJECT3D>
 				<OBJECT3D id="wagon_horse_M_0131_Silver" shader="texPhongProg">wagon_horse_M_0131_Silver</OBJECT3D>
 				<OBJECT3D id="wagon_horse_M_0134_DimGray" shader="texPhongProg">wagon_horse_M_0134_DimGray</OBJECT3D>
-		<!--</TRANSFORM>-->
+		</TRANSFORM>
+		</TRANSFORM>
 		</TRANSFORM>
 		</TRANSFORM>
 		
