@@ -33,7 +33,7 @@
 		<SOUND type="ambiance" subtype="positional" sprite="PianoSong" vol="0.5" pos="13.55674100489601,0.7,61.3142686342186">saloonambiance</SOUND>
 		<SOUND type="sfx" subtype="random" sprite="wolf" vol="0.6" repeat="10000"></SOUND>
 		<SOUND type="sfx" subtype="random" sprite="owl" vol="0.7" repeat="8000"></SOUND>
-		<SOUND type="sfx" subtype="positional" sprite="balles" vol="0.45" pos="2.9,0.7,61.3142686342186">cowboyspeech</SOUND>
+		<SOUND type="sfx" subtype="positional" sprite="balles" vol="0.6" pos="2.9,0.7,61.3142686342186">cowboyspeech</SOUND>
 	</SOUNDS>
 	<TEXTURES>
 		<TEXTURE id="petrol_lamp_main_diffuse" type="color">texture/petrol_lamp/Petroleum_Lamp_D.png</TEXTURE>
