@@ -21,6 +21,9 @@
 		<!-- color="0.1,0.05,0.0" -->
 		<!-- color="1.0,1.0,1.0" -->
 	</LIGHTS>
+	<SOUNDS ambiance="background.json" sfx="sfx.json">
+		<SOUND></SOUND>
+	</SOUNDS>
 	<TEXTURES>
 		<TEXTURE id="bleue" type="color">texture/bleue.png</TEXTURE>
 		<TEXTURE id="sable1" type="color">texture/sable1.png</TEXTURE>
