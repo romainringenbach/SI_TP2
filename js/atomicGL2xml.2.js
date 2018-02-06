@@ -355,7 +355,7 @@ class atomicGL2xml {
 				// JS6
 				node = new atomicGL2SGobject3d(id);
 
-				node.setObject3D(agl.shapes[agl.indexOfShape(shapeId)], agl.indexOfShader(shaderId));
+				node.setObject3D(agl.shapes[agl.indexOfShape(shapeId)], agl.indexOfShader(shaderId),shaderId);
 
 				s.addChild(node);
 				this.objectList.push(node);
