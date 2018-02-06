@@ -17,8 +17,12 @@
 	</SHADERS>
 	<LIGHTS>
 		<LIGHT id="sun" type="point" position="1000.0,1000.0,500.0" color="0.01,0.01,0.2">light1</LIGHT>
-		<LIGHT id="ambient1" type="ambient" color="0.1,0.1,0.2">ambient1</LIGHT>
-		<LIGHT id="lamp1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,0.2,0.0" scope="5.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="ambient_1" type="ambient" color="0.1,0.1,0.2">ambient1</LIGHT>
+		<LIGHT id="lamp_1" type="point" position="0.95674100489601,1.0,58.3142686342186" color="1.0,0.2,0.0" scope="2.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampBom1_1" type="point" position="-7.45674100489601,2.0,56.9242686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampSaloon" type="point" position="11.55674100489601,2.0,61.3142686342186" color="1.0,0.7,0.0" scope="4.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampBom_1" type="point" position="4.3995674100489601,2.0,72.0142686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
+		<LIGHT id="lampBom_2" type="point" position="12.2995674100489601,2.0,75.0142686342186" color="1.0,0.7,0.0" scope="3.0" absolutePos="1">lamp1</LIGHT>
 
 	</LIGHTS>
 	<TEXTURES>
@@ -1072,6 +1076,11 @@
 		</TRANSFORM>
 
 		<TRANSFORM id="transform_lamp" translate="0.0,0,0.0" rotaxis="1.0,0.0,0.0" angle="0" scale="0.50,0.50,0.50" >
+				<OBJECT3D id="petrol_lamp_main" shader="texDiffNormalMapProg">petrol_lamp_main</OBJECT3D>
+				<OBJECT3D id="petrol_lamp_glass" shader="texPhongProg">petrol_lamp_glass</OBJECT3D>
+		</TRANSFORM>
+
+		<TRANSFORM id="transform_lamp2" translate="1.0,0.1,-6.0" rotaxis="1.0,0.0,0.0" angle="0" scale="0.50,0.50,0.50" >
 				<OBJECT3D id="petrol_lamp_main" shader="texDiffNormalMapProg">petrol_lamp_main</OBJECT3D>
 				<OBJECT3D id="petrol_lamp_glass" shader="texPhongProg">petrol_lamp_glass</OBJECT3D>
 		</TRANSFORM>
