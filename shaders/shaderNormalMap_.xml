@@ -79,6 +79,7 @@
 		uniform vec3 uPointLightColors[100];
 		uniform float uPointLightScope[100]; //100
 		uniform float uPointLightAbsolutePosition[100];
+		uniform int uPointLightType[100];
 
 		uniform mat4 uVMatrix;
 
@@ -134,10 +135,15 @@
 				vec3 lightColor = uPointLightColors[i]; //vec3(uPointLightColors[i * 3 + 0],uPointLightColors[i * 3 + 1],uPointLightColors[i * 3 + 2]);
 				vec3 lightPosition = uPointLightPositions[i]; //vec3(uPointLightPositions[i * 3 + 0],uPointLightPositions[i * 3 + 1],uPointLightPositions[i * 3 + 2]);
 
-				if(uPointLightAbsolutePosition[i] != 0.0){
+				if(uPointLightType[i] == 1){
+					if(uPointLightAbsolutePosition[i] != 0.0){
 
-					lightPosition =  vec4(uVMatrix * vec4(lightPosition,1.0)).xyz;
+						lightPosition =  vec4(uVMatrix * vec4(lightPosition,1.0)).xyz;
 
+					}
+					lightDirection = lightPosition - vPosition.xyz;
+				} else if (uPointLightType[i] == 2){
+					lightDirection = lightPosition;
 				}
 
 				if(0.0 > dot(normalize(normal),normalize(eyeDirection))){
