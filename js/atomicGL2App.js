@@ -141,6 +141,8 @@ class atomicGL2App {
         for (var i = 0; i < this.sgxml.animatedTransformations.length; i++) {
             this.sgxml.animatedTransformations[i].updateTime(this.sceneClock.getTotal());
         }
+
+        this.agl.updateTime(this.sceneClock.getTotal());
     }
 
     // If WebGL Context lost

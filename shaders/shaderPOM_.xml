@@ -264,6 +264,10 @@
 
 					}
 
+					if(0.0 > dot(normalize(normal),normalize(eyeDirection))){
+						normal = -normal;
+					}
+
 					lightDirection = lightPosition - vPosition.xyz;
 
 					reflectDirection = normalize(reflect(-lightDirection,normal));

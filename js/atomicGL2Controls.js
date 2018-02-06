@@ -128,6 +128,14 @@ class atomicGL2Controls {
                 //this.howlers.playTheme('psychedelic');
             }
         }
+        if (eventKey === "n") { // shaderBase
+            if (shaderBox.textContent != "shaderBase") {
+                this.sgxml.objectList.forEach(objet => objet.comeBackToBaseShader(this.agl));
+                this.sgxml.root.shaderId = this.agl.indexOfShader("textProg");	// Apply shader to skybox
+                shaderBox.textContent = "shaderBase";
+                this.howlers.playTheme('harmonica');
+            }
+        }
         if (eventKey === "c") // (C) debug
         {
             console.log('atomicGL - Remi COZOT - 2015');

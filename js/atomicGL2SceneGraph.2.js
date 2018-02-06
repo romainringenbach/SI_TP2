@@ -1,6 +1,6 @@
 // atomicGL
 //----------------------------------------------------------------------------------------
-// author: RC				
+// author: RC
 // contact: cozot@irisa.fr
 // version: 2.2
 // current version date: 2016/01/27
@@ -126,7 +126,7 @@ class atomicGL2SGroot extends atomicGL2SceneGraph {
 			ams.mvRotate(this.camera.phi, [1, 0, 0]); // Pitch
 			ams.mvRotate(this.camera.theta, [0, 1, 0]); // Yaw
 			// draw
-			this.skyBox.draw(agl,ams,this.shaderId); 	
+			this.skyBox.draw(agl,ams,this.shaderId);
 
 			// pop matrix
 			ams.mvPopMatrix();
@@ -178,7 +178,7 @@ class atomicGL2SGtransform extends atomicGL2SceneGraph {
 	//			ams - atomicGLMatrixStack
 	draw(agl, ams) {
 		// debug
-		// console.log("atomicGLSceneGraph::draw("+this.type+","+this.name+", shaderId:"+this.shaderId+")"); 
+		// console.log("atomicGLSceneGraph::draw("+this.type+","+this.name+", shaderId:"+this.shaderId+")");
 		// matrix
 		ams.mvPushMatrix();
 		// position & orientation
@@ -221,7 +221,7 @@ class atomicGL2SGtransformAnim extends atomicGL2SceneGraph {
 		this.rotation = ro;
 		this.scale = sc;
 	}
-	
+
 	updateTime(time) {
 		this.t = time;
 	}
@@ -233,7 +233,7 @@ class atomicGL2SGtransformAnim extends atomicGL2SceneGraph {
 	draw(agl, ams) {
 		var t = this.t;
 		// debug
-		// console.log("atomicGLSceneGraph::draw("+this.type+","+this.name+", shaderId:"+this.shaderId+")"); 
+		// console.log("atomicGLSceneGraph::draw("+this.type+","+this.name+", shaderId:"+this.shaderId+")");
 		// matrix
 		ams.mvPushMatrix();
 		// position & orientation
@@ -258,26 +258,37 @@ class atomicGL2SGobject3d extends atomicGL2SceneGraph {
 		// type = object3D - object3D & shaderId
 		this.object3D = null;
 		this.shaderId = -1; // also used for skybox
+		this.baseShaderId = -1;
 		// debug
-		//console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::constructor ->"+this.type+" - "+this.name);		
+		//console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::constructor ->"+this.type+" - "+this.name);
 
 	}
 	// setObject3D
 	// -------------------------
 	// inputs: 	o - atomicGLObj
 	//			sid - shader id
-	setObject3D(o, sid) {
+	setObject3D(o, sid,shaderId) {
 		// debug
-		//console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::setObject3D ->"+this.type+" - "+this.name);		
+		//console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::setObject3D ->"+this.type+" - "+this.name);
 
 		this.object3D = o;
 		this.shaderId = sid;
+		this.baseShaderId = shaderId;
+
+		console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::setObject3D_shader ->"+this.baseShaderId+" - "+this.name);
+
 	}
 
 	// set a shader for this object
 	//			sid - shader id
 	setShader(sid) {
 		this.shaderId = sid;
+	}
+
+	comeBackToBaseShader(agl){
+		// debug
+		// console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::comeBackToBaseShader ->"+this.baseShaderId+" - "+this.name);
+		this.setShader(agl.indexOfShader(this.baseShaderId));
 	}
 
 	// draw
@@ -287,8 +298,8 @@ class atomicGL2SGobject3d extends atomicGL2SceneGraph {
 	draw(agl, ams) {
 		// debug
 		// console.log("atomicGL2SGobject3d extends atomicGL2SceneGraph::draw ->"+this.type+" - "+this.name);
-		this.object3D.draw(agl,ams,this.shaderId);		
-	}		
+		this.object3D.draw(agl,ams,this.shaderId);
+	}
 }
 
 export {atomicGL2SGroot, atomicGL2SGtransform, atomicGL2SGobject3d, atomicGL2SGtransformAnim};
