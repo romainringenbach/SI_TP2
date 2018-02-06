@@ -95,7 +95,7 @@ class atomicGL2Controls {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("cartoon")));
                 this.sgxml.root.shaderId = 0;
                 shaderBox.textContent = "cartoon";
-                this.howlers.playTheme('PianoSong');
+                //this.howlers.playTheme('PianoSong');
             }
         }
         if (eventKey === "o") { // Shader Old Movie
@@ -103,7 +103,7 @@ class atomicGL2Controls {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("blackAndWhiteMovie")));
                 this.sgxml.root.shaderId = this.agl.indexOfShader("blackAndWhite");	// Apply shader to skybox
                 shaderBox.textContent = "old movie";
-                this.howlers.playTheme('JazzMusic');
+                //this.howlers.playTheme('JazzMusic');
             }
         }
         if (eventKey === "f") { // Fog Diff Shader
@@ -125,7 +125,7 @@ class atomicGL2Controls {
                 this.sgxml.objectList.forEach(objet => objet.setShader(this.agl.indexOfShader("shaderPsycho")));
                 this.sgxml.root.shaderId = this.agl.indexOfShader("psychoSkybox");	// Apply shader to skybox
                 shaderBox.textContent = "shaderPsycho";
-                this.howlers.playTheme('psychedelic');
+                //this.howlers.playTheme('psychedelic');
             }
         }
         if (eventKey === "n") { // shaderBase
@@ -145,7 +145,7 @@ class atomicGL2Controls {
     enableControls() {
         this.initListeners();
         this.howlers = new atomicGL2Sounds();
-        this.howlers.playTheme('harmonica');
+        //this.howlers.playTheme('harmonica');
     }
 
     initListeners() {

@@ -13,97 +13,46 @@ class atomicGL2Sounds {
     constructor() {
 
         this.sfx = new Howl({
-            src: ["sfx.webm", "sfx.ogg"],
+            src: ['./sounds/sfx.webm'],
             sprite: {
-                "apresmidi": [
+                balles: [
                     0,
-                    4029.387755102041
+                    4623.673469387755
                 ],
-                "balles": [
+                discuter: [
                     6000,
-                    4630.204081632652
+                    5093.877551020409
                 ],
-                "cheveux": [
-                    12000,
-                    8626.938775510205
+                owl: [
+                    13000,
+                    10004.897959183672
                 ],
-                "chips": [
-                    22000,
-                    7451.428571428572
-                ],
-                "discuter": [
-                    31000,
-                    5100.408163265307
-                ],
-                "duel": [
-                    38000,
-                    4708.548752834467
-                ],
-                "fringues": [
-                    44000,
-                    2488.16326530612
-                ],
-                "gene": [
-                    48000,
-                    10899.56916099773
-                ],
-                "gentil": [
-                    60000,
-                    3768.1632653061215
-                ],
-                "megachiasse": [
-                    65000,
-                    9280.000000000002
-                ],
-                "muscle": [
-                    76000,
-                    2775.4875283446695
-                ],
-                "partouzeurs": [
-                    80000,
-                    3585.3061224489834
-                ],
-                "premier": [
-                    85000,
-                    14739.569160997731
-                ],
-                "tendre": [
-                    101000,
-                    3193.4693877551013
-                ],
-                "tolerance": [
-                    106000,
-                    18161.60997732426
-                ],
-                "tranquille": [
-                    126000,
-                    1626.1224489795864
+                wolf: [
+                    25000,
+                    4046.8027210884366
                 ]
             },
-            volume: 0.5
+            preload: true,
+            volume: 1.0
         });
-        this.themes = new Howl({
-            src: ['./sounds/themes.webm', './sounds/themes.ogg'],
+        this.background = new Howl({
+            src: ['./sounds/background.webm'],
             sprite: {
                 harmonica: [
                     0,
-                    210153.6054421769
+                    210147.1201814059
                 ],
-                JazzMusic: [
+                nightambiance: [
                     212000,
-                    242104.26303854876
+                    99056.32653061223
                 ],
                 PianoSong: [
-                    456000,
-                    166024.10430839006
-                ],
-                psychedelic: [
-                    624000,
-                    282181.88208616775
+                    313000,
+                    166017.59637188207
                 ]
             },
             //html5: true,
-            volume: 0.5,
+            volume: 0.3,
             preload: true,
             loop: true
         });
@@ -111,6 +60,10 @@ class atomicGL2Sounds {
         document.getElementById('SoundBtn').addEventListener('click', this.mute.bind(this), false);
         this.muted = false;
         this.bgplaying;
+
+        this.ambiance = this.background.play('nightambiance');
+        this.randomsfx('owl');
+        this.randomsfx('wolf');
     }
 
     playTheme(bgmusic) {
@@ -123,6 +76,20 @@ class atomicGL2Sounds {
         } else {
             this.bgplaying = this.themes.play(bgmusic);
         }
+    }
+
+    randomsfx(sfx) {
+        setTimeout(() => {
+            let x = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
+            let z = Math.round(100 * (2.5 - (Math.random() * 5))) / 100;
+
+            let id = this.sfx.play(sfx);
+
+            this.sfx.pos(x, 5.0, z, id);
+            this.sfx.volume(1, id);
+
+            this.randomsfx(sfx);
+        }, 10000 + Math.round(Math.random() * 10000));
     }
 
     mute() {
