@@ -267,7 +267,7 @@
 						}
 						lightDirection = lightPosition - vPosition.xyz;
 					} else if (uPointLightType[i] == 2){
-						lightDirection = lightPosition;
+						lightDirection = vec4(uVMatrix * vec4(lightPosition,1.0)).xyz;
 					}
 
 					if(0.0 > dot(normalize(normal),normalize(eyeDirection))){
