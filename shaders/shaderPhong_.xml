@@ -139,6 +139,9 @@
 				}
 				lightDirection = lightPosition - vPosition.xyz;
 
+				if(0.0 > dot(normalize(normal),normalize(eyeDirection))){
+					normal = -normal;
+				}
 
 				reflectDirection = normalize(reflect(-lightDirection,normal));
 				diffuse = max(dot(normal, lightDirection), 0.0);
