@@ -21,8 +21,12 @@
 		<!-- color="0.1,0.05,0.0" -->
 		<!-- color="1.0,1.0,1.0" -->
 	</LIGHTS>
-	<SOUNDS ambiance="background.json" sfx="sfx.json">
-		<SOUND></SOUND>
+	<SOUNDS ambiance="background-day.json" sfx="sfx-day.json">
+		<SOUND type="ambiance" subtype="scenewide" sprite="harmonica" vol="0.15"></SOUND>
+		<SOUND type="ambiance" subtype="positional" sprite="westworld-saloon" vol="0.6" pos="13.55674100489601,0.7,61.3142686342186">saloonambiance</SOUND>
+		<SOUND type="sfx" subtype="random" sprite="coyote" vol="0.15" repeat="150000"></SOUND>
+		<SOUND type="sfx" subtype="random" sprite="eagle" vol="0.15" repeat="10000"></SOUND>
+		<SOUND type="sfx" subtype="positional" sprite="fringues" vol="0.15" pos="2.9,0.7,61.3142686342186">cowboyspeech</SOUND>
 	</SOUNDS>
 	<TEXTURES>
 		<TEXTURE id="bleue" type="color">texture/bleue.png</TEXTURE>
@@ -1010,9 +1014,10 @@
 				<OBJECT3D id="wagon_10_M_0056_Yellow" shader="texPhongProg">wagon_10_M_0056_Yellow</OBJECT3D>
 		</TRANSFORM>
 			
-		<TRANSFORM id="rotation_test" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="50*0.001*t" scale="1.0,1.0,1.0">
-		<TRANSFORM id="transform_wagon_horse" translate="8.5629440676201,0,-2.47405319310153" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
-		<!--<TRANSFORM id="rotation_test_2" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="50*0.001*t" scale="1.0,1.0,1.0">-->
+		<TRANSFORM id="transform_wagon_horse_first_translate" translate="-15,0,65" rotaxis="1.0,0.0,0.0" angle="0" scale="1.0,1.0,1.0" >
+		<TRANSFORM id="transform_wagon_horse_rotation_circle_anim" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="10*0.001*t" scale="1.0,1.0,1.0">
+		<TRANSFORM id="transform_wagon_horse_translation_anim" translate="80,0,0" rotaxis="1.0,0.0,0.0" angle="0" scale="0.00882434385880976,0.00882434385880976,0.00882434385880976" >
+		<TRANSFORM id="transform_wagon_horse_rotation_anim_2" translate="0.0,0.0,0.0" rotaxis="0.0,1.0,0.0" angle="-10*0.001*t" scale="1.0,1.0,1.0">
 				<OBJECT3D id="wagon_horse_STDBRED1" shader="texPhongProg">wagon_horse_STDBRED1</OBJECT3D>
 				<OBJECT3D id="wagon_horse_BLACK_MATTE1" shader="texPhongProg">wagon_horse_BLACK_MATTE1</OBJECT3D>
 				<OBJECT3D id="wagon_horse_H_EARS1" shader="texPhongProg">wagon_horse_H_EARS1</OBJECT3D>
@@ -1028,7 +1033,8 @@
 				<OBJECT3D id="wagon_horse_Wood_Bamboo_Dark" shader="texPhongProg">wagon_horse_Wood_Bamboo_Dark</OBJECT3D>
 				<OBJECT3D id="wagon_horse_M_0131_Silver" shader="texPhongProg">wagon_horse_M_0131_Silver</OBJECT3D>
 				<OBJECT3D id="wagon_horse_M_0134_DimGray" shader="texPhongProg">wagon_horse_M_0134_DimGray</OBJECT3D>
-		<!--</TRANSFORM>-->
+		</TRANSFORM>
+		</TRANSFORM>
 		</TRANSFORM>
 		</TRANSFORM>
 		

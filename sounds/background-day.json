@@ -1,0 +1,21 @@
+{
+  "src": [
+    "./sounds/background-day.webm"
+  ],
+  "sprite": {
+    "harmonica": [
+      0,
+      210147.1201814059
+    ],
+    "PianoSong": [
+      212000,
+      166017.59637188207
+    ],
+    "westworld-saloon": [
+      380000,
+      174074.89795918367
+    ]
+  },
+  "preload": true,
+  "loop": true
+}

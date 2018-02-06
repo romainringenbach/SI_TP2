@@ -207,11 +207,11 @@ class atomicGL2Controls {
     pointerlockChange() {
         if (document.pointerLockElement === this.canvas ||
             document.mozPointerLockElement === this.canvas) {
-            console.log('The pointer lock status is now locked');
+            //console.log('The pointer lock status is now locked');
             this.mouseLocked = true;
             this.blocker.style.display = 'none';
         } else {
-            console.log('The pointer lock status is now unlocked');
+            //console.log('The pointer lock status is now unlocked');
             this.mouseLocked = false;
             this.blocker.style.display = 'box';
             this.blocker.style.display = '-moz-box';

@@ -71,6 +71,11 @@ class atomicGLWalkCamera {
 		if (this.phi > this.maxPitch)
 			this.phi = this.maxPitch;
 	}
+
+	getCamPos() {
+		let pos = [this.xc, this.yc, this.zc];
+		return pos;
+	}
 }
 
 export default atomicGLWalkCamera;
