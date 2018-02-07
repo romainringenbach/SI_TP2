@@ -210,7 +210,7 @@
 
 			///////////////////////////////////////////////////////////////////////////
 			// Old normal bump mapping calcul
-			/*
+			
 			// Calcul des tangent et biTangent
       // normalize normal
       vec3 oldNormal = normalize(vNormal);
@@ -230,11 +230,11 @@
       // TS to view matrix
       mat3 TBN = mat3(u1,u2,u3);
       // transform normal
-      normal = TBN*newNormalTS ;*/
+      normal = TBN*newNormalTS ;
 			///////////////////////////////////////////////////////////////////////////
 
 			// New normal bump mapping calcul
-			normal = computeNormalFromMap(uv);
+			// normal = computeNormalFromMap(uv);
 
 			// texture color
 			vec4 texColor  = texture2D(uSampler0, uv);
